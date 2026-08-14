@@ -3,29 +3,21 @@ encoding.py
 =======================
 
 Genera domain.rddl + instance.rddl nello stile minimale compatibile con
-PROST
-  - uno state-fluent bool scalare per ciascuno stato (s0, s1, ...),
+PROST:
+  - nessun "types" block, nessuna pvariable parametrizzata, nessun
+    interm-fluent;
+  - uno state-fluent bool scalare per ciascuno stato;;
+  - NESSUN blocco action-preconditions
   - DI DEFAULT NESSUN ATTRIBUTO: solo control-flow (stati + transizioni).
     Gli attributi (state-fluent real, if/else bilanciato) sono
     disponibili con --include-attributes
   - reward di default: +terminal_bonus (10.0) se si raggiunge uno stato
     terminale, altrimenti 1.0. 
   - le probabilita' di transizione osservate nel log sono scritte come
-    costanti letterali dentro Bernoulli(p)
+    costanti letterali dentro Bernoulli(p), non lette da una tabella;
   - le azioni sono action-fluent bool scalari separate (una per
-    attivita' osservata)
+    attivita' osservata).
 
-Transizioni con piu' di un esito possibile (stick-breaking): quando un
-(source-state, action) ha piu' next-state osservati, si costruisce una
-catena di Bernoulli condizionati che si auto-escludono, riferendosi
-alle s{X}' "sorelle" gia' decise per gli esiti precedenti dello STESSO
-gruppo sorgente (ordinati per indice di stato crescente, cosi' che le
-dipendenze formino sempre un grafo aciclico).
-
-Tutte le catene (attributi se attivi, clausole di transizione, reward)
-sono strutturate come alberi bilanciati (profondita' O(log n)) invece
-che come catene lineari if/elif/.../else (profondita' O(n)), per
-evitare overflow dello stack durante il parsing/l'euristica di PROST.
 
 Uso (produce di default la configurazione testata e funzionante):
     python encoding.py \
@@ -44,6 +36,7 @@ import re
 from collections import defaultdict
 
 import pandas as pd
+import numpy as np
 
 
 # --------------------------------------------------------------------------
@@ -126,7 +119,8 @@ def balanced_chain(pairs, else_expr):
 
 
 TRI_VALUES = {'True', 'False', 'missing'}
-TRI_CODE = {'True': 'true', 'False': 'false', 'missing': 'false'}
+TRI_CODE = {'True': 1.0, 'False': 0.0, 'missing': -1.0}
+TRI_BOOL = {'True': True, 'False': False, 'missing': False}  # missing -> false
 
 
 def classify_columns(states_df, id_col, skip_cols):
@@ -135,7 +129,13 @@ def classify_columns(states_df, id_col, skip_cols):
         if col == id_col or col in skip_cols:
             continue
         series = states_df[col]
-        if pd.api.types.is_float_dtype(series) or pd.api.types.is_integer_dtype(series):
+        if pd.api.types.is_bool_dtype(series):
+            # pandas converte automaticamente in bool nativo le colonne che
+            # contengono SOLO 'True'/'False' in ogni riga (nessun 'missing' da
+            # nessuna parte nel file) - senza questo controllo esplicito,
+            # finivano classificate come 'cat' invece di 'tri'
+            kind = 'tri'
+        elif pd.api.types.is_float_dtype(series) or pd.api.types.is_integer_dtype(series):
             kind = 'real'
         else:
             vals = set(series.dropna().unique().tolist())
@@ -160,14 +160,31 @@ def build_cat_codes(states_df, attrs):
 
 
 def attr_value_code(a, row, cat_codes):
-    """Valore numerico reale da usare nelle formule per l'attributo `a` nello stato `row`."""
+    """Valore da usare nelle formule per l'attributo `a` nello stato `row`.
+    Per gli attributi 'tri' ritorna un bool Python (missing -> False); per gli
+    altri un float. Gestisce sia colonne lette come stringhe ('True'/'False'/
+    'missing') sia colonne che pandas ha convertito in bool nativo (quando
+    nessuna riga del file contiene 'missing' per quella colonna)."""
     col = a['col']
     if a['kind'] == 'real':
         return float(row[col])
     elif a['kind'] == 'tri':
-        return TRI_CODE[row[col]]
+        val = row[col]
+        if isinstance(val, (bool, np.bool_)):
+            return bool(val)
+        if pd.isna(val):
+            return False
+        return TRI_BOOL[val]
     else:
         return cat_codes[col][row[col]]
+
+
+def fmt_attr_value(a, value):
+    """Formatta un valore attributo per l'RDDL: 'true'/'false' per i booleani
+    (tri), numero altrimenti."""
+    if a['kind'] == 'tri':
+        return 'true' if value else 'false'
+    return f"{value:.10g}"
 
 
 # --------------------------------------------------------------------------
@@ -267,19 +284,15 @@ def build_domain(domain_name, attrs, cat_codes, n_states, action_names,
             mapping = ", ".join(f"{k}={v:g}" for k, v in cat_codes[a['col']].items())
             L.append(f"        // {a['pvar']}: codifica di '{a['col']}' -> {mapping}")
         elif a['kind'] == 'tri':
-            L.append(f"        // {a['pvar']}: codifica di '{a['col']}' -> True=1, False=0, missing=-1")
+            L.append(f"        // {a['pvar']}: codifica di '{a['col']}' -> True=true, False=missing=false")
     L.append("        // -----------------------")
     if include_attrs:
         for a in attrs:
-            if a['kind'] == 'tri':
-                L.append(
-                    f"        {a['pvar']} : {{ state-fluent, bool, default=false }};"
-                )
-            else:
-                default = '0.0'
-                L.append(
-                    f"        {a['pvar']} : {{ state-fluent, real, default={default} }};"
-                )
+            typ = 'bool' if a['kind'] == 'tri' else 'real'
+            default = 'false' if a['kind'] == 'tri' else '0.0'
+            L.append(f"        {a['pvar']} : {{ state-fluent, {typ}, default={default} }};")
+    else:
+        L.append("        // (attributi omessi in questa versione, solo control-flow)")
     L.append("")
     L.append("        // -----------------------")
     L.append("        // azioni: una booleana scalare per ciascuna attivita' osservata nel log")
@@ -304,44 +317,51 @@ def build_domain(domain_name, attrs, cat_codes, n_states, action_names,
         L.append("")
     L.append("")
     if include_attrs:
-        L.append("        // ---- attributi: dipendono SOLO da (stato corrente, azione), MAI da")
-        L.append("        // s{k}' - un solo attributo che referenzia s{k}' insieme alla reward")
-        L.append("        // (che referenzia anch'essa s{k}') causa segfault in PROST, indipendente")
-        L.append("        // da dimensione/profondita' della formula (osservato empiricamente).")
-        L.append("        // Raggruppati per VALORE (non per singolo guard): il valore piu'")
-        L.append("        // frequente diventa il ramo 'else' finale, gli altri un ramo ciascuno.")
-        L.append("        // Per i gruppi (stato,azione) con piu' esiti possibili si usa l'esito")
-        L.append("        // piu' probabile (la transizione di stato resta comunque esatta,")
-        L.append("        // guidata da Bernoulli - solo l'attributo puo' riflettere l'esito")
-        L.append("        // tipico invece di quello realmente estratto in quei rari casi)")
-        for a in attrs:
-            pvar = a['pvar']
-            values = attr_values_by_state[pvar]  # lista di float, una per stato k
-            groups = defaultdict(list)
-            for guard, tgt in flat_clauses:
-                groups[values[tgt]].append(guard)
-            groups_sorted = sorted(groups.items(), key=lambda kv: len(kv[1]))
-            most_common_value = groups_sorted[-1][0]
-            other_groups = groups_sorted[:-1]
-            if a['kind'] == 'tri':
-                pairs = [
-                    (or_tree(guard_list), value)
-                    for value, guard_list in other_groups
-                ]
-                expr = balanced_chain(pairs, most_common_value)
+        bool_attrs = [a for a in attrs if a['kind'] == 'tri']
+        other_attrs = [a for a in attrs if a['kind'] != 'tri']
 
-            else:
-                pairs = [
-                    (or_tree(guard_list), f"{value:.10g}")
-                    for value, guard_list in other_groups
-                ]
-                expr = balanced_chain(
-                    pairs,
-                    f"{most_common_value:.10g}"
-                )
+        if bool_attrs:
+            L.append("        // ---- attributi booleani (tri: True/False/missing, missing=false) ----")
+            L.append("        // CPF sul NUOVO stato one-hot s{k}': if (OR degli stati in cui vale")
+            L.append("        // true) then true else false - un state-fluent bool nativo (non real)")
+            L.append("        // evita il segfault osservato con gli attributi codificati come real.")
+            for a in bool_attrs:
+                pvar = a['pvar']
+                values = attr_values_by_state[pvar]  # lista di bool, una per stato k
+                true_states = [k for k, v in enumerate(values) if v]
+                if not true_states:
+                    L.append(f"        {pvar}' = false;")
+                elif len(true_states) == n_states:
+                    L.append(f"        {pvar}' = true;")
+                else:
+                    cond = or_tree([f"s{k}'" for k in true_states])
+                    L.append(f"        {pvar}' = if ({cond}) then true else false;")
+                L.append("")
 
-            L.append(f"        {pvar}' = {expr};")
-            L.append("")
+        if other_attrs:
+            L.append("        // ---- attributi categorici/numerici: dipendono SOLO da (stato")
+            L.append("        // corrente, azione), MAI da s{k}' - un attributo real che referenzia")
+            L.append("        // s{k}' insieme alla reward (anch'essa dipendente da s{k}') causa")
+            L.append("        // segfault in PROST, indipendente da dimensione/profondita' (osservato")
+            L.append("        // empiricamente). Raggruppati per VALORE: il piu' frequente diventa")
+            L.append("        // il ramo 'else' finale. Per i gruppi (stato,azione) con piu' esiti")
+            L.append("        // possibili si usa l'esito piu' probabile (la transizione di stato")
+            L.append("        // resta comunque esatta, guidata da Bernoulli - solo l'attributo puo'")
+            L.append("        // riflettere l'esito tipico invece di quello realmente estratto)")
+            for a in other_attrs:
+                pvar = a['pvar']
+                values = attr_values_by_state[pvar]  # lista di float, una per stato k
+                groups = defaultdict(list)
+                for guard, tgt in flat_clauses:
+                    groups[values[tgt]].append(guard)
+                groups_sorted = sorted(groups.items(), key=lambda kv: len(kv[1]))
+                most_common_value = groups_sorted[-1][0]
+                other_groups = groups_sorted[:-1]
+                pairs = [(or_tree(guard_list), f"{value:.10g}")
+                         for value, guard_list in other_groups]
+                expr = balanced_chain(pairs, f"{most_common_value:.10g}")
+                L.append(f"        {pvar}' = {expr};")
+                L.append("")
     L.append("    };")
     L.append("")
     L.append("    reward =")
@@ -353,9 +373,10 @@ def build_domain(domain_name, attrs, cat_codes, n_states, action_names,
         or_terminal = or_tree([f"s{k}'" for k in sorted(terminal_idx)])
         L.append(f"        if ( {or_terminal} )")
         L.append(f"        then {terminal_bonus:.6g}")
-        L.append("        else -1.0;")
+        L.append("        else 1.0;")
     else:
         L.append("        1.0;")
+        L.append("    // PLACEHOLDER: sostituire con la reward vera basata sugli attributi.")
     L.append("")
     L.append("")
     L.append("}")
@@ -388,11 +409,7 @@ def build_instance(domain_name, instance_name, attrs, init_idx,
         for a in attrs:
             pvar = a['pvar']
             val = attr_values_by_state[pvar][init_idx]
-
-            if a['kind'] == 'tri':
-                L.append(f"        {pvar} = {val};")
-            else:
-                L.append(f"        {pvar} = {val:.10g};")
+            L.append(f"        {pvar} = {fmt_attr_value(a, val)};")
     L.append("    };")
     L.append("")
     L.append("    max-nondef-actions = 1;")
