@@ -5,28 +5,27 @@ encoding.py
 Genera domain.rddl + instance.rddl nello stile minimale compatibile con
 PROST:
   - nessun "types" block, nessuna pvariable parametrizzata, nessun
-    interm-fluent;
-  - uno state-fluent bool scalare per ciascuno stato;;
-  - NESSUN blocco action-preconditions
+    interm-fluent (PROST li rifiuta con errori di parsing);
+  - uno state-fluent bool scalare per ciascuno stato (s0, s1, ...);
+  - NESSUN blocco action-preconditions;
   - DI DEFAULT NESSUN ATTRIBUTO: solo control-flow (stati + transizioni).
     Gli attributi (state-fluent real, if/else bilanciato) sono
-    disponibili con --include-attributes
+    disponibili con --include-attributes;
   - reward di default: +terminal_bonus (10.0) se si raggiunge uno stato
     terminale, altrimenti 1.0. 
   - le probabilita' di transizione osservate nel log sono scritte come
-    costanti letterali dentro Bernoulli(p), non lette da una tabella;
+    costanti letterali dentro Bernoulli(p);
   - le azioni sono action-fluent bool scalari separate (una per
     attivita' osservata).
 
-
-Uso (produce di default la configurazione testata e funzionante):
+Uso:
     python encoding.py \
-        --states mdp_states_described_test.csv \
+        --states mdp_states_described_test_discretized.csv \ (usare la versione discretizzata)
         --transitions mdp_transitions_test.csv \
         --outdir out_prost/ \
         --horizon 20
 
-Per reintrodurre gli attributi (non ancora ritestati con PROST):
+Per reintrodurre gli attributi:
     python encoding.py ... --include-attributes
 """
 
@@ -47,7 +46,10 @@ def sanitize_pvar_name(name: str) -> str:
     s = re.sub(r'([a-z0-9])([A-Z])', r'\1-\2', str(name).strip())
     s = re.sub(r'[^0-9a-zA-Z]+', '-', s)
     s = re.sub(r'-+', '-', s).strip('-').lower()
-    if not s or not s[0].isalpha():
+    if not s:
+        # es. '?' o altri valori senza alcun carattere alfanumerico
+        s = 'na'
+    elif not s[0].isalpha():
         s = 'v-' + s
     return s
 
@@ -147,24 +149,38 @@ def classify_columns(states_df, id_col, skip_cols):
     return attrs
 
 
-def build_cat_codes(states_df, attrs):
-    """Per ogni colonna categorica assegna un codice numerico 0,1,2,... in ordine
-    alfabetico; ritorna {col: {valore_originale: codice_float}}."""
-    codes = {}
+def build_cat_onehot_names(states_df, attrs, reserved_names):
+    """Per ogni colonna 'cat' assegna un nome di pvariable bool per ciascun
+    valore distinto (one-hot), es. 'crp-low', 'crp-medium', 'crp-high'.
+    Ritorna {col: {valore_originale: nome_pvar}}. I nomi sono resi univoci
+    anche rispetto a `reserved_names` (stati, azioni, altri attributi)."""
+    names = {}
+    all_new = []
+    per_col_vals = {}
     for a in attrs:
         if a['kind'] == 'cat':
             col = a['col']
             vals = sorted(states_df[col].dropna().unique().tolist())
-            codes[col] = {v: float(i) for i, v in enumerate(vals)}
-    return codes
+            per_col_vals[col] = vals
+            for v in vals:
+                all_new.append(f"{a['pvar']}-{sanitize_pvar_name(str(v))}")
+    uniq = uniquify(list(reserved_names) + all_new)[len(reserved_names):]
+    i = 0
+    for a in attrs:
+        if a['kind'] == 'cat':
+            col = a['col']
+            names[col] = {}
+            for v in per_col_vals[col]:
+                names[col][v] = uniq[i]
+                i += 1
+    return names
 
 
-def attr_value_code(a, row, cat_codes):
-    """Valore da usare nelle formule per l'attributo `a` nello stato `row`.
-    Per gli attributi 'tri' ritorna un bool Python (missing -> False); per gli
-    altri un float. Gestisce sia colonne lette come stringhe ('True'/'False'/
-    'missing') sia colonne che pandas ha convertito in bool nativo (quando
-    nessuna riga del file contiene 'missing' per quella colonna)."""
+def attr_value_code(a, row):
+    """Valore 'grezzo' dell'attributo `a` nello stato `row`. Per 'tri' ritorna
+    un bool Python (missing -> False, gestendo sia stringhe che bool nativi
+    letti da pandas); per 'cat' ritorna il valore categorico originale
+    (stringa); per 'real' un float."""
     col = a['col']
     if a['kind'] == 'real':
         return float(row[col])
@@ -176,12 +192,12 @@ def attr_value_code(a, row, cat_codes):
             return False
         return TRI_BOOL[val]
     else:
-        return cat_codes[col][row[col]]
+        return row[col]
 
 
 def fmt_attr_value(a, value):
-    """Formatta un valore attributo per l'RDDL: 'true'/'false' per i booleani
-    (tri), numero altrimenti."""
+    """Formatta un valore attributo REAL/TRI per l'RDDL ('true'/'false' o
+    numero). Non usato per 'cat', che e' sempre one-hot bool."""
     if a['kind'] == 'tri':
         return 'true' if value else 'false'
     return f"{value:.10g}"
@@ -250,7 +266,7 @@ def build_target_clauses(trans_df, id_col, action_col, action_fluent_of, n_state
 # DOMAIN
 # --------------------------------------------------------------------------
 
-def build_domain(domain_name, attrs, cat_codes, n_states, action_names,
+def build_domain(domain_name, bool_fluents, real_attrs, n_states, action_names,
                   action_fluent_of, target_clauses, flat_clauses, terminal_idx, init_idx,
                   valid_states_of_action, attr_values_by_state, include_attrs=True,
                   terminal_bonus=None):
@@ -278,19 +294,17 @@ def build_domain(domain_name, attrs, cat_codes, n_states, action_names,
         L.append(f"        s{k} : {{ state-fluent, bool, default={default} }};")
     L.append("")
     L.append("        // -----------------------")
-    L.append("        // attributi dello stato (fluents di prima classe, usabili nella reward)")
-    for a in attrs:
-        if a['kind'] == 'cat':
-            mapping = ", ".join(f"{k}={v:g}" for k, v in cat_codes[a['col']].items())
-            L.append(f"        // {a['pvar']}: codifica di '{a['col']}' -> {mapping}")
-        elif a['kind'] == 'tri':
-            L.append(f"        // {a['pvar']}: codifica di '{a['col']}' -> True=true, False=missing=false")
+    L.append("        // attributi dello stato, tutti come booleani nativi (fluents di prima")
+    L.append("        // classe, usabili nella reward): gli attributi 'tri' (True/False/missing,")
+    L.append("        // missing->false) sono un singolo booleano; gli attributi categorici a")
+    L.append("        // bassa cardinalita' (es. CRP discretizzato in low/medium/high) sono")
+    L.append("        // one-hot: un booleano PER CIASCUN VALORE POSSIBILE, esattamente uno vero")
     L.append("        // -----------------------")
     if include_attrs:
-        for a in attrs:
-            typ = 'bool' if a['kind'] == 'tri' else 'real'
-            default = 'false' if a['kind'] == 'tri' else '0.0'
-            L.append(f"        {a['pvar']} : {{ state-fluent, {typ}, default={default} }};")
+        for bf in bool_fluents:
+            L.append(f"        {bf['pvar']} : {{ state-fluent, bool, default=false }};")
+        for a in real_attrs:
+            L.append(f"        {a['pvar']} : {{ state-fluent, real, default=0.0 }};")
     else:
         L.append("        // (attributi omessi in questa versione, solo control-flow)")
     L.append("")
@@ -317,17 +331,14 @@ def build_domain(domain_name, attrs, cat_codes, n_states, action_names,
         L.append("")
     L.append("")
     if include_attrs:
-        bool_attrs = [a for a in attrs if a['kind'] == 'tri']
-        other_attrs = [a for a in attrs if a['kind'] != 'tri']
-
-        if bool_attrs:
-            L.append("        // ---- attributi booleani (tri: True/False/missing, missing=false) ----")
+        if bool_fluents:
+            L.append("        // ---- attributi booleani (tri singoli + cat one-hot) ----")
             L.append("        // CPF sul NUOVO stato one-hot s{k}': if (OR degli stati in cui vale")
-            L.append("        // true) then true else false - un state-fluent bool nativo (non real)")
+            L.append("        // true) then true else false - state-fluent bool nativo (non real),")
             L.append("        // evita il segfault osservato con gli attributi codificati come real.")
-            for a in bool_attrs:
-                pvar = a['pvar']
-                values = attr_values_by_state[pvar]  # lista di bool, una per stato k
+            for bf in bool_fluents:
+                pvar = bf['pvar']
+                values = bf['values']  # lista di bool, una per stato k
                 true_states = [k for k, v in enumerate(values) if v]
                 if not true_states:
                     L.append(f"        {pvar}' = false;")
@@ -338,8 +349,8 @@ def build_domain(domain_name, attrs, cat_codes, n_states, action_names,
                     L.append(f"        {pvar}' = if ({cond}) then true else false;")
                 L.append("")
 
-        if other_attrs:
-            L.append("        // ---- attributi categorici/numerici: dipendono SOLO da (stato")
+        if real_attrs:
+            L.append("        // ---- attributi numerici continui: dipendono SOLO da (stato")
             L.append("        // corrente, azione), MAI da s{k}' - un attributo real che referenzia")
             L.append("        // s{k}' insieme alla reward (anch'essa dipendente da s{k}') causa")
             L.append("        // segfault in PROST, indipendente da dimensione/profondita' (osservato")
@@ -348,7 +359,7 @@ def build_domain(domain_name, attrs, cat_codes, n_states, action_names,
             L.append("        // possibili si usa l'esito piu' probabile (la transizione di stato")
             L.append("        // resta comunque esatta, guidata da Bernoulli - solo l'attributo puo'")
             L.append("        // riflettere l'esito tipico invece di quello realmente estratto)")
-            for a in other_attrs:
+            for a in real_attrs:
                 pvar = a['pvar']
                 values = attr_values_by_state[pvar]  # lista di float, una per stato k
                 groups = defaultdict(list)
@@ -387,7 +398,7 @@ def build_domain(domain_name, attrs, cat_codes, n_states, action_names,
 # INSTANCE (solo dati: DUMMY non-fluent + init-state)
 # --------------------------------------------------------------------------
 
-def build_instance(domain_name, instance_name, attrs, init_idx,
+def build_instance(domain_name, instance_name, bool_fluents, real_attrs, init_idx,
                     attr_values_by_state, horizon, discount, include_attrs=True):
     L = []
     L.append(f"non-fluents {domain_name}_nf {{")
@@ -406,10 +417,13 @@ def build_instance(domain_name, instance_name, attrs, init_idx,
     L.append(f"        s{init_idx} = true;")
     L.append("")
     if include_attrs:
-        for a in attrs:
+        for bf in bool_fluents:
+            val = bf['values'][init_idx]
+            L.append(f"        {bf['pvar']} = {'true' if val else 'false'};")
+        for a in real_attrs:
             pvar = a['pvar']
             val = attr_values_by_state[pvar][init_idx]
-            L.append(f"        {pvar} = {fmt_attr_value(a, val)};")
+            L.append(f"        {pvar} = {val:.10g};")
     L.append("    };")
     L.append("")
     L.append("    max-nondef-actions = 1;")
@@ -466,20 +480,43 @@ def main():
     attrs = classify_columns(states_df, args.id_col, skip_cols)
     if args.max_attributes is not None:
         attrs = attrs[:args.max_attributes]
-    cat_codes = build_cat_codes(states_df, attrs)
 
-    # valori di ciascun attributo per ciascuno stato (indice k = stato k)
+    # valori "grezzi" di ciascun attributo per ciascuno stato (indice k = stato k):
+    # bool per 'tri', stringa categorica per 'cat', float per 'real'
     attr_values_by_state = {}
     for a in attrs:
         vals = []
         for _, row in states_df.iterrows():
-            vals.append(attr_value_code(a, row, cat_codes))
+            vals.append(attr_value_code(a, row))
         attr_values_by_state[a['pvar']] = vals
 
-    # azioni: nome scalare sanitizzato per ciascuna attivita' osservata
+    # azioni: nome scalare sanitizzato per ciascuna attivita' osservata (serve
+    # gia' qui per riservare i nomi prima di generare i nomi one-hot 'cat')
     action_names = sorted(trans_df[args.action_col].unique().tolist())
     raw = ["action-" + sanitize_pvar_name(a) for a in action_names]
     action_fluent_of = dict(zip(action_names, uniquify(raw)))
+
+    reserved_names = (['DUMMY'] + [f"s{k}" for k in range(n_states)]
+                       + list(action_fluent_of.values())
+                       + [a['pvar'] for a in attrs if a['kind'] != 'cat'])
+    cat_onehot_names = build_cat_onehot_names(states_df, attrs, reserved_names)
+
+    # bool_fluents: un elemento per attributo 'tri' (booleano singolo) + N
+    # elementi per ciascun attributo 'cat' (uno per valore, one-hot) - stessa
+    # struttura uniforme {'pvar':..., 'values':[bool per stato]} per entrambi
+    bool_fluents = []
+    for a in attrs:
+        if a['kind'] == 'tri':
+            bool_fluents.append({'pvar': a['pvar'], 'values': attr_values_by_state[a['pvar']]})
+        elif a['kind'] == 'cat':
+            col = a['col']
+            raw_vals = attr_values_by_state[a['pvar']]
+            for cat_value, subpvar in cat_onehot_names[col].items():
+                bool_fluents.append({
+                    'pvar': subpvar,
+                    'values': [rv == cat_value for rv in raw_vals]
+                })
+    real_attrs = [a for a in attrs if a['kind'] == 'real']
 
     # stati validi da cui ciascuna azione e' stata osservata (per action-preconditions)
     valid_states_of_action = defaultdict(set)
@@ -502,14 +539,14 @@ def main():
                                                           action_fluent_of, n_states)
 
     domain_txt = build_domain(
-        args.domain_name, attrs, cat_codes, n_states, action_names,
+        args.domain_name, bool_fluents, real_attrs, n_states, action_names,
         action_fluent_of, target_clauses, flat_clauses, terminal_idx, init_idx,
         valid_states_of_action, attr_values_by_state,
         include_attrs=args.include_attributes,
         terminal_bonus=args.terminal_bonus
     )
     instance_txt = build_instance(
-        args.domain_name, args.instance_name, attrs, init_idx,
+        args.domain_name, args.instance_name, bool_fluents, real_attrs, init_idx,
         attr_values_by_state, args.horizon, args.discount,
         include_attrs=args.include_attributes
     )
