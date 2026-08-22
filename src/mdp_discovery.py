@@ -20,15 +20,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent.parent
 
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "Process_Pilot"))
-sys.path.insert(0, str(ROOT / "Process_Pilot/src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "ProcessPilot"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "ProcessPilot", "src"))
 
-from Process_Pilot.dataset_manager.DatasetManager import *   # noqa: F401,F403
-from Process_Pilot.src.utils import *                             # noqa: F401,F403  (k_means, ...)
-from Process_Pilot.src.MDP_functions import *                     # noqa: F401,F403  (DatasetMDP, get_real_data, ...)
+
+from dataset_manager.DatasetManager import *   
+from utils import *                             
+from MDP_functions import *                    
 
 SEED = 0
 np.random.seed(SEED)
