@@ -25,9 +25,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "ProcessPilot"))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "ProcessPilot", "src"))
 
 
-from dataset_manager.DatasetManager import *   
-from utils import *                             
-from MDP_functions import *                    
+from ProcessPilot.dataset_manager.DatasetManager import *   
+from ProcessPilot.src.utils import *                             
+from ProcessPilot.src.MDP_functions import *                    
 
 SEED = 0
 np.random.seed(SEED)
