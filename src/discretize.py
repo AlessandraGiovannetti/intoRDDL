@@ -1,6 +1,3 @@
-import pandas as pd
-import argparse
-
 """
 Uso:
     python discretize.py \
@@ -8,7 +5,12 @@ Uso:
         output.csv \
         --quantiles 3 \
         --exclude col1 col2
+        -- dataset (traffic_fines, sepsis)
 """
+
+import pandas as pd
+import argparse
+
 
 # ============================================================
 # ARGUMENTS
@@ -29,6 +31,13 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "--dataset",
+    choices=["traffic_fines", "sepsis"],
+    required=True,
+    help="Dataset type: traffic_fines or sepsis"
+)
+
+parser.add_argument(
     "--quantiles",
     type=int,
     default=3,
@@ -45,55 +54,296 @@ parser.add_argument(
 args = parser.parse_args()
 
 
+# ============================================================
+# READ CSV
+# ============================================================
+
 df = pd.read_csv(args.input_csv)
 
+
+# ============================================================
+# DATASET-SPECIFIC CONFIGURATION
+# ============================================================
+
+if args.dataset == "traffic_fines":
+
+    # Columns to remove completely
+    columns_to_remove = [
+        "timesincecasestart",
+        "Resource",
+    ]
+
+    # Values to interpret as missing
+    missing_values = [
+        "missing",
+        "NIL"
+    ]
+
+    # Numeric columns that are actually categorical
+    categorical_columns = [
+        "article",
+        "vehicleClass"
+    ]
+
+    if "article" in df.columns:
+        df["article"] = df["article"].astype("string")
+
+elif args.dataset == "sepsis":
+
+    # Keep original Sepsis behavior
+    columns_to_remove = []
+
+    missing_values = []
+
+    categorical_columns = []
+
+
+# ============================================================
+# REMOVE DATASET-SPECIFIC COLUMNS
+# ============================================================
+
+for col in columns_to_remove:
+
+    if col in df.columns:
+
+        df = df.drop(columns=col)
+
+        print(f"Removed column: {col}")
+
+    else:
+
+        print(
+            f"WARNING: column '{col}' "
+            f"not found in the input file."
+        )
+
+
+# ============================================================
+# HANDLE MISSING VALUES
+# ============================================================
+
+if missing_values:
+
+    df = df.replace(
+        missing_values,
+        pd.NA
+    )
+
+    print(
+        "\nReplaced the following values with missing values:"
+    )
+
+    for value in missing_values:
+        print(f"  - {value}")
+
+
+# ============================================================
+# AUTOMATICALLY IDENTIFY NUMERIC COLUMNS
+# ============================================================
 
 numeric_columns = df.select_dtypes(
     include=["number"]
 ).columns.tolist()
 
 
+# Remove categorical columns
+numeric_columns = [
+    col
+    for col in numeric_columns
+    if col not in categorical_columns
+]
+
+
 # Remove excluded columns
 numeric_columns = [
-    col for col in numeric_columns
+    col
+    for col in numeric_columns
     if col not in args.exclude
 ]
 
 
-print("Numeric columns to discretize:")
-for col in numeric_columns:
-    print(f"  - {col}")
+# ============================================================
+# PRINT COLUMN INFORMATION
+# ============================================================
+
+print("\nDataset:")
+print(f"  {args.dataset}")
+
+
+print("\nCategorical columns:")
+if categorical_columns:
+
+    for col in categorical_columns:
+        if col in df.columns:
+            print(f"  - {col}")
+
+else:
+
+    print("  None")
+
+
+print("\nNumeric columns to discretize:")
+
+if numeric_columns:
+
+    for col in numeric_columns:
+        print(f"  - {col}")
+
+else:
+
+    print("  None")
+
 
 if args.exclude:
+
     print("\nExcluded columns:")
+
     for col in args.exclude:
         print(f"  - {col}")
 
 
+# ============================================================
+# DISCRETIZATION
+# ============================================================
+
 if args.quantiles == 3:
-    labels = ["low", "medium", "high"]
+
+    labels = [
+        "low",
+        "medium",
+        "high"
+    ]
+
 else:
+
     labels = None
 
 
 for col in numeric_columns:
 
+    # --------------------------------------------------------
+    # Number of unique non-missing values
+    # --------------------------------------------------------
+
+    n_unique = df[col].nunique(
+        dropna=True
+    )
+
+    # --------------------------------------------------------
+    # Not enough unique values
+    # --------------------------------------------------------
+
+    if n_unique < args.quantiles:
+
+        print(
+            f"\nColumn '{col}' has only "
+            f"{n_unique} unique value(s)."
+        )
+
+        print(
+            f"Treating '{col}' as categorical."
+        )
+
+        # Use pandas StringDtype so that NA remains missing
+        df[col] = df[col].astype("string")
+
+        continue
+
+
+    # --------------------------------------------------------
+    # Quantile discretization
+    # --------------------------------------------------------
+
     try:
-        df[col] = pd.qcut(
+
+        discretized = pd.qcut(
             df[col],
             q=args.quantiles,
             labels=labels,
             duplicates="drop"
         )
 
+
+        # ----------------------------------------------------
+        # Check how many bins were actually created
+        # ----------------------------------------------------
+
+        n_bins = discretized.cat.categories.size
+
+
+        # ----------------------------------------------------
+        # qcut created fewer bins than requested
+        # ----------------------------------------------------
+
+        if n_bins < args.quantiles:
+
+            print(
+                f"\nColumn '{col}': qcut could only create "
+                f"{n_bins} bin(s) instead of "
+                f"{args.quantiles}."
+            )
+
+            print(
+                f"Treating '{col}' as categorical."
+            )
+
+            df[col] = df[col].astype("string")
+
+
+        # ----------------------------------------------------
+        # Successful discretization
+        # ----------------------------------------------------
+
+        else:
+
+            df[col] = discretized
+
+            print(
+                f"\nColumn '{col}' discretized into "
+                f"{n_bins} quantile bins."
+            )
+
+
+    # --------------------------------------------------------
+    # qcut error
+    # --------------------------------------------------------
+
     except ValueError as e:
+
         print(
-            f"WARNING: could not discretize "
+            f"\nWARNING: could not discretize "
             f"column '{col}': {e}"
         )
 
+        print(
+            f"Treating '{col}' as categorical."
+        )
 
-df.to_csv(args.output_csv, index=False)
+        df[col] = df[col].astype("string")
 
-print("\nDiscretized file saved to:")
+
+# ============================================================
+# SAVE
+# ============================================================
+
+df.to_csv(
+    args.output_csv,
+    index=False,
+    na_rep=""
+)
+
+
+# ============================================================
+# FINAL INFORMATION
+# ============================================================
+
+print("\n----------------------------------------")
+print("Processing completed.")
+print("----------------------------------------")
+
+print("\nOutput file:")
 print(args.output_csv)
+
+print("\nFinal columns:")
+for col in df.columns:
+    print(f"  - {col}")

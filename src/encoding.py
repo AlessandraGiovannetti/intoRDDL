@@ -54,6 +54,21 @@ def sanitize_pvar_name(name: str) -> str:
     return s
 
 
+def cat_label(v) -> str:
+    """Etichetta leggibile per un valore categorico usato in un nome di
+    pvariable one-hot. I float che rappresentano interi (es. 3.0, letti da
+    un CSV con colonna numerica) diventano '3' invece di '3-0'; gli altri
+    float usano una rappresentazione compatta (%g)."""
+    if isinstance(v, (float, np.floating)):
+        fv = float(v)
+        if fv.is_integer():
+            return str(int(fv))
+        return f"{fv:g}"
+    if isinstance(v, (int, np.integer)):
+        return str(int(v))
+    return str(v)
+
+
 def uniquify(names):
     seen = defaultdict(int)
     out = []
@@ -125,7 +140,19 @@ TRI_CODE = {'True': 1.0, 'False': 0.0, 'missing': -1.0}
 TRI_BOOL = {'True': True, 'False': False, 'missing': False}  # missing -> false
 
 
-def classify_columns(states_df, id_col, skip_cols):
+def classify_columns(states_df, id_col, skip_cols, numeric_cat_max_unique=20):
+    """Classifica ciascuna colonna di attributo in:
+      - 'tri'  : booleano/tri-state (True/False/missing) -> singolo bool
+      - 'cat'  : categorica -> one-hot booleano (UN booleano per valore)
+
+    NESSUNA colonna viene piu' classificata come 'real': anche le colonne
+    numeriche (int/float) vengono trattate come categoriche, assumendo che
+    se non sono gia' state discretizzate a monte i valori distinti presenti
+    siano comunque pochi. Se una colonna numerica supera
+    `numeric_cat_max_unique` valori distinti, viene sollevato un errore
+    esplicito (probabile colonna continua non discretizzata, non adatta a
+    un encoding one-hot).
+    """
     attrs = []
     for col in states_df.columns:
         if col == id_col or col in skip_cols:
@@ -138,7 +165,16 @@ def classify_columns(states_df, id_col, skip_cols):
             # finivano classificate come 'cat' invece di 'tri'
             kind = 'tri'
         elif pd.api.types.is_float_dtype(series) or pd.api.types.is_integer_dtype(series):
-            kind = 'real'
+            # niente 'real': colonna numerica -> categorica one-hot.
+            n_unique = series.dropna().nunique()
+            if n_unique > numeric_cat_max_unique:
+                raise ValueError(
+                    f"Colonna '{col}' e' numerica con {n_unique} valori distinti "
+                    f"(> --numeric-cat-max-unique={numeric_cat_max_unique}): sembra "
+                    f"continua/non discretizzata. Discretizzala a monte (bin/quantili) "
+                    f"prima di generare l'RDDL, oppure alza la soglia se e' voluto."
+                )
+            kind = 'cat'
         else:
             vals = set(series.dropna().unique().tolist())
             kind = 'tri' if vals.issubset(TRI_VALUES) else 'cat'
@@ -151,9 +187,11 @@ def classify_columns(states_df, id_col, skip_cols):
 
 def build_cat_onehot_names(states_df, attrs, reserved_names):
     """Per ogni colonna 'cat' assegna un nome di pvariable bool per ciascun
-    valore distinto (one-hot), es. 'crp-low', 'crp-medium', 'crp-high'.
-    Ritorna {col: {valore_originale: nome_pvar}}. I nomi sono resi univoci
-    anche rispetto a `reserved_names` (stati, azioni, altri attributi)."""
+    valore distinto (one-hot), es. 'crp-low', 'crp-medium', 'crp-high', oppure
+    (per colonne numeriche trattate come categoriche) 'age-group-3',
+    'age-group-12'. Ritorna {col: {valore_originale: nome_pvar}}. I nomi sono
+    resi univoci anche rispetto a `reserved_names` (stati, azioni, altri
+    attributi)."""
     names = {}
     all_new = []
     per_col_vals = {}
@@ -163,7 +201,7 @@ def build_cat_onehot_names(states_df, attrs, reserved_names):
             vals = sorted(states_df[col].dropna().unique().tolist())
             per_col_vals[col] = vals
             for v in vals:
-                all_new.append(f"{a['pvar']}-{sanitize_pvar_name(str(v))}")
+                all_new.append(f"{a['pvar']}-{sanitize_pvar_name(cat_label(v))}")
     uniq = uniquify(list(reserved_names) + all_new)[len(reserved_names):]
     i = 0
     for a in attrs:
@@ -179,12 +217,11 @@ def build_cat_onehot_names(states_df, attrs, reserved_names):
 def attr_value_code(a, row):
     """Valore 'grezzo' dell'attributo `a` nello stato `row`. Per 'tri' ritorna
     un bool Python (missing -> False, gestendo sia stringhe che bool nativi
-    letti da pandas); per 'cat' ritorna il valore categorico originale
-    (stringa); per 'real' un float."""
+    letti da pandas); per 'cat' (incluse le colonne numeriche trattate come
+    categoriche) ritorna il valore originale cosi' com'e' (stringa o
+    numero), usato solo per il confronto di uguaglianza nel one-hot."""
     col = a['col']
-    if a['kind'] == 'real':
-        return float(row[col])
-    elif a['kind'] == 'tri':
+    if a['kind'] == 'tri':
         val = row[col]
         if isinstance(val, (bool, np.bool_)):
             return bool(val)
@@ -193,14 +230,6 @@ def attr_value_code(a, row):
         return TRI_BOOL[val]
     else:
         return row[col]
-
-
-def fmt_attr_value(a, value):
-    """Formatta un valore attributo REAL/TRI per l'RDDL ('true'/'false' o
-    numero). Non usato per 'cat', che e' sempre one-hot bool."""
-    if a['kind'] == 'tri':
-        return 'true' if value else 'false'
-    return f"{value:.10g}"
 
 
 # --------------------------------------------------------------------------
@@ -266,9 +295,9 @@ def build_target_clauses(trans_df, id_col, action_col, action_fluent_of, n_state
 # DOMAIN
 # --------------------------------------------------------------------------
 
-def build_domain(domain_name, bool_fluents, real_attrs, n_states, action_names,
+def build_domain(domain_name, bool_fluents, n_states, action_names,
                   action_fluent_of, target_clauses, flat_clauses, terminal_idx, init_idx,
-                  valid_states_of_action, attr_values_by_state, include_attrs=True,
+                  valid_states_of_action, include_attrs=True,
                   terminal_bonus=None):
 
     L = []
@@ -294,17 +323,16 @@ def build_domain(domain_name, bool_fluents, real_attrs, n_states, action_names,
         L.append(f"        s{k} : {{ state-fluent, bool, default={default} }};")
     L.append("")
     L.append("        // -----------------------")
-    L.append("        // attributi dello stato, tutti come booleani nativi (fluents di prima")
-    L.append("        // classe, usabili nella reward): gli attributi 'tri' (True/False/missing,")
-    L.append("        // missing->false) sono un singolo booleano; gli attributi categorici a")
-    L.append("        // bassa cardinalita' (es. CRP discretizzato in low/medium/high) sono")
-    L.append("        // one-hot: un booleano PER CIASCUN VALORE POSSIBILE, esattamente uno vero")
+    L.append("        // attributi dello stato, TUTTI booleani nativi (fluents di prima classe,")
+    L.append("        // usabili nella reward, nessun 'real'): gli attributi 'tri' (True/False/")
+    L.append("        // missing, missing->false) sono un singolo booleano; TUTTE le colonne")
+    L.append("        // categoriche - incluse quelle numeriche non discretizzate a monte, se")
+    L.append("        // con pochi valori distinti - sono one-hot: un booleano PER CIASCUN")
+    L.append("        // VALORE possibile, esattamente uno vero")
     L.append("        // -----------------------")
     if include_attrs:
         for bf in bool_fluents:
             L.append(f"        {bf['pvar']} : {{ state-fluent, bool, default=false }};")
-        for a in real_attrs:
-            L.append(f"        {a['pvar']} : {{ state-fluent, real, default=0.0 }};")
     else:
         L.append("        // (attributi omessi in questa versione, solo control-flow)")
     L.append("")
@@ -330,49 +358,23 @@ def build_domain(domain_name, bool_fluents, real_attrs, n_states, action_names,
         L.append(f"        s{k}' = {expr};")
         L.append("")
     L.append("")
-    if include_attrs:
-        if bool_fluents:
-            L.append("        // ---- attributi booleani (tri singoli + cat one-hot) ----")
-            L.append("        // CPF sul NUOVO stato one-hot s{k}': if (OR degli stati in cui vale")
-            L.append("        // true) then true else false - state-fluent bool nativo (non real),")
-            L.append("        // evita il segfault osservato con gli attributi codificati come real.")
-            for bf in bool_fluents:
-                pvar = bf['pvar']
-                values = bf['values']  # lista di bool, una per stato k
-                true_states = [k for k, v in enumerate(values) if v]
-                if not true_states:
-                    L.append(f"        {pvar}' = false;")
-                elif len(true_states) == n_states:
-                    L.append(f"        {pvar}' = true;")
-                else:
-                    cond = or_tree([f"s{k}'" for k in true_states])
-                    L.append(f"        {pvar}' = if ({cond}) then true else false;")
-                L.append("")
-
-        if real_attrs:
-            L.append("        // ---- attributi numerici continui: dipendono SOLO da (stato")
-            L.append("        // corrente, azione), MAI da s{k}' - un attributo real che referenzia")
-            L.append("        // s{k}' insieme alla reward (anch'essa dipendente da s{k}') causa")
-            L.append("        // segfault in PROST, indipendente da dimensione/profondita' (osservato")
-            L.append("        // empiricamente). Raggruppati per VALORE: il piu' frequente diventa")
-            L.append("        // il ramo 'else' finale. Per i gruppi (stato,azione) con piu' esiti")
-            L.append("        // possibili si usa l'esito piu' probabile (la transizione di stato")
-            L.append("        // resta comunque esatta, guidata da Bernoulli - solo l'attributo puo'")
-            L.append("        // riflettere l'esito tipico invece di quello realmente estratto)")
-            for a in real_attrs:
-                pvar = a['pvar']
-                values = attr_values_by_state[pvar]  # lista di float, una per stato k
-                groups = defaultdict(list)
-                for guard, tgt in flat_clauses:
-                    groups[values[tgt]].append(guard)
-                groups_sorted = sorted(groups.items(), key=lambda kv: len(kv[1]))
-                most_common_value = groups_sorted[-1][0]
-                other_groups = groups_sorted[:-1]
-                pairs = [(or_tree(guard_list), f"{value:.10g}")
-                         for value, guard_list in other_groups]
-                expr = balanced_chain(pairs, f"{most_common_value:.10g}")
-                L.append(f"        {pvar}' = {expr};")
-                L.append("")
+    if include_attrs and bool_fluents:
+        L.append("        // ---- attributi booleani (tri singoli + cat one-hot, niente real) ----")
+        L.append("        // CPF sul NUOVO stato one-hot s{k}': if (OR degli stati in cui vale")
+        L.append("        // true) then true else false - state-fluent bool nativo, evita il")
+        L.append("        // segfault osservato con gli attributi codificati come real.")
+        for bf in bool_fluents:
+            pvar = bf['pvar']
+            values = bf['values']  # lista di bool, una per stato k
+            true_states = [k for k, v in enumerate(values) if v]
+            if not true_states:
+                L.append(f"        {pvar}' = false;")
+            elif len(true_states) == n_states:
+                L.append(f"        {pvar}' = true;")
+            else:
+                cond = or_tree([f"s{k}'" for k in true_states])
+                L.append(f"        {pvar}' = if ({cond}) then true else false;")
+            L.append("")
     L.append("    };")
     L.append("")
     L.append("    reward =")
@@ -398,8 +400,8 @@ def build_domain(domain_name, bool_fluents, real_attrs, n_states, action_names,
 # INSTANCE (solo dati: DUMMY non-fluent + init-state)
 # --------------------------------------------------------------------------
 
-def build_instance(domain_name, instance_name, bool_fluents, real_attrs, init_idx,
-                    attr_values_by_state, horizon, discount, include_attrs=True):
+def build_instance(domain_name, instance_name, bool_fluents, init_idx,
+                    horizon, discount, include_attrs=True):
     L = []
     L.append(f"non-fluents {domain_name}_nf {{")
     L.append(f"    domain = {domain_name};")
@@ -420,10 +422,6 @@ def build_instance(domain_name, instance_name, bool_fluents, real_attrs, init_id
         for bf in bool_fluents:
             val = bf['values'][init_idx]
             L.append(f"        {bf['pvar']} = {'true' if val else 'false'};")
-        for a in real_attrs:
-            pvar = a['pvar']
-            val = attr_values_by_state[pvar][init_idx]
-            L.append(f"        {pvar} = {val:.10g};")
     L.append("    };")
     L.append("")
     L.append("    max-nondef-actions = 1;")
@@ -451,18 +449,22 @@ def main():
     ap.add_argument('--horizon', type=int, default=40)
     ap.add_argument('--discount', type=float, default=1.0)
     ap.add_argument('--include-attributes', action='store_true',
-                     help="includi anche gli attributi (state-fluent real per ciascuna colonna "
-                          "del CSV stati). Di default sono ESCLUSI: la configurazione senza "
-                          "attributi e' quella confermata funzionante con PROST.")
+                     help="includi anche gli attributi (state-fluent bool per ciascuna colonna "
+                          "del CSV stati, tri o one-hot). Di default sono ESCLUSI: la "
+                          "configurazione senza attributi e' quella confermata funzionante con "
+                          "PROST.")
     ap.add_argument('--terminal-bonus', type=float, default=10.0,
                      help="reward = terminal_bonus se si raggiunge uno stato terminale, "
-                          "altrimenti -1.0. Passa un valore vuoto/None esplicito per tornare "
-                          "alla reward piatta -1.0 (usa --terminal-bonus= con niente, o "
-                          "modifica questo default nello script).")
+                          "altrimenti 1.0.")
     ap.add_argument('--max-attributes', type=int, default=None,
                      help="se impostato, usa solo le prime N colonne di attributo del CSV "
                           "(utile per isolare via bisection se un sottoinsieme di attributi "
                           "causa segfault e altri no)")
+    ap.add_argument('--numeric-cat-max-unique', type=int, default=20,
+                     help="numero massimo di valori distinti ammessi per una colonna numerica "
+                          "prima di trattarla come categorica one-hot; oltre questa soglia lo "
+                          "script si ferma con un errore (probabile colonna continua non "
+                          "discretizzata). Default: 20.")
     args = ap.parse_args()
 
     states_df = pd.read_csv(args.states).sort_values(args.id_col).reset_index(drop=True)
@@ -477,12 +479,13 @@ def main():
                           "rimappa gli id prima di generare (basta un dizionario id->indice).")
 
     skip_cols = {args.last_action_col}
-    attrs = classify_columns(states_df, args.id_col, skip_cols)
+    attrs = classify_columns(states_df, args.id_col, skip_cols,
+                              numeric_cat_max_unique=args.numeric_cat_max_unique)
     if args.max_attributes is not None:
         attrs = attrs[:args.max_attributes]
 
     # valori "grezzi" di ciascun attributo per ciascuno stato (indice k = stato k):
-    # bool per 'tri', stringa categorica per 'cat', float per 'real'
+    # bool per 'tri', valore categorico originale (stringa o numero) per 'cat'
     attr_values_by_state = {}
     for a in attrs:
         vals = []
@@ -502,8 +505,9 @@ def main():
     cat_onehot_names = build_cat_onehot_names(states_df, attrs, reserved_names)
 
     # bool_fluents: un elemento per attributo 'tri' (booleano singolo) + N
-    # elementi per ciascun attributo 'cat' (uno per valore, one-hot) - stessa
-    # struttura uniforme {'pvar':..., 'values':[bool per stato]} per entrambi
+    # elementi per ciascun attributo 'cat' (uno per valore, one-hot, incluse le
+    # colonne numeriche non discretizzate a monte con pochi valori distinti) -
+    # stessa struttura uniforme {'pvar':..., 'values':[bool per stato]}
     bool_fluents = []
     for a in attrs:
         if a['kind'] == 'tri':
@@ -516,7 +520,6 @@ def main():
                     'pvar': subpvar,
                     'values': [rv == cat_value for rv in raw_vals]
                 })
-    real_attrs = [a for a in attrs if a['kind'] == 'real']
 
     # stati validi da cui ciascuna azione e' stata osservata (per action-preconditions)
     valid_states_of_action = defaultdict(set)
@@ -539,15 +542,15 @@ def main():
                                                           action_fluent_of, n_states)
 
     domain_txt = build_domain(
-        args.domain_name, bool_fluents, real_attrs, n_states, action_names,
+        args.domain_name, bool_fluents, n_states, action_names,
         action_fluent_of, target_clauses, flat_clauses, terminal_idx, init_idx,
-        valid_states_of_action, attr_values_by_state,
+        valid_states_of_action,
         include_attrs=args.include_attributes,
         terminal_bonus=args.terminal_bonus
     )
     instance_txt = build_instance(
-        args.domain_name, args.instance_name, bool_fluents, real_attrs, init_idx,
-        attr_values_by_state, args.horizon, args.discount,
+        args.domain_name, args.instance_name, bool_fluents, init_idx,
+        args.horizon, args.discount,
         include_attrs=args.include_attributes
     )
 
@@ -561,7 +564,10 @@ def main():
 
     print(f"Scritto {dpath}")
     print(f"Scritto {ipath}")
-    print(f"Stati: {n_states}  Azioni: {len(action_names)}  Attributi: {len(attrs)}")
+    n_cat_numeric = sum(1 for a in attrs if a['kind'] == 'cat'
+                         and pd.api.types.is_numeric_dtype(states_df[a['col']]))
+    print(f"Stati: {n_states}  Azioni: {len(action_names)}  Attributi: {len(attrs)}"
+          f"  (di cui numerici trattati come categorici: {n_cat_numeric})")
     print(f"Init-state: s{init_idx}   Stati terminali: {sorted(terminal_idx)}")
 
 
