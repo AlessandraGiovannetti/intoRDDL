@@ -322,7 +322,7 @@ class MDPDiscovery:
 
 
 if __name__ == "__main__":
-    mdp = MDPDiscovery(dataset="sepsis_cases_1", k=10, state_abstraction="partial_k_means")
+    mdp = MDPDiscovery(dataset="bpic2012", k=10, state_abstraction="partial_k_means")
     mdp.measure_simplicity()
 
     rows = []

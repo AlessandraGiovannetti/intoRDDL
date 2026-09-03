@@ -32,7 +32,7 @@ parser.add_argument(
 
 parser.add_argument(
     "--dataset",
-    choices=["traffic_fines", "sepsis"],
+    choices=["traffic_fines", "sepsis", "bpic2012"],
     required=True,
     help="Dataset type: traffic_fines or sepsis"
 )
@@ -92,6 +92,15 @@ elif args.dataset == "sepsis":
 
     # Keep original Sepsis behavior
     columns_to_remove = []
+
+    missing_values = []
+
+    categorical_columns = []
+
+elif args.dataset == "bpic2012":
+
+    # Keep original Sepsis behavior
+    columns_to_remove = ["org:resource"]
 
     missing_values = []
 
