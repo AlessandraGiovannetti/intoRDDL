@@ -20,7 +20,7 @@ PROST:
 
 Uso:
     python encoding.py \
-        --states mdp_states_described_test_discretized.csv \ (usare la versione discretizzata)
+        --states mdp_states_described_test_discretized.csv  (usare la versione discretizzata)
         --transitions mdp_transitions_test.csv \
         --outdir out_prost/ \
         --horizon 20
@@ -437,9 +437,9 @@ def build_instance(domain_name, instance_name, bool_fluents, init_idx,
 
 def main():
     ap = argparse.ArgumentParser()
+    OUTPUT_DIR = "./src/output"
     ap.add_argument('--states', required=True)
     ap.add_argument('--transitions', required=True)
-    ap.add_argument('--outdir', default='.')
     ap.add_argument('--domain-name', default='mdp_process_domain')
     ap.add_argument('--instance-name', default='mdp_process_inst')
     ap.add_argument('--id-col', default='state')
@@ -466,9 +466,11 @@ def main():
                           "script si ferma con un errore (probabile colonna continua non "
                           "discretizzata). Default: 20.")
     args = ap.parse_args()
+    states_path = os.path.join(OUTPUT_DIR, args.states)
+    transitions_path = os.path.join(OUTPUT_DIR, args.transitions)
 
-    states_df = pd.read_csv(args.states).sort_values(args.id_col).reset_index(drop=True)
-    trans_df = pd.read_csv(args.transitions)
+    states_df = pd.read_csv(states_path).sort_values(args.id_col).reset_index(drop=True)
+    trans_df = pd.read_csv(transitions_path)
 
     n_states = len(states_df)
     # indice di stato k = posizione nella tabella ordinata per id (0..n-1);
@@ -554,9 +556,9 @@ def main():
         include_attrs=args.include_attributes
     )
 
-    os.makedirs(args.outdir, exist_ok=True)
-    dpath = os.path.join(args.outdir, 'domain.rddl')
-    ipath = os.path.join(args.outdir, 'instance.rddl')
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    dpath = os.path.join(OUTPUT_DIR, 'domain.rddl')
+    ipath = os.path.join(OUTPUT_DIR, 'instance.rddl')
     with open(dpath, 'w') as f:
         f.write(domain_txt)
     with open(ipath, 'w') as f:

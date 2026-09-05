@@ -1,0 +1,169 @@
+state,last_action_name,DiagnosticArtAstrup,DiagnosticBlood,DiagnosticECG,DiagnosticIC,DiagnosticLacticAcid,DiagnosticLiquor,DiagnosticOther,DiagnosticSputum,DiagnosticUrinaryCulture,DiagnosticUrinarySediment,DiagnosticXthorax,DisfuncOrg,Hypotensie,Hypoxie,InfectionSuspected,Infusion,Oligurie,SIRSCritHeartRate,SIRSCritLeucos,SIRSCritTachypnea,SIRSCritTemperature,SIRSCriteria2OrMore,Diagnose,CRP,LacticAcid,Leucocytes,execution_time_minutes
+0,start,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,medium
+1,ER Registration,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,medium
+2,Leucocytes,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,medium,high,medium
+3,CRP,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,medium,high,medium
+4,LacticAcid,True,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,medium
+5,ER Triage,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,medium
+6,ER Sepsis Triage,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,medium
+7,IV Liquid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,medium,high,medium
+8,IV Antibiotics,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,high,medium
+9,Admission NC,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,medium
+10,Release A,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,high,high
+11,archive_application,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,high,medium
+12,start,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,low,low,low,high
+13,ER Registration,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,low,low,low,high
+14,ER Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,low,low,low,high
+15,ER Sepsis Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,low,low,low,high
+16,IV Liquid,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,medium,high,high
+17,LacticAcid,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,high,high,high,high,high
+18,Leucocytes,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,high,medium,high,high
+19,CRP,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,high,medium,high,high
+20,IV Antibiotics,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,high,medium,high,high
+21,Admission NC,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,high,high,high,medium
+22,Release A,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,medium,medium,medium
+23,archive_application,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,medium,medium,high
+24,Return ER,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,high,high
+25,Admission IC,True,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,high
+26,start,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,low,low,low,medium
+27,ER Registration,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,low,low,low,medium
+28,ER Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,low,low,low,medium
+29,ER Sepsis Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,low,low,low,medium
+30,LacticAcid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,high,medium,medium
+31,Leucocytes,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,medium,low,medium,low
+32,CRP,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,high,low,medium,low
+33,IV Antibiotics,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,medium,medium,low
+34,Admission NC,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,high,medium,medium,high,medium
+35,Release A,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,high,medium,medium,medium,medium
+36,Return ER,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,medium,low,medium,medium,high
+37,archive_application,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,medium,medium,medium,medium
+38,start,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,low
+39,ER Registration,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,low
+40,ER Triage,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,low
+41,ER Sepsis Triage,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,low
+42,Leucocytes,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,high,medium,high,low
+43,CRP,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,medium,medium,low
+44,LacticAcid,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,low,low
+45,IV Liquid,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,medium,medium,low
+46,IV Antibiotics,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,low
+47,Admission NC,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,low
+48,Admission IC,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,medium
+49,Release A,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,medium,low
+50,Return ER,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,medium,high
+51,archive_application,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,high,low
+52,start,False,True,True,True,True,False,False,False,True,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,low,low,low,low
+53,ER Registration,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,low,low,low,low
+54,CRP,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,medium,medium,low
+55,Leucocytes,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,medium,medium,low
+56,ER Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,low,low,low,low
+57,ER Sepsis Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,low,low,low,low
+58,LacticAcid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,high,medium,low
+59,IV Liquid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,medium,medium,medium
+60,IV Antibiotics,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,medium,medium,medium
+61,Admission NC,False,True,True,True,True,False,False,False,True,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,medium,high,low
+62,Release A,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,medium,medium,low
+63,Return ER,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,False,True,True,medium,medium,low,medium,high
+64,archive_application,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,medium,medium,low
+65,start,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,high
+66,ER Registration,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,high
+67,ER Triage,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,high
+68,ER Sepsis Triage,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,high
+69,LacticAcid,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,high,medium,high
+70,Leucocytes,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,medium,high,high
+71,CRP,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,medium,medium,high
+72,IV Liquid,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,medium,medium,high
+73,IV Antibiotics,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,medium,high,high
+74,Admission NC,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,high,high,high
+75,Release A,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,high,high
+76,archive_application,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,high,high
+77,start,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,low,low,low,medium
+78,ER Registration,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,low,low,low,medium
+79,ER Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,low,low,low,medium
+80,ER Sepsis Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,low,low,low,medium
+81,LacticAcid,False,True,False,True,True,False,False,False,False,False,True,False,False,False,True,True,False,False,False,True,True,True,medium,high,high,medium,high
+82,Leucocytes,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,medium,medium,medium
+83,CRP,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,medium,medium,high
+84,IV Antibiotics,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,high,medium,medium
+85,Admission NC,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,high,high,medium
+86,Release A,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,high,medium,medium
+87,archive_application,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,high,medium,medium
+88,Return ER,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,high,high,high
+89,start,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,high,low,low,low,low
+90,ER Registration,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,high,low,low,low,low
+91,ER Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,high,low,low,low,low
+92,ER Sepsis Triage,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,high,low,low,low,low
+93,CRP,False,True,False,True,True,False,False,False,True,True,True,False,True,False,True,True,False,True,False,False,True,True,high,high,low,medium,high
+94,Leucocytes,False,True,False,True,True,False,False,False,True,True,True,False,True,False,True,True,False,True,False,False,True,True,high,medium,low,high,high
+95,Admission NC,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,high,medium,medium,high,low
+96,Release A,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,False,False,False,False,False,True,True,high,low,low,medium,low
+97,archive_application,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,high,low,medium,medium,low
+98,IV Liquid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,medium,medium,high
+99,Return ER,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,medium,high,medium,high
+100,start,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,medium
+101,ER Registration,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,medium
+102,ER Triage,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,medium
+103,ER Sepsis Triage,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,low,low,low,medium
+104,CRP,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,medium,high,medium
+105,LacticAcid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,high
+106,Leucocytes,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,medium
+107,IV Liquid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,high,low,medium
+108,IV Antibiotics,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,medium,medium
+109,Admission IC,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,medium
+110,Release B,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,False,True,low,high,high,high,low
+111,archive_application,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,medium,medium,medium
+112,Release B,False,True,True,True,False,False,False,False,True,True,True,False,False,False,True,False,False,False,False,True,False,True,medium,high,low,medium,low
+113,Admission NC,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,medium,high,medium
+114,Release A,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,medium,low,medium
+115,Return ER,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,medium,low,high
+116,Release B,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,low
+117,IV Liquid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,low,low,low
+118,IV Liquid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,low,medium,low
+119,IV Antibiotics,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,medium,high,low
+120,Release B,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,high,high,low
+121,Return ER,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,high,high,high
+122,Release C,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,False,True,True,medium,low,high,low,low
+123,start,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,False,True,True,high,low,low,low,high
+124,ER Registration,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,low,low,low,high
+125,ER Triage,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,low,low,low,high
+126,ER Sepsis Triage,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,low,low,low,high
+127,IV Liquid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,high,medium,low,medium
+128,IV Antibiotics,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,high,high,medium,medium
+129,Leucocytes,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,high,medium,medium,medium
+130,LacticAcid,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,high,high,low,medium
+131,CRP,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,high,medium,medium,medium
+132,Admission NC,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,high,high,medium,medium
+133,Release A,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,False,True,True,high,medium,medium,medium,high
+134,archive_application,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,medium,medium,high
+135,Release C,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,low,medium,low,medium
+136,Release E,True,True,False,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,False,True,True,low,low,low,low,medium
+137,Release C,False,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,low,medium,medium,high,low
+138,Release B,False,True,True,True,True,False,False,False,False,True,True,False,False,False,True,True,False,True,False,True,True,True,low,high,high,high,low
+139,LacticAcid,False,True,False,True,True,False,False,False,True,True,True,False,True,False,True,True,False,True,False,False,True,True,high,high,high,medium,high
+140,Release D,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,high,high,low,medium,low
+141,Admission IC,True,True,True,True,True,False,False,False,True,True,True,True,True,False,True,True,False,True,True,True,True,True,medium,high,high,high,low
+142,Release D,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,high,high,low,low
+143,Return ER,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,medium,medium,high
+144,Admission IC,True,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,high,high,medium
+145,Release B,True,True,True,True,True,False,False,False,True,False,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,high,high,low
+146,Release B,False,False,False,True,False,False,False,False,False,False,False,False,False,False,True,True,False,True,False,False,True,True,medium,low,low,low,low
+147,Release C,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,False,True,medium,low,high,low,high
+148,Admission IC,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,high,high,medium,high
+149,Admission IC,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,medium,high,high,high,medium
+150,Release D,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,False,True,medium,medium,medium,low,low
+151,Release C,False,True,True,True,True,False,False,False,False,False,False,False,False,False,True,True,False,True,False,False,True,True,low,high,medium,high,low
+152,Release D,False,True,True,True,True,False,False,False,True,True,True,True,True,False,True,True,False,True,False,True,True,True,low,medium,medium,medium,high
+153,Release E,False,False,True,True,False,False,False,False,False,False,True,False,False,False,True,False,False,True,False,True,True,True,medium,low,low,high,medium
+154,Release D,False,True,True,True,False,False,False,False,False,False,True,False,False,False,True,True,False,True,False,False,True,True,medium,low,medium,high,high
+155,Release E,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,medium,low,medium,medium,low
+156,Release D,False,True,True,True,False,False,False,False,True,True,True,False,False,False,False,False,False,False,False,True,False,False,high,medium,low,medium,low
+157,Release B,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,medium,high,medium,high,low
+158,Return ER,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,True,True,True,high,medium,medium,medium,high
+159,Admission IC,True,True,False,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,False,True,high,high,high,high,low
+160,Admission IC,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,medium,low,low,high,high
+161,Admission IC,False,True,False,True,True,False,False,False,True,True,True,False,False,False,True,True,False,True,False,False,True,True,high,high,high,high,high
+162,Release C,False,True,False,True,True,False,False,False,True,True,True,False,True,False,True,True,False,True,False,False,True,True,high,high,medium,medium,high
+163,Release D,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,False,True,low,low,high,medium,low
+164,Release E,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,True,False,True,high,low,low,low,low
+165,Release D,True,True,True,True,True,False,False,False,False,False,True,False,False,False,True,True,False,True,False,True,True,True,high,low,high,high,high
+166,Release D,False,True,True,True,True,False,False,False,True,True,True,True,True,False,True,True,False,True,False,True,False,True,low,high,high,low,low
+167,Release C,False,True,True,True,True,False,False,False,True,True,True,False,False,False,True,True,False,False,False,True,True,True,high,low,medium,medium,high

@@ -1,6 +1,6 @@
 """
 Uso:
-    python discretize.py \
+    python src/discretize.py \
         input.csv \
         output.csv \
         --quantiles 3 \
@@ -10,6 +10,7 @@ Uso:
 
 import pandas as pd
 import argparse
+import os
 
 
 # ============================================================
@@ -52,13 +53,37 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
+# ============================================================
+# FIXED DATASET OUTPUT DIRECTORY
+# ============================================================
 
+OUTPUT_DIR = "./src/output"
+
+dataset_dir = os.path.join(
+    OUTPUT_DIR,
+    args.dataset
+)
+
+os.makedirs(
+    dataset_dir,
+    exist_ok=True
+)
+
+input_path = os.path.join(
+    dataset_dir,
+    args.input_csv
+)
+
+output_path = os.path.join(
+    dataset_dir,
+    args.output_csv
+)
 
 # ============================================================
 # READ CSV
 # ============================================================
 
-df = pd.read_csv(args.input_csv)
+df = pd.read_csv(input_path)
 
 
 # ============================================================
@@ -90,8 +115,7 @@ if args.dataset == "traffic_fines":
 
 elif args.dataset == "sepsis":
 
-    # Keep original Sepsis behavior
-    columns_to_remove = []
+    columns_to_remove = ["org:group", "Age"]
 
     missing_values = []
 
@@ -99,7 +123,6 @@ elif args.dataset == "sepsis":
 
 elif args.dataset == "bpic2012":
 
-    # Keep original Sepsis behavior
     columns_to_remove = ["org:resource"]
 
     missing_values = []
@@ -336,7 +359,7 @@ for col in numeric_columns:
 # ============================================================
 
 df.to_csv(
-    args.output_csv,
+    output_path,
     index=False,
     na_rep=""
 )
@@ -351,7 +374,7 @@ print("Processing completed.")
 print("----------------------------------------")
 
 print("\nOutput file:")
-print(args.output_csv)
+print(output_path)
 
 print("\nFinal columns:")
 for col in df.columns:
