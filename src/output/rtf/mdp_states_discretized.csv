@@ -1,0 +1,122 @@
+state,last_action_name,article,vehicleClass,lastSent,notificationType,dismissal,amount,points,expense,execution_time_minutes
+0,start,157.0,A,,,,low,medium,low,low
+1,Create Fine,157.0,A,,,,low,medium,low,low
+2,Send Fine,157.0,A,,,,low,medium,medium,high
+3,Insert Fine Notification,157.0,A,P,P,,low,medium,medium,high
+4,Add penalty,157.0,A,P,P,,medium,medium,medium,high
+5,Send for Credit Collection,157.0,A,P,P,,medium,medium,medium,high
+6,archive_application,157.0,A,P,P,,medium,medium,low,low
+7,Payment,157.0,A,,,,low,low,low,low
+8,start,157.0,A,,,,low,low,low,low
+9,Create Fine,157.0,A,,,,low,low,low,low
+10,Send Fine,157.0,A,,,,low,low,medium,medium
+11,Insert Fine Notification,157.0,A,N,P,,low,low,medium,medium
+12,Add penalty,157.0,A,N,P,,medium,low,medium,medium
+13,Send for Credit Collection,157.0,A,N,P,,medium,low,medium,high
+14,archive_application,157.0,A,,P,,low,low,low,low
+15,Payment,157.0,A,,,,low,low,low,low
+16,start,157.0,A,,,,low,low,low,low
+17,Create Fine,157.0,A,,,,low,low,low,low
+18,Send Fine,157.0,A,,,,low,low,medium,high
+19,Insert Fine Notification,157.0,A,P,P,,low,low,medium,high
+20,Add penalty,157.0,A,P,P,,medium,low,medium,high
+21,Send for Credit Collection,157.0,A,P,P,,medium,low,medium,high
+22,archive_application,157.0,A,P,P,,low,low,low,low
+23,Payment,157.0,A,,,,low,low,low,low
+24,Insert Date Appeal to Prefecture,157.0,A,P,P,,low,medium,high,medium
+25,Send Appeal to Prefecture,157.0,A,P,P,,medium,medium,high,medium
+26,Receive Result Appeal from Prefecture,157.0,A,P,P,,medium,medium,high,medium
+27,Notify Result Appeal to Offender,157.0,A,P,P,,medium,medium,high,medium
+28,Insert Date Appeal to Prefecture,157.0,A,P,P,,low,medium,high,medium
+29,Send Appeal to Prefecture,157.0,A,P,P,,medium,medium,high,medium
+30,Receive Result Appeal from Prefecture,157.0,A,P,P,,high,medium,high,medium
+31,Notify Result Appeal to Offender,157.0,A,P,P,,high,medium,high,medium
+32,Insert Date Appeal to Prefecture,157.0,A,P,P,,low,medium,high,high
+33,Send Appeal to Prefecture,157.0,A,P,P,,low,medium,high,high
+34,Receive Result Appeal from Prefecture,157.0,A,P,P,,medium,medium,high,high
+35,Notify Result Appeal to Offender,157.0,A,P,P,,medium,medium,high,high
+36,Appeal to Judge,157.0,A,P,P,,high,high,medium,high
+37,Add penalty,158.0,A,N,P,,high,high,medium,medium
+38,Payment,158.0,A,,P,,high,medium,low,low
+39,archive_application,158.0,A,N,P,,high,high,low,low
+40,Send for Credit Collection,158.0,A,N,P,,high,high,medium,high
+41,Insert Date Appeal to Prefecture,142.0,A,N,P,,high,high,high,medium
+42,Send Appeal to Prefecture,142.0,A,N,P,,high,high,high,high
+43,start,158.0,A,,,,low,medium,low,low
+44,Create Fine,158.0,A,,,,low,medium,low,low
+45,Payment,7.0,A,,,,low,medium,low,low
+46,archive_application,158.0,A,,P,,medium,medium,low,low
+47,start,142.0,A,,,,medium,high,low,low
+48,Create Fine,142.0,A,,,,medium,high,low,low
+49,Send Fine,142.0,A,,,,high,high,medium,medium
+50,Insert Fine Notification,142.0,A,N,P,,high,high,medium,medium
+51,Add penalty,142.0,A,N,P,,high,high,medium,medium
+52,Payment,7.0,A,,,,high,medium,low,low
+53,Send for Credit Collection,142.0,A,N,P,,high,high,medium,high
+54,archive_application,142.0,A,N,P,,high,high,low,low
+55,start,158.0,A,,,,low,medium,low,low
+56,Create Fine,158.0,A,,,,low,medium,low,low
+57,Send Fine,158.0,A,,,,medium,medium,medium,medium
+58,Insert Fine Notification,158.0,A,N,P,,medium,medium,medium,medium
+59,start,7.0,A,,,,medium,high,low,low
+60,Create Fine,7.0,A,,,,medium,high,low,low
+61,Send Fine,158.0,A,,,,medium,high,medium,medium
+62,Insert Fine Notification,158.0,A,N,P,,medium,high,medium,medium
+63,Add penalty,158.0,A,N,P,,high,high,medium,medium
+64,Payment,7.0,A,,,,medium,medium,low,low
+65,archive_application,7.0,A,N,P,,high,medium,low,low
+66,Send Fine,158.0,A,,,,low,medium,medium,high
+67,Insert Fine Notification,158.0,A,P,P,,low,high,medium,high
+68,Add penalty,158.0,A,P,P,,high,medium,medium,high
+69,Send for Credit Collection,158.0,A,P,P,,high,high,medium,high
+70,Send for Credit Collection,158.0,A,N,P,,high,high,medium,high
+71,Receive Result Appeal from Prefecture,142.0,A,N,P,,high,high,high,medium
+72,Notify Result Appeal to Offender,142.0,A,N,P,,high,high,high,high
+73,Insert Date Appeal to Prefecture,142.0,A,N,P,,high,high,high,medium
+74,Send Appeal to Prefecture,142.0,A,N,P,,high,high,high,medium
+75,start,7.0,A,,,,low,low,low,low
+76,Create Fine,7.0,A,,,,low,low,low,low
+77,Send Fine,7.0,A,,,,low,medium,medium,medium
+78,Insert Fine Notification,7.0,A,N,P,,low,medium,medium,medium
+79,Add penalty,7.0,A,N,P,,medium,medium,medium,medium
+80,Send for Credit Collection,158.0,A,N,P,,high,medium,medium,medium
+81,archive_application,7.0,A,N,P,,medium,low,low,low
+82,start,158.0,A,,,,low,low,low,low
+83,Create Fine,158.0,A,,,,low,low,low,low
+84,Send Fine,158.0,A,,,,low,low,medium,medium
+85,Insert Fine Notification,158.0,A,N,P,,low,low,medium,medium
+86,Add penalty,158.0,A,N,P,,medium,low,medium,medium
+87,Payment,7.0,A,,,,low,low,low,low
+88,archive_application,158.0,A,N,P,,medium,low,low,low
+89,Send for Credit Collection,158.0,A,N,P,,medium,low,medium,high
+90,Insert Date Appeal to Prefecture,7.0,A,N,P,,medium,low,high,medium
+91,Send Appeal to Prefecture,7.0,A,N,P,,medium,low,high,medium
+92,Receive Result Appeal from Prefecture,7.0,A,N,P,,medium,low,high,medium
+93,Notify Result Appeal to Offender,7.0,A,N,P,,high,low,high,medium
+94,Payment,7.0,A,,,,low,low,low,low
+95,Receive Result Appeal from Prefecture,142.0,A,P,P,,high,high,high,high
+96,Notify Result Appeal to Offender,142.0,A,P,P,,high,high,high,high
+97,Insert Date Appeal to Prefecture,158.0,A,P,P,,medium,low,high,high
+98,Send Appeal to Prefecture,158.0,A,P,P,,medium,low,high,high
+99,Receive Result Appeal from Prefecture,7.0,A,P,P,,medium,low,high,high
+100,Notify Result Appeal to Offender,7.0,A,P,P,,high,low,high,high
+101,Insert Date Appeal to Prefecture,7.0,A,N,P,,medium,low,high,medium
+102,Send Appeal to Prefecture,7.0,A,N,P,,medium,low,high,medium
+103,Insert Date Appeal to Prefecture,142.0,A,N,P,,high,high,high,medium
+104,Send Appeal to Prefecture,142.0,A,N,P,,high,high,high,medium
+105,Receive Result Appeal from Prefecture,142.0,A,N,P,,high,high,high,high
+106,Notify Result Appeal to Offender,142.0,A,P,P,,high,high,high,high
+107,start,7.0,A,,,,low,high,low,low
+108,Create Fine,7.0,A,,,,low,high,low,low
+109,Send Fine,7.0,A,,,,medium,high,medium,high
+110,Insert Fine Notification,7.0,A,P,P,,medium,high,medium,high
+111,Add penalty,7.0,A,P,P,,high,high,medium,high
+112,Send for Credit Collection,158.0,A,P,P,,high,high,medium,high
+113,archive_application,7.0,A,,P,,medium,medium,low,low
+114,Payment,7.0,A,,,,medium,medium,low,low
+115,Insert Date Appeal to Prefecture,158.0,A,P,P,,high,high,high,high
+116,Send Appeal to Prefecture,158.0,A,P,P,,high,high,high,high
+117,Receive Result Appeal from Prefecture,158.0,A,P,P,,high,high,high,high
+118,Notify Result Appeal to Offender,158.0,A,P,P,,high,high,high,high
+119,Receive Result Appeal from Prefecture,7.0,A,N,P,,high,low,high,medium
+120,Notify Result Appeal to Offender,7.0,A,N,P,,high,low,high,medium

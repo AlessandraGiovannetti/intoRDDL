@@ -33,13 +33,13 @@ import os
 # FILE CONFIGURATION
 # ============================================================
 
-input_file = "../logs/PermitLog.xes.gz"
+input_file = "./logs/split/permit/train.xes.gz"
 
-input_data_folder = "./input"
+input_data_folder = "./logs/split/permit"
 output_data_folder = "./input"
 
 csv_filename = "PermitLog.csv"
-out_filename = "PermitLog_preprocessed.csv"
+out_filename = "Permit_preprocessed.csv"
 
 
 # ============================================================
@@ -867,6 +867,57 @@ data = (
 
 )
 
+# ============================================================
+# CASE EXECUTION TIME
+# ============================================================
+
+print("Calculating case execution time...")
+
+case_execution_time = (
+    data.groupby(case_id_col)[timestamp_col]
+    .agg(["min", "max"])
+)
+
+case_execution_time["execution_time_minutes"] = (
+    case_execution_time["max"]
+    - case_execution_time["min"]
+).dt.total_seconds() / 60.0
+
+data = data.merge(
+    case_execution_time["execution_time_minutes"],
+    left_on=case_id_col,
+    right_index=True,
+    how="left"
+)
+
+
+# ============================================================
+# SAVE
+# ============================================================
+
+output_path = os.path.join(
+    output_data_folder,
+    out_filename
+)
+
+print(
+    f"\nSaving processed dataset to: "
+    f"{output_path}"
+)
+
+data.to_csv(
+    output_path,
+    sep=";",
+    index=False
+)
+
+# ============================================================
+# REMOVE TEMPORARY CSV
+# ============================================================
+
+if CONVERT_XES_TO_CSV and os.path.exists(csv_path):
+    os.remove(csv_path)
+    print(f"Temporary CSV removed: {csv_path}")
 
 # ============================================================
 # SAVE

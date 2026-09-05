@@ -33,7 +33,7 @@ parser.add_argument(
 
 parser.add_argument(
     "--dataset",
-    choices=["traffic_fines", "sepsis", "bpic2012"],
+    choices=["rtf", "sepsis", "bpi12"],
     required=True,
     help="Dataset type: traffic_fines or sepsis"
 )
@@ -90,7 +90,7 @@ df = pd.read_csv(input_path)
 # DATASET-SPECIFIC CONFIGURATION
 # ============================================================
 
-if args.dataset == "traffic_fines":
+if args.dataset == "rtf":
 
     # Columns to remove completely
     columns_to_remove = [
@@ -121,7 +121,7 @@ elif args.dataset == "sepsis":
 
     categorical_columns = []
 
-elif args.dataset == "bpic2012":
+elif args.dataset == "bpi12":
 
     columns_to_remove = ["org:resource"]
 

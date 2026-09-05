@@ -322,7 +322,7 @@ class MDPDiscovery:
 
 
 if __name__ == "__main__":
-    mdp = MDPDiscovery(dataset="sepsis_preprocessed", k=10, state_abstraction="partial_k_means")
+    mdp = MDPDiscovery(dataset="bpi12_preprocessed", k=10, state_abstraction="partial_k_means")
     mdp.measure_simplicity()
 
     rows = []
@@ -339,15 +339,15 @@ if __name__ == "__main__":
                 })
 
     transitions = pd.DataFrame(rows)
-    transitions.to_csv("./src/output/sepsis/mdp_transitions.csv", index=False)
+    transitions.to_csv("./src/output/bpi12/mdp_transitions.csv", index=False)
     print("Salvato in mdp_transitions.csv")
 
     """states = mdp.all_states.copy()
     states["state"] = states.index
     states["initial"] = states["state"].isin(mdp.initial_states)
-    states.to_csv("./src/output/sepsis/mdp_states.csv", index=False)
+    states.to_csv("./src/output/bpi12/mdp_states.csv", index=False)
     print("Salvato in mdp_states.csv")"""
 
     state_descriptions = mdp.describe_states()
-    state_descriptions.to_csv("./src/output/sepsis/mdp_states_described.csv", index=False)
+    state_descriptions.to_csv("./src/output/bpi12/mdp_states_described.csv", index=False)
     print("Salvato in mdp_states_described.csv")
