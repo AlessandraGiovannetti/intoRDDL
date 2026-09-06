@@ -36,7 +36,7 @@ import os
 input_file = "./logs/split/permit/train.xes.gz"
 
 input_data_folder = "./logs/split/permit"
-output_data_folder = "./input"
+output_data_folder = "./src/input"
 
 csv_filename = "PermitLog.csv"
 out_filename = "Permit_preprocessed.csv"
@@ -92,7 +92,7 @@ category_freq_threshold = 10
 # Raw column names in THIS Permit log
 # ------------------------------------------------------------
 
-raw_case_id_col = "id"
+raw_case_id_col = "case:concept:name"
 raw_activity_col = "concept:name"
 raw_timestamp_col = "time:timestamp"
 raw_resource_col = "org:resource"

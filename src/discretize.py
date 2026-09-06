@@ -33,9 +33,9 @@ parser.add_argument(
 
 parser.add_argument(
     "--dataset",
-    choices=["rtf", "sepsis", "bpi12"],
+    choices=["rtf", "sepsis", "bpi12", "permit", "intDecl"],
     required=True,
-    help="Dataset type: traffic_fines or sepsis"
+    help="Dataset type: sepsis, road traffic fines (rtf), BPI challenge 2012 (bpi12), Permit Log (permit), or international Declarations (intDecl)"
 )
 
 parser.add_argument(
@@ -128,6 +128,23 @@ elif args.dataset == "bpi12":
     missing_values = []
 
     categorical_columns = []
+
+elif args.dataset == "permit":
+
+    columns_to_remove = ["Resource", "Role", "Task_0", "RfpNumber_0"]
+
+    missing_values = ["missing"]
+
+    categorical_columns = []
+
+elif args.dataset == "intDecl":
+
+    columns_to_remove = ["org:resource"]
+
+    missing_values = []
+
+    categorical_columns = []
+
 
 
 # ============================================================
