@@ -139,7 +139,7 @@ elif args.dataset == "permit":
 
 elif args.dataset == "intDecl":
 
-    columns_to_remove = ["org:resource"]
+    columns_to_remove = ["Resource", "Role"]
 
     missing_values = []
 

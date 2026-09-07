@@ -97,7 +97,7 @@ category_freq_threshold = 10
 # RAW COLUMN NAMES
 # ============================================================
 
-raw_case_id_col = "id"
+raw_case_id_col = "case:concept:name"
 raw_activity_col = "concept:name"
 raw_timestamp_col = "time:timestamp"
 raw_resource_col = "org:resource"

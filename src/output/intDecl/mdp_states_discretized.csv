@@ -1,0 +1,305 @@
+state,last_action_name,Permit TaskNumber,Permit OrganizationalEntity,DeclarationNumber,Permit travel permit number,travel permit number,Permit BudgetNumber,Permit ProjectNumber,Permit ID,Permit id,BudgetNumber,Amount,RequestedAmount,OriginalAmount,Permit RequestedBudget,AdjustedAmount,execution_time_minutes
+0,start,task 427,organizational unit 65455,medium,high,high,medium,high,high,high,medium,medium,medium,medium,high,medium,medium
+1,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65455,medium,high,high,medium,high,high,high,low,medium,medium,medium,high,medium,high
+2,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65456,medium,high,high,medium,medium,high,high,medium,medium,medium,medium,medium,medium,medium
+3,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65455,medium,high,high,medium,high,high,high,medium,low,low,low,low,low,low
+4,Start trip,task 427,organizational unit 65455,medium,high,high,medium,high,high,high,medium,medium,medium,medium,high,medium,medium
+5,End trip,task 427,organizational unit 65455,medium,high,high,medium,high,high,high,medium,medium,medium,medium,high,medium,medium
+6,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65458,medium,high,high,medium,high,high,high,low,high,high,high,high,high,high
+7,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65456,medium,high,high,medium,medium,high,high,medium,medium,medium,medium,medium,medium,medium
+8,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65455,medium,high,high,medium,high,high,high,low,low,low,low,medium,low,medium
+9,Request Payment,task 427,organizational unit 65455,medium,high,high,medium,high,high,high,low,medium,medium,medium,high,medium,medium
+10,Payment Handled,task 427,organizational unit 65455,medium,high,high,medium,high,high,high,low,medium,medium,medium,high,medium,medium
+11,archive_application,task 427,organizational unit 65455,medium,high,high,medium,high,high,high,medium,medium,medium,medium,high,medium,medium
+12,start,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,medium,medium,low
+13,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,low,medium,medium
+14,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,low,medium,low
+15,Permit APPROVED by BUDGET OWNER,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,low,medium,low
+16,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,low,low,low,low,low,low
+17,Start trip,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,medium,medium,low
+18,End trip,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,medium,medium,low
+19,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,medium,medium,medium
+20,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,medium,medium,low
+21,Declaration APPROVED by BUDGET OWNER,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,low,medium,low
+22,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,low,medium,low
+23,Request Payment,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,medium,medium,low
+24,Payment Handled,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,medium,medium,low
+25,archive_application,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,medium,medium,medium,medium,medium,low
+26,Declaration REJECTED by ADMINISTRATION,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,high,high,high,medium,high,medium
+27,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65456,low,low,low,low,low,low,low,high,high,high,high,medium,high,medium
+28,Send Reminder,task 427,organizational unit 65458,low,low,low,low,low,low,low,medium,low,low,low,low,low,high
+29,Declaration REJECTED by BUDGET OWNER,missing,organizational unit 65458,low,low,low,low,low,low,low,medium,high,high,high,medium,high,low
+30,Permit APPROVED by SUPERVISOR,task 427,organizational unit 65458,low,low,low,high,low,low,low,medium,high,high,high,high,high,high
+31,Permit FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,low,low,low,high,low,low,low,medium,high,high,high,high,high,high
+32,Permit REJECTED by SUPERVISOR,task 427,organizational unit 65466,low,low,low,low,medium,low,low,medium,low,low,low,low,low,high
+33,Permit REJECTED by EMPLOYEE,task 427,organizational unit 65466,low,low,low,low,low,low,low,medium,medium,medium,medium,low,medium,high
+34,Permit REJECTED by BUDGET OWNER,task 427,organizational unit 65480,low,low,low,medium,low,low,low,high,low,low,low,low,low,high
+35,start,task 427,organizational unit 65458,high,low,low,high,medium,low,low,low,low,low,low,low,low,low
+36,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65458,high,low,low,high,medium,low,low,low,low,low,low,low,low,low
+37,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65456,high,low,low,medium,low,low,low,high,low,low,low,high,low,low
+38,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65458,high,low,low,high,high,low,low,low,low,low,low,low,low,low
+39,Start trip,task 427,organizational unit 65458,high,low,low,high,medium,low,low,low,low,low,low,low,low,low
+40,End trip,task 427,organizational unit 65458,high,low,low,high,medium,low,low,low,low,low,low,low,low,low
+41,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65458,high,low,low,high,high,low,low,low,low,low,low,low,low,low
+42,Declaration REJECTED by ADMINISTRATION,task 427,organizational unit 65456,high,low,low,medium,low,low,low,high,low,low,low,high,low,medium
+43,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65456,high,low,low,medium,low,low,low,medium,low,low,low,high,low,medium
+44,archive_application,task 427,organizational unit 65458,high,low,low,high,medium,low,low,low,low,low,low,low,low,low
+45,Permit APPROVED by BUDGET OWNER,task 427,organizational unit 65456,high,low,low,medium,low,low,low,high,low,low,low,high,low,low
+46,Declaration REJECTED by SUPERVISOR,missing,organizational unit 65455,low,low,low,low,low,low,low,medium,medium,medium,medium,low,medium,high
+47,Permit REJECTED by ADMINISTRATION,task 427,organizational unit 65466,low,low,low,low,low,low,low,medium,high,high,high,low,high,high
+48,Declaration SAVED by EMPLOYEE,missing,organizational unit 65459,high,low,low,high,low,low,low,medium,low,low,low,low,low,low
+49,Declaration APPROVED by SUPERVISOR,task 427,organizational unit 65458,low,low,low,high,medium,low,low,high,high,high,high,high,high,low
+50,Declaration FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,low,low,low,high,medium,low,low,high,high,high,high,high,high,low
+51,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65458,high,low,low,high,high,low,low,low,low,low,low,medium,low,high
+52,Declaration REJECTED by BUDGET OWNER,task 427,organizational unit 65455,high,low,low,low,high,low,low,high,low,low,low,high,low,low
+53,Permit APPROVED by SUPERVISOR,task 427,organizational unit 65458,high,low,low,high,medium,low,low,low,high,high,high,high,high,medium
+54,Permit FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,high,low,low,high,medium,low,low,low,high,high,high,high,high,medium
+55,Declaration APPROVED by BUDGET OWNER,missing,organizational unit 65458,high,low,low,high,low,low,low,low,low,low,low,high,low,high
+56,Declaration REJECTED by SUPERVISOR,missing,organizational unit 65457,high,low,low,medium,low,low,low,high,low,low,low,high,low,high
+57,start,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,medium,medium,medium,low,medium,high
+58,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,medium,medium,medium,low,medium,high
+59,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,medium,medium,medium,low,medium,high
+60,Request Payment,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,high,high,high,low,high,high
+61,Payment Handled,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,high,high,high,low,high,high
+62,Start trip,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,medium,medium,medium,low,medium,high
+63,End trip,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,medium,medium,medium,low,medium,high
+64,archive_application,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,medium,medium,medium,low,medium,high
+65,start,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,medium,medium,medium,low,medium,medium
+66,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,medium,medium,medium,medium,medium,medium
+67,Declaration REJECTED by PRE_APPROVER,task 427,organizational unit 65454,low,medium,low,medium,high,low,medium,low,high,high,high,low,high,high
+68,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,high,high,high,medium,high,high
+69,Declaration APPROVED by PRE_APPROVER,task 427,organizational unit 65454,low,medium,low,medium,high,low,medium,low,low,low,low,low,low,high
+70,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,medium,medium,medium,low,medium,medium
+71,Request Payment,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,medium,medium,medium,low,medium,medium
+72,Payment Handled,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,medium,medium,medium,low,medium,medium
+73,Start trip,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,medium,medium,medium,low,medium,medium
+74,End trip,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,medium,medium,medium,low,medium,medium
+75,archive_application,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,medium,medium,medium,low,medium,medium
+76,Declaration REJECTED by SUPERVISOR,task 427,organizational unit 65454,low,low,low,high,high,low,low,low,high,high,high,low,high,high
+77,Declaration REJECTED by MISSING,task 427,organizational unit 65454,low,medium,low,medium,high,low,medium,low,low,low,low,low,low,high
+78,Declaration APPROVED by PRE_APPROVER,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,high,high,high,low,high,high
+79,Declaration APPROVED by SUPERVISOR,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,high,high,high,low,high,high
+80,Declaration FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,high,high,high,low,high,high
+81,Declaration SAVED by EMPLOYEE,task 427,organizational unit 65454,high,medium,low,low,high,low,medium,medium,low,low,low,high,low,high
+82,Declaration REJECTED by SUPERVISOR,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,low,low,low,high,low,high
+83,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65454,high,medium,medium,medium,medium,medium,medium,medium,low,low,low,low,low,medium
+84,Declaration REJECTED by MISSING,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,medium,medium,medium,low,medium,high
+85,Declaration REJECTED by ADMINISTRATION,task 427,organizational unit 65454,high,medium,medium,medium,medium,medium,medium,medium,low,low,low,low,low,medium
+86,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,high,high,high,low,high,low
+87,Declaration APPROVED by BUDGET OWNER,task 427,organizational unit 65454,high,medium,low,medium,high,low,medium,low,low,low,low,low,low,low
+88,Declaration REJECTED by ADMINISTRATION,task 427,organizational unit 65454,low,low,low,medium,medium,low,low,medium,high,high,high,medium,high,medium
+89,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65454,low,low,medium,medium,medium,low,low,medium,medium,medium,medium,medium,medium,medium
+90,Declaration APPROVED by BUDGET OWNER,task 427,organizational unit 65456,low,low,low,low,medium,low,low,medium,medium,medium,medium,medium,medium,medium
+91,Declaration APPROVED by SUPERVISOR,task 427,organizational unit 65458,low,low,low,high,medium,low,low,medium,high,high,high,high,high,high
+92,Declaration FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,low,low,low,high,medium,low,low,medium,high,high,high,high,high,medium
+93,Declaration REJECTED by BUDGET OWNER,missing,organizational unit 65460,low,low,low,low,low,low,low,medium,high,high,high,medium,high,medium
+94,Send Reminder,task 427,organizational unit 65458,high,low,low,medium,high,low,low,medium,low,low,low,low,low,medium
+95,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65456,low,low,medium,medium,low,low,low,medium,medium,medium,medium,medium,medium,medium
+96,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65456,low,low,medium,medium,low,low,low,medium,medium,medium,medium,medium,medium,medium
+97,Permit APPROVED by BUDGET OWNER,task 427,organizational unit 65456,low,low,medium,low,low,low,low,medium,medium,medium,medium,medium,medium,medium
+98,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65456,low,low,medium,low,medium,medium,low,medium,low,low,low,low,low,low
+99,Permit APPROVED by SUPERVISOR,task 427,organizational unit 65458,low,low,medium,high,low,low,low,medium,high,high,high,high,high,high
+100,Permit FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,low,low,medium,high,low,low,low,medium,high,high,high,high,high,high
+101,Send Reminder,task 427,organizational unit 65458,low,low,medium,low,low,low,low,medium,low,low,low,low,low,high
+102,Permit REJECTED by ADMINISTRATION,task 427,organizational unit 65459,high,low,low,high,medium,low,low,medium,low,low,low,low,low,low
+103,Permit REJECTED by EMPLOYEE,missing,organizational unit 65456,high,low,low,medium,low,low,low,medium,low,low,low,high,low,medium
+104,Permit REJECTED by SUPERVISOR,missing,organizational unit 65466,low,low,low,low,low,low,low,medium,low,low,low,medium,low,high
+105,Permit REJECTED by EMPLOYEE,missing,organizational unit 65466,low,low,medium,low,low,low,low,medium,medium,medium,medium,high,medium,high
+106,Permit REJECTED by ADMINISTRATION,missing,organizational unit 65454,low,low,medium,high,low,medium,low,medium,high,high,high,high,high,low
+107,Permit REJECTED by SUPERVISOR,missing,organizational unit 65456,high,low,medium,low,low,low,low,medium,low,low,low,high,low,high
+108,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65456,high,low,medium,low,low,medium,low,high,low,low,low,medium,low,medium
+109,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65456,high,low,medium,low,low,medium,low,high,low,low,low,medium,low,medium
+110,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65456,high,low,medium,low,low,medium,low,high,low,low,low,medium,low,medium
+111,Permit APPROVED by BUDGET OWNER,task 427,organizational unit 65456,high,low,medium,high,low,medium,low,medium,low,low,low,high,low,low
+112,Permit REJECTED by BUDGET OWNER,task 427,organizational unit 65458,low,low,medium,high,high,medium,low,high,low,low,low,low,low,low
+113,Permit APPROVED by SUPERVISOR,missing,organizational unit 65456,high,low,medium,high,low,medium,low,high,low,low,low,high,low,high
+114,Permit FINAL_APPROVED by DIRECTOR,missing,organizational unit 65456,high,low,medium,high,low,medium,low,high,low,low,low,high,low,high
+115,Declaration REJECTED by DIRECTOR,task 427,organizational unit 65458,low,low,medium,high,high,medium,low,medium,low,low,low,high,low,high
+116,Send Reminder,missing,organizational unit 65454,high,low,medium,low,medium,medium,low,medium,low,low,low,low,low,low
+117,start,task 427,organizational unit 65456,low,medium,medium,low,medium,medium,medium,high,medium,medium,medium,medium,medium,low
+118,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65456,low,medium,medium,low,low,medium,medium,high,medium,medium,medium,medium,medium,low
+119,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65456,low,medium,medium,low,low,medium,medium,high,medium,medium,medium,medium,medium,low
+120,Permit APPROVED by BUDGET OWNER,task 427,organizational unit 65456,low,medium,medium,low,low,medium,medium,medium,medium,medium,medium,medium,medium,high
+121,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65456,low,medium,medium,low,medium,medium,medium,high,low,low,low,low,low,low
+122,Start trip,task 427,organizational unit 65456,low,medium,medium,low,medium,medium,medium,high,medium,medium,medium,medium,medium,low
+123,End trip,task 427,organizational unit 65456,low,medium,medium,low,medium,medium,medium,high,medium,medium,medium,medium,medium,low
+124,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65456,low,medium,medium,low,low,medium,medium,high,high,high,high,medium,high,low
+125,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65456,low,medium,medium,medium,low,medium,medium,high,medium,medium,medium,medium,medium,low
+126,Declaration APPROVED by BUDGET OWNER,task 427,organizational unit 65456,low,medium,medium,low,low,medium,medium,medium,medium,medium,medium,medium,medium,medium
+127,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65456,low,medium,medium,low,low,medium,medium,high,medium,medium,medium,low,medium,low
+128,Request Payment,task 427,organizational unit 65456,low,medium,medium,low,medium,medium,medium,high,medium,medium,medium,medium,medium,low
+129,Payment Handled,task 427,organizational unit 65456,low,medium,medium,low,medium,medium,medium,high,medium,medium,medium,medium,medium,low
+130,archive_application,task 427,organizational unit 65456,low,medium,medium,low,medium,medium,medium,high,medium,medium,medium,medium,medium,low
+131,Declaration REJECTED by ADMINISTRATION,task 427,organizational unit 65456,low,medium,medium,low,low,medium,medium,high,high,high,high,high,high,medium
+132,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65456,low,medium,medium,low,low,medium,low,high,high,high,high,high,high,medium
+133,Permit APPROVED by SUPERVISOR,task 427,organizational unit 65456,low,medium,medium,high,medium,medium,low,medium,high,high,high,high,high,high
+134,Permit FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65456,low,medium,medium,high,medium,medium,low,medium,high,high,high,high,high,high
+135,Declaration APPROVED by SUPERVISOR,task 427,organizational unit 65458,low,medium,medium,high,high,medium,medium,high,high,high,high,high,high,medium
+136,Declaration FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,low,medium,medium,high,high,medium,medium,high,high,high,high,high,high,medium
+137,Permit REJECTED by BUDGET OWNER,missing,organizational unit 65466,low,medium,medium,low,low,medium,low,medium,medium,medium,medium,high,medium,medium
+138,Permit REJECTED by EMPLOYEE,missing,organizational unit 65466,low,medium,medium,low,low,medium,medium,high,high,high,high,high,high,medium
+139,Send Reminder,missing,organizational unit 65458,low,medium,medium,low,low,medium,low,medium,high,high,high,medium,high,high
+140,Permit REJECTED by ADMINISTRATION,missing,organizational unit 65454,low,medium,medium,medium,low,medium,medium,high,high,high,high,low,high,low
+141,Permit REJECTED by SUPERVISOR,missing,organizational unit 65456,low,medium,medium,low,low,medium,medium,medium,high,high,high,high,high,high
+142,Declaration REJECTED by BUDGET OWNER,missing,organizational unit 65455,low,medium,medium,low,low,medium,medium,medium,low,low,low,low,low,low
+143,Declaration REJECTED by SUPERVISOR,missing,organizational unit 65457,low,medium,medium,high,low,medium,low,medium,high,high,high,low,high,high
+144,Permit REJECTED by ADMINISTRATION,missing,organizational unit 65458,high,low,medium,high,low,medium,low,medium,low,low,low,low,low,medium
+145,Permit REJECTED by EMPLOYEE,missing,organizational unit 65458,high,low,medium,high,low,medium,low,medium,low,low,low,low,low,medium
+146,start,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+147,Start trip,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+148,End trip,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+149,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65458,medium,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+150,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65458,medium,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+151,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,low,low,low,low,low,low
+152,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+153,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+154,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,low,low,low,medium,low,medium
+155,Request Payment,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+156,Payment Handled,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+157,archive_application,task 427,organizational unit 65458,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,medium
+158,Permit APPROVED by BUDGET OWNER,missing,organizational unit 65458,medium,medium,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium
+159,Declaration REJECTED by ADMINISTRATION,task 427,organizational unit 65456,low,medium,medium,low,low,medium,medium,medium,high,high,high,high,high,medium
+160,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65456,low,medium,medium,low,low,medium,medium,medium,high,high,high,high,high,medium
+161,Declaration APPROVED by BUDGET OWNER,task 427,organizational unit 65458,medium,medium,medium,low,medium,medium,medium,medium,low,low,low,medium,low,medium
+162,Send Reminder,missing,organizational unit 65458,low,medium,medium,low,low,medium,medium,medium,low,low,low,medium,low,high
+163,Permit APPROVED by SUPERVISOR,missing,organizational unit 65458,medium,medium,medium,high,low,medium,medium,medium,high,high,high,high,high,high
+164,Permit FINAL_APPROVED by DIRECTOR,missing,organizational unit 65458,medium,medium,medium,high,low,medium,medium,medium,high,high,high,high,high,high
+165,Declaration APPROVED by SUPERVISOR,missing,organizational unit 65457,medium,medium,medium,high,low,medium,medium,medium,high,high,high,high,high,high
+166,Declaration FINAL_APPROVED by DIRECTOR,missing,organizational unit 65457,medium,medium,medium,high,low,medium,medium,medium,high,high,high,high,high,high
+167,Declaration REJECTED by SUPERVISOR,missing,organizational unit 65456,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,low,medium,medium
+168,Permit REJECTED by ADMINISTRATION,task 427,organizational unit 65454,low,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,medium,medium,low
+169,Permit REJECTED by EMPLOYEE,missing,organizational unit 65458,medium,medium,medium,high,medium,medium,medium,high,high,high,high,high,high,high
+170,Declaration REJECTED by BUDGET OWNER,missing,organizational unit 65458,low,medium,medium,low,low,medium,medium,medium,low,low,low,low,low,high
+171,Permit REJECTED by BUDGET OWNER,missing,organizational unit 65458,low,medium,medium,high,low,medium,medium,high,high,high,high,high,high,medium
+172,Permit REJECTED by SUPERVISOR,task 427,organizational unit 65456,medium,medium,medium,high,high,medium,medium,high,high,high,high,high,high,high
+173,start,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,low,low,low,medium,low,low
+174,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,low,low,low,low,low,low
+175,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,medium,medium,medium,low,medium,low
+176,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,low,low,low,low,low,low
+177,Start trip,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,low,low,low,medium,low,low
+178,End trip,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,low,low,low,medium,low,low
+179,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,medium,medium,medium,medium,medium,low
+180,Declaration REJECTED by ADMINISTRATION,task 427,organizational unit 65456,medium,medium,medium,low,medium,medium,medium,high,medium,medium,medium,medium,medium,low
+181,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65456,medium,medium,medium,low,medium,medium,medium,high,medium,medium,medium,high,medium,low
+182,archive_application,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,low,low,low,medium,low,low
+183,Permit APPROVED by BUDGET OWNER,task 427,organizational unit 65456,medium,medium,medium,low,medium,medium,medium,high,low,low,low,low,low,low
+184,Permit APPROVED by SUPERVISOR,task 427,organizational unit 65458,medium,medium,medium,high,medium,medium,medium,high,high,high,high,high,high,medium
+185,Permit FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,medium,medium,medium,high,medium,medium,medium,high,high,high,high,high,high,medium
+186,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65456,medium,medium,high,medium,medium,medium,medium,high,medium,medium,medium,medium,medium,low
+187,Declaration APPROVED by BUDGET OWNER,task 427,organizational unit 65456,medium,medium,medium,low,medium,medium,medium,high,low,low,low,low,low,low
+188,Declaration REJECTED by SUPERVISOR,missing,organizational unit 65456,medium,medium,medium,medium,low,medium,medium,high,high,high,high,high,high,medium
+189,Declaration SAVED by EMPLOYEE,task 427,organizational unit 65454,high,medium,medium,low,low,medium,medium,medium,low,low,low,low,low,low
+190,Declaration APPROVED by SUPERVISOR,task 427,organizational unit 65458,medium,medium,medium,high,high,medium,medium,high,high,high,high,high,high,medium
+191,Declaration FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,medium,medium,medium,high,high,medium,medium,high,high,high,high,high,high,medium
+192,Request Payment,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,medium,medium,medium,low,medium,low
+193,Payment Handled,task 427,organizational unit 65456,medium,medium,medium,medium,medium,medium,medium,high,medium,medium,medium,low,medium,low
+194,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65455,medium,medium,medium,medium,medium,medium,medium,high,low,low,low,low,low,low
+195,Permit REJECTED by SUPERVISOR,task 427,organizational unit 65456,medium,medium,medium,high,high,medium,medium,high,high,high,high,low,high,low
+196,Permit REJECTED by EMPLOYEE,task 427,organizational unit 65454,medium,medium,medium,low,high,medium,medium,high,high,high,high,low,high,low
+197,Send Reminder,task 427,organizational unit 65458,medium,high,high,high,high,medium,medium,medium,medium,medium,medium,low,medium,high
+198,Permit REJECTED by ADMINISTRATION,task 427,organizational unit 65454,medium,medium,medium,low,medium,medium,medium,medium,medium,medium,medium,low,medium,medium
+199,Declaration REJECTED by BUDGET OWNER,task 427,organizational unit 65456,medium,medium,medium,medium,low,medium,medium,high,low,low,low,low,low,low
+200,start,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+201,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+202,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+203,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65456,medium,high,high,medium,medium,high,high,high,low,low,low,low,low,low
+204,Start trip,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+205,End trip,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+206,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+207,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+208,Declaration REJECTED by SUPERVISOR,task 427,organizational unit 65456,medium,high,high,low,medium,high,high,high,low,low,low,low,low,low
+209,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65456,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+210,archive_application,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+211,Declaration REJECTED by ADMINISTRATION,task 427,organizational unit 65456,medium,high,high,medium,high,high,high,high,high,high,high,medium,high,medium
+212,Permit APPROVED by BUDGET OWNER,task 427,organizational unit 65456,medium,high,high,low,medium,high,high,high,medium,medium,medium,high,medium,high
+213,Send Reminder,task 427,organizational unit 65458,medium,high,high,high,medium,high,high,medium,low,low,low,low,low,high
+214,Declaration SAVED by EMPLOYEE,task 427,organizational unit 65459,high,high,high,high,low,medium,medium,high,low,low,low,high,low,high
+215,Permit REJECTED by BUDGET OWNER,missing,organizational unit 65458,medium,high,high,low,low,medium,medium,high,high,high,high,high,high,low
+216,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,low,low,low,medium,low,medium
+217,Request Payment,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+218,Payment Handled,task 427,organizational unit 65458,medium,high,high,medium,medium,high,high,high,medium,medium,medium,medium,medium,medium
+219,Declaration APPROVED by BUDGET OWNER,task 427,organizational unit 65456,medium,high,high,low,medium,high,high,high,medium,medium,medium,high,medium,high
+220,Permit APPROVED by SUPERVISOR,missing,organizational unit 65458,medium,high,high,high,low,high,high,medium,high,high,high,high,high,high
+221,Permit FINAL_APPROVED by DIRECTOR,missing,organizational unit 65458,medium,high,high,high,low,high,high,medium,high,high,high,high,high,high
+222,Declaration APPROVED by SUPERVISOR,missing,organizational unit 65459,medium,high,high,high,medium,medium,medium,high,high,high,high,high,high,high
+223,Declaration FINAL_APPROVED by DIRECTOR,missing,organizational unit 65459,medium,high,high,high,medium,medium,medium,high,high,high,high,high,high,high
+224,Permit REJECTED by ADMINISTRATION,missing,organizational unit 65454,medium,high,high,high,low,high,high,high,high,high,high,high,high,low
+225,Permit REJECTED by EMPLOYEE,task 427,organizational unit 65454,medium,high,high,low,low,high,high,high,medium,medium,medium,high,medium,high
+226,Permit REJECTED by SUPERVISOR,task 427,organizational unit 65454,medium,high,high,low,low,high,high,high,medium,medium,medium,medium,medium,low
+227,Declaration REJECTED by BUDGET OWNER,missing,organizational unit 65458,medium,high,high,high,medium,high,high,medium,low,low,low,high,low,high
+228,Permit REJECTED by BUDGET OWNER,task 427,organizational unit 65456,medium,high,high,low,high,high,high,high,low,low,low,high,low,high
+229,Permit APPROVED by BUDGET OWNER,task 427,organizational unit 65456,medium,high,high,low,medium,high,high,medium,medium,medium,medium,medium,medium,medium
+230,Declaration REJECTED by ADMINISTRATION,task 427,organizational unit 65456,medium,high,high,medium,medium,high,high,medium,high,high,high,high,high,high
+231,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65456,medium,high,high,medium,medium,high,high,medium,high,high,high,high,high,medium
+232,Permit REJECTED by MISSING,missing,organizational unit 65455,medium,low,low,high,low,high,high,low,low,low,low,low,low,low
+233,Permit APPROVED by SUPERVISOR,task 427,organizational unit 65458,medium,high,high,high,high,high,high,low,high,high,high,high,high,high
+234,Permit FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,medium,high,high,high,high,high,high,low,high,high,high,high,high,high
+235,Send Reminder,missing,organizational unit 65458,medium,high,high,low,medium,high,high,medium,medium,medium,medium,low,medium,high
+236,Declaration APPROVED by BUDGET OWNER,task 427,organizational unit 65456,medium,high,high,low,medium,high,high,medium,medium,medium,medium,medium,medium,medium
+237,Declaration REJECTED by SUPERVISOR,task 427,organizational unit 65458,medium,high,high,high,high,high,high,low,high,high,high,high,high,high
+238,Permit REJECTED by ADMINISTRATION,missing,organizational unit 65466,medium,high,high,low,low,high,high,high,high,high,high,low,high,low
+239,Permit REJECTED by EMPLOYEE,missing,organizational unit 65458,medium,high,high,medium,low,high,high,low,high,high,high,high,high,high
+240,Declaration APPROVED by SUPERVISOR,task 427,organizational unit 65458,medium,high,high,high,high,high,high,low,high,high,high,high,high,high
+241,Declaration FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,medium,high,high,high,high,high,high,low,high,high,high,high,high,high
+242,Declaration REJECTED by BUDGET OWNER,missing,organizational unit 65456,medium,high,high,low,low,high,high,medium,medium,medium,medium,high,medium,high
+243,Declaration SAVED by EMPLOYEE,missing,organizational unit 65460,high,high,high,low,low,high,high,high,low,low,low,medium,low,medium
+244,Permit REJECTED by BUDGET OWNER,missing,organizational unit 65458,medium,high,high,high,low,high,high,low,high,high,high,low,high,high
+245,Permit REJECTED by SUPERVISOR,missing,organizational unit 65458,medium,high,high,high,low,high,high,low,high,high,high,high,high,high
+246,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65458,high,low,low,high,high,low,low,low,low,low,low,low,low,low
+247,Request Payment,task 427,organizational unit 65458,high,low,low,high,high,low,low,low,low,low,low,low,low,low
+248,Payment Handled,task 427,organizational unit 65458,high,low,low,high,high,low,low,low,low,low,low,low,low,low
+249,start,task 427,organizational unit 65455,high,high,high,medium,high,high,high,low,high,high,high,medium,high,low
+250,Permit SUBMITTED by EMPLOYEE,task 427,organizational unit 65455,high,high,high,high,high,high,high,low,high,high,high,medium,high,medium
+251,Permit APPROVED by PRE_APPROVER,task 427,organizational unit 65455,high,high,high,medium,high,high,high,low,low,low,low,low,low,low
+252,Permit FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65455,high,high,high,medium,high,high,high,low,low,low,low,low,low,low
+253,Start trip,task 427,organizational unit 65455,high,high,high,medium,high,high,high,low,high,high,high,medium,high,low
+254,End trip,task 427,organizational unit 65455,high,high,high,medium,high,high,high,low,high,high,high,medium,high,low
+255,Declaration SUBMITTED by EMPLOYEE,task 427,organizational unit 65455,high,high,high,high,high,high,high,low,high,high,high,medium,high,medium
+256,Declaration FINAL_APPROVED by SUPERVISOR,task 427,organizational unit 65455,high,high,high,high,high,high,high,low,low,low,low,low,low,low
+257,Request Payment,task 427,organizational unit 65455,high,high,high,high,high,high,high,low,high,high,high,medium,high,low
+258,Payment Handled,task 427,organizational unit 65455,high,high,high,high,high,high,high,low,high,high,high,medium,high,low
+259,archive_application,task 427,organizational unit 65455,high,high,high,medium,high,high,high,low,high,high,high,medium,high,low
+260,Declaration REJECTED by PRE_APPROVER,task 427,organizational unit 65455,high,high,high,medium,high,high,high,low,low,low,low,low,low,low
+261,Declaration REJECTED by EMPLOYEE,task 427,organizational unit 65455,high,high,high,high,high,high,high,low,high,high,high,high,high,medium
+262,Permit APPROVED by PRE_APPROVER,task 427,organizational unit 65455,medium,high,high,high,high,high,high,low,low,low,low,medium,low,high
+263,Declaration APPROVED by PRE_APPROVER,task 427,organizational unit 65455,medium,high,high,high,high,high,high,low,low,low,low,high,low,high
+264,Declaration APPROVED by PRE_APPROVER,task 427,organizational unit 65455,high,high,high,medium,high,high,high,low,low,low,low,low,low,low
+265,Declaration REJECTED by MISSING,task 427,organizational unit 65455,high,high,high,medium,high,high,high,low,high,high,high,high,high,medium
+266,Declaration REJECTED by MISSING,task 427,organizational unit 65458,medium,high,high,high,high,high,high,low,high,high,high,high,high,high
+267,Permit REJECTED by PRE_APPROVER,task 427,organizational unit 65458,medium,high,high,high,high,high,high,low,high,high,high,medium,high,high
+268,Declaration APPROVED by PRE_APPROVER,task 427,organizational unit 65455,high,low,low,medium,high,low,low,low,low,low,low,low,low,low
+269,Declaration REJECTED by PRE_APPROVER,task 427,organizational unit 65455,medium,high,high,low,high,high,high,low,low,low,low,low,low,low
+270,Permit APPROVED by PRE_APPROVER,task 427,organizational unit 65455,high,low,low,low,high,low,low,low,low,low,low,low,low,low
+271,Permit REJECTED by MISSING,task 427,organizational unit 65455,medium,high,high,high,high,high,high,low,low,low,low,high,low,high
+272,Permit APPROVED by PRE_APPROVER,task 427,organizational unit 65455,high,low,low,high,medium,high,high,low,low,low,low,high,low,high
+273,Declaration APPROVED by PRE_APPROVER,task 427,organizational unit 65455,high,low,low,medium,high,high,high,low,low,low,low,high,low,high
+274,Permit REJECTED by MISSING,missing,organizational unit 65455,high,low,low,high,low,high,high,low,low,low,low,medium,low,high
+275,Declaration REJECTED by DIRECTOR,missing,organizational unit 65458,medium,high,high,low,high,high,high,low,high,high,high,high,high,high
+276,Permit REJECTED by MISSING,missing,organizational unit 65458,high,low,low,high,low,low,low,low,low,low,low,low,low,medium
+277,Permit APPROVED by PRE_APPROVER,task 427,organizational unit 65455,medium,high,low,low,low,high,high,low,low,low,low,low,low,low
+278,Declaration APPROVED by PRE_APPROVER,task 427,organizational unit 65455,medium,high,low,low,low,high,high,low,low,low,low,low,low,low
+279,Permit REJECTED by SUPERVISOR,task 427,organizational unit 65458,high,high,high,medium,high,high,high,low,medium,medium,medium,medium,medium,medium
+280,Permit REJECTED by EMPLOYEE,task 427,organizational unit 65455,high,high,high,high,high,high,high,low,high,high,high,medium,high,high
+281,Permit APPROVED by SUPERVISOR,task 427,organizational unit 65458,high,high,high,high,high,high,high,low,high,high,high,high,high,high
+282,Permit FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,high,high,high,high,high,high,high,low,high,high,high,high,high,high
+283,Declaration APPROVED by SUPERVISOR,task 427,organizational unit 65458,high,high,high,medium,high,high,high,low,high,high,high,high,high,high
+284,Declaration FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,high,high,high,medium,high,high,high,low,high,high,high,high,high,high
+285,Declaration REJECTED by SUPERVISOR,task 427,organizational unit 65458,high,high,high,medium,high,high,high,low,medium,medium,medium,medium,medium,high
+286,Permit REJECTED by PRE_APPROVER,task 427,organizational unit 65455,high,high,high,high,high,high,high,low,high,high,high,high,high,high
+287,Permit APPROVED by ADMINISTRATION,task 427,organizational unit 65456,high,high,high,high,high,high,high,low,high,high,high,medium,high,medium
+288,Declaration APPROVED by ADMINISTRATION,task 427,organizational unit 65458,high,high,high,high,high,high,high,low,high,high,high,medium,high,high
+289,Declaration APPROVED by BUDGET OWNER,missing,organizational unit 65458,high,high,high,high,high,high,high,low,high,high,high,medium,high,medium
+290,Declaration REJECTED by MISSING,task 427,organizational unit 65455,high,low,low,low,high,high,high,low,low,low,low,high,low,high
+291,Declaration REJECTED by ADMINISTRATION,missing,organizational unit 65458,high,high,high,high,high,high,high,low,high,high,high,high,high,high
+292,Permit REJECTED by MISSING,task 427,organizational unit 65458,high,high,high,high,high,high,high,low,high,high,high,high,high,high
+293,Declaration REJECTED by MISSING,missing,organizational unit 65455,high,low,low,medium,low,low,low,low,low,low,low,low,low,low
+294,Permit APPROVED by BUDGET OWNER,task 427,organizational unit 65458,high,high,high,high,high,high,high,low,high,high,high,high,high,medium
+295,Send Reminder,task 427,organizational unit 65458,high,high,high,low,high,high,high,low,low,low,low,low,low,high
+296,Declaration APPROVED by SUPERVISOR,task 427,organizational unit 65458,high,low,low,high,high,low,low,low,high,high,high,low,high,medium
+297,Declaration FINAL_APPROVED by DIRECTOR,task 427,organizational unit 65458,high,low,low,high,high,low,low,low,high,high,high,low,high,medium
+298,Declaration REJECTED by PRE_APPROVER,task 427,organizational unit 65455,high,low,low,medium,low,low,low,low,low,low,low,low,low,low
+299,Declaration REJECTED by BUDGET OWNER,task 427,organizational unit 65456,high,high,high,high,high,high,high,low,low,low,low,high,low,high
+300,Declaration SAVED by EMPLOYEE,task 427,organizational unit 65458,high,high,high,high,high,high,high,low,low,low,low,high,low,low
+301,Declaration REJECTED by PRE_APPROVER,missing,organizational unit 65455,high,low,low,high,low,high,high,low,low,low,low,high,low,medium
+302,Permit REJECTED by BUDGET OWNER,missing,organizational unit 65458,high,high,high,high,low,high,high,low,high,high,high,low,high,high
+303,Permit REJECTED by ADMINISTRATION,task 427,organizational unit 65454,high,high,high,high,high,high,high,medium,high,high,high,low,high,low
