@@ -1,0 +1,27 @@
+non-fluents mdp_process_domain_nf {
+    domain = mdp_process_domain;
+
+    non-fluents {
+        DUMMY = true;
+    };
+}
+
+instance mdp_process_inst {
+    domain = mdp_process_domain;
+    non-fluents = mdp_process_domain_nf;
+
+    init-state {
+        s0 = true;
+
+        amount-req-high = false;
+        amount-req-low = true;
+        amount-req-medium = false;
+        execution-time-minutes-high = false;
+        execution-time-minutes-low = true;
+        execution-time-minutes-medium = false;
+    };
+
+    max-nondef-actions = 1;
+    horizon = 40;
+    discount = 1.0;
+}

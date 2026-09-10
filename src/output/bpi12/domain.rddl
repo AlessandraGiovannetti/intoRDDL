@@ -1,0 +1,762 @@
+domain mdp_process_domain {
+
+    requirements = {
+        reward-deterministic
+    };
+
+    pvariables {
+
+        // -----------------------
+        // dummy non fluent (richiesto solo perche' il blocco non-fluents non puo'
+        // restare vuoto)
+        // -----------------------
+        DUMMY : { non-fluent, bool, default = false };
+
+        // -----------------------
+        // stato MDP (one-hot): un booleano scalare per ciascuno stato scoperto
+        // -----------------------
+        s0 : { state-fluent, bool, default=true };
+        s1 : { state-fluent, bool, default=false };
+        s2 : { state-fluent, bool, default=false };
+        s3 : { state-fluent, bool, default=false };
+        s4 : { state-fluent, bool, default=false };
+        s5 : { state-fluent, bool, default=false };
+        s6 : { state-fluent, bool, default=false };
+        s7 : { state-fluent, bool, default=false };
+        s8 : { state-fluent, bool, default=false };
+        s9 : { state-fluent, bool, default=false };
+        s10 : { state-fluent, bool, default=false };
+        s11 : { state-fluent, bool, default=false };
+        s12 : { state-fluent, bool, default=false };
+        s13 : { state-fluent, bool, default=false };
+        s14 : { state-fluent, bool, default=false };
+        s15 : { state-fluent, bool, default=false };
+        s16 : { state-fluent, bool, default=false };
+        s17 : { state-fluent, bool, default=false };
+        s18 : { state-fluent, bool, default=false };
+        s19 : { state-fluent, bool, default=false };
+        s20 : { state-fluent, bool, default=false };
+        s21 : { state-fluent, bool, default=false };
+        s22 : { state-fluent, bool, default=false };
+        s23 : { state-fluent, bool, default=false };
+        s24 : { state-fluent, bool, default=false };
+        s25 : { state-fluent, bool, default=false };
+        s26 : { state-fluent, bool, default=false };
+        s27 : { state-fluent, bool, default=false };
+        s28 : { state-fluent, bool, default=false };
+        s29 : { state-fluent, bool, default=false };
+        s30 : { state-fluent, bool, default=false };
+        s31 : { state-fluent, bool, default=false };
+        s32 : { state-fluent, bool, default=false };
+        s33 : { state-fluent, bool, default=false };
+        s34 : { state-fluent, bool, default=false };
+        s35 : { state-fluent, bool, default=false };
+        s36 : { state-fluent, bool, default=false };
+        s37 : { state-fluent, bool, default=false };
+        s38 : { state-fluent, bool, default=false };
+        s39 : { state-fluent, bool, default=false };
+        s40 : { state-fluent, bool, default=false };
+        s41 : { state-fluent, bool, default=false };
+        s42 : { state-fluent, bool, default=false };
+        s43 : { state-fluent, bool, default=false };
+        s44 : { state-fluent, bool, default=false };
+        s45 : { state-fluent, bool, default=false };
+        s46 : { state-fluent, bool, default=false };
+        s47 : { state-fluent, bool, default=false };
+        s48 : { state-fluent, bool, default=false };
+        s49 : { state-fluent, bool, default=false };
+        s50 : { state-fluent, bool, default=false };
+        s51 : { state-fluent, bool, default=false };
+        s52 : { state-fluent, bool, default=false };
+        s53 : { state-fluent, bool, default=false };
+        s54 : { state-fluent, bool, default=false };
+        s55 : { state-fluent, bool, default=false };
+        s56 : { state-fluent, bool, default=false };
+        s57 : { state-fluent, bool, default=false };
+        s58 : { state-fluent, bool, default=false };
+        s59 : { state-fluent, bool, default=false };
+        s60 : { state-fluent, bool, default=false };
+        s61 : { state-fluent, bool, default=false };
+        s62 : { state-fluent, bool, default=false };
+        s63 : { state-fluent, bool, default=false };
+        s64 : { state-fluent, bool, default=false };
+        s65 : { state-fluent, bool, default=false };
+        s66 : { state-fluent, bool, default=false };
+        s67 : { state-fluent, bool, default=false };
+        s68 : { state-fluent, bool, default=false };
+        s69 : { state-fluent, bool, default=false };
+        s70 : { state-fluent, bool, default=false };
+        s71 : { state-fluent, bool, default=false };
+        s72 : { state-fluent, bool, default=false };
+        s73 : { state-fluent, bool, default=false };
+        s74 : { state-fluent, bool, default=false };
+        s75 : { state-fluent, bool, default=false };
+        s76 : { state-fluent, bool, default=false };
+        s77 : { state-fluent, bool, default=false };
+        s78 : { state-fluent, bool, default=false };
+        s79 : { state-fluent, bool, default=false };
+        s80 : { state-fluent, bool, default=false };
+        s81 : { state-fluent, bool, default=false };
+        s82 : { state-fluent, bool, default=false };
+        s83 : { state-fluent, bool, default=false };
+        s84 : { state-fluent, bool, default=false };
+        s85 : { state-fluent, bool, default=false };
+        s86 : { state-fluent, bool, default=false };
+        s87 : { state-fluent, bool, default=false };
+        s88 : { state-fluent, bool, default=false };
+        s89 : { state-fluent, bool, default=false };
+        s90 : { state-fluent, bool, default=false };
+        s91 : { state-fluent, bool, default=false };
+        s92 : { state-fluent, bool, default=false };
+        s93 : { state-fluent, bool, default=false };
+        s94 : { state-fluent, bool, default=false };
+        s95 : { state-fluent, bool, default=false };
+        s96 : { state-fluent, bool, default=false };
+        s97 : { state-fluent, bool, default=false };
+        s98 : { state-fluent, bool, default=false };
+        s99 : { state-fluent, bool, default=false };
+        s100 : { state-fluent, bool, default=false };
+        s101 : { state-fluent, bool, default=false };
+        s102 : { state-fluent, bool, default=false };
+        s103 : { state-fluent, bool, default=false };
+        s104 : { state-fluent, bool, default=false };
+        s105 : { state-fluent, bool, default=false };
+        s106 : { state-fluent, bool, default=false };
+        s107 : { state-fluent, bool, default=false };
+        s108 : { state-fluent, bool, default=false };
+        s109 : { state-fluent, bool, default=false };
+        s110 : { state-fluent, bool, default=false };
+        s111 : { state-fluent, bool, default=false };
+        s112 : { state-fluent, bool, default=false };
+        s113 : { state-fluent, bool, default=false };
+        s114 : { state-fluent, bool, default=false };
+        s115 : { state-fluent, bool, default=false };
+        s116 : { state-fluent, bool, default=false };
+        s117 : { state-fluent, bool, default=false };
+        s118 : { state-fluent, bool, default=false };
+        s119 : { state-fluent, bool, default=false };
+        s120 : { state-fluent, bool, default=false };
+        s121 : { state-fluent, bool, default=false };
+        s122 : { state-fluent, bool, default=false };
+        s123 : { state-fluent, bool, default=false };
+        s124 : { state-fluent, bool, default=false };
+        s125 : { state-fluent, bool, default=false };
+        s126 : { state-fluent, bool, default=false };
+        s127 : { state-fluent, bool, default=false };
+        s128 : { state-fluent, bool, default=false };
+        s129 : { state-fluent, bool, default=false };
+        s130 : { state-fluent, bool, default=false };
+        s131 : { state-fluent, bool, default=false };
+        s132 : { state-fluent, bool, default=false };
+        s133 : { state-fluent, bool, default=false };
+        s134 : { state-fluent, bool, default=false };
+        s135 : { state-fluent, bool, default=false };
+        s136 : { state-fluent, bool, default=false };
+        s137 : { state-fluent, bool, default=false };
+        s138 : { state-fluent, bool, default=false };
+        s139 : { state-fluent, bool, default=false };
+        s140 : { state-fluent, bool, default=false };
+        s141 : { state-fluent, bool, default=false };
+        s142 : { state-fluent, bool, default=false };
+        s143 : { state-fluent, bool, default=false };
+        s144 : { state-fluent, bool, default=false };
+        s145 : { state-fluent, bool, default=false };
+        s146 : { state-fluent, bool, default=false };
+        s147 : { state-fluent, bool, default=false };
+        s148 : { state-fluent, bool, default=false };
+        s149 : { state-fluent, bool, default=false };
+        s150 : { state-fluent, bool, default=false };
+        s151 : { state-fluent, bool, default=false };
+        s152 : { state-fluent, bool, default=false };
+        s153 : { state-fluent, bool, default=false };
+        s154 : { state-fluent, bool, default=false };
+        s155 : { state-fluent, bool, default=false };
+        s156 : { state-fluent, bool, default=false };
+        s157 : { state-fluent, bool, default=false };
+        s158 : { state-fluent, bool, default=false };
+        s159 : { state-fluent, bool, default=false };
+        s160 : { state-fluent, bool, default=false };
+        s161 : { state-fluent, bool, default=false };
+        s162 : { state-fluent, bool, default=false };
+        s163 : { state-fluent, bool, default=false };
+        s164 : { state-fluent, bool, default=false };
+        s165 : { state-fluent, bool, default=false };
+        s166 : { state-fluent, bool, default=false };
+        s167 : { state-fluent, bool, default=false };
+        s168 : { state-fluent, bool, default=false };
+        s169 : { state-fluent, bool, default=false };
+        s170 : { state-fluent, bool, default=false };
+        s171 : { state-fluent, bool, default=false };
+        s172 : { state-fluent, bool, default=false };
+        s173 : { state-fluent, bool, default=false };
+        s174 : { state-fluent, bool, default=false };
+        s175 : { state-fluent, bool, default=false };
+        s176 : { state-fluent, bool, default=false };
+        s177 : { state-fluent, bool, default=false };
+        s178 : { state-fluent, bool, default=false };
+        s179 : { state-fluent, bool, default=false };
+        s180 : { state-fluent, bool, default=false };
+        s181 : { state-fluent, bool, default=false };
+        s182 : { state-fluent, bool, default=false };
+        s183 : { state-fluent, bool, default=false };
+        s184 : { state-fluent, bool, default=false };
+        s185 : { state-fluent, bool, default=false };
+        s186 : { state-fluent, bool, default=false };
+        s187 : { state-fluent, bool, default=false };
+        s188 : { state-fluent, bool, default=false };
+        s189 : { state-fluent, bool, default=false };
+        s190 : { state-fluent, bool, default=false };
+        s191 : { state-fluent, bool, default=false };
+        s192 : { state-fluent, bool, default=false };
+        s193 : { state-fluent, bool, default=false };
+        s194 : { state-fluent, bool, default=false };
+        s195 : { state-fluent, bool, default=false };
+        s196 : { state-fluent, bool, default=false };
+        s197 : { state-fluent, bool, default=false };
+        s198 : { state-fluent, bool, default=false };
+        s199 : { state-fluent, bool, default=false };
+        s200 : { state-fluent, bool, default=false };
+        s201 : { state-fluent, bool, default=false };
+        s202 : { state-fluent, bool, default=false };
+        s203 : { state-fluent, bool, default=false };
+        s204 : { state-fluent, bool, default=false };
+        s205 : { state-fluent, bool, default=false };
+        s206 : { state-fluent, bool, default=false };
+        s207 : { state-fluent, bool, default=false };
+        s208 : { state-fluent, bool, default=false };
+        s209 : { state-fluent, bool, default=false };
+        s210 : { state-fluent, bool, default=false };
+        s211 : { state-fluent, bool, default=false };
+        s212 : { state-fluent, bool, default=false };
+        s213 : { state-fluent, bool, default=false };
+        s214 : { state-fluent, bool, default=false };
+        s215 : { state-fluent, bool, default=false };
+        s216 : { state-fluent, bool, default=false };
+        s217 : { state-fluent, bool, default=false };
+        s218 : { state-fluent, bool, default=false };
+        s219 : { state-fluent, bool, default=false };
+        s220 : { state-fluent, bool, default=false };
+
+        // -----------------------
+        // attributi dello stato, TUTTI booleani nativi (fluents di prima classe,
+        // usabili nella reward, nessun 'real'): gli attributi 'tri' (True/False/
+        // missing, missing->false) sono un singolo booleano; TUTTE le colonne
+        // categoriche - incluse quelle numeriche non discretizzate a monte, se
+        // con pochi valori distinti - sono one-hot: un booleano PER CIASCUN
+        // VALORE possibile, esattamente uno vero
+        // -----------------------
+        amount-req-high : { state-fluent, bool, default=false };
+        amount-req-low : { state-fluent, bool, default=false };
+        amount-req-medium : { state-fluent, bool, default=false };
+        execution-time-minutes-high : { state-fluent, bool, default=false };
+        execution-time-minutes-low : { state-fluent, bool, default=false };
+        execution-time-minutes-medium : { state-fluent, bool, default=false };
+
+        // -----------------------
+        // azioni: una booleana scalare per ciascuna attivita' osservata nel log
+        // -----------------------
+        action-a-accepted : { action-fluent, bool, default=false };
+        action-a-activated : { action-fluent, bool, default=false };
+        action-a-approved : { action-fluent, bool, default=false };
+        action-a-cancelled : { action-fluent, bool, default=false };
+        action-a-declined : { action-fluent, bool, default=false };
+        action-a-finalized : { action-fluent, bool, default=false };
+        action-a-partlysubmitted : { action-fluent, bool, default=false };
+        action-a-preaccepted : { action-fluent, bool, default=false };
+        action-a-registered : { action-fluent, bool, default=false };
+        action-a-submitted : { action-fluent, bool, default=false };
+        action-o-accepted : { action-fluent, bool, default=false };
+        action-o-cancelled : { action-fluent, bool, default=false };
+        action-o-created : { action-fluent, bool, default=false };
+        action-o-declined : { action-fluent, bool, default=false };
+        action-o-selected : { action-fluent, bool, default=false };
+        action-o-sent : { action-fluent, bool, default=false };
+        action-o-sent-back : { action-fluent, bool, default=false };
+        action-w-afhandelen-leads : { action-fluent, bool, default=false };
+        action-w-beoordelen-fraude : { action-fluent, bool, default=false };
+        action-w-completeren-aanvraag : { action-fluent, bool, default=false };
+        action-w-nabellen-incomplete-dossiers : { action-fluent, bool, default=false };
+        action-w-nabellen-offertes : { action-fluent, bool, default=false };
+        action-w-valideren-aanvraag : { action-fluent, bool, default=false };
+        action-archive-application : { action-fluent, bool, default=false };
+    };
+
+    cpfs {
+
+        // ---- transizioni: catena di Bernoulli condizionati (stick-breaking) ----
+        // quando un (stato,azione) ha piu' esiti osservati, ciascuno tranne
+        // l'ultimo pesca con probabilita' condizionata al non essersi gia' verificato
+        // uno degli esiti precedenti dello stesso gruppo (riferimento a s{T}')
+        // Transizione diretta a singolo tick: niente variabili di staging.
+        s0' = false;
+
+        s1' = if (s0 ^ action-a-submitted) then true else false;
+
+        s2' = if (s1 ^ action-a-partlysubmitted) then true else false;
+
+        s3' = if (s2 ^ action-a-preaccepted) then Bernoulli(0.769231) else false;
+
+        s4' = if ((s3 ^ action-a-accepted) | ((s9 ^ action-a-accepted) | (s37 ^ action-a-accepted))) then (if (s3 ^ action-a-accepted) then (Bernoulli(0.336597)) else (if (s9 ^ action-a-accepted) then (Bernoulli(0.994065)) else (if (s37 ^ action-a-accepted) then Bernoulli(0.002571) else false))) else (if ((s80 ^ action-a-accepted) | (s148 ^ action-a-accepted)) then (if (s80 ^ action-a-accepted) then (Bernoulli(0.005848)) else (if (s148 ^ action-a-accepted) then Bernoulli(0.015625) else false)) else (if (s196 ^ action-a-accepted) then (true) else (if (s197 ^ action-a-accepted) then Bernoulli(0.015625) else false)));
+
+        s5' = if (((s4 ^ action-o-selected) | (s6 ^ action-o-selected)) | ((s9 ^ action-o-selected) | (s10 ^ action-o-selected))) then (if ((s4 ^ action-o-selected) | (s6 ^ action-o-selected)) then (if (s4 ^ action-o-selected) then (true) else (if (s6 ^ action-o-selected) then true else false)) else (if (s9 ^ action-o-selected) then (true) else (if (s10 ^ action-o-selected) then true else false))) else (if ((s16 ^ action-o-selected) | (s37 ^ action-o-selected)) then (if (s16 ^ action-o-selected) then (true) else (if (s37 ^ action-o-selected) then Bernoulli(0.022727) else false)) else (if (s44 ^ action-o-selected) then (Bernoulli(0.033898)) else (if (s72 ^ action-o-selected) then (true) else (if (s73 ^ action-o-selected) then true else false))));
+
+        s6' = if (s4 ^ action-a-finalized) then (true) else (if (s5 ^ action-a-finalized) then (true) else (if (s9 ^ action-a-finalized) then true else false));
+
+        s7' = if (s5 ^ action-o-created) then (true) else (if (s6 ^ action-o-created) then (true) else (if (s73 ^ action-o-created) then true else false));
+
+        s8' = if (s7 ^ action-o-sent) then true else false;
+
+        s9' = if (((s3 ^ action-w-completeren-aanvraag) | (s4 ^ action-w-completeren-aanvraag)) | ((s8 ^ action-w-completeren-aanvraag) | (s9 ^ action-w-completeren-aanvraag))) then (if ((s3 ^ action-w-completeren-aanvraag) | (s4 ^ action-w-completeren-aanvraag)) then (if (s3 ^ action-w-completeren-aanvraag) then (Bernoulli(0.320828)) else (if (s4 ^ action-w-completeren-aanvraag) then true else false)) else (if (s8 ^ action-w-completeren-aanvraag) then (Bernoulli(0.995757)) else (if (s9 ^ action-w-completeren-aanvraag) then Bernoulli(0.990783) else false))) else (if ((s37 ^ action-w-completeren-aanvraag) | (s80 ^ action-w-completeren-aanvraag)) then (if (s37 ^ action-w-completeren-aanvraag) then (Bernoulli(0.004167)) else (if (s80 ^ action-w-completeren-aanvraag) then Bernoulli(0.007634) else false)) else (if (s85 ^ action-w-completeren-aanvraag) then (Bernoulli(0.002404)) else (if (s148 ^ action-w-completeren-aanvraag) then (Bernoulli(0.016260)) else (if (s196 ^ action-w-completeren-aanvraag) then Bernoulli(0.988636) else false))));
+
+        s10' = if (((s8 ^ action-w-nabellen-offertes) | ((s9 ^ action-w-nabellen-offertes) | (s10 ^ action-w-nabellen-offertes))) | ((s11 ^ action-w-nabellen-offertes) | ((s24 ^ action-w-nabellen-offertes) | (s37 ^ action-w-nabellen-offertes)))) then (if ((s8 ^ action-w-nabellen-offertes) | ((s9 ^ action-w-nabellen-offertes) | (s10 ^ action-w-nabellen-offertes))) then (if (s8 ^ action-w-nabellen-offertes) then (Bernoulli(0.979167)) else (if (s9 ^ action-w-nabellen-offertes) then (true) else (if (s10 ^ action-w-nabellen-offertes) then Bernoulli(0.991150) else false))) else (if (s11 ^ action-w-nabellen-offertes) then (true) else (if (s24 ^ action-w-nabellen-offertes) then (Bernoulli(0.000668)) else (if (s37 ^ action-w-nabellen-offertes) then Bernoulli(0.001815) else false)))) else (if ((s44 ^ action-w-nabellen-offertes) | ((s73 ^ action-w-nabellen-offertes) | (s88 ^ action-w-nabellen-offertes))) then (if (s44 ^ action-w-nabellen-offertes) then (Bernoulli(0.001427)) else (if (s73 ^ action-w-nabellen-offertes) then (true) else (if (s88 ^ action-w-nabellen-offertes) then Bernoulli(0.003012) else false))) else (if (s114 ^ action-w-nabellen-offertes) then (true) else (if (s119 ^ action-w-nabellen-offertes) then (Bernoulli(0.800000)) else (if (s120 ^ action-w-nabellen-offertes) then true else false))));
+
+        s11' = if ((s9 ^ action-o-sent-back) | ((s10 ^ action-o-sent-back) | (s16 ^ action-o-sent-back))) then (if (s9 ^ action-o-sent-back) then (Bernoulli(0.991228)) else (if (s10 ^ action-o-sent-back) then (Bernoulli(0.997625)) else (if (s16 ^ action-o-sent-back) then true else false))) else (if ((s18 ^ action-o-sent-back) | (s24 ^ action-o-sent-back)) then (if (s18 ^ action-o-sent-back) then (Bernoulli(0.004630)) else (if (s24 ^ action-o-sent-back) then Bernoulli(0.002903) else false)) else (if (s44 ^ action-o-sent-back) then (Bernoulli(0.010169)) else (if (s72 ^ action-o-sent-back) then true else false)));
+
+        s12' = if ((s10 ^ action-a-registered) | ((s13 ^ action-a-registered) | (s14 ^ action-a-registered))) then (if (s10 ^ action-a-registered) then (true) else (if (s13 ^ action-a-registered) then (true) else (if (s14 ^ action-a-registered) then true else false))) else (if ((s15 ^ action-a-registered) | (s16 ^ action-a-registered)) then (if (s15 ^ action-a-registered) then (true) else (if (s16 ^ action-a-registered) then true else false)) else (if (s44 ^ action-a-registered) then (Bernoulli(0.333333)) else (if (s72 ^ action-a-registered) then true else false)));
+
+        s13' = if (((s10 ^ action-a-approved) | (s12 ^ action-a-approved)) | ((s14 ^ action-a-approved) | (s15 ^ action-a-approved))) then (if ((s10 ^ action-a-approved) | (s12 ^ action-a-approved)) then (if (s10 ^ action-a-approved) then (true) else (if (s12 ^ action-a-approved) then true else false)) else (if (s14 ^ action-a-approved) then (true) else (if (s15 ^ action-a-approved) then true else false))) else (if ((s16 ^ action-a-approved) | (s44 ^ action-a-approved)) then (if (s16 ^ action-a-approved) then (true) else (if (s44 ^ action-a-approved) then Bernoulli(0.090909) else false)) else (if (s68 ^ action-a-approved) then (Bernoulli(0.043478)) else (if (s72 ^ action-a-approved) then true else false)));
+
+        s14' = if (((s10 ^ action-o-accepted) | (s12 ^ action-o-accepted)) | ((s13 ^ action-o-accepted) | (s15 ^ action-o-accepted))) then (if ((s10 ^ action-o-accepted) | (s12 ^ action-o-accepted)) then (if (s10 ^ action-o-accepted) then (true) else (if (s12 ^ action-o-accepted) then true else false)) else (if (s13 ^ action-o-accepted) then (true) else (if (s15 ^ action-o-accepted) then true else false))) else (if ((s16 ^ action-o-accepted) | (s44 ^ action-o-accepted)) then (if (s16 ^ action-o-accepted) then (true) else (if (s44 ^ action-o-accepted) then Bernoulli(0.033333) else false)) else (if (s72 ^ action-o-accepted) then (Bernoulli(0.985714)) else (if (s203 ^ action-o-accepted) then true else false)));
+
+        s15' = if ((s10 ^ action-a-activated) | ((s12 ^ action-a-activated) | (s13 ^ action-a-activated))) then (if (s10 ^ action-a-activated) then (true) else (if (s12 ^ action-a-activated) then (true) else (if (s13 ^ action-a-activated) then true else false))) else (if (s14 ^ action-a-activated) then (true) else (if (s16 ^ action-a-activated) then (true) else (if (s72 ^ action-a-activated) then true else false)));
+
+        s16' = if ((((s8 ^ action-w-valideren-aanvraag) | (s10 ^ action-w-valideren-aanvraag)) | ((s12 ^ action-w-valideren-aanvraag) | (s13 ^ action-w-valideren-aanvraag))) | (((s14 ^ action-w-valideren-aanvraag) | (s15 ^ action-w-valideren-aanvraag)) | ((s16 ^ action-w-valideren-aanvraag) | ((s24 ^ action-w-valideren-aanvraag) | (s27 ^ action-w-valideren-aanvraag))))) then (if (((s8 ^ action-w-valideren-aanvraag) | (s10 ^ action-w-valideren-aanvraag)) | ((s12 ^ action-w-valideren-aanvraag) | (s13 ^ action-w-valideren-aanvraag))) then (if ((s8 ^ action-w-valideren-aanvraag) | (s10 ^ action-w-valideren-aanvraag)) then (if (s8 ^ action-w-valideren-aanvraag) then (true) else (if (s10 ^ action-w-valideren-aanvraag) then Bernoulli(0.993651) else false)) else (if (s12 ^ action-w-valideren-aanvraag) then (true) else (if (s13 ^ action-w-valideren-aanvraag) then true else false))) else (if ((s14 ^ action-w-valideren-aanvraag) | (s15 ^ action-w-valideren-aanvraag)) then (if (s14 ^ action-w-valideren-aanvraag) then (true) else (if (s15 ^ action-w-valideren-aanvraag) then true else false)) else (if (s16 ^ action-w-valideren-aanvraag) then (Bernoulli(0.991968)) else (if (s24 ^ action-w-valideren-aanvraag) then (Bernoulli(0.001815)) else (if (s27 ^ action-w-valideren-aanvraag) then Bernoulli(0.002538) else false))))) else (if (((s44 ^ action-w-valideren-aanvraag) | (s50 ^ action-w-valideren-aanvraag)) | ((s72 ^ action-w-valideren-aanvraag) | (s73 ^ action-w-valideren-aanvraag))) then (if ((s44 ^ action-w-valideren-aanvraag) | (s50 ^ action-w-valideren-aanvraag)) then (if (s44 ^ action-w-valideren-aanvraag) then (Bernoulli(0.004695)) else (if (s50 ^ action-w-valideren-aanvraag) then Bernoulli(0.004785) else false)) else (if (s72 ^ action-w-valideren-aanvraag) then (Bernoulli(0.987500)) else (if (s73 ^ action-w-valideren-aanvraag) then true else false))) else (if ((s114 ^ action-w-valideren-aanvraag) | (s119 ^ action-w-valideren-aanvraag)) then (if (s114 ^ action-w-valideren-aanvraag) then (true) else (if (s119 ^ action-w-valideren-aanvraag) then true else false)) else (if (s120 ^ action-w-valideren-aanvraag) then (true) else (if (s179 ^ action-w-valideren-aanvraag) then (Bernoulli(0.012500)) else (if (s203 ^ action-w-valideren-aanvraag) then true else false)))));
+
+        s17' = if ((s10 ^ action-archive-application) | (s16 ^ action-archive-application)) then (if (s10 ^ action-archive-application) then (true) else (if (s16 ^ action-archive-application) then true else false)) else (if (s72 ^ action-archive-application) then (true) else (if (s73 ^ action-archive-application) then true else false));
+
+        s18' = if (((s3 ^ action-w-completeren-aanvraag ^ ~s9') | (s9 ^ action-w-completeren-aanvraag ^ ~s9')) | ((s18 ^ action-w-completeren-aanvraag) | (s19 ^ action-w-completeren-aanvraag))) then (if ((s3 ^ action-w-completeren-aanvraag ^ ~s9') | (s9 ^ action-w-completeren-aanvraag ^ ~s9')) then (if (s3 ^ action-w-completeren-aanvraag ^ ~s9') then (Bernoulli(0.860952)) else (if (s9 ^ action-w-completeren-aanvraag ^ ~s9') then Bernoulli(0.250000) else false)) else (if (s18 ^ action-w-completeren-aanvraag) then (Bernoulli(0.994580)) else (if (s19 ^ action-w-completeren-aanvraag) then true else false))) else (if ((s23 ^ action-w-completeren-aanvraag) | (s24 ^ action-w-completeren-aanvraag)) then (if (s23 ^ action-w-completeren-aanvraag) then (Bernoulli(0.998415)) else (if (s24 ^ action-w-completeren-aanvraag) then true else false)) else (if (s37 ^ action-w-completeren-aanvraag ^ ~s9') then (Bernoulli(0.004184)) else (if (s75 ^ action-w-completeren-aanvraag) then true else false)));
+
+        s19' = if ((s3 ^ action-a-accepted ^ ~s4') | (s9 ^ action-a-accepted ^ ~s4')) then (if (s3 ^ action-a-accepted ^ ~s4') then (Bernoulli(0.898524)) else (if (s9 ^ action-a-accepted ^ ~s4') then Bernoulli(0.500000) else false)) else (if (s18 ^ action-a-accepted) then (true) else (if (s75 ^ action-a-accepted) then (true) else (if (s148 ^ action-a-accepted ^ ~s4') then Bernoulli(0.015873) else false)));
+
+        s20' = if (s18 ^ action-a-finalized) then (true) else (if (s19 ^ action-a-finalized) then (true) else (if (s21 ^ action-a-finalized) then true else false));
+
+        s21' = if (((s18 ^ action-o-selected) | (s19 ^ action-o-selected)) | ((s20 ^ action-o-selected) | (s24 ^ action-o-selected))) then (if ((s18 ^ action-o-selected) | (s19 ^ action-o-selected)) then (if (s18 ^ action-o-selected) then (true) else (if (s19 ^ action-o-selected) then true else false)) else (if (s20 ^ action-o-selected) then (true) else (if (s24 ^ action-o-selected) then true else false))) else (if ((s25 ^ action-o-selected) | (s27 ^ action-o-selected)) then (if (s25 ^ action-o-selected) then (true) else (if (s27 ^ action-o-selected) then true else false)) else (if (s44 ^ action-o-selected ^ ~s5') then (Bernoulli(0.035088)) else (if (s69 ^ action-o-selected) then (true) else (if (s206 ^ action-o-selected) then true else false))));
+
+        s22' = if (s20 ^ action-o-created) then (true) else (if (s21 ^ action-o-created) then (true) else (if (s25 ^ action-o-created) then true else false));
+
+        s23' = if (s22 ^ action-o-sent) then true else false;
+
+        s24' = if (((s10 ^ action-w-nabellen-offertes ^ ~s10') | (s18 ^ action-w-nabellen-offertes)) | ((s23 ^ action-w-nabellen-offertes) | ((s24 ^ action-w-nabellen-offertes ^ ~s10') | (s25 ^ action-w-nabellen-offertes)))) then (if ((s10 ^ action-w-nabellen-offertes ^ ~s10') | (s18 ^ action-w-nabellen-offertes)) then (if (s10 ^ action-w-nabellen-offertes ^ ~s10') then (Bernoulli(0.125000)) else (if (s18 ^ action-w-nabellen-offertes) then true else false)) else (if (s23 ^ action-w-nabellen-offertes) then (Bernoulli(0.996078)) else (if (s24 ^ action-w-nabellen-offertes ^ ~s10') then (Bernoulli(0.997324)) else (if (s25 ^ action-w-nabellen-offertes) then true else false)))) else (if ((s26 ^ action-w-nabellen-offertes) | (s44 ^ action-w-nabellen-offertes ^ ~s10')) then (if (s26 ^ action-w-nabellen-offertes) then (Bernoulli(0.997792)) else (if (s44 ^ action-w-nabellen-offertes ^ ~s10') then Bernoulli(0.001143) else false)) else (if (s70 ^ action-w-nabellen-offertes) then (true) else (if (s71 ^ action-w-nabellen-offertes) then (true) else (if (s76 ^ action-w-nabellen-offertes) then true else false))));
+
+        s25' = if ((s18 ^ action-o-cancelled) | ((s21 ^ action-o-cancelled) | (s24 ^ action-o-cancelled))) then (if (s18 ^ action-o-cancelled) then (true) else (if (s21 ^ action-o-cancelled) then (true) else (if (s24 ^ action-o-cancelled) then true else false))) else (if ((s27 ^ action-o-cancelled) | (s44 ^ action-o-cancelled)) then (if (s27 ^ action-o-cancelled) then (true) else (if (s44 ^ action-o-cancelled) then Bernoulli(0.004484) else false)) else (if (s69 ^ action-o-cancelled) then (true) else (if (s76 ^ action-o-cancelled) then true else false)));
+
+        s26' = if ((s9 ^ action-o-sent-back ^ ~s11') | (s18 ^ action-o-sent-back ^ ~s11')) then (if (s9 ^ action-o-sent-back ^ ~s11') then (true) else (if (s18 ^ action-o-sent-back ^ ~s11') then true else false)) else (if (s24 ^ action-o-sent-back ^ ~s11') then (true) else (if (s44 ^ action-o-sent-back ^ ~s11') then (Bernoulli(0.010274)) else (if (s69 ^ action-o-sent-back) then true else false)));
+
+        s27' = if ((((s10 ^ action-w-valideren-aanvraag ^ ~s16') | (s23 ^ action-w-valideren-aanvraag)) | ((s24 ^ action-w-valideren-aanvraag ^ ~s16') | (s25 ^ action-w-valideren-aanvraag))) | (((s27 ^ action-w-valideren-aanvraag ^ ~s16') | (s28 ^ action-w-valideren-aanvraag)) | ((s29 ^ action-w-valideren-aanvraag) | ((s30 ^ action-w-valideren-aanvraag) | (s31 ^ action-w-valideren-aanvraag))))) then (if (((s10 ^ action-w-valideren-aanvraag ^ ~s16') | (s23 ^ action-w-valideren-aanvraag)) | ((s24 ^ action-w-valideren-aanvraag ^ ~s16') | (s25 ^ action-w-valideren-aanvraag))) then (if ((s10 ^ action-w-valideren-aanvraag ^ ~s16') | (s23 ^ action-w-valideren-aanvraag)) then (if (s10 ^ action-w-valideren-aanvraag ^ ~s16') then (Bernoulli(0.500000)) else (if (s23 ^ action-w-valideren-aanvraag) then true else false)) else (if (s24 ^ action-w-valideren-aanvraag ^ ~s16') then (true) else (if (s25 ^ action-w-valideren-aanvraag) then true else false))) else (if ((s27 ^ action-w-valideren-aanvraag ^ ~s16') | (s28 ^ action-w-valideren-aanvraag)) then (if (s27 ^ action-w-valideren-aanvraag ^ ~s16') then (Bernoulli(0.994911)) else (if (s28 ^ action-w-valideren-aanvraag) then true else false)) else (if (s29 ^ action-w-valideren-aanvraag) then (true) else (if (s30 ^ action-w-valideren-aanvraag) then (true) else (if (s31 ^ action-w-valideren-aanvraag) then true else false))))) else (if (((s44 ^ action-w-valideren-aanvraag ^ ~s16') | (s50 ^ action-w-valideren-aanvraag ^ ~s16')) | ((s68 ^ action-w-valideren-aanvraag) | (s69 ^ action-w-valideren-aanvraag))) then (if ((s44 ^ action-w-valideren-aanvraag ^ ~s16') | (s50 ^ action-w-valideren-aanvraag ^ ~s16')) then (if (s44 ^ action-w-valideren-aanvraag ^ ~s16') then (Bernoulli(0.037736)) else (if (s50 ^ action-w-valideren-aanvraag ^ ~s16') then Bernoulli(0.014423) else false)) else (if (s68 ^ action-w-valideren-aanvraag) then (Bernoulli(0.079646)) else (if (s69 ^ action-w-valideren-aanvraag) then true else false))) else (if ((s70 ^ action-w-valideren-aanvraag) | (s71 ^ action-w-valideren-aanvraag)) then (if (s70 ^ action-w-valideren-aanvraag) then (true) else (if (s71 ^ action-w-valideren-aanvraag) then true else false)) else (if (s72 ^ action-w-valideren-aanvraag ^ ~s16') then (true) else (if (s76 ^ action-w-valideren-aanvraag) then (true) else (if (s206 ^ action-w-valideren-aanvraag) then true else false)))));
+
+        s28' = if (((s24 ^ action-o-accepted) | (s27 ^ action-o-accepted)) | ((s29 ^ action-o-accepted) | (s30 ^ action-o-accepted))) then (if ((s24 ^ action-o-accepted) | (s27 ^ action-o-accepted)) then (if (s24 ^ action-o-accepted) then (true) else (if (s27 ^ action-o-accepted) then true else false)) else (if (s29 ^ action-o-accepted) then (true) else (if (s30 ^ action-o-accepted) then true else false))) else (if ((s31 ^ action-o-accepted) | (s44 ^ action-o-accepted ^ ~s14')) then (if (s31 ^ action-o-accepted) then (true) else (if (s44 ^ action-o-accepted ^ ~s14') then Bernoulli(0.034483) else false)) else (if (s68 ^ action-o-accepted) then (Bernoulli(0.035714)) else (if (s69 ^ action-o-accepted) then true else false)));
+
+        s29' = if (((s24 ^ action-a-approved) | (s27 ^ action-a-approved)) | ((s28 ^ action-a-approved) | (s30 ^ action-a-approved))) then (if ((s24 ^ action-a-approved) | (s27 ^ action-a-approved)) then (if (s24 ^ action-a-approved) then (true) else (if (s27 ^ action-a-approved) then true else false)) else (if (s28 ^ action-a-approved) then (true) else (if (s30 ^ action-a-approved) then true else false))) else (if ((s31 ^ action-a-approved) | (s44 ^ action-a-approved ^ ~s13')) then (if (s31 ^ action-a-approved) then (true) else (if (s44 ^ action-a-approved ^ ~s13') then Bernoulli(0.100000) else false)) else (if (s50 ^ action-a-approved) then (Bernoulli(0.045455)) else (if (s69 ^ action-a-approved) then true else false)));
+
+        s30' = if (((s24 ^ action-a-registered) | (s27 ^ action-a-registered)) | ((s28 ^ action-a-registered) | (s29 ^ action-a-registered))) then (if ((s24 ^ action-a-registered) | (s27 ^ action-a-registered)) then (if (s24 ^ action-a-registered) then (true) else (if (s27 ^ action-a-registered) then true else false)) else (if (s28 ^ action-a-registered) then (true) else (if (s29 ^ action-a-registered) then true else false))) else (if ((s31 ^ action-a-registered) | (s68 ^ action-a-registered)) then (if (s31 ^ action-a-registered) then (true) else (if (s68 ^ action-a-registered) then Bernoulli(0.100000) else false)) else (if (s69 ^ action-a-registered) then (true) else (if (s206 ^ action-a-registered) then true else false)));
+
+        s31' = if ((s24 ^ action-a-activated) | ((s27 ^ action-a-activated) | (s28 ^ action-a-activated))) then (if (s24 ^ action-a-activated) then (true) else (if (s27 ^ action-a-activated) then (true) else (if (s28 ^ action-a-activated) then true else false))) else (if ((s29 ^ action-a-activated) | (s30 ^ action-a-activated)) then (if (s29 ^ action-a-activated) then (true) else (if (s30 ^ action-a-activated) then true else false)) else (if (s68 ^ action-a-activated) then (Bernoulli(0.090909)) else (if (s69 ^ action-a-activated) then true else false)));
+
+        s32' = if ((s24 ^ action-archive-application) | (s25 ^ action-archive-application)) then (if (s24 ^ action-archive-application) then (true) else (if (s25 ^ action-archive-application) then true else false)) else (if (s27 ^ action-archive-application) then (true) else (if (s69 ^ action-archive-application) then (true) else (if (s76 ^ action-archive-application) then true else false)));
+
+        s33' = false;
+
+        s34' = if (s33 ^ action-a-submitted) then true else false;
+
+        s35' = if (s34 ^ action-a-partlysubmitted) then true else false;
+
+        s36' = if ((s2 ^ action-a-preaccepted ^ ~s3') | (s35 ^ action-a-preaccepted)) then (if (s2 ^ action-a-preaccepted ^ ~s3') then (Bernoulli(0.102725)) else (if (s35 ^ action-a-preaccepted) then Bernoulli(0.993304) else false)) else (if (s148 ^ action-a-preaccepted) then (true) else (if (s213 ^ action-a-preaccepted) then true else false));
+
+        s37' = if (((s3 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18') | ((s8 ^ action-w-completeren-aanvraag ^ ~s9') | (s9 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18'))) | ((s18 ^ action-w-completeren-aanvraag ^ ~s18') | ((s23 ^ action-w-completeren-aanvraag ^ ~s18') | (s36 ^ action-w-completeren-aanvraag)))) then (if ((s3 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18') | ((s8 ^ action-w-completeren-aanvraag ^ ~s9') | (s9 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18'))) then (if (s3 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18') then (true) else (if (s8 ^ action-w-completeren-aanvraag ^ ~s9') then (true) else (if (s9 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18') then true else false))) else (if (s18 ^ action-w-completeren-aanvraag ^ ~s18') then (true) else (if (s23 ^ action-w-completeren-aanvraag ^ ~s18') then (true) else (if (s36 ^ action-w-completeren-aanvraag) then Bernoulli(0.969849) else false)))) else (if ((s37 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18') | ((s38 ^ action-w-completeren-aanvraag) | (s42 ^ action-w-completeren-aanvraag))) then (if (s37 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18') then (Bernoulli(0.998599)) else (if (s38 ^ action-w-completeren-aanvraag) then (true) else (if (s42 ^ action-w-completeren-aanvraag) then true else false))) else (if (s99 ^ action-w-completeren-aanvraag) then (Bernoulli(0.002469)) else (if (s148 ^ action-w-completeren-aanvraag ^ ~s9') then (true) else (if (s196 ^ action-w-completeren-aanvraag ^ ~s9') then true else false))));
+
+        s38' = if ((s3 ^ action-a-accepted ^ ~s4' ^ ~s19') | (s36 ^ action-a-accepted)) then (if (s3 ^ action-a-accepted ^ ~s4' ^ ~s19') then (true) else (if (s36 ^ action-a-accepted) then true else false)) else (if (s37 ^ action-a-accepted ^ ~s4') then (true) else (if (s148 ^ action-a-accepted ^ ~s4' ^ ~s19') then true else false));
+
+        s39' = if (s37 ^ action-a-finalized) then (true) else (if (s38 ^ action-a-finalized) then (true) else (if (s40 ^ action-a-finalized) then true else false));
+
+        s40' = if ((s37 ^ action-o-selected ^ ~s5') | ((s38 ^ action-o-selected) | (s39 ^ action-o-selected))) then (if (s37 ^ action-o-selected ^ ~s5') then (true) else (if (s38 ^ action-o-selected) then (true) else (if (s39 ^ action-o-selected) then true else false))) else (if ((s43 ^ action-o-selected) | (s44 ^ action-o-selected ^ ~s5' ^ ~s21')) then (if (s43 ^ action-o-selected) then (true) else (if (s44 ^ action-o-selected ^ ~s5' ^ ~s21') then Bernoulli(0.981818) else false)) else (if (s50 ^ action-o-selected) then (true) else (if (s68 ^ action-o-selected) then true else false)));
+
+        s41' = if (s39 ^ action-o-created) then (true) else (if (s40 ^ action-o-created) then (true) else (if (s43 ^ action-o-created) then true else false));
+
+        s42' = if (s41 ^ action-o-sent) then true else false;
+
+        s43' = if ((s37 ^ action-o-cancelled) | ((s40 ^ action-o-cancelled) | (s44 ^ action-o-cancelled ^ ~s25'))) then (if (s37 ^ action-o-cancelled) then (Bernoulli(0.978261)) else (if (s40 ^ action-o-cancelled) then (true) else (if (s44 ^ action-o-cancelled ^ ~s25') then true else false))) else (if ((s50 ^ action-o-cancelled) | (s68 ^ action-o-cancelled)) then (if (s50 ^ action-o-cancelled) then (true) else (if (s68 ^ action-o-cancelled) then true else false)) else (if (s105 ^ action-o-cancelled) then (Bernoulli(0.034483)) else (if (s115 ^ action-o-cancelled) then true else false)));
+
+        s44' = if (((s8 ^ action-w-nabellen-offertes ^ ~s10') | ((s10 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24') | (s23 ^ action-w-nabellen-offertes ^ ~s24'))) | (((s24 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24') | (s26 ^ action-w-nabellen-offertes ^ ~s24')) | ((s37 ^ action-w-nabellen-offertes ^ ~s10') | (s42 ^ action-w-nabellen-offertes)))) then (if ((s8 ^ action-w-nabellen-offertes ^ ~s10') | ((s10 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24') | (s23 ^ action-w-nabellen-offertes ^ ~s24'))) then (if (s8 ^ action-w-nabellen-offertes ^ ~s10') then (true) else (if (s10 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24') then (Bernoulli(0.857143)) else (if (s23 ^ action-w-nabellen-offertes ^ ~s24') then true else false))) else (if ((s24 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24') | (s26 ^ action-w-nabellen-offertes ^ ~s24')) then (if (s24 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24') then (true) else (if (s26 ^ action-w-nabellen-offertes ^ ~s24') then true else false)) else (if (s37 ^ action-w-nabellen-offertes ^ ~s10') then (true) else (if (s42 ^ action-w-nabellen-offertes) then true else false)))) else (if (((s43 ^ action-w-nabellen-offertes) | (s44 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24')) | ((s45 ^ action-w-nabellen-offertes) | (s104 ^ action-w-nabellen-offertes))) then (if ((s43 ^ action-w-nabellen-offertes) | (s44 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24')) then (if (s43 ^ action-w-nabellen-offertes) then (true) else (if (s44 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24') then Bernoulli(0.998856) else false)) else (if (s45 ^ action-w-nabellen-offertes) then (true) else (if (s104 ^ action-w-nabellen-offertes) then Bernoulli(0.007092) else false))) else (if ((s105 ^ action-w-nabellen-offertes) | (s115 ^ action-w-nabellen-offertes)) then (if (s105 ^ action-w-nabellen-offertes) then (Bernoulli(0.004184)) else (if (s115 ^ action-w-nabellen-offertes) then true else false)) else (if (s119 ^ action-w-nabellen-offertes ^ ~s10') then (true) else (if (s121 ^ action-w-nabellen-offertes) then true else false))));
+
+        s45' = if ((s37 ^ action-o-sent-back) | (s44 ^ action-o-sent-back ^ ~s11' ^ ~s26')) then (if (s37 ^ action-o-sent-back) then (true) else (if (s44 ^ action-o-sent-back ^ ~s11' ^ ~s26') then Bernoulli(0.996540) else false)) else (if (s50 ^ action-o-sent-back) then (true) else (if (s68 ^ action-o-sent-back) then true else false));
+
+        s46' = if ((s44 ^ action-o-accepted ^ ~s14' ^ ~s28') | ((s47 ^ action-o-accepted) | (s48 ^ action-o-accepted))) then (if (s44 ^ action-o-accepted ^ ~s14' ^ ~s28') then (true) else (if (s47 ^ action-o-accepted) then (true) else (if (s48 ^ action-o-accepted) then true else false))) else (if ((s49 ^ action-o-accepted) | (s50 ^ action-o-accepted)) then (if (s49 ^ action-o-accepted) then (true) else (if (s50 ^ action-o-accepted) then true else false)) else (if (s68 ^ action-o-accepted ^ ~s28') then (true) else (if (s72 ^ action-o-accepted ^ ~s14') then true else false)));
+
+        s47' = if ((s44 ^ action-a-approved ^ ~s13' ^ ~s29') | ((s46 ^ action-a-approved) | (s48 ^ action-a-approved))) then (if (s44 ^ action-a-approved ^ ~s13' ^ ~s29') then (true) else (if (s46 ^ action-a-approved) then (true) else (if (s48 ^ action-a-approved) then true else false))) else (if (s49 ^ action-a-approved) then (true) else (if (s50 ^ action-a-approved ^ ~s29') then (true) else (if (s68 ^ action-a-approved ^ ~s13') then true else false)));
+
+        s48' = if ((s44 ^ action-a-registered ^ ~s12') | ((s46 ^ action-a-registered) | (s47 ^ action-a-registered))) then (if (s44 ^ action-a-registered ^ ~s12') then (true) else (if (s46 ^ action-a-registered) then (true) else (if (s47 ^ action-a-registered) then true else false))) else (if (s49 ^ action-a-registered) then (true) else (if (s50 ^ action-a-registered) then (true) else (if (s68 ^ action-a-registered ^ ~s30') then true else false)));
+
+        s49' = if ((s44 ^ action-a-activated) | ((s46 ^ action-a-activated) | (s47 ^ action-a-activated))) then (if (s44 ^ action-a-activated) then (true) else (if (s46 ^ action-a-activated) then (true) else (if (s47 ^ action-a-activated) then true else false))) else (if (s48 ^ action-a-activated) then (true) else (if (s50 ^ action-a-activated) then (true) else (if (s68 ^ action-a-activated ^ ~s31') then true else false)));
+
+        s50' = if ((((s10 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') | (s16 ^ action-w-valideren-aanvraag ^ ~s16')) | ((s27 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') | (s42 ^ action-w-valideren-aanvraag))) | (((s43 ^ action-w-valideren-aanvraag) | (s44 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27')) | ((s46 ^ action-w-valideren-aanvraag) | (s47 ^ action-w-valideren-aanvraag)))) then (if (((s10 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') | (s16 ^ action-w-valideren-aanvraag ^ ~s16')) | ((s27 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') | (s42 ^ action-w-valideren-aanvraag))) then (if ((s10 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') | (s16 ^ action-w-valideren-aanvraag ^ ~s16')) then (if (s10 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') then (true) else (if (s16 ^ action-w-valideren-aanvraag ^ ~s16') then true else false)) else (if (s27 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') then (true) else (if (s42 ^ action-w-valideren-aanvraag) then true else false))) else (if ((s43 ^ action-w-valideren-aanvraag) | (s44 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27')) then (if (s43 ^ action-w-valideren-aanvraag) then (true) else (if (s44 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') then true else false)) else (if (s46 ^ action-w-valideren-aanvraag) then (true) else (if (s47 ^ action-w-valideren-aanvraag) then true else false)))) else (if (((s48 ^ action-w-valideren-aanvraag) | (s49 ^ action-w-valideren-aanvraag)) | ((s50 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') | (s68 ^ action-w-valideren-aanvraag ^ ~s27'))) then (if ((s48 ^ action-w-valideren-aanvraag) | (s49 ^ action-w-valideren-aanvraag)) then (if (s48 ^ action-w-valideren-aanvraag) then (true) else (if (s49 ^ action-w-valideren-aanvraag) then true else false)) else (if (s50 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s27') then (true) else (if (s68 ^ action-w-valideren-aanvraag ^ ~s27') then true else false))) else (if ((s115 ^ action-w-valideren-aanvraag) | (s121 ^ action-w-valideren-aanvraag)) then (if (s115 ^ action-w-valideren-aanvraag) then (true) else (if (s121 ^ action-w-valideren-aanvraag) then true else false)) else (if (s122 ^ action-w-valideren-aanvraag) then (true) else (if (s213 ^ action-w-valideren-aanvraag) then true else false))));
+
+        s51' = if ((s43 ^ action-archive-application) | (s44 ^ action-archive-application)) then (if (s43 ^ action-archive-application) then (true) else (if (s44 ^ action-archive-application) then true else false)) else (if (s50 ^ action-archive-application) then (true) else (if (s68 ^ action-archive-application) then (true) else (if (s115 ^ action-archive-application) then true else false)));
+
+        s52' = false;
+
+        s53' = if (s52 ^ action-a-submitted) then true else false;
+
+        s54' = if (s53 ^ action-a-partlysubmitted) then true else false;
+
+        s55' = if (s54 ^ action-a-preaccepted) then (true) else (if (s116 ^ action-a-preaccepted) then true else false);
+
+        s56' = if ((s55 ^ action-w-completeren-aanvraag) | (s56 ^ action-w-completeren-aanvraag)) then (if (s55 ^ action-w-completeren-aanvraag) then (true) else (if (s56 ^ action-w-completeren-aanvraag) then true else false)) else (if (s57 ^ action-w-completeren-aanvraag) then (true) else (if (s61 ^ action-w-completeren-aanvraag) then (true) else (if (s116 ^ action-w-completeren-aanvraag) then true else false)));
+
+        s57' = if (s55 ^ action-a-accepted) then (Bernoulli(0.984848)) else (if (s56 ^ action-a-accepted) then (true) else (if (s116 ^ action-a-accepted) then true else false));
+
+        s58' = if ((s56 ^ action-o-selected) | ((s57 ^ action-o-selected) | (s59 ^ action-o-selected))) then (if (s56 ^ action-o-selected) then (true) else (if (s57 ^ action-o-selected) then (true) else (if (s59 ^ action-o-selected) then true else false))) else (if ((s62 ^ action-o-selected) | (s66 ^ action-o-selected)) then (if (s62 ^ action-o-selected) then (true) else (if (s66 ^ action-o-selected) then true else false)) else (if (s118 ^ action-o-selected) then (true) else (if (s123 ^ action-o-selected) then true else false)));
+
+        s59' = if (s56 ^ action-a-finalized) then (true) else (if (s57 ^ action-a-finalized) then (true) else (if (s58 ^ action-a-finalized) then true else false));
+
+        s60' = if (s58 ^ action-o-created) then (true) else (if (s59 ^ action-o-created) then (true) else (if (s118 ^ action-o-created) then true else false));
+
+        s61' = if (s60 ^ action-o-sent) then true else false;
+
+        s62' = if (((s56 ^ action-w-nabellen-offertes) | (s61 ^ action-w-nabellen-offertes)) | ((s62 ^ action-w-nabellen-offertes) | (s63 ^ action-w-nabellen-offertes))) then (if ((s56 ^ action-w-nabellen-offertes) | (s61 ^ action-w-nabellen-offertes)) then (if (s56 ^ action-w-nabellen-offertes) then (true) else (if (s61 ^ action-w-nabellen-offertes) then true else false)) else (if (s62 ^ action-w-nabellen-offertes) then (true) else (if (s63 ^ action-w-nabellen-offertes) then true else false))) else (if ((s64 ^ action-w-nabellen-offertes) | (s87 ^ action-w-nabellen-offertes)) then (if (s64 ^ action-w-nabellen-offertes) then (true) else (if (s87 ^ action-w-nabellen-offertes) then Bernoulli(0.001493) else false)) else (if (s117 ^ action-w-nabellen-offertes) then (true) else (if (s118 ^ action-w-nabellen-offertes) then true else false)));
+
+        s63' = if ((s56 ^ action-o-sent-back) | (s62 ^ action-o-sent-back)) then (if (s56 ^ action-o-sent-back) then (true) else (if (s62 ^ action-o-sent-back) then true else false)) else (if (s66 ^ action-o-sent-back) then (true) else (if (s123 ^ action-o-sent-back) then true else false));
+
+        s64' = if ((s62 ^ action-a-declined) | (s65 ^ action-a-declined)) then (if (s62 ^ action-a-declined) then (true) else (if (s65 ^ action-a-declined) then true else false)) else (if (s66 ^ action-a-declined) then (true) else (if (s123 ^ action-a-declined) then true else false));
+
+        s65' = if ((s56 ^ action-o-declined) | (s62 ^ action-o-declined)) then (if (s56 ^ action-o-declined) then (true) else (if (s62 ^ action-o-declined) then true else false)) else (if (s64 ^ action-o-declined) then (true) else (if (s66 ^ action-o-declined) then (true) else (if (s123 ^ action-o-declined) then true else false)));
+
+        s66' = if ((((s61 ^ action-w-valideren-aanvraag) | (s62 ^ action-w-valideren-aanvraag)) | ((s64 ^ action-w-valideren-aanvraag) | (s65 ^ action-w-valideren-aanvraag))) | (((s66 ^ action-w-valideren-aanvraag) | (s93 ^ action-w-valideren-aanvraag)) | ((s117 ^ action-w-valideren-aanvraag) | (s118 ^ action-w-valideren-aanvraag)))) then (if (((s61 ^ action-w-valideren-aanvraag) | (s62 ^ action-w-valideren-aanvraag)) | ((s64 ^ action-w-valideren-aanvraag) | (s65 ^ action-w-valideren-aanvraag))) then (if ((s61 ^ action-w-valideren-aanvraag) | (s62 ^ action-w-valideren-aanvraag)) then (if (s61 ^ action-w-valideren-aanvraag) then (true) else (if (s62 ^ action-w-valideren-aanvraag) then Bernoulli(0.990566) else false)) else (if (s64 ^ action-w-valideren-aanvraag) then (true) else (if (s65 ^ action-w-valideren-aanvraag) then true else false))) else (if ((s66 ^ action-w-valideren-aanvraag) | (s93 ^ action-w-valideren-aanvraag)) then (if (s66 ^ action-w-valideren-aanvraag) then (true) else (if (s93 ^ action-w-valideren-aanvraag) then Bernoulli(0.004739) else false)) else (if (s117 ^ action-w-valideren-aanvraag) then (true) else (if (s118 ^ action-w-valideren-aanvraag) then true else false)))) else (if (((s123 ^ action-w-valideren-aanvraag) | (s124 ^ action-w-valideren-aanvraag)) | ((s125 ^ action-w-valideren-aanvraag) | (s126 ^ action-w-valideren-aanvraag))) then (if ((s123 ^ action-w-valideren-aanvraag) | (s124 ^ action-w-valideren-aanvraag)) then (if (s123 ^ action-w-valideren-aanvraag) then (true) else (if (s124 ^ action-w-valideren-aanvraag) then true else false)) else (if (s125 ^ action-w-valideren-aanvraag) then (true) else (if (s126 ^ action-w-valideren-aanvraag) then true else false))) else (if ((s127 ^ action-w-valideren-aanvraag) | (s179 ^ action-w-valideren-aanvraag ^ ~s16')) then (if (s127 ^ action-w-valideren-aanvraag) then (true) else (if (s179 ^ action-w-valideren-aanvraag ^ ~s16') then Bernoulli(0.012658) else false)) else (if (s200 ^ action-w-valideren-aanvraag) then (Bernoulli(0.023810)) else (if (s220 ^ action-w-valideren-aanvraag) then true else false))));
+
+        s67' = if ((s62 ^ action-archive-application) | (s66 ^ action-archive-application)) then (if (s62 ^ action-archive-application) then (true) else (if (s66 ^ action-archive-application) then true else false)) else (if (s117 ^ action-archive-application) then (true) else (if (s118 ^ action-archive-application) then (true) else (if (s123 ^ action-archive-application) then true else false)));
+
+        s68' = if ((((s16 ^ action-w-nabellen-incomplete-dossiers) | (s27 ^ action-w-nabellen-incomplete-dossiers)) | ((s42 ^ action-w-nabellen-incomplete-dossiers) | (s43 ^ action-w-nabellen-incomplete-dossiers))) | (((s45 ^ action-w-nabellen-incomplete-dossiers) | (s46 ^ action-w-nabellen-incomplete-dossiers)) | ((s47 ^ action-w-nabellen-incomplete-dossiers) | (s48 ^ action-w-nabellen-incomplete-dossiers)))) then (if (((s16 ^ action-w-nabellen-incomplete-dossiers) | (s27 ^ action-w-nabellen-incomplete-dossiers)) | ((s42 ^ action-w-nabellen-incomplete-dossiers) | (s43 ^ action-w-nabellen-incomplete-dossiers))) then (if ((s16 ^ action-w-nabellen-incomplete-dossiers) | (s27 ^ action-w-nabellen-incomplete-dossiers)) then (if (s16 ^ action-w-nabellen-incomplete-dossiers) then (Bernoulli(0.004329)) else (if (s27 ^ action-w-nabellen-incomplete-dossiers) then Bernoulli(0.032454) else false)) else (if (s42 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s43 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if ((s45 ^ action-w-nabellen-incomplete-dossiers) | (s46 ^ action-w-nabellen-incomplete-dossiers)) then (if (s45 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s46 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s47 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s48 ^ action-w-nabellen-incomplete-dossiers) then true else false)))) else (if (((s49 ^ action-w-nabellen-incomplete-dossiers) | (s50 ^ action-w-nabellen-incomplete-dossiers)) | ((s68 ^ action-w-nabellen-incomplete-dossiers) | (s69 ^ action-w-nabellen-incomplete-dossiers))) then (if ((s49 ^ action-w-nabellen-incomplete-dossiers) | (s50 ^ action-w-nabellen-incomplete-dossiers)) then (if (s49 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s50 ^ action-w-nabellen-incomplete-dossiers) then Bernoulli(0.991453) else false)) else (if (s68 ^ action-w-nabellen-incomplete-dossiers) then (Bernoulli(0.989560)) else (if (s69 ^ action-w-nabellen-incomplete-dossiers) then Bernoulli(0.004283) else false))) else (if ((s72 ^ action-w-nabellen-incomplete-dossiers) | (s108 ^ action-w-nabellen-incomplete-dossiers)) then (if (s72 ^ action-w-nabellen-incomplete-dossiers) then (Bernoulli(0.007530)) else (if (s108 ^ action-w-nabellen-incomplete-dossiers) then Bernoulli(0.002597) else false)) else (if (s115 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s121 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s122 ^ action-w-nabellen-incomplete-dossiers) then true else false)))));
+
+        s69' = if (((s16 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') | ((s23 ^ action-w-nabellen-incomplete-dossiers) | (s25 ^ action-w-nabellen-incomplete-dossiers))) | (((s26 ^ action-w-nabellen-incomplete-dossiers) | (s27 ^ action-w-nabellen-incomplete-dossiers ^ ~s68')) | ((s28 ^ action-w-nabellen-incomplete-dossiers) | (s29 ^ action-w-nabellen-incomplete-dossiers)))) then (if ((s16 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') | ((s23 ^ action-w-nabellen-incomplete-dossiers) | (s25 ^ action-w-nabellen-incomplete-dossiers))) then (if (s16 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') then (Bernoulli(0.004348)) else (if (s23 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s25 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if ((s26 ^ action-w-nabellen-incomplete-dossiers) | (s27 ^ action-w-nabellen-incomplete-dossiers ^ ~s68')) then (if (s26 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s27 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') then true else false)) else (if (s28 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s29 ^ action-w-nabellen-incomplete-dossiers) then true else false)))) else (if (((s30 ^ action-w-nabellen-incomplete-dossiers) | (s31 ^ action-w-nabellen-incomplete-dossiers)) | ((s68 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') | (s69 ^ action-w-nabellen-incomplete-dossiers ^ ~s68'))) then (if ((s30 ^ action-w-nabellen-incomplete-dossiers) | (s31 ^ action-w-nabellen-incomplete-dossiers)) then (if (s30 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s31 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s68 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') then (Bernoulli(0.500000)) else (if (s69 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') then Bernoulli(0.997849) else false))) else (if ((s70 ^ action-w-nabellen-incomplete-dossiers) | (s71 ^ action-w-nabellen-incomplete-dossiers)) then (if (s70 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s71 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s72 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') then (Bernoulli(0.001517)) else (if (s76 ^ action-w-nabellen-incomplete-dossiers) then true else false))));
+
+        s70' = if ((s18 ^ action-o-declined) | ((s24 ^ action-o-declined) | (s27 ^ action-o-declined))) then (if (s18 ^ action-o-declined) then (true) else (if (s24 ^ action-o-declined) then (true) else (if (s27 ^ action-o-declined) then true else false))) else (if ((s44 ^ action-o-declined) | (s69 ^ action-o-declined)) then (if (s44 ^ action-o-declined) then (Bernoulli(0.055556)) else (if (s69 ^ action-o-declined) then true else false)) else (if (s71 ^ action-o-declined) then (true) else (if (s206 ^ action-o-declined) then true else false)));
+
+        s71' = if (((s18 ^ action-a-declined) | (s24 ^ action-a-declined)) | ((s27 ^ action-a-declined) | (s44 ^ action-a-declined))) then (if ((s18 ^ action-a-declined) | (s24 ^ action-a-declined)) then (if (s18 ^ action-a-declined) then (true) else (if (s24 ^ action-a-declined) then true else false)) else (if (s27 ^ action-a-declined) then (true) else (if (s44 ^ action-a-declined) then Bernoulli(0.250000) else false))) else (if ((s50 ^ action-a-declined) | (s68 ^ action-a-declined)) then (if (s50 ^ action-a-declined) then (Bernoulli(0.181818)) else (if (s68 ^ action-a-declined) then Bernoulli(0.125000) else false)) else (if (s69 ^ action-a-declined) then (true) else (if (s70 ^ action-a-declined) then true else false)));
+
+        s72' = if (((s8 ^ action-w-nabellen-incomplete-dossiers) | ((s11 ^ action-w-nabellen-incomplete-dossiers) | (s12 ^ action-w-nabellen-incomplete-dossiers))) | (((s13 ^ action-w-nabellen-incomplete-dossiers) | (s14 ^ action-w-nabellen-incomplete-dossiers)) | ((s15 ^ action-w-nabellen-incomplete-dossiers) | (s16 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69')))) then (if ((s8 ^ action-w-nabellen-incomplete-dossiers) | ((s11 ^ action-w-nabellen-incomplete-dossiers) | (s12 ^ action-w-nabellen-incomplete-dossiers))) then (if (s8 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s11 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s12 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if ((s13 ^ action-w-nabellen-incomplete-dossiers) | (s14 ^ action-w-nabellen-incomplete-dossiers)) then (if (s13 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s14 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s15 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s16 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69') then Bernoulli(0.995633) else false)))) else (if (((s50 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') | (s68 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69')) | ((s69 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69') | (s72 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69'))) then (if ((s50 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') | (s68 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69')) then (if (s50 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') then (true) else (if (s68 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69') then Bernoulli(0.714286) else false)) else (if (s69 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69') then (true) else (if (s72 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69') then true else false))) else (if ((s73 ^ action-w-nabellen-incomplete-dossiers) | (s114 ^ action-w-nabellen-incomplete-dossiers)) then (if (s73 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s114 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s119 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s120 ^ action-w-nabellen-incomplete-dossiers) then true else false))));
+
+        s73' = if ((s5 ^ action-o-cancelled) | ((s9 ^ action-o-cancelled) | (s10 ^ action-o-cancelled))) then (if (s5 ^ action-o-cancelled) then (true) else (if (s9 ^ action-o-cancelled) then (true) else (if (s10 ^ action-o-cancelled) then true else false))) else (if ((s16 ^ action-o-cancelled) | (s37 ^ action-o-cancelled ^ ~s43')) then (if (s16 ^ action-o-cancelled) then (true) else (if (s37 ^ action-o-cancelled ^ ~s43') then true else false)) else (if (s72 ^ action-o-cancelled) then (true) else (if (s114 ^ action-o-cancelled) then true else false)));
+
+        s74' = if (s2 ^ action-a-preaccepted ^ ~s3' ^ ~s36') then (Bernoulli(0.651869)) else (if (s75 ^ action-a-preaccepted) then true else false);
+
+        s75' = if (s2 ^ action-w-afhandelen-leads) then (Bernoulli(0.511905)) else (if (s74 ^ action-w-afhandelen-leads) then (Bernoulli(0.996894)) else (if (s75 ^ action-w-afhandelen-leads) then true else false));
+
+        s76' = if ((s18 ^ action-a-cancelled) | (s24 ^ action-a-cancelled)) then (if (s18 ^ action-a-cancelled) then (true) else (if (s24 ^ action-a-cancelled) then true else false)) else (if (s25 ^ action-a-cancelled) then (true) else (if (s27 ^ action-a-cancelled) then (true) else (if (s69 ^ action-a-cancelled) then true else false)));
+
+        s77' = false;
+
+        s78' = if (s77 ^ action-a-submitted) then true else false;
+
+        s79' = if (s78 ^ action-a-partlysubmitted) then true else false;
+
+        s80' = if (s79 ^ action-a-preaccepted) then (true) else (if (s170 ^ action-a-preaccepted) then (Bernoulli(0.003788)) else (if (s197 ^ action-a-preaccepted) then true else false));
+
+        s81' = if ((s9 ^ action-a-accepted ^ ~s4' ^ ~s19') | ((s55 ^ action-a-accepted ^ ~s57') | (s80 ^ action-a-accepted ^ ~s4'))) then (if (s9 ^ action-a-accepted ^ ~s4' ^ ~s19') then (true) else (if (s55 ^ action-a-accepted ^ ~s57') then (true) else (if (s80 ^ action-a-accepted ^ ~s4') then true else false))) else (if (s86 ^ action-a-accepted) then (true) else (if (s171 ^ action-a-accepted) then (Bernoulli(0.012048)) else (if (s197 ^ action-a-accepted ^ ~s4') then Bernoulli(0.984127) else false)));
+
+        s82' = if (s81 ^ action-a-finalized) then (true) else (if (s83 ^ action-a-finalized) then (true) else (if (s86 ^ action-a-finalized) then true else false));
+
+        s83' = if ((s81 ^ action-o-selected) | ((s82 ^ action-o-selected) | (s86 ^ action-o-selected))) then (if (s81 ^ action-o-selected) then (true) else (if (s82 ^ action-o-selected) then (true) else (if (s86 ^ action-o-selected) then true else false))) else (if ((s87 ^ action-o-selected) | (s93 ^ action-o-selected)) then (if (s87 ^ action-o-selected) then (true) else (if (s93 ^ action-o-selected) then true else false)) else (if (s183 ^ action-o-selected) then (true) else (if (s191 ^ action-o-selected) then true else false)));
+
+        s84' = if (s82 ^ action-o-created) then (true) else (if (s83 ^ action-o-created) then (true) else (if (s183 ^ action-o-created) then true else false));
+
+        s85' = if (s84 ^ action-o-sent) then true else false;
+
+        s86' = if ((s80 ^ action-w-completeren-aanvraag ^ ~s9') | (s81 ^ action-w-completeren-aanvraag)) then (if (s80 ^ action-w-completeren-aanvraag ^ ~s9') then (true) else (if (s81 ^ action-w-completeren-aanvraag) then true else false)) else (if (s85 ^ action-w-completeren-aanvraag ^ ~s9') then (true) else (if (s86 ^ action-w-completeren-aanvraag) then (true) else (if (s197 ^ action-w-completeren-aanvraag) then true else false)));
+
+        s87' = if (((s10 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24' ^ ~s44') | (s85 ^ action-w-nabellen-offertes)) | ((s86 ^ action-w-nabellen-offertes) | ((s87 ^ action-w-nabellen-offertes ^ ~s62') | (s88 ^ action-w-nabellen-offertes ^ ~s10')))) then (if ((s10 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24' ^ ~s44') | (s85 ^ action-w-nabellen-offertes)) then (if (s10 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24' ^ ~s44') then (true) else (if (s85 ^ action-w-nabellen-offertes) then true else false)) else (if (s86 ^ action-w-nabellen-offertes) then (true) else (if (s87 ^ action-w-nabellen-offertes ^ ~s62') then (Bernoulli(0.995516)) else (if (s88 ^ action-w-nabellen-offertes ^ ~s10') then true else false)))) else (if ((s178 ^ action-w-nabellen-offertes) | ((s179 ^ action-w-nabellen-offertes) | (s183 ^ action-w-nabellen-offertes))) then (if (s178 ^ action-w-nabellen-offertes) then (Bernoulli(0.004854)) else (if (s179 ^ action-w-nabellen-offertes) then (Bernoulli(0.001863)) else (if (s183 ^ action-w-nabellen-offertes) then true else false))) else (if (s184 ^ action-w-nabellen-offertes) then (true) else (if (s198 ^ action-w-nabellen-offertes) then (true) else (if (s199 ^ action-w-nabellen-offertes) then true else false))));
+
+        s88' = if ((s10 ^ action-o-sent-back ^ ~s11') | (s86 ^ action-o-sent-back)) then (if (s10 ^ action-o-sent-back ^ ~s11') then (true) else (if (s86 ^ action-o-sent-back) then true else false)) else (if (s87 ^ action-o-sent-back) then (true) else (if (s191 ^ action-o-sent-back) then (true) else (if (s200 ^ action-o-sent-back) then Bernoulli(0.045455) else false)));
+
+        s89' = if ((s87 ^ action-a-approved) | ((s90 ^ action-a-approved) | (s91 ^ action-a-approved))) then (if (s87 ^ action-a-approved) then (true) else (if (s90 ^ action-a-approved) then (true) else (if (s91 ^ action-a-approved) then true else false))) else (if ((s92 ^ action-a-approved) | (s93 ^ action-a-approved)) then (if (s92 ^ action-a-approved) then (true) else (if (s93 ^ action-a-approved) then true else false)) else (if (s190 ^ action-a-approved) then (Bernoulli(0.090909)) else (if (s191 ^ action-a-approved) then true else false)));
+
+        s90' = if ((s87 ^ action-a-activated) | ((s89 ^ action-a-activated) | (s91 ^ action-a-activated))) then (if (s87 ^ action-a-activated) then (true) else (if (s89 ^ action-a-activated) then (true) else (if (s91 ^ action-a-activated) then true else false))) else (if (s92 ^ action-a-activated) then (true) else (if (s93 ^ action-a-activated) then (true) else (if (s191 ^ action-a-activated) then true else false)));
+
+        s91' = if ((s87 ^ action-a-registered) | ((s89 ^ action-a-registered) | (s90 ^ action-a-registered))) then (if (s87 ^ action-a-registered) then (true) else (if (s89 ^ action-a-registered) then (true) else (if (s90 ^ action-a-registered) then true else false))) else (if ((s92 ^ action-a-registered) | (s93 ^ action-a-registered)) then (if (s92 ^ action-a-registered) then (true) else (if (s93 ^ action-a-registered) then true else false)) else (if (s191 ^ action-a-registered) then (true) else (if (s200 ^ action-a-registered) then Bernoulli(0.333333) else false)));
+
+        s92' = if ((s66 ^ action-o-accepted) | ((s87 ^ action-o-accepted) | (s89 ^ action-o-accepted))) then (if (s66 ^ action-o-accepted) then (Bernoulli(0.030303)) else (if (s87 ^ action-o-accepted) then (true) else (if (s89 ^ action-o-accepted) then true else false))) else (if ((s90 ^ action-o-accepted) | (s91 ^ action-o-accepted)) then (if (s90 ^ action-o-accepted) then (true) else (if (s91 ^ action-o-accepted) then true else false)) else (if (s93 ^ action-o-accepted) then (true) else (if (s191 ^ action-o-accepted) then true else false)));
+
+        s93' = if (((s62 ^ action-w-valideren-aanvraag ^ ~s66') | ((s85 ^ action-w-valideren-aanvraag) | (s87 ^ action-w-valideren-aanvraag))) | ((s89 ^ action-w-valideren-aanvraag) | ((s90 ^ action-w-valideren-aanvraag) | (s91 ^ action-w-valideren-aanvraag)))) then (if ((s62 ^ action-w-valideren-aanvraag ^ ~s66') | ((s85 ^ action-w-valideren-aanvraag) | (s87 ^ action-w-valideren-aanvraag))) then (if (s62 ^ action-w-valideren-aanvraag ^ ~s66') then (true) else (if (s85 ^ action-w-valideren-aanvraag) then (true) else (if (s87 ^ action-w-valideren-aanvraag) then true else false))) else (if (s89 ^ action-w-valideren-aanvraag) then (true) else (if (s90 ^ action-w-valideren-aanvraag) then (true) else (if (s91 ^ action-w-valideren-aanvraag) then true else false)))) else (if ((s92 ^ action-w-valideren-aanvraag) | ((s93 ^ action-w-valideren-aanvraag ^ ~s66') | (s183 ^ action-w-valideren-aanvraag))) then (if (s92 ^ action-w-valideren-aanvraag) then (true) else (if (s93 ^ action-w-valideren-aanvraag ^ ~s66') then (true) else (if (s183 ^ action-w-valideren-aanvraag) then true else false))) else (if ((s191 ^ action-w-valideren-aanvraag) | (s198 ^ action-w-valideren-aanvraag)) then (if (s191 ^ action-w-valideren-aanvraag) then (true) else (if (s198 ^ action-w-valideren-aanvraag) then true else false)) else (if (s199 ^ action-w-valideren-aanvraag) then (true) else (if (s218 ^ action-w-valideren-aanvraag) then true else false))));
+
+        s94' = if (s87 ^ action-archive-application) then (true) else (if (s93 ^ action-archive-application) then (true) else (if (s191 ^ action-archive-application) then true else false));
+
+        s95' = false;
+
+        s96' = if (s95 ^ action-a-submitted) then true else false;
+
+        s97' = if (s96 ^ action-a-partlysubmitted) then true else false;
+
+        s98' = if (s35 ^ action-a-preaccepted ^ ~s36') then (true) else (if (s97 ^ action-a-preaccepted) then (true) else (if (s193 ^ action-a-preaccepted) then true else false));
+
+        s99' = if (((s36 ^ action-w-completeren-aanvraag ^ ~s37') | (s37 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18' ^ ~s37')) | ((s98 ^ action-w-completeren-aanvraag) | (s99 ^ action-w-completeren-aanvraag ^ ~s37'))) then (if ((s36 ^ action-w-completeren-aanvraag ^ ~s37') | (s37 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18' ^ ~s37')) then (if (s36 ^ action-w-completeren-aanvraag ^ ~s37') then (true) else (if (s37 ^ action-w-completeren-aanvraag ^ ~s9' ^ ~s18' ^ ~s37') then true else false)) else (if (s98 ^ action-w-completeren-aanvraag) then (true) else (if (s99 ^ action-w-completeren-aanvraag ^ ~s37') then true else false))) else (if ((s100 ^ action-w-completeren-aanvraag) | (s104 ^ action-w-completeren-aanvraag)) then (if (s100 ^ action-w-completeren-aanvraag) then (true) else (if (s104 ^ action-w-completeren-aanvraag) then true else false)) else (if (s171 ^ action-w-completeren-aanvraag) then (Bernoulli(0.009434)) else (if (s193 ^ action-w-completeren-aanvraag) then true else false)));
+
+        s100' = if ((s98 ^ action-a-accepted) | (s99 ^ action-a-accepted)) then (if (s98 ^ action-a-accepted) then (true) else (if (s99 ^ action-a-accepted) then true else false)) else (if (s171 ^ action-a-accepted ^ ~s81') then (Bernoulli(0.012195)) else (if (s193 ^ action-a-accepted) then true else false));
+
+        s101' = if (((s44 ^ action-o-selected ^ ~s5' ^ ~s21' ^ ~s40') | (s99 ^ action-o-selected)) | ((s100 ^ action-o-selected) | (s102 ^ action-o-selected))) then (if ((s44 ^ action-o-selected ^ ~s5' ^ ~s21' ^ ~s40') | (s99 ^ action-o-selected)) then (if (s44 ^ action-o-selected ^ ~s5' ^ ~s21' ^ ~s40') then (true) else (if (s99 ^ action-o-selected) then true else false)) else (if (s100 ^ action-o-selected) then (true) else (if (s102 ^ action-o-selected) then true else false))) else (if ((s105 ^ action-o-selected) | (s107 ^ action-o-selected)) then (if (s105 ^ action-o-selected) then (true) else (if (s107 ^ action-o-selected) then true else false)) else (if (s108 ^ action-o-selected) then (true) else (if (s194 ^ action-o-selected) then true else false)));
+
+        s102' = if (s99 ^ action-a-finalized) then (true) else (if (s100 ^ action-a-finalized) then (true) else (if (s101 ^ action-a-finalized) then true else false));
+
+        s103' = if (s101 ^ action-o-created) then (true) else (if (s102 ^ action-o-created) then (true) else (if (s194 ^ action-o-created) then true else false));
+
+        s104' = if (s103 ^ action-o-sent) then true else false;
+
+        s105' = if (((s44 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24' ^ ~s44') | (s99 ^ action-w-nabellen-offertes)) | ((s104 ^ action-w-nabellen-offertes ^ ~s44') | (s105 ^ action-w-nabellen-offertes ^ ~s44'))) then (if ((s44 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24' ^ ~s44') | (s99 ^ action-w-nabellen-offertes)) then (if (s44 ^ action-w-nabellen-offertes ^ ~s10' ^ ~s24' ^ ~s44') then (true) else (if (s99 ^ action-w-nabellen-offertes) then true else false)) else (if (s104 ^ action-w-nabellen-offertes ^ ~s44') then (true) else (if (s105 ^ action-w-nabellen-offertes ^ ~s44') then true else false))) else (if ((s106 ^ action-w-nabellen-offertes) | (s107 ^ action-w-nabellen-offertes)) then (if (s106 ^ action-w-nabellen-offertes) then (true) else (if (s107 ^ action-w-nabellen-offertes) then true else false)) else (if (s194 ^ action-w-nabellen-offertes) then (true) else (if (s201 ^ action-w-nabellen-offertes) then true else false)));
+
+        s106' = if ((s44 ^ action-o-sent-back ^ ~s11' ^ ~s26' ^ ~s45') | (s99 ^ action-o-sent-back)) then (if (s44 ^ action-o-sent-back ^ ~s11' ^ ~s26' ^ ~s45') then (true) else (if (s99 ^ action-o-sent-back) then true else false)) else (if (s105 ^ action-o-sent-back) then (true) else (if (s107 ^ action-o-sent-back) then (true) else (if (s108 ^ action-o-sent-back) then true else false)));
+
+        s107' = if (((s104 ^ action-w-valideren-aanvraag) | (s105 ^ action-w-valideren-aanvraag)) | ((s107 ^ action-w-valideren-aanvraag) | ((s108 ^ action-w-valideren-aanvraag) | (s109 ^ action-w-valideren-aanvraag)))) then (if ((s104 ^ action-w-valideren-aanvraag) | (s105 ^ action-w-valideren-aanvraag)) then (if (s104 ^ action-w-valideren-aanvraag) then (true) else (if (s105 ^ action-w-valideren-aanvraag) then true else false)) else (if (s107 ^ action-w-valideren-aanvraag) then (true) else (if (s108 ^ action-w-valideren-aanvraag) then (true) else (if (s109 ^ action-w-valideren-aanvraag) then true else false)))) else (if ((s110 ^ action-w-valideren-aanvraag) | ((s111 ^ action-w-valideren-aanvraag) | (s112 ^ action-w-valideren-aanvraag))) then (if (s110 ^ action-w-valideren-aanvraag) then (true) else (if (s111 ^ action-w-valideren-aanvraag) then (true) else (if (s112 ^ action-w-valideren-aanvraag) then true else false))) else (if (s201 ^ action-w-valideren-aanvraag) then (true) else (if (s204 ^ action-w-valideren-aanvraag) then (true) else (if (s205 ^ action-w-valideren-aanvraag) then true else false))));
+
+        s108' = if (((s68 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69' ^ ~s72') | ((s104 ^ action-w-nabellen-incomplete-dossiers) | (s106 ^ action-w-nabellen-incomplete-dossiers))) | ((s107 ^ action-w-nabellen-incomplete-dossiers) | ((s108 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') | (s109 ^ action-w-nabellen-incomplete-dossiers)))) then (if ((s68 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69' ^ ~s72') | ((s104 ^ action-w-nabellen-incomplete-dossiers) | (s106 ^ action-w-nabellen-incomplete-dossiers))) then (if (s68 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69' ^ ~s72') then (true) else (if (s104 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s106 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if (s107 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s108 ^ action-w-nabellen-incomplete-dossiers ^ ~s68') then (true) else (if (s109 ^ action-w-nabellen-incomplete-dossiers) then true else false)))) else (if ((s111 ^ action-w-nabellen-incomplete-dossiers) | ((s112 ^ action-w-nabellen-incomplete-dossiers) | (s194 ^ action-w-nabellen-incomplete-dossiers))) then (if (s111 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s112 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s194 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if (s201 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s204 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s205 ^ action-w-nabellen-incomplete-dossiers) then true else false))));
+
+        s109' = if ((s105 ^ action-a-approved) | ((s107 ^ action-a-approved) | (s108 ^ action-a-approved))) then (if (s105 ^ action-a-approved) then (true) else (if (s107 ^ action-a-approved) then (true) else (if (s108 ^ action-a-approved) then true else false))) else (if (s110 ^ action-a-approved) then (true) else (if (s111 ^ action-a-approved) then (true) else (if (s112 ^ action-a-approved) then true else false)));
+
+        s110' = if ((s105 ^ action-o-accepted) | ((s107 ^ action-o-accepted) | (s108 ^ action-o-accepted))) then (if (s105 ^ action-o-accepted) then (true) else (if (s107 ^ action-o-accepted) then (true) else (if (s108 ^ action-o-accepted) then true else false))) else (if (s109 ^ action-o-accepted) then (true) else (if (s111 ^ action-o-accepted) then (true) else (if (s112 ^ action-o-accepted) then true else false)));
+
+        s111' = if ((s105 ^ action-a-activated) | (s108 ^ action-a-activated)) then (if (s105 ^ action-a-activated) then (true) else (if (s108 ^ action-a-activated) then true else false)) else (if (s109 ^ action-a-activated) then (true) else (if (s110 ^ action-a-activated) then (true) else (if (s112 ^ action-a-activated) then true else false)));
+
+        s112' = if ((s105 ^ action-a-registered) | ((s107 ^ action-a-registered) | (s108 ^ action-a-registered))) then (if (s105 ^ action-a-registered) then (true) else (if (s107 ^ action-a-registered) then (true) else (if (s108 ^ action-a-registered) then true else false))) else (if (s109 ^ action-a-registered) then (true) else (if (s110 ^ action-a-registered) then (true) else (if (s111 ^ action-a-registered) then true else false)));
+
+        s113' = if ((s105 ^ action-archive-application) | (s107 ^ action-archive-application)) then (if (s105 ^ action-archive-application) then (true) else (if (s107 ^ action-archive-application) then true else false)) else (if (s108 ^ action-archive-application) then (true) else (if (s194 ^ action-archive-application) then (true) else (if (s201 ^ action-archive-application) then true else false)));
+
+        s114' = if ((s9 ^ action-a-cancelled) | (s10 ^ action-a-cancelled)) then (if (s9 ^ action-a-cancelled) then (true) else (if (s10 ^ action-a-cancelled) then true else false)) else (if (s16 ^ action-a-cancelled) then (true) else (if (s72 ^ action-a-cancelled) then (true) else (if (s73 ^ action-a-cancelled) then true else false)));
+
+        s115' = if ((s43 ^ action-a-cancelled) | (s44 ^ action-a-cancelled)) then (if (s43 ^ action-a-cancelled) then (true) else (if (s44 ^ action-a-cancelled) then true else false)) else (if (s50 ^ action-a-cancelled) then (true) else (if (s68 ^ action-a-cancelled) then (true) else (if (s105 ^ action-a-cancelled) then Bernoulli(0.031250) else false)));
+
+        s116' = if (s54 ^ action-w-afhandelen-leads) then (true) else (if (s55 ^ action-w-afhandelen-leads) then (true) else (if (s116 ^ action-w-afhandelen-leads) then true else false));
+
+        s117' = if ((s56 ^ action-a-cancelled) | (s62 ^ action-a-cancelled)) then (if (s56 ^ action-a-cancelled) then (true) else (if (s62 ^ action-a-cancelled) then true else false)) else (if (s66 ^ action-a-cancelled) then (true) else (if (s118 ^ action-a-cancelled) then (true) else (if (s123 ^ action-a-cancelled) then true else false)));
+
+        s118' = if ((s56 ^ action-o-cancelled) | ((s58 ^ action-o-cancelled) | (s62 ^ action-o-cancelled))) then (if (s56 ^ action-o-cancelled) then (true) else (if (s58 ^ action-o-cancelled) then (true) else (if (s62 ^ action-o-cancelled) then true else false))) else (if (s66 ^ action-o-cancelled) then (true) else (if (s117 ^ action-o-cancelled) then (true) else (if (s123 ^ action-o-cancelled) then true else false)));
+
+        s119' = if ((s9 ^ action-o-declined) | ((s10 ^ action-o-declined) | (s16 ^ action-o-declined))) then (if (s9 ^ action-o-declined) then (true) else (if (s10 ^ action-o-declined) then (true) else (if (s16 ^ action-o-declined) then true else false))) else (if (s44 ^ action-o-declined ^ ~s70') then (Bernoulli(0.058824)) else (if (s72 ^ action-o-declined) then (true) else (if (s120 ^ action-o-declined) then true else false)));
+
+        s120' = if ((s10 ^ action-a-declined) | ((s16 ^ action-a-declined) | (s44 ^ action-a-declined ^ ~s71'))) then (if (s10 ^ action-a-declined) then (true) else (if (s16 ^ action-a-declined) then (true) else (if (s44 ^ action-a-declined ^ ~s71') then Bernoulli(0.111111) else false))) else (if (s72 ^ action-a-declined) then (true) else (if (s119 ^ action-a-declined) then (true) else (if (s200 ^ action-a-declined) then Bernoulli(0.200000) else false)));
+
+        s121' = if ((s44 ^ action-o-declined ^ ~s70' ^ ~s119') | (s50 ^ action-o-declined)) then (if (s44 ^ action-o-declined ^ ~s70' ^ ~s119') then (true) else (if (s50 ^ action-o-declined) then true else false)) else (if (s68 ^ action-o-declined) then (true) else (if (s122 ^ action-o-declined) then true else false));
+
+        s122' = if ((s44 ^ action-a-declined ^ ~s71' ^ ~s120') | (s50 ^ action-a-declined ^ ~s71')) then (if (s44 ^ action-a-declined ^ ~s71' ^ ~s120') then (true) else (if (s50 ^ action-a-declined ^ ~s71') then true else false)) else (if (s68 ^ action-a-declined ^ ~s71') then (true) else (if (s121 ^ action-a-declined) then true else false));
+
+        s123' = if (((s61 ^ action-w-nabellen-incomplete-dossiers) | (s63 ^ action-w-nabellen-incomplete-dossiers)) | ((s64 ^ action-w-nabellen-incomplete-dossiers) | ((s65 ^ action-w-nabellen-incomplete-dossiers) | (s66 ^ action-w-nabellen-incomplete-dossiers)))) then (if ((s61 ^ action-w-nabellen-incomplete-dossiers) | (s63 ^ action-w-nabellen-incomplete-dossiers)) then (if (s61 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s63 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s64 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s65 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s66 ^ action-w-nabellen-incomplete-dossiers) then Bernoulli(0.988372) else false)))) else (if ((s117 ^ action-w-nabellen-incomplete-dossiers) | ((s118 ^ action-w-nabellen-incomplete-dossiers) | (s123 ^ action-w-nabellen-incomplete-dossiers))) then (if (s117 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s118 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s123 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if (s125 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s126 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s127 ^ action-w-nabellen-incomplete-dossiers) then true else false))));
+
+        s124' = if ((s62 ^ action-o-accepted) | ((s66 ^ action-o-accepted ^ ~s92') | (s123 ^ action-o-accepted))) then (if (s62 ^ action-o-accepted) then (true) else (if (s66 ^ action-o-accepted ^ ~s92') then (true) else (if (s123 ^ action-o-accepted) then true else false))) else (if (s125 ^ action-o-accepted) then (true) else (if (s126 ^ action-o-accepted) then (true) else (if (s127 ^ action-o-accepted) then true else false)));
+
+        s125' = if ((s66 ^ action-a-approved) | (s123 ^ action-a-approved)) then (if (s66 ^ action-a-approved) then (true) else (if (s123 ^ action-a-approved) then true else false)) else (if (s124 ^ action-a-approved) then (true) else (if (s126 ^ action-a-approved) then (true) else (if (s127 ^ action-a-approved) then true else false)));
+
+        s126' = if ((s62 ^ action-a-registered) | ((s66 ^ action-a-registered) | (s123 ^ action-a-registered))) then (if (s62 ^ action-a-registered) then (true) else (if (s66 ^ action-a-registered) then (true) else (if (s123 ^ action-a-registered) then true else false))) else (if (s124 ^ action-a-registered) then (true) else (if (s125 ^ action-a-registered) then (true) else (if (s127 ^ action-a-registered) then true else false)));
+
+        s127' = if ((s66 ^ action-a-activated) | (s123 ^ action-a-activated)) then (if (s66 ^ action-a-activated) then (true) else (if (s123 ^ action-a-activated) then true else false)) else (if (s124 ^ action-a-activated) then (true) else (if (s125 ^ action-a-activated) then (true) else (if (s126 ^ action-a-activated) then true else false)));
+
+        s128' = false;
+
+        s129' = if (s128 ^ action-a-submitted) then true else false;
+
+        s130' = if (s129 ^ action-a-partlysubmitted) then true else false;
+
+        s131' = if (s130 ^ action-a-preaccepted) then (true) else (if (s210 ^ action-a-preaccepted) then true else false);
+
+        s132' = if ((s131 ^ action-w-completeren-aanvraag) | (s132 ^ action-w-completeren-aanvraag)) then (if (s131 ^ action-w-completeren-aanvraag) then (true) else (if (s132 ^ action-w-completeren-aanvraag) then true else false)) else (if (s137 ^ action-w-completeren-aanvraag) then (true) else (if (s171 ^ action-w-completeren-aanvraag ^ ~s99') then (Bernoulli(0.009524)) else (if (s210 ^ action-w-completeren-aanvraag) then true else false)));
+
+        s133' = if ((s131 ^ action-a-accepted) | (s132 ^ action-a-accepted)) then (if (s131 ^ action-a-accepted) then (true) else (if (s132 ^ action-a-accepted) then true else false)) else (if (s171 ^ action-a-accepted ^ ~s81' ^ ~s100') then (Bernoulli(0.012346)) else (if (s210 ^ action-a-accepted) then true else false));
+
+        s134' = if ((s132 ^ action-o-selected) | ((s133 ^ action-o-selected) | (s135 ^ action-o-selected))) then (if (s132 ^ action-o-selected) then (true) else (if (s133 ^ action-o-selected) then (true) else (if (s135 ^ action-o-selected) then true else false))) else (if (s138 ^ action-o-selected) then (true) else (if (s139 ^ action-o-selected) then (true) else (if (s142 ^ action-o-selected) then true else false)));
+
+        s135' = if (s133 ^ action-a-finalized) then (true) else (if (s134 ^ action-a-finalized) then true else false);
+
+        s136' = if (s134 ^ action-o-created) then (true) else (if (s135 ^ action-o-created) then (true) else (if (s138 ^ action-o-created) then true else false));
+
+        s137' = if (s136 ^ action-o-sent) then true else false;
+
+        s138' = if ((s132 ^ action-o-cancelled) | ((s134 ^ action-o-cancelled) | (s139 ^ action-o-cancelled))) then (if (s132 ^ action-o-cancelled) then (true) else (if (s134 ^ action-o-cancelled) then (true) else (if (s139 ^ action-o-cancelled) then Bernoulli(0.941176) else false))) else (if (s141 ^ action-o-cancelled) then (true) else (if (s142 ^ action-o-cancelled) then (true) else (if (s217 ^ action-o-cancelled) then true else false)));
+
+        s139' = if ((s132 ^ action-w-nabellen-offertes) | ((s137 ^ action-w-nabellen-offertes) | (s138 ^ action-w-nabellen-offertes))) then (if (s132 ^ action-w-nabellen-offertes) then (true) else (if (s137 ^ action-w-nabellen-offertes) then (true) else (if (s138 ^ action-w-nabellen-offertes) then true else false))) else (if (s139 ^ action-w-nabellen-offertes) then (true) else (if (s140 ^ action-w-nabellen-offertes) then (true) else (if (s217 ^ action-w-nabellen-offertes) then true else false)));
+
+        s140' = if (s139 ^ action-o-sent-back) then (true) else (if (s142 ^ action-o-sent-back) then true else false);
+
+        s141' = if (((s137 ^ action-w-valideren-aanvraag) | (s138 ^ action-w-valideren-aanvraag)) | ((s139 ^ action-w-valideren-aanvraag) | ((s141 ^ action-w-valideren-aanvraag) | (s142 ^ action-w-valideren-aanvraag)))) then (if ((s137 ^ action-w-valideren-aanvraag) | (s138 ^ action-w-valideren-aanvraag)) then (if (s137 ^ action-w-valideren-aanvraag) then (true) else (if (s138 ^ action-w-valideren-aanvraag) then true else false)) else (if (s139 ^ action-w-valideren-aanvraag) then (true) else (if (s141 ^ action-w-valideren-aanvraag) then (true) else (if (s142 ^ action-w-valideren-aanvraag) then true else false)))) else (if ((s143 ^ action-w-valideren-aanvraag) | (s144 ^ action-w-valideren-aanvraag)) then (if (s143 ^ action-w-valideren-aanvraag) then (true) else (if (s144 ^ action-w-valideren-aanvraag) then true else false)) else (if (s145 ^ action-w-valideren-aanvraag) then (true) else (if (s146 ^ action-w-valideren-aanvraag) then (true) else (if (s212 ^ action-w-valideren-aanvraag) then true else false))));
+
+        s142' = if ((s137 ^ action-w-nabellen-incomplete-dossiers) | ((s138 ^ action-w-nabellen-incomplete-dossiers) | (s140 ^ action-w-nabellen-incomplete-dossiers))) then (if (s137 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s138 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s140 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if ((s141 ^ action-w-nabellen-incomplete-dossiers) | (s142 ^ action-w-nabellen-incomplete-dossiers)) then (if (s141 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s142 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s212 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s217 ^ action-w-nabellen-incomplete-dossiers) then true else false)));
+
+        s143' = if ((s141 ^ action-o-accepted) | (s142 ^ action-o-accepted)) then (if (s141 ^ action-o-accepted) then (true) else (if (s142 ^ action-o-accepted) then true else false)) else (if (s144 ^ action-o-accepted) then (true) else (if (s145 ^ action-o-accepted) then (true) else (if (s146 ^ action-o-accepted) then true else false)));
+
+        s144' = if ((s141 ^ action-a-registered) | (s143 ^ action-a-registered)) then (if (s141 ^ action-a-registered) then (true) else (if (s143 ^ action-a-registered) then true else false)) else (if (s145 ^ action-a-registered) then (true) else (if (s146 ^ action-a-registered) then true else false));
+
+        s145' = if ((s141 ^ action-a-approved) | (s142 ^ action-a-approved)) then (if (s141 ^ action-a-approved) then (true) else (if (s142 ^ action-a-approved) then true else false)) else (if (s143 ^ action-a-approved) then (true) else (if (s144 ^ action-a-approved) then (true) else (if (s146 ^ action-a-approved) then true else false)));
+
+        s146' = if (s143 ^ action-a-activated) then (true) else (if (s144 ^ action-a-activated) then (true) else (if (s145 ^ action-a-activated) then true else false));
+
+        s147' = if ((s138 ^ action-archive-application) | (s139 ^ action-archive-application)) then (if (s138 ^ action-archive-application) then (true) else (if (s139 ^ action-archive-application) then true else false)) else (if (s141 ^ action-archive-application) then (true) else (if (s142 ^ action-archive-application) then (true) else (if (s217 ^ action-archive-application) then true else false)));
+
+        s148' = if ((s2 ^ action-w-afhandelen-leads ^ ~s75') | ((s35 ^ action-w-afhandelen-leads) | (s36 ^ action-w-afhandelen-leads))) then (if (s2 ^ action-w-afhandelen-leads ^ ~s75') then (Bernoulli(0.219512)) else (if (s35 ^ action-w-afhandelen-leads) then (Bernoulli(0.894737)) else (if (s36 ^ action-w-afhandelen-leads) then true else false))) else (if (s74 ^ action-w-afhandelen-leads ^ ~s75') then (true) else (if (s148 ^ action-w-afhandelen-leads) then (true) else (if (s213 ^ action-w-afhandelen-leads) then true else false)));
+
+        s149' = false;
+
+        s150' = if (s149 ^ action-a-submitted) then true else false;
+
+        s151' = if (s150 ^ action-a-partlysubmitted) then true else false;
+
+        s152' = if (s151 ^ action-a-preaccepted) then (true) else (if (s207 ^ action-a-preaccepted) then true else false);
+
+        s153' = if ((s152 ^ action-w-completeren-aanvraag) | ((s153 ^ action-w-completeren-aanvraag) | (s154 ^ action-w-completeren-aanvraag))) then (if (s152 ^ action-w-completeren-aanvraag) then (true) else (if (s153 ^ action-w-completeren-aanvraag) then (true) else (if (s154 ^ action-w-completeren-aanvraag) then true else false))) else (if ((s158 ^ action-w-completeren-aanvraag) | (s177 ^ action-w-completeren-aanvraag)) then (if (s158 ^ action-w-completeren-aanvraag) then (true) else (if (s177 ^ action-w-completeren-aanvraag) then Bernoulli(0.003774) else false)) else (if (s207 ^ action-w-completeren-aanvraag) then (true) else (if (s219 ^ action-w-completeren-aanvraag) then true else false)));
+
+        s154' = if (s152 ^ action-a-accepted) then (true) else (if (s153 ^ action-a-accepted) then (true) else (if (s207 ^ action-a-accepted) then true else false));
+
+        s155' = if (((s153 ^ action-o-selected) | (s154 ^ action-o-selected)) | ((s156 ^ action-o-selected) | (s159 ^ action-o-selected))) then (if ((s153 ^ action-o-selected) | (s154 ^ action-o-selected)) then (if (s153 ^ action-o-selected) then (true) else (if (s154 ^ action-o-selected) then true else false)) else (if (s156 ^ action-o-selected) then (true) else (if (s159 ^ action-o-selected) then true else false))) else (if ((s161 ^ action-o-selected) | (s162 ^ action-o-selected)) then (if (s161 ^ action-o-selected) then (true) else (if (s162 ^ action-o-selected) then true else false)) else (if (s179 ^ action-o-selected) then (Bernoulli(0.022222)) else (if (s192 ^ action-o-selected) then true else false)));
+
+        s156' = if (s153 ^ action-a-finalized) then (true) else (if (s154 ^ action-a-finalized) then (true) else (if (s155 ^ action-a-finalized) then true else false));
+
+        s157' = if (s155 ^ action-o-created) then (true) else (if (s156 ^ action-o-created) then (true) else (if (s192 ^ action-o-created) then true else false));
+
+        s158' = if (s157 ^ action-o-sent) then true else false;
+
+        s159' = if ((s153 ^ action-w-nabellen-offertes) | ((s158 ^ action-w-nabellen-offertes) | (s159 ^ action-w-nabellen-offertes))) then (if (s153 ^ action-w-nabellen-offertes) then (true) else (if (s158 ^ action-w-nabellen-offertes) then (true) else (if (s159 ^ action-w-nabellen-offertes) then Bernoulli(0.998812) else false))) else (if (s160 ^ action-w-nabellen-offertes) then (true) else (if (s192 ^ action-w-nabellen-offertes) then (true) else (if (s202 ^ action-w-nabellen-offertes) then true else false)));
+
+        s160' = if (s153 ^ action-o-sent-back) then (true) else (if (s159 ^ action-o-sent-back) then (Bernoulli(0.971429)) else (if (s162 ^ action-o-sent-back) then true else false));
+
+        s161' = if (((s158 ^ action-w-valideren-aanvraag) | (s159 ^ action-w-valideren-aanvraag)) | ((s161 ^ action-w-valideren-aanvraag) | (s162 ^ action-w-valideren-aanvraag))) then (if ((s158 ^ action-w-valideren-aanvraag) | (s159 ^ action-w-valideren-aanvraag)) then (if (s158 ^ action-w-valideren-aanvraag) then (true) else (if (s159 ^ action-w-valideren-aanvraag) then true else false)) else (if (s161 ^ action-w-valideren-aanvraag) then (true) else (if (s162 ^ action-w-valideren-aanvraag) then true else false))) else (if ((s163 ^ action-w-valideren-aanvraag) | (s165 ^ action-w-valideren-aanvraag)) then (if (s163 ^ action-w-valideren-aanvraag) then (true) else (if (s165 ^ action-w-valideren-aanvraag) then true else false)) else (if (s166 ^ action-w-valideren-aanvraag) then (true) else (if (s208 ^ action-w-valideren-aanvraag) then (true) else (if (s209 ^ action-w-valideren-aanvraag) then true else false))));
+
+        s162' = if (((s158 ^ action-w-nabellen-incomplete-dossiers) | (s160 ^ action-w-nabellen-incomplete-dossiers)) | ((s161 ^ action-w-nabellen-incomplete-dossiers) | (s162 ^ action-w-nabellen-incomplete-dossiers))) then (if ((s158 ^ action-w-nabellen-incomplete-dossiers) | (s160 ^ action-w-nabellen-incomplete-dossiers)) then (if (s158 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s160 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s161 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s162 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if ((s166 ^ action-w-nabellen-incomplete-dossiers) | (s192 ^ action-w-nabellen-incomplete-dossiers)) then (if (s166 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s192 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s202 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s208 ^ action-w-nabellen-incomplete-dossiers) then true else false)));
+
+        s163' = if ((s159 ^ action-o-accepted) | ((s161 ^ action-o-accepted) | (s162 ^ action-o-accepted))) then (if (s159 ^ action-o-accepted) then (true) else (if (s161 ^ action-o-accepted) then (true) else (if (s162 ^ action-o-accepted) then true else false))) else (if (s164 ^ action-o-accepted) then (true) else (if (s165 ^ action-o-accepted) then (true) else (if (s166 ^ action-o-accepted) then true else false)));
+
+        s164' = if ((s161 ^ action-a-approved) | (s162 ^ action-a-approved)) then (if (s161 ^ action-a-approved) then (true) else (if (s162 ^ action-a-approved) then true else false)) else (if (s163 ^ action-a-approved) then (true) else (if (s165 ^ action-a-approved) then (true) else (if (s166 ^ action-a-approved) then true else false)));
+
+        s165' = if ((s159 ^ action-a-registered) | ((s161 ^ action-a-registered) | (s162 ^ action-a-registered))) then (if (s159 ^ action-a-registered) then (true) else (if (s161 ^ action-a-registered) then (true) else (if (s162 ^ action-a-registered) then true else false))) else (if (s163 ^ action-a-registered) then (true) else (if (s164 ^ action-a-registered) then (true) else (if (s166 ^ action-a-registered) then true else false)));
+
+        s166' = if (s163 ^ action-a-activated) then (true) else (if (s164 ^ action-a-activated) then (true) else (if (s165 ^ action-a-activated) then true else false));
+
+        s167' = if ((s159 ^ action-archive-application) | (s161 ^ action-archive-application)) then (if (s159 ^ action-archive-application) then (true) else (if (s161 ^ action-archive-application) then true else false)) else (if (s162 ^ action-archive-application) then (true) else (if (s192 ^ action-archive-application) then (true) else (if (s202 ^ action-archive-application) then true else false)));
+
+        s168' = false;
+
+        s169' = if (s168 ^ action-a-submitted) then true else false;
+
+        s170' = if (s169 ^ action-a-partlysubmitted) then true else false;
+
+        s171' = if (s170 ^ action-a-preaccepted ^ ~s80') then (true) else (if (s172 ^ action-a-preaccepted) then true else false);
+
+        s172' = if (s170 ^ action-w-afhandelen-leads) then (true) else (if (s171 ^ action-w-afhandelen-leads) then (true) else (if (s172 ^ action-w-afhandelen-leads) then true else false));
+
+        s173' = if ((s171 ^ action-a-accepted ^ ~s81' ^ ~s100' ^ ~s133') | (s172 ^ action-a-accepted)) then (if (s171 ^ action-a-accepted ^ ~s81' ^ ~s100' ^ ~s133') then (true) else (if (s172 ^ action-a-accepted) then true else false)) else (if (s178 ^ action-a-accepted) then (true) else (if (s197 ^ action-a-accepted ^ ~s4' ^ ~s81') then true else false));
+
+        s174' = if (s173 ^ action-a-finalized) then (true) else (if (s175 ^ action-a-finalized) then true else false);
+
+        s175' = if ((s173 ^ action-o-selected) | ((s174 ^ action-o-selected) | (s178 ^ action-o-selected))) then (if (s173 ^ action-o-selected) then (true) else (if (s174 ^ action-o-selected) then (true) else (if (s178 ^ action-o-selected) then true else false))) else (if ((s179 ^ action-o-selected ^ ~s155') | (s180 ^ action-o-selected)) then (if (s179 ^ action-o-selected ^ ~s155') then (true) else (if (s180 ^ action-o-selected) then true else false)) else (if (s190 ^ action-o-selected) then (true) else (if (s200 ^ action-o-selected) then true else false)));
+
+        s176' = if (s174 ^ action-o-created) then (true) else (if (s175 ^ action-o-created) then (true) else (if (s180 ^ action-o-created) then true else false));
+
+        s177' = if (s176 ^ action-o-sent) then true else false;
+
+        s178' = if ((s171 ^ action-w-completeren-aanvraag ^ ~s99' ^ ~s132') | ((s172 ^ action-w-completeren-aanvraag) | (s173 ^ action-w-completeren-aanvraag))) then (if (s171 ^ action-w-completeren-aanvraag ^ ~s99' ^ ~s132') then (true) else (if (s172 ^ action-w-completeren-aanvraag) then (true) else (if (s173 ^ action-w-completeren-aanvraag) then true else false))) else (if (s177 ^ action-w-completeren-aanvraag ^ ~s153') then (true) else (if (s178 ^ action-w-completeren-aanvraag) then (true) else (if (s216 ^ action-w-completeren-aanvraag) then true else false)));
+
+        s179' = if (((s87 ^ action-w-nabellen-offertes ^ ~s62' ^ ~s87') | (s159 ^ action-w-nabellen-offertes ^ ~s159')) | ((s177 ^ action-w-nabellen-offertes) | (s178 ^ action-w-nabellen-offertes ^ ~s87'))) then (if ((s87 ^ action-w-nabellen-offertes ^ ~s62' ^ ~s87') | (s159 ^ action-w-nabellen-offertes ^ ~s159')) then (if (s87 ^ action-w-nabellen-offertes ^ ~s62' ^ ~s87') then (true) else (if (s159 ^ action-w-nabellen-offertes ^ ~s159') then true else false)) else (if (s177 ^ action-w-nabellen-offertes) then (true) else (if (s178 ^ action-w-nabellen-offertes ^ ~s87') then true else false))) else (if ((s179 ^ action-w-nabellen-offertes ^ ~s87') | (s180 ^ action-w-nabellen-offertes)) then (if (s179 ^ action-w-nabellen-offertes ^ ~s87') then (true) else (if (s180 ^ action-w-nabellen-offertes) then true else false)) else (if (s181 ^ action-w-nabellen-offertes) then (true) else (if (s185 ^ action-w-nabellen-offertes) then (true) else (if (s214 ^ action-w-nabellen-offertes) then true else false))));
+
+        s180' = if ((s139 ^ action-o-cancelled ^ ~s138') | ((s175 ^ action-o-cancelled) | (s178 ^ action-o-cancelled))) then (if (s139 ^ action-o-cancelled ^ ~s138') then (true) else (if (s175 ^ action-o-cancelled) then (true) else (if (s178 ^ action-o-cancelled) then true else false))) else (if ((s179 ^ action-o-cancelled) | (s181 ^ action-o-cancelled)) then (if (s179 ^ action-o-cancelled) then (true) else (if (s181 ^ action-o-cancelled) then true else false)) else (if (s190 ^ action-o-cancelled) then (Bernoulli(0.857143)) else (if (s200 ^ action-o-cancelled) then true else false)));
+
+        s181' = if ((s105 ^ action-a-cancelled ^ ~s115') | (s179 ^ action-a-cancelled)) then (if (s105 ^ action-a-cancelled ^ ~s115') then (Bernoulli(0.032258)) else (if (s179 ^ action-a-cancelled) then true else false)) else (if (s180 ^ action-a-cancelled) then (true) else (if (s200 ^ action-a-cancelled) then true else false));
+
+        s182' = if ((s179 ^ action-archive-application) | (s180 ^ action-archive-application)) then (if (s179 ^ action-archive-application) then (true) else (if (s180 ^ action-archive-application) then true else false)) else (if (s181 ^ action-archive-application) then (true) else (if (s190 ^ action-archive-application) then (true) else (if (s200 ^ action-archive-application) then true else false)));
+
+        s183' = if ((s83 ^ action-o-cancelled) | ((s86 ^ action-o-cancelled) | (s87 ^ action-o-cancelled))) then (if (s83 ^ action-o-cancelled) then (true) else (if (s86 ^ action-o-cancelled) then (true) else (if (s87 ^ action-o-cancelled) then true else false))) else (if ((s93 ^ action-o-cancelled) | (s184 ^ action-o-cancelled)) then (if (s93 ^ action-o-cancelled) then (true) else (if (s184 ^ action-o-cancelled) then true else false)) else (if (s190 ^ action-o-cancelled ^ ~s180') then (true) else (if (s191 ^ action-o-cancelled) then true else false)));
+
+        s184' = if ((s86 ^ action-a-cancelled) | (s87 ^ action-a-cancelled)) then (if (s86 ^ action-a-cancelled) then (true) else (if (s87 ^ action-a-cancelled) then true else false)) else (if (s93 ^ action-a-cancelled) then (true) else (if (s183 ^ action-a-cancelled) then (true) else (if (s191 ^ action-a-cancelled) then true else false)));
+
+        s185' = if ((s159 ^ action-o-sent-back ^ ~s160') | (s178 ^ action-o-sent-back)) then (if (s159 ^ action-o-sent-back ^ ~s160') then (true) else (if (s178 ^ action-o-sent-back) then true else false)) else (if (s179 ^ action-o-sent-back) then (true) else (if (s200 ^ action-o-sent-back ^ ~s88') then true else false));
+
+        s186' = if ((s179 ^ action-a-activated) | ((s187 ^ action-a-activated) | (s188 ^ action-a-activated))) then (if (s179 ^ action-a-activated) then (true) else (if (s187 ^ action-a-activated) then (true) else (if (s188 ^ action-a-activated) then true else false))) else (if (s189 ^ action-a-activated) then (true) else (if (s190 ^ action-a-activated) then (true) else (if (s200 ^ action-a-activated) then true else false)));
+
+        s187' = if ((s179 ^ action-a-approved) | ((s186 ^ action-a-approved) | (s188 ^ action-a-approved))) then (if (s179 ^ action-a-approved) then (true) else (if (s186 ^ action-a-approved) then (true) else (if (s188 ^ action-a-approved) then true else false))) else (if (s189 ^ action-a-approved) then (true) else (if (s190 ^ action-a-approved ^ ~s89') then (true) else (if (s200 ^ action-a-approved) then true else false)));
+
+        s188' = if ((s179 ^ action-a-registered) | ((s186 ^ action-a-registered) | (s187 ^ action-a-registered))) then (if (s179 ^ action-a-registered) then (true) else (if (s186 ^ action-a-registered) then (true) else (if (s187 ^ action-a-registered) then true else false))) else (if (s189 ^ action-a-registered) then (true) else (if (s190 ^ action-a-registered) then (true) else (if (s200 ^ action-a-registered ^ ~s91') then true else false)));
+
+        s189' = if ((s179 ^ action-o-accepted) | ((s186 ^ action-o-accepted) | (s187 ^ action-o-accepted))) then (if (s179 ^ action-o-accepted) then (true) else (if (s186 ^ action-o-accepted) then (true) else (if (s187 ^ action-o-accepted) then true else false))) else (if (s188 ^ action-o-accepted) then (true) else (if (s190 ^ action-o-accepted) then (true) else (if (s200 ^ action-o-accepted) then true else false)));
+
+        s190' = if (((s177 ^ action-w-valideren-aanvraag) | ((s179 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s66') | (s181 ^ action-w-valideren-aanvraag))) | ((s186 ^ action-w-valideren-aanvraag) | ((s187 ^ action-w-valideren-aanvraag) | (s188 ^ action-w-valideren-aanvraag)))) then (if ((s177 ^ action-w-valideren-aanvraag) | ((s179 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s66') | (s181 ^ action-w-valideren-aanvraag))) then (if (s177 ^ action-w-valideren-aanvraag) then (true) else (if (s179 ^ action-w-valideren-aanvraag ^ ~s16' ^ ~s66') then (true) else (if (s181 ^ action-w-valideren-aanvraag) then true else false))) else (if (s186 ^ action-w-valideren-aanvraag) then (true) else (if (s187 ^ action-w-valideren-aanvraag) then (true) else (if (s188 ^ action-w-valideren-aanvraag) then true else false)))) else (if ((s189 ^ action-w-valideren-aanvraag) | ((s190 ^ action-w-valideren-aanvraag) | (s200 ^ action-w-valideren-aanvraag ^ ~s66'))) then (if (s189 ^ action-w-valideren-aanvraag) then (true) else (if (s190 ^ action-w-valideren-aanvraag) then (true) else (if (s200 ^ action-w-valideren-aanvraag ^ ~s66') then true else false))) else (if (s214 ^ action-w-valideren-aanvraag) then (true) else (if (s215 ^ action-w-valideren-aanvraag) then (true) else (if (s216 ^ action-w-valideren-aanvraag) then true else false))));
+
+        s191' = if (((s85 ^ action-w-nabellen-incomplete-dossiers) | ((s88 ^ action-w-nabellen-incomplete-dossiers) | (s89 ^ action-w-nabellen-incomplete-dossiers))) | ((s90 ^ action-w-nabellen-incomplete-dossiers) | ((s91 ^ action-w-nabellen-incomplete-dossiers) | (s92 ^ action-w-nabellen-incomplete-dossiers)))) then (if ((s85 ^ action-w-nabellen-incomplete-dossiers) | ((s88 ^ action-w-nabellen-incomplete-dossiers) | (s89 ^ action-w-nabellen-incomplete-dossiers))) then (if (s85 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s88 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s89 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if (s90 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s91 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s92 ^ action-w-nabellen-incomplete-dossiers) then true else false)))) else (if ((s93 ^ action-w-nabellen-incomplete-dossiers) | ((s183 ^ action-w-nabellen-incomplete-dossiers) | (s184 ^ action-w-nabellen-incomplete-dossiers))) then (if (s93 ^ action-w-nabellen-incomplete-dossiers) then (Bernoulli(0.988372)) else (if (s183 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s184 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if ((s191 ^ action-w-nabellen-incomplete-dossiers) | (s198 ^ action-w-nabellen-incomplete-dossiers)) then (if (s191 ^ action-w-nabellen-incomplete-dossiers) then (Bernoulli(0.995665)) else (if (s198 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s199 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s200 ^ action-w-nabellen-incomplete-dossiers) then Bernoulli(0.006073) else false))));
+
+        s192' = if ((s153 ^ action-o-cancelled) | (s155 ^ action-o-cancelled)) then (if (s153 ^ action-o-cancelled) then (true) else (if (s155 ^ action-o-cancelled) then true else false)) else (if (s159 ^ action-o-cancelled) then (true) else (if (s162 ^ action-o-cancelled) then (true) else (if (s202 ^ action-o-cancelled) then true else false)));
+
+        s193' = if (s35 ^ action-w-afhandelen-leads ^ ~s148') then (true) else (if (s97 ^ action-w-afhandelen-leads) then (true) else (if (s98 ^ action-w-afhandelen-leads) then true else false));
+
+        s194' = if ((s99 ^ action-o-cancelled) | ((s101 ^ action-o-cancelled) | (s105 ^ action-o-cancelled ^ ~s43'))) then (if (s99 ^ action-o-cancelled) then (true) else (if (s101 ^ action-o-cancelled) then (true) else (if (s105 ^ action-o-cancelled ^ ~s43') then true else false))) else (if (s107 ^ action-o-cancelled) then (true) else (if (s108 ^ action-o-cancelled) then (true) else (if (s201 ^ action-o-cancelled) then true else false)));
+
+        s195' = if (s2 ^ action-a-preaccepted ^ ~s3' ^ ~s36' ^ ~s74') then (true) else (if (s196 ^ action-a-preaccepted) then true else false);
+
+        s196' = if (s2 ^ action-w-afhandelen-leads ^ ~s75' ^ ~s148') then (true) else (if (s195 ^ action-w-afhandelen-leads) then (true) else (if (s196 ^ action-w-afhandelen-leads) then true else false));
+
+        s197' = if (s79 ^ action-w-afhandelen-leads) then (true) else (if (s80 ^ action-w-afhandelen-leads) then (true) else (if (s197 ^ action-w-afhandelen-leads) then true else false));
+
+        s198' = if ((s87 ^ action-o-declined) | (s93 ^ action-o-declined)) then (if (s87 ^ action-o-declined) then (true) else (if (s93 ^ action-o-declined) then true else false)) else (if (s191 ^ action-o-declined) then (true) else (if (s199 ^ action-o-declined) then true else false));
+
+        s199' = if ((s86 ^ action-a-declined) | (s87 ^ action-a-declined)) then (if (s86 ^ action-a-declined) then (true) else (if (s87 ^ action-a-declined) then true else false)) else (if (s93 ^ action-a-declined) then (true) else (if (s191 ^ action-a-declined) then (true) else (if (s198 ^ action-a-declined) then true else false)));
+
+        s200' = if (((s16 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69' ^ ~s72') | ((s66 ^ action-w-nabellen-incomplete-dossiers ^ ~s123') | (s93 ^ action-w-nabellen-incomplete-dossiers ^ ~s191'))) | (((s177 ^ action-w-nabellen-incomplete-dossiers) | (s180 ^ action-w-nabellen-incomplete-dossiers)) | ((s181 ^ action-w-nabellen-incomplete-dossiers) | (s185 ^ action-w-nabellen-incomplete-dossiers)))) then (if ((s16 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69' ^ ~s72') | ((s66 ^ action-w-nabellen-incomplete-dossiers ^ ~s123') | (s93 ^ action-w-nabellen-incomplete-dossiers ^ ~s191'))) then (if (s16 ^ action-w-nabellen-incomplete-dossiers ^ ~s68' ^ ~s69' ^ ~s72') then (true) else (if (s66 ^ action-w-nabellen-incomplete-dossiers ^ ~s123') then (true) else (if (s93 ^ action-w-nabellen-incomplete-dossiers ^ ~s191') then true else false))) else (if ((s177 ^ action-w-nabellen-incomplete-dossiers) | (s180 ^ action-w-nabellen-incomplete-dossiers)) then (if (s177 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s180 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s181 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s185 ^ action-w-nabellen-incomplete-dossiers) then true else false)))) else (if (((s186 ^ action-w-nabellen-incomplete-dossiers) | (s188 ^ action-w-nabellen-incomplete-dossiers)) | ((s189 ^ action-w-nabellen-incomplete-dossiers) | (s190 ^ action-w-nabellen-incomplete-dossiers))) then (if ((s186 ^ action-w-nabellen-incomplete-dossiers) | (s188 ^ action-w-nabellen-incomplete-dossiers)) then (if (s186 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s188 ^ action-w-nabellen-incomplete-dossiers) then true else false)) else (if (s189 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s190 ^ action-w-nabellen-incomplete-dossiers) then true else false))) else (if ((s191 ^ action-w-nabellen-incomplete-dossiers ^ ~s191') | (s200 ^ action-w-nabellen-incomplete-dossiers ^ ~s191')) then (if (s191 ^ action-w-nabellen-incomplete-dossiers ^ ~s191') then (true) else (if (s200 ^ action-w-nabellen-incomplete-dossiers ^ ~s191') then true else false)) else (if (s214 ^ action-w-nabellen-incomplete-dossiers) then (true) else (if (s215 ^ action-w-nabellen-incomplete-dossiers) then true else false))));
+
+        s201' = if (s105 ^ action-a-cancelled ^ ~s115' ^ ~s181') then (true) else (if (s108 ^ action-a-cancelled) then (true) else (if (s194 ^ action-a-cancelled) then true else false));
+
+        s202' = if (s159 ^ action-a-cancelled) then (true) else (if (s162 ^ action-a-cancelled) then (true) else (if (s192 ^ action-a-cancelled) then true else false));
+
+        s203' = if (s16 ^ action-w-beoordelen-fraude) then (true) else (if (s203 ^ action-w-beoordelen-fraude) then true else false);
+
+        s204' = if ((s105 ^ action-o-declined) | (s107 ^ action-o-declined)) then (if (s105 ^ action-o-declined) then (true) else (if (s107 ^ action-o-declined) then true else false)) else (if (s108 ^ action-o-declined) then (true) else (if (s205 ^ action-o-declined) then true else false));
+
+        s205' = if ((s105 ^ action-a-declined) | (s107 ^ action-a-declined)) then (if (s105 ^ action-a-declined) then (true) else (if (s107 ^ action-a-declined) then true else false)) else (if (s108 ^ action-a-declined) then (true) else (if (s204 ^ action-a-declined) then true else false));
+
+        s206' = if (s27 ^ action-w-beoordelen-fraude) then true else false;
+
+        s207' = if (s151 ^ action-w-afhandelen-leads) then (true) else (if (s152 ^ action-w-afhandelen-leads) then true else false);
+
+        s208' = if (s159 ^ action-a-declined) then (true) else (if (s162 ^ action-a-declined) then (true) else (if (s209 ^ action-a-declined) then true else false));
+
+        s209' = if (s161 ^ action-o-declined) then (true) else (if (s162 ^ action-o-declined) then (true) else (if (s208 ^ action-o-declined) then true else false));
+
+        s210' = if (s130 ^ action-w-afhandelen-leads) then (true) else (if (s131 ^ action-w-afhandelen-leads) then true else false);
+
+        s211' = if (s139 ^ action-o-declined) then (true) else (if (s142 ^ action-o-declined) then true else false);
+
+        s212' = if (s211 ^ action-a-declined) then true else false;
+
+        s213' = if ((s2 ^ action-w-beoordelen-fraude) | (s50 ^ action-w-beoordelen-fraude)) then (if (s2 ^ action-w-beoordelen-fraude) then (true) else (if (s50 ^ action-w-beoordelen-fraude) then true else false)) else (if (s148 ^ action-w-beoordelen-fraude) then (true) else (if (s213 ^ action-w-beoordelen-fraude) then true else false));
+
+        s214' = if ((s179 ^ action-a-declined) | (s190 ^ action-a-declined)) then (if (s179 ^ action-a-declined) then (true) else (if (s190 ^ action-a-declined) then true else false)) else (if (s200 ^ action-a-declined ^ ~s120') then (true) else (if (s215 ^ action-a-declined) then true else false));
+
+        s215' = if ((s179 ^ action-o-declined) | (s190 ^ action-o-declined)) then (if (s179 ^ action-o-declined) then (true) else (if (s190 ^ action-o-declined) then true else false)) else (if (s200 ^ action-o-declined) then (true) else (if (s214 ^ action-o-declined) then true else false));
+
+        s216' = if (s178 ^ action-w-beoordelen-fraude) then (true) else (if (s190 ^ action-w-beoordelen-fraude) then (true) else (if (s216 ^ action-w-beoordelen-fraude) then true else false));
+
+        s217' = if ((s138 ^ action-a-cancelled) | (s139 ^ action-a-cancelled)) then (if (s138 ^ action-a-cancelled) then (true) else (if (s139 ^ action-a-cancelled) then true else false)) else (if (s141 ^ action-a-cancelled) then (true) else (if (s142 ^ action-a-cancelled) then true else false));
+
+        s218' = if (s93 ^ action-w-beoordelen-fraude) then (true) else (if (s218 ^ action-w-beoordelen-fraude) then true else false);
+
+        s219' = if (s153 ^ action-w-beoordelen-fraude) then (true) else (if (s219 ^ action-w-beoordelen-fraude) then true else false);
+
+        s220' = if (s66 ^ action-w-beoordelen-fraude) then true else false;
+
+
+        // ---- attributi booleani (tri singoli + cat one-hot, niente real) ----
+        // CPF sul NUOVO stato one-hot s{k}': if (OR degli stati in cui vale
+        // true) then true else false - state-fluent bool nativo, evita il
+        // segfault osservato con gli attributi codificati come real.
+        amount-req-high' = if (((((((s52') | (s53')) | ((s54') | (s55'))) | (((s56') | (s57')) | ((s58') | ((s59') | (s60'))))) | ((((s61') | (s62')) | ((s63') | (s64'))) | (((s65') | (s66')) | ((s67') | ((s77') | (s78')))))) | (((((s79') | (s80')) | ((s81') | (s82'))) | (((s83') | (s84')) | ((s85') | ((s86') | (s87'))))) | ((((s88') | (s89')) | ((s90') | ((s91') | (s92')))) | (((s93') | (s94')) | ((s116') | ((s117') | (s118'))))))) | ((((((s123') | (s124')) | ((s125') | (s126'))) | (((s127') | (s128')) | ((s129') | ((s130') | (s131'))))) | ((((s132') | (s133')) | ((s134') | (s135'))) | (((s136') | (s137')) | ((s138') | ((s139') | (s140')))))) | (((((s141') | (s142')) | ((s143') | (s144'))) | (((s145') | (s146')) | ((s147') | ((s183') | (s184'))))) | ((((s191') | (s197')) | ((s198') | ((s199') | (s210')))) | (((s211') | (s212')) | ((s217') | ((s218') | (s220')))))))) then true else false;
+
+        amount-req-low' = if (((((((s0') | (s1')) | ((s2') | (s3'))) | (((s18') | (s19')) | ((s20') | ((s21') | (s22'))))) | ((((s23') | (s24')) | ((s25') | ((s26') | (s27')))) | (((s28') | (s29')) | ((s30') | ((s31') | (s32')))))) | (((((s33') | (s34')) | ((s35') | (s36'))) | (((s37') | (s38')) | ((s39') | ((s40') | (s41'))))) | ((((s42') | (s43')) | ((s44') | ((s45') | (s46')))) | (((s47') | (s48')) | ((s49') | ((s50') | (s51'))))))) | ((((((s68') | (s69')) | ((s70') | (s71'))) | (((s74') | (s75')) | ((s76') | ((s95') | (s96'))))) | ((((s97') | (s98')) | ((s99') | ((s100') | (s101')))) | (((s102') | (s103')) | ((s104') | ((s105') | (s106')))))) | (((((s107') | (s108')) | ((s109') | (s110'))) | (((s111') | (s112')) | ((s113') | ((s115') | (s121'))))) | ((((s122') | (s148')) | ((s193') | ((s194') | (s201')))) | (((s204') | (s205')) | ((s206') | ((s213') | (s219')))))))) then true else false;
+
+        amount-req-medium' = if (((((((s4') | (s5')) | ((s6') | (s7'))) | (((s8') | (s9')) | ((s10') | (s11')))) | ((((s12') | (s13')) | ((s14') | (s15'))) | (((s16') | (s17')) | ((s72') | ((s73') | (s114')))))) | (((((s119') | (s120')) | ((s149') | (s150'))) | (((s151') | (s152')) | ((s153') | ((s154') | (s155'))))) | ((((s156') | (s157')) | ((s158') | (s159'))) | (((s160') | (s161')) | ((s162') | ((s163') | (s164'))))))) | ((((((s165') | (s166')) | ((s167') | (s168'))) | (((s169') | (s170')) | ((s171') | ((s172') | (s173'))))) | ((((s174') | (s175')) | ((s176') | (s177'))) | (((s178') | (s179')) | ((s180') | ((s181') | (s182')))))) | (((((s185') | (s186')) | ((s187') | (s188'))) | (((s189') | (s190')) | ((s192') | ((s195') | (s196'))))) | ((((s200') | (s202')) | ((s203') | (s207'))) | (((s208') | (s209')) | ((s214') | ((s215') | (s216')))))))) then true else false;
+
+        execution-time-minutes-high' = if (((((((s95') | (s96')) | ((s97') | (s98'))) | (((s99') | (s100')) | ((s101') | ((s102') | (s103'))))) | ((((s104') | (s105')) | ((s106') | (s107'))) | (((s108') | (s109')) | ((s110') | ((s111') | (s112')))))) | (((((s113') | (s128')) | ((s129') | (s130'))) | (((s131') | (s132')) | ((s133') | ((s134') | (s135'))))) | ((((s136') | (s137')) | ((s138') | ((s139') | (s140')))) | (((s141') | (s142')) | ((s143') | ((s144') | (s145'))))))) | ((((((s146') | (s147')) | ((s149') | (s150'))) | (((s151') | (s152')) | ((s153') | ((s154') | (s155'))))) | ((((s156') | (s157')) | ((s158') | (s159'))) | (((s160') | (s161')) | ((s162') | ((s163') | (s164')))))) | (((((s165') | (s166')) | ((s167') | (s192'))) | (((s193') | (s194')) | ((s200') | ((s201') | (s202'))))) | ((((s204') | (s205')) | ((s207') | ((s208') | (s209')))) | (((s210') | (s211')) | ((s212') | ((s217') | (s219')))))))) then true else false;
+
+        execution-time-minutes-low' = if (((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | ((s7') | (s8'))))) | ((((s9') | (s10')) | ((s11') | (s12'))) | (((s13') | (s14')) | ((s15') | ((s16') | (s17')))))) | (((((s18') | (s19')) | ((s20') | (s21'))) | (((s22') | (s23')) | ((s24') | ((s25') | (s26'))))) | ((((s27') | (s28')) | ((s29') | ((s30') | (s31')))) | (((s32') | (s64')) | ((s65') | ((s69') | (s70'))))))) | ((((((s71') | (s72')) | ((s73') | (s74'))) | (((s75') | (s76')) | ((s77') | ((s78') | (s79'))))) | ((((s80') | (s81')) | ((s82') | ((s83') | (s84')))) | (((s85') | (s86')) | ((s87') | ((s88') | (s89')))))) | (((((s90') | (s91')) | ((s92') | (s93'))) | (((s94') | (s114')) | ((s119') | ((s120') | (s183'))))) | ((((s184') | (s191')) | ((s195') | ((s196') | (s197')))) | (((s198') | (s199')) | ((s203') | ((s206') | (s218')))))))) then true else false;
+
+        execution-time-minutes-medium' = if (((((((s33') | (s34')) | ((s35') | (s36'))) | (((s37') | (s38')) | ((s39') | ((s40') | (s41'))))) | ((((s42') | (s43')) | ((s44') | (s45'))) | (((s46') | (s47')) | ((s48') | ((s49') | (s50')))))) | (((((s51') | (s52')) | ((s53') | (s54'))) | (((s55') | (s56')) | ((s57') | ((s58') | (s59'))))) | ((((s60') | (s61')) | ((s62') | (s63'))) | (((s66') | (s67')) | ((s68') | ((s115') | (s116'))))))) | ((((((s117') | (s118')) | ((s121') | (s122'))) | (((s123') | (s124')) | ((s125') | ((s126') | (s127'))))) | ((((s148') | (s168')) | ((s169') | (s170'))) | (((s171') | (s172')) | ((s173') | ((s174') | (s175')))))) | (((((s176') | (s177')) | ((s178') | (s179'))) | (((s180') | (s181')) | ((s182') | ((s185') | (s186'))))) | ((((s187') | (s188')) | ((s189') | (s190'))) | (((s213') | (s214')) | ((s215') | ((s216') | (s220')))))))) then true else false;
+
+    };
+
+    reward =
+        // stessa forma if/then/else e stesso albero OR bilanciato gia' usati e
+        // validati nel blocco termination, solo spostati nella reward - niente
+        // negazioni ne' moltiplicazioni (a differenza del tentativo precedente
+        // che aveva causato un crash)
+        if ( (((s17') | (s32')) | ((s51') | (s67'))) | (((s94') | (s113')) | ((s147') | ((s167') | (s182')))) )
+        then 10
+        else 1.0;
+
+
+}

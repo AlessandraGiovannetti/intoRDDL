@@ -1,0 +1,41 @@
+non-fluents mdp_process_domain_nf {
+    domain = mdp_process_domain;
+
+    non-fluents {
+        DUMMY = true;
+    };
+}
+
+instance mdp_process_inst {
+    domain = mdp_process_domain;
+    non-fluents = mdp_process_domain_nf;
+
+    init-state {
+        s0 = true;
+
+        article-v-7 = false;
+        article-v-142 = false;
+        article-v-157 = true;
+        article-v-158 = false;
+        vehicle-class-a = true;
+        last-sent-n = false;
+        last-sent-p = false;
+        notification-type-p = false;
+        amount-high = false;
+        amount-low = true;
+        amount-medium = false;
+        points-high = false;
+        points-low = false;
+        points-medium = true;
+        expense-high = false;
+        expense-low = true;
+        expense-medium = false;
+        execution-time-minutes-high = false;
+        execution-time-minutes-low = true;
+        execution-time-minutes-medium = false;
+    };
+
+    max-nondef-actions = 1;
+    horizon = 40;
+    discount = 1.0;
+}

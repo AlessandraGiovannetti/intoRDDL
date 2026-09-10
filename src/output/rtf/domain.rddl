@@ -1,0 +1,492 @@
+domain mdp_process_domain {
+
+    requirements = {
+        reward-deterministic
+    };
+
+    pvariables {
+
+        // -----------------------
+        // dummy non fluent (richiesto solo perche' il blocco non-fluents non puo'
+        // restare vuoto)
+        // -----------------------
+        DUMMY : { non-fluent, bool, default = false };
+
+        // -----------------------
+        // stato MDP (one-hot): un booleano scalare per ciascuno stato scoperto
+        // -----------------------
+        s0 : { state-fluent, bool, default=true };
+        s1 : { state-fluent, bool, default=false };
+        s2 : { state-fluent, bool, default=false };
+        s3 : { state-fluent, bool, default=false };
+        s4 : { state-fluent, bool, default=false };
+        s5 : { state-fluent, bool, default=false };
+        s6 : { state-fluent, bool, default=false };
+        s7 : { state-fluent, bool, default=false };
+        s8 : { state-fluent, bool, default=false };
+        s9 : { state-fluent, bool, default=false };
+        s10 : { state-fluent, bool, default=false };
+        s11 : { state-fluent, bool, default=false };
+        s12 : { state-fluent, bool, default=false };
+        s13 : { state-fluent, bool, default=false };
+        s14 : { state-fluent, bool, default=false };
+        s15 : { state-fluent, bool, default=false };
+        s16 : { state-fluent, bool, default=false };
+        s17 : { state-fluent, bool, default=false };
+        s18 : { state-fluent, bool, default=false };
+        s19 : { state-fluent, bool, default=false };
+        s20 : { state-fluent, bool, default=false };
+        s21 : { state-fluent, bool, default=false };
+        s22 : { state-fluent, bool, default=false };
+        s23 : { state-fluent, bool, default=false };
+        s24 : { state-fluent, bool, default=false };
+        s25 : { state-fluent, bool, default=false };
+        s26 : { state-fluent, bool, default=false };
+        s27 : { state-fluent, bool, default=false };
+        s28 : { state-fluent, bool, default=false };
+        s29 : { state-fluent, bool, default=false };
+        s30 : { state-fluent, bool, default=false };
+        s31 : { state-fluent, bool, default=false };
+        s32 : { state-fluent, bool, default=false };
+        s33 : { state-fluent, bool, default=false };
+        s34 : { state-fluent, bool, default=false };
+        s35 : { state-fluent, bool, default=false };
+        s36 : { state-fluent, bool, default=false };
+        s37 : { state-fluent, bool, default=false };
+        s38 : { state-fluent, bool, default=false };
+        s39 : { state-fluent, bool, default=false };
+        s40 : { state-fluent, bool, default=false };
+        s41 : { state-fluent, bool, default=false };
+        s42 : { state-fluent, bool, default=false };
+        s43 : { state-fluent, bool, default=false };
+        s44 : { state-fluent, bool, default=false };
+        s45 : { state-fluent, bool, default=false };
+        s46 : { state-fluent, bool, default=false };
+        s47 : { state-fluent, bool, default=false };
+        s48 : { state-fluent, bool, default=false };
+        s49 : { state-fluent, bool, default=false };
+        s50 : { state-fluent, bool, default=false };
+        s51 : { state-fluent, bool, default=false };
+        s52 : { state-fluent, bool, default=false };
+        s53 : { state-fluent, bool, default=false };
+        s54 : { state-fluent, bool, default=false };
+        s55 : { state-fluent, bool, default=false };
+        s56 : { state-fluent, bool, default=false };
+        s57 : { state-fluent, bool, default=false };
+        s58 : { state-fluent, bool, default=false };
+        s59 : { state-fluent, bool, default=false };
+        s60 : { state-fluent, bool, default=false };
+        s61 : { state-fluent, bool, default=false };
+        s62 : { state-fluent, bool, default=false };
+        s63 : { state-fluent, bool, default=false };
+        s64 : { state-fluent, bool, default=false };
+        s65 : { state-fluent, bool, default=false };
+        s66 : { state-fluent, bool, default=false };
+        s67 : { state-fluent, bool, default=false };
+        s68 : { state-fluent, bool, default=false };
+        s69 : { state-fluent, bool, default=false };
+        s70 : { state-fluent, bool, default=false };
+        s71 : { state-fluent, bool, default=false };
+        s72 : { state-fluent, bool, default=false };
+        s73 : { state-fluent, bool, default=false };
+        s74 : { state-fluent, bool, default=false };
+        s75 : { state-fluent, bool, default=false };
+        s76 : { state-fluent, bool, default=false };
+        s77 : { state-fluent, bool, default=false };
+        s78 : { state-fluent, bool, default=false };
+        s79 : { state-fluent, bool, default=false };
+        s80 : { state-fluent, bool, default=false };
+        s81 : { state-fluent, bool, default=false };
+        s82 : { state-fluent, bool, default=false };
+        s83 : { state-fluent, bool, default=false };
+        s84 : { state-fluent, bool, default=false };
+        s85 : { state-fluent, bool, default=false };
+        s86 : { state-fluent, bool, default=false };
+        s87 : { state-fluent, bool, default=false };
+        s88 : { state-fluent, bool, default=false };
+        s89 : { state-fluent, bool, default=false };
+        s90 : { state-fluent, bool, default=false };
+        s91 : { state-fluent, bool, default=false };
+        s92 : { state-fluent, bool, default=false };
+        s93 : { state-fluent, bool, default=false };
+        s94 : { state-fluent, bool, default=false };
+        s95 : { state-fluent, bool, default=false };
+        s96 : { state-fluent, bool, default=false };
+        s97 : { state-fluent, bool, default=false };
+        s98 : { state-fluent, bool, default=false };
+        s99 : { state-fluent, bool, default=false };
+        s100 : { state-fluent, bool, default=false };
+        s101 : { state-fluent, bool, default=false };
+        s102 : { state-fluent, bool, default=false };
+        s103 : { state-fluent, bool, default=false };
+        s104 : { state-fluent, bool, default=false };
+        s105 : { state-fluent, bool, default=false };
+        s106 : { state-fluent, bool, default=false };
+        s107 : { state-fluent, bool, default=false };
+        s108 : { state-fluent, bool, default=false };
+        s109 : { state-fluent, bool, default=false };
+        s110 : { state-fluent, bool, default=false };
+        s111 : { state-fluent, bool, default=false };
+        s112 : { state-fluent, bool, default=false };
+        s113 : { state-fluent, bool, default=false };
+        s114 : { state-fluent, bool, default=false };
+        s115 : { state-fluent, bool, default=false };
+        s116 : { state-fluent, bool, default=false };
+        s117 : { state-fluent, bool, default=false };
+        s118 : { state-fluent, bool, default=false };
+        s119 : { state-fluent, bool, default=false };
+        s120 : { state-fluent, bool, default=false };
+
+        // -----------------------
+        // attributi dello stato, TUTTI booleani nativi (fluents di prima classe,
+        // usabili nella reward, nessun 'real'): gli attributi 'tri' (True/False/
+        // missing, missing->false) sono un singolo booleano; TUTTE le colonne
+        // categoriche - incluse quelle numeriche non discretizzate a monte, se
+        // con pochi valori distinti - sono one-hot: un booleano PER CIASCUN
+        // VALORE possibile, esattamente uno vero
+        // -----------------------
+        article-v-7 : { state-fluent, bool, default=false };
+        article-v-142 : { state-fluent, bool, default=false };
+        article-v-157 : { state-fluent, bool, default=false };
+        article-v-158 : { state-fluent, bool, default=false };
+        vehicle-class-a : { state-fluent, bool, default=false };
+        last-sent-n : { state-fluent, bool, default=false };
+        last-sent-p : { state-fluent, bool, default=false };
+        notification-type-p : { state-fluent, bool, default=false };
+        amount-high : { state-fluent, bool, default=false };
+        amount-low : { state-fluent, bool, default=false };
+        amount-medium : { state-fluent, bool, default=false };
+        points-high : { state-fluent, bool, default=false };
+        points-low : { state-fluent, bool, default=false };
+        points-medium : { state-fluent, bool, default=false };
+        expense-high : { state-fluent, bool, default=false };
+        expense-low : { state-fluent, bool, default=false };
+        expense-medium : { state-fluent, bool, default=false };
+        execution-time-minutes-high : { state-fluent, bool, default=false };
+        execution-time-minutes-low : { state-fluent, bool, default=false };
+        execution-time-minutes-medium : { state-fluent, bool, default=false };
+
+        // -----------------------
+        // azioni: una booleana scalare per ciascuna attivita' osservata nel log
+        // -----------------------
+        action-add-penalty : { action-fluent, bool, default=false };
+        action-appeal-to-judge : { action-fluent, bool, default=false };
+        action-create-fine : { action-fluent, bool, default=false };
+        action-insert-date-appeal-to-prefecture : { action-fluent, bool, default=false };
+        action-insert-fine-notification : { action-fluent, bool, default=false };
+        action-notify-result-appeal-to-offender : { action-fluent, bool, default=false };
+        action-payment : { action-fluent, bool, default=false };
+        action-receive-result-appeal-from-prefecture : { action-fluent, bool, default=false };
+        action-send-appeal-to-prefecture : { action-fluent, bool, default=false };
+        action-send-fine : { action-fluent, bool, default=false };
+        action-send-for-credit-collection : { action-fluent, bool, default=false };
+        action-archive-application : { action-fluent, bool, default=false };
+    };
+
+    cpfs {
+
+        // ---- transizioni: catena di Bernoulli condizionati (stick-breaking) ----
+        // quando un (stato,azione) ha piu' esiti osservati, ciascuno tranne
+        // l'ultimo pesca con probabilita' condizionata al non essersi gia' verificato
+        // uno degli esiti precedenti dello stesso gruppo (riferimento a s{T}')
+        // Transizione diretta a singolo tick: niente variabili di staging.
+        s0' = false;
+
+        s1' = if (s0 ^ action-create-fine) then true else false;
+
+        s2' = if (s1 ^ action-send-fine) then (true) else (if (s7 ^ action-send-fine) then true else false);
+
+        s3' = if (s2 ^ action-insert-fine-notification) then (true) else (if (s7 ^ action-insert-fine-notification) then (true) else (if (s28 ^ action-insert-fine-notification) then true else false));
+
+        s4' = if ((s3 ^ action-add-penalty) | (s7 ^ action-add-penalty)) then (if (s3 ^ action-add-penalty) then (true) else (if (s7 ^ action-add-penalty) then true else false)) else (if (s28 ^ action-add-penalty) then (true) else (if (s29 ^ action-add-penalty) then true else false));
+
+        s5' = if ((s4 ^ action-send-for-credit-collection) | (s7 ^ action-send-for-credit-collection)) then (if (s4 ^ action-send-for-credit-collection) then (true) else (if (s7 ^ action-send-for-credit-collection) then true else false)) else (if (s29 ^ action-send-for-credit-collection) then (true) else (if (s31 ^ action-send-for-credit-collection) then true else false));
+
+        s6' = if (s2 ^ action-archive-application) then (true) else (if (s5 ^ action-archive-application) then (true) else (if (s7 ^ action-archive-application) then true else false));
+
+        s7' = if ((s1 ^ action-payment) | ((s2 ^ action-payment) | (s3 ^ action-payment))) then (if (s1 ^ action-payment) then (true) else (if (s2 ^ action-payment) then (true) else (if (s3 ^ action-payment) then true else false))) else (if ((s4 ^ action-payment) | (s7 ^ action-payment)) then (if (s4 ^ action-payment) then (true) else (if (s7 ^ action-payment) then true else false)) else (if (s30 ^ action-payment) then (true) else (if (s31 ^ action-payment) then true else false)));
+
+        s8' = false;
+
+        s9' = if (s8 ^ action-create-fine) then true else false;
+
+        s10' = if (s9 ^ action-send-fine) then (true) else (if (s15 ^ action-send-fine) then (true) else (if (s32 ^ action-send-fine) then true else false));
+
+        s11' = if (s10 ^ action-insert-fine-notification) then (true) else (if (s15 ^ action-insert-fine-notification) then (true) else (if (s32 ^ action-insert-fine-notification) then true else false));
+
+        s12' = if ((s11 ^ action-add-penalty) | ((s15 ^ action-add-penalty) | (s32 ^ action-add-penalty))) then (if (s11 ^ action-add-penalty) then (Bernoulli(0.999710)) else (if (s15 ^ action-add-penalty) then (true) else (if (s32 ^ action-add-penalty) then true else false))) else (if (s33 ^ action-add-penalty) then (true) else (if (s34 ^ action-add-penalty) then (true) else (if (s35 ^ action-add-penalty) then true else false)));
+
+        s13' = if (s12 ^ action-send-for-credit-collection) then (true) else (if (s15 ^ action-send-for-credit-collection) then (true) else (if (s35 ^ action-send-for-credit-collection) then true else false));
+
+        s14' = if ((s10 ^ action-archive-application) | (s13 ^ action-archive-application)) then (if (s10 ^ action-archive-application) then (true) else (if (s13 ^ action-archive-application) then true else false)) else (if (s15 ^ action-archive-application) then (true) else (if (s33 ^ action-archive-application) then true else false));
+
+        s15' = if (((s9 ^ action-payment) | (s10 ^ action-payment)) | ((s11 ^ action-payment) | (s12 ^ action-payment))) then (if ((s9 ^ action-payment) | (s10 ^ action-payment)) then (if (s9 ^ action-payment) then (true) else (if (s10 ^ action-payment) then true else false)) else (if (s11 ^ action-payment) then (true) else (if (s12 ^ action-payment) then true else false))) else (if ((s15 ^ action-payment) | (s32 ^ action-payment)) then (if (s15 ^ action-payment) then (true) else (if (s32 ^ action-payment) then true else false)) else (if (s33 ^ action-payment) then (true) else (if (s34 ^ action-payment) then (true) else (if (s35 ^ action-payment) then true else false))));
+
+        s16' = false;
+
+        s17' = if (s16 ^ action-create-fine) then true else false;
+
+        s18' = if (s17 ^ action-send-fine) then (true) else (if (s23 ^ action-send-fine) then true else false);
+
+        s19' = if (s18 ^ action-insert-fine-notification) then (true) else (if (s23 ^ action-insert-fine-notification) then (true) else (if (s24 ^ action-insert-fine-notification) then true else false));
+
+        s20' = if ((s19 ^ action-add-penalty) | ((s23 ^ action-add-penalty) | (s24 ^ action-add-penalty))) then (if (s19 ^ action-add-penalty) then (true) else (if (s23 ^ action-add-penalty) then (true) else (if (s24 ^ action-add-penalty) then true else false))) else (if (s25 ^ action-add-penalty) then (true) else (if (s26 ^ action-add-penalty) then (true) else (if (s27 ^ action-add-penalty) then true else false)));
+
+        s21' = if ((s20 ^ action-send-for-credit-collection) | (s23 ^ action-send-for-credit-collection)) then (if (s20 ^ action-send-for-credit-collection) then (true) else (if (s23 ^ action-send-for-credit-collection) then true else false)) else (if (s26 ^ action-send-for-credit-collection) then (true) else (if (s27 ^ action-send-for-credit-collection) then true else false));
+
+        s22' = if ((s18 ^ action-archive-application) | (s21 ^ action-archive-application)) then (if (s18 ^ action-archive-application) then (true) else (if (s21 ^ action-archive-application) then true else false)) else (if (s23 ^ action-archive-application) then (true) else (if (s25 ^ action-archive-application) then true else false));
+
+        s23' = if (((s17 ^ action-payment) | (s18 ^ action-payment)) | ((s19 ^ action-payment) | (s20 ^ action-payment))) then (if ((s17 ^ action-payment) | (s18 ^ action-payment)) then (if (s17 ^ action-payment) then (true) else (if (s18 ^ action-payment) then true else false)) else (if (s19 ^ action-payment) then (true) else (if (s20 ^ action-payment) then true else false))) else (if ((s23 ^ action-payment) | (s24 ^ action-payment)) then (if (s23 ^ action-payment) then (true) else (if (s24 ^ action-payment) then true else false)) else (if (s26 ^ action-payment) then (true) else (if (s27 ^ action-payment) then true else false)));
+
+        s24' = if (s18 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s19 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s20 ^ action-insert-date-appeal-to-prefecture) then true else false));
+
+        s25' = if ((s19 ^ action-send-appeal-to-prefecture) | (s20 ^ action-send-appeal-to-prefecture)) then (if (s19 ^ action-send-appeal-to-prefecture) then (true) else (if (s20 ^ action-send-appeal-to-prefecture) then true else false)) else (if (s21 ^ action-send-appeal-to-prefecture) then (true) else (if (s23 ^ action-send-appeal-to-prefecture) then (true) else (if (s24 ^ action-send-appeal-to-prefecture) then true else false)));
+
+        s26' = if ((s20 ^ action-receive-result-appeal-from-prefecture) | (s23 ^ action-receive-result-appeal-from-prefecture)) then (if (s20 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s23 ^ action-receive-result-appeal-from-prefecture) then true else false)) else (if (s24 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s25 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s27 ^ action-receive-result-appeal-from-prefecture) then true else false)));
+
+        s27' = if (s20 ^ action-notify-result-appeal-to-offender) then (true) else (if (s23 ^ action-notify-result-appeal-to-offender) then (true) else (if (s26 ^ action-notify-result-appeal-to-offender) then true else false));
+
+        s28' = if (s2 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s3 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s4 ^ action-insert-date-appeal-to-prefecture) then true else false));
+
+        s29' = if (s4 ^ action-send-appeal-to-prefecture) then (true) else (if (s28 ^ action-send-appeal-to-prefecture) then (true) else (if (s31 ^ action-send-appeal-to-prefecture) then true else false));
+
+        s30' = if (s4 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s28 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s29 ^ action-receive-result-appeal-from-prefecture) then true else false));
+
+        s31' = if (s30 ^ action-notify-result-appeal-to-offender) then true else false;
+
+        s32' = if ((s9 ^ action-insert-date-appeal-to-prefecture) | (s10 ^ action-insert-date-appeal-to-prefecture)) then (if (s9 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s10 ^ action-insert-date-appeal-to-prefecture) then true else false)) else (if (s11 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s12 ^ action-insert-date-appeal-to-prefecture) then true else false));
+
+        s33' = if ((s11 ^ action-send-appeal-to-prefecture) | ((s12 ^ action-send-appeal-to-prefecture) | (s13 ^ action-send-appeal-to-prefecture))) then (if (s11 ^ action-send-appeal-to-prefecture) then (true) else (if (s12 ^ action-send-appeal-to-prefecture) then (true) else (if (s13 ^ action-send-appeal-to-prefecture) then true else false))) else (if (s15 ^ action-send-appeal-to-prefecture) then (true) else (if (s32 ^ action-send-appeal-to-prefecture) then (true) else (if (s34 ^ action-send-appeal-to-prefecture) then true else false)));
+
+        s34' = if ((s11 ^ action-receive-result-appeal-from-prefecture) | (s12 ^ action-receive-result-appeal-from-prefecture)) then (if (s11 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s12 ^ action-receive-result-appeal-from-prefecture) then true else false)) else (if (s32 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s33 ^ action-receive-result-appeal-from-prefecture) then true else false));
+
+        s35' = if (s12 ^ action-notify-result-appeal-to-offender) then (true) else (if (s33 ^ action-notify-result-appeal-to-offender) then (true) else (if (s34 ^ action-notify-result-appeal-to-offender) then true else false));
+
+        s36' = if (((((s3 ^ action-appeal-to-judge) | (s4 ^ action-appeal-to-judge)) | ((s11 ^ action-appeal-to-judge) | (s12 ^ action-appeal-to-judge))) | (((s19 ^ action-appeal-to-judge) | (s20 ^ action-appeal-to-judge)) | ((s27 ^ action-appeal-to-judge) | (s30 ^ action-appeal-to-judge)))) | ((((s31 ^ action-appeal-to-judge) | (s34 ^ action-appeal-to-judge)) | ((s35 ^ action-appeal-to-judge) | (s37 ^ action-appeal-to-judge))) | (((s38 ^ action-appeal-to-judge) | (s50 ^ action-appeal-to-judge)) | ((s51 ^ action-appeal-to-judge) | ((s58 ^ action-appeal-to-judge) | (s62 ^ action-appeal-to-judge)))))) then (if ((((s3 ^ action-appeal-to-judge) | (s4 ^ action-appeal-to-judge)) | ((s11 ^ action-appeal-to-judge) | (s12 ^ action-appeal-to-judge))) | (((s19 ^ action-appeal-to-judge) | (s20 ^ action-appeal-to-judge)) | ((s27 ^ action-appeal-to-judge) | (s30 ^ action-appeal-to-judge)))) then (if (((s3 ^ action-appeal-to-judge) | (s4 ^ action-appeal-to-judge)) | ((s11 ^ action-appeal-to-judge) | (s12 ^ action-appeal-to-judge))) then (if ((s3 ^ action-appeal-to-judge) | (s4 ^ action-appeal-to-judge)) then (if (s3 ^ action-appeal-to-judge) then (true) else (if (s4 ^ action-appeal-to-judge) then true else false)) else (if (s11 ^ action-appeal-to-judge) then (true) else (if (s12 ^ action-appeal-to-judge) then true else false))) else (if ((s19 ^ action-appeal-to-judge) | (s20 ^ action-appeal-to-judge)) then (if (s19 ^ action-appeal-to-judge) then (true) else (if (s20 ^ action-appeal-to-judge) then true else false)) else (if (s27 ^ action-appeal-to-judge) then (true) else (if (s30 ^ action-appeal-to-judge) then true else false)))) else (if (((s31 ^ action-appeal-to-judge) | (s34 ^ action-appeal-to-judge)) | ((s35 ^ action-appeal-to-judge) | (s37 ^ action-appeal-to-judge))) then (if ((s31 ^ action-appeal-to-judge) | (s34 ^ action-appeal-to-judge)) then (if (s31 ^ action-appeal-to-judge) then (true) else (if (s34 ^ action-appeal-to-judge) then true else false)) else (if (s35 ^ action-appeal-to-judge) then (true) else (if (s37 ^ action-appeal-to-judge) then true else false))) else (if ((s38 ^ action-appeal-to-judge) | (s50 ^ action-appeal-to-judge)) then (if (s38 ^ action-appeal-to-judge) then (true) else (if (s50 ^ action-appeal-to-judge) then true else false)) else (if (s51 ^ action-appeal-to-judge) then (true) else (if (s58 ^ action-appeal-to-judge) then (true) else (if (s62 ^ action-appeal-to-judge) then true else false)))))) else (if ((((s63 ^ action-appeal-to-judge) | (s67 ^ action-appeal-to-judge)) | ((s68 ^ action-appeal-to-judge) | (s72 ^ action-appeal-to-judge))) | (((s74 ^ action-appeal-to-judge) | (s78 ^ action-appeal-to-judge)) | ((s85 ^ action-appeal-to-judge) | (s93 ^ action-appeal-to-judge)))) then (if (((s63 ^ action-appeal-to-judge) | (s67 ^ action-appeal-to-judge)) | ((s68 ^ action-appeal-to-judge) | (s72 ^ action-appeal-to-judge))) then (if ((s63 ^ action-appeal-to-judge) | (s67 ^ action-appeal-to-judge)) then (if (s63 ^ action-appeal-to-judge) then (true) else (if (s67 ^ action-appeal-to-judge) then true else false)) else (if (s68 ^ action-appeal-to-judge) then (true) else (if (s72 ^ action-appeal-to-judge) then true else false))) else (if ((s74 ^ action-appeal-to-judge) | (s78 ^ action-appeal-to-judge)) then (if (s74 ^ action-appeal-to-judge) then (true) else (if (s78 ^ action-appeal-to-judge) then true else false)) else (if (s85 ^ action-appeal-to-judge) then (true) else (if (s93 ^ action-appeal-to-judge) then true else false)))) else (if (((s96 ^ action-appeal-to-judge) | (s103 ^ action-appeal-to-judge)) | ((s105 ^ action-appeal-to-judge) | (s106 ^ action-appeal-to-judge))) then (if ((s96 ^ action-appeal-to-judge) | (s103 ^ action-appeal-to-judge)) then (if (s96 ^ action-appeal-to-judge) then (true) else (if (s103 ^ action-appeal-to-judge) then true else false)) else (if (s105 ^ action-appeal-to-judge) then (true) else (if (s106 ^ action-appeal-to-judge) then true else false))) else (if ((s110 ^ action-appeal-to-judge) | (s111 ^ action-appeal-to-judge)) then (if (s110 ^ action-appeal-to-judge) then (true) else (if (s111 ^ action-appeal-to-judge) then true else false)) else (if (s117 ^ action-appeal-to-judge) then (true) else (if (s118 ^ action-appeal-to-judge) then (true) else (if (s120 ^ action-appeal-to-judge) then true else false))))));
+
+        s37' = if ((s36 ^ action-add-penalty) | (s38 ^ action-add-penalty)) then (if (s36 ^ action-add-penalty) then (true) else (if (s38 ^ action-add-penalty) then true else false)) else (if (s41 ^ action-add-penalty) then (true) else (if (s42 ^ action-add-penalty) then (true) else (if (s58 ^ action-add-penalty) then true else false)));
+
+        s38' = if (((s36 ^ action-payment) | (s37 ^ action-payment)) | ((s38 ^ action-payment) | (s42 ^ action-payment))) then (if ((s36 ^ action-payment) | (s37 ^ action-payment)) then (if (s36 ^ action-payment) then (true) else (if (s37 ^ action-payment) then true else false)) else (if (s38 ^ action-payment) then (true) else (if (s42 ^ action-payment) then true else false))) else (if ((s56 ^ action-payment) | (s57 ^ action-payment)) then (if (s56 ^ action-payment) then (true) else (if (s57 ^ action-payment) then true else false)) else (if (s58 ^ action-payment) then (true) else (if (s96 ^ action-payment) then true else false)));
+
+        s39' = if ((s36 ^ action-archive-application) | (s38 ^ action-archive-application)) then (if (s36 ^ action-archive-application) then (true) else (if (s38 ^ action-archive-application) then true else false)) else (if (s40 ^ action-archive-application) then (true) else (if (s42 ^ action-archive-application) then (true) else (if (s57 ^ action-archive-application) then true else false)));
+
+        s40' = if ((s36 ^ action-send-for-credit-collection) | (s37 ^ action-send-for-credit-collection)) then (if (s36 ^ action-send-for-credit-collection) then (true) else (if (s37 ^ action-send-for-credit-collection) then true else false)) else (if (s38 ^ action-send-for-credit-collection) then (true) else (if (s96 ^ action-send-for-credit-collection) then true else false));
+
+        s41' = if ((s36 ^ action-insert-date-appeal-to-prefecture) | (s37 ^ action-insert-date-appeal-to-prefecture)) then (if (s36 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s37 ^ action-insert-date-appeal-to-prefecture) then true else false)) else (if (s56 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s57 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s58 ^ action-insert-date-appeal-to-prefecture) then true else false)));
+
+        s42' = if ((s36 ^ action-send-appeal-to-prefecture) | (s37 ^ action-send-appeal-to-prefecture)) then (if (s36 ^ action-send-appeal-to-prefecture) then (true) else (if (s37 ^ action-send-appeal-to-prefecture) then true else false)) else (if (s40 ^ action-send-appeal-to-prefecture) then (true) else (if (s41 ^ action-send-appeal-to-prefecture) then (true) else (if (s58 ^ action-send-appeal-to-prefecture) then true else false)));
+
+        s43' = false;
+
+        s44' = if (s43 ^ action-create-fine) then true else false;
+
+        s45' = if ((s44 ^ action-payment) | ((s45 ^ action-payment) | (s66 ^ action-payment))) then (if (s44 ^ action-payment) then (true) else (if (s45 ^ action-payment) then (true) else (if (s66 ^ action-payment) then true else false))) else (if ((s67 ^ action-payment) | (s68 ^ action-payment)) then (if (s67 ^ action-payment) then (true) else (if (s68 ^ action-payment) then true else false)) else (if (s98 ^ action-payment) then (true) else (if (s100 ^ action-payment) then true else false)));
+
+        s46' = if ((s45 ^ action-archive-application) | (s66 ^ action-archive-application)) then (if (s45 ^ action-archive-application) then (true) else (if (s66 ^ action-archive-application) then true else false)) else (if (s69 ^ action-archive-application) then (true) else (if (s98 ^ action-archive-application) then true else false));
+
+        s47' = false;
+
+        s48' = if (s47 ^ action-create-fine) then true else false;
+
+        s49' = if (s48 ^ action-send-fine) then (true) else (if (s52 ^ action-send-fine) then (true) else (if (s74 ^ action-send-fine) then true else false));
+
+        s50' = if ((s49 ^ action-insert-fine-notification) | (s52 ^ action-insert-fine-notification)) then (if (s49 ^ action-insert-fine-notification) then (true) else (if (s52 ^ action-insert-fine-notification) then true else false)) else (if (s61 ^ action-insert-fine-notification) then (Bernoulli(0.000620)) else (if (s73 ^ action-insert-fine-notification) then (true) else (if (s74 ^ action-insert-fine-notification) then true else false)));
+
+        s51' = if ((s50 ^ action-add-penalty) | ((s52 ^ action-add-penalty) | (s62 ^ action-add-penalty))) then (if (s50 ^ action-add-penalty) then (true) else (if (s52 ^ action-add-penalty) then (true) else (if (s62 ^ action-add-penalty) then Bernoulli(0.002388) else false))) else (if ((s64 ^ action-add-penalty) | (s71 ^ action-add-penalty)) then (if (s64 ^ action-add-penalty) then (Bernoulli(0.004082)) else (if (s71 ^ action-add-penalty) then true else false)) else (if (s73 ^ action-add-penalty) then (true) else (if (s74 ^ action-add-penalty) then true else false)));
+
+        s52' = if (((s48 ^ action-payment) | (s49 ^ action-payment)) | ((s50 ^ action-payment) | (s51 ^ action-payment))) then (if ((s48 ^ action-payment) | (s49 ^ action-payment)) then (if (s48 ^ action-payment) then (true) else (if (s49 ^ action-payment) then true else false)) else (if (s50 ^ action-payment) then (true) else (if (s51 ^ action-payment) then true else false))) else (if ((s52 ^ action-payment) | (s71 ^ action-payment)) then (if (s52 ^ action-payment) then (true) else (if (s71 ^ action-payment) then true else false)) else (if (s72 ^ action-payment) then (true) else (if (s73 ^ action-payment) then (true) else (if (s74 ^ action-payment) then true else false))));
+
+        s53' = if ((s51 ^ action-send-for-credit-collection) | (s52 ^ action-send-for-credit-collection)) then (if (s51 ^ action-send-for-credit-collection) then (true) else (if (s52 ^ action-send-for-credit-collection) then true else false)) else (if (s72 ^ action-send-for-credit-collection) then (true) else (if (s74 ^ action-send-for-credit-collection) then true else false));
+
+        s54' = if ((s49 ^ action-archive-application) | (s52 ^ action-archive-application)) then (if (s49 ^ action-archive-application) then (true) else (if (s52 ^ action-archive-application) then true else false)) else (if (s53 ^ action-archive-application) then (true) else (if (s72 ^ action-archive-application) then true else false));
+
+        s55' = false;
+
+        s56' = if (s55 ^ action-create-fine) then true else false;
+
+        s57' = if (s38 ^ action-send-fine) then (true) else (if (s42 ^ action-send-fine) then (true) else (if (s56 ^ action-send-fine) then true else false));
+
+        s58' = if (s38 ^ action-insert-fine-notification) then (true) else (if (s41 ^ action-insert-fine-notification) then (true) else (if (s57 ^ action-insert-fine-notification) then true else false));
+
+        s59' = false;
+
+        s60' = if (s59 ^ action-create-fine) then true else false;
+
+        s61' = if (s60 ^ action-send-fine) then (true) else (if (s64 ^ action-send-fine) then true else false);
+
+        s62' = if (s61 ^ action-insert-fine-notification ^ ~s50') then (true) else (if (s64 ^ action-insert-fine-notification) then true else false);
+
+        s63' = if ((s62 ^ action-add-penalty ^ ~s51') | ((s64 ^ action-add-penalty ^ ~s51') | (s103 ^ action-add-penalty))) then (if (s62 ^ action-add-penalty ^ ~s51') then (true) else (if (s64 ^ action-add-penalty ^ ~s51') then (true) else (if (s103 ^ action-add-penalty) then true else false))) else (if (s104 ^ action-add-penalty) then (true) else (if (s106 ^ action-add-penalty) then (true) else (if (s110 ^ action-add-penalty) then Bernoulli(0.003829) else false)));
+
+        s64' = if (((s60 ^ action-payment) | (s61 ^ action-payment)) | ((s62 ^ action-payment) | (s63 ^ action-payment))) then (if ((s60 ^ action-payment) | (s61 ^ action-payment)) then (if (s60 ^ action-payment) then (true) else (if (s61 ^ action-payment) then true else false)) else (if (s62 ^ action-payment) then (true) else (if (s63 ^ action-payment) then true else false))) else (if ((s64 ^ action-payment) | (s103 ^ action-payment)) then (if (s64 ^ action-payment) then (true) else (if (s103 ^ action-payment) then true else false)) else (if (s104 ^ action-payment) then (true) else (if (s106 ^ action-payment) then true else false)));
+
+        s65' = if ((s61 ^ action-archive-application) | (s64 ^ action-archive-application)) then (if (s61 ^ action-archive-application) then (true) else (if (s64 ^ action-archive-application) then true else false)) else (if (s70 ^ action-archive-application) then (true) else (if (s104 ^ action-archive-application) then true else false));
+
+        s66' = if (s44 ^ action-send-fine) then (true) else (if (s45 ^ action-send-fine) then true else false);
+
+        s67' = if (s66 ^ action-insert-fine-notification) then true else false;
+
+        s68' = if ((s45 ^ action-add-penalty) | (s67 ^ action-add-penalty)) then (if (s45 ^ action-add-penalty) then (true) else (if (s67 ^ action-add-penalty) then true else false)) else (if (s97 ^ action-add-penalty) then (true) else (if (s98 ^ action-add-penalty) then (true) else (if (s99 ^ action-add-penalty) then true else false)));
+
+        s69' = if (s45 ^ action-send-for-credit-collection) then (true) else (if (s68 ^ action-send-for-credit-collection) then (true) else (if (s100 ^ action-send-for-credit-collection) then true else false));
+
+        s70' = if (s63 ^ action-send-for-credit-collection) then (true) else (if (s64 ^ action-send-for-credit-collection) then (true) else (if (s106 ^ action-send-for-credit-collection) then true else false));
+
+        s71' = if ((s50 ^ action-receive-result-appeal-from-prefecture) | (s51 ^ action-receive-result-appeal-from-prefecture)) then (if (s50 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s51 ^ action-receive-result-appeal-from-prefecture) then true else false)) else (if (s52 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s73 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s74 ^ action-receive-result-appeal-from-prefecture) then true else false)));
+
+        s72' = if (s51 ^ action-notify-result-appeal-to-offender) then (true) else (if (s71 ^ action-notify-result-appeal-to-offender) then (true) else (if (s74 ^ action-notify-result-appeal-to-offender) then true else false));
+
+        s73' = if ((s48 ^ action-insert-date-appeal-to-prefecture) | (s49 ^ action-insert-date-appeal-to-prefecture)) then (if (s48 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s49 ^ action-insert-date-appeal-to-prefecture) then true else false)) else (if (s50 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s51 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s71 ^ action-insert-date-appeal-to-prefecture) then true else false)));
+
+        s74' = if ((s49 ^ action-send-appeal-to-prefecture) | ((s50 ^ action-send-appeal-to-prefecture) | (s51 ^ action-send-appeal-to-prefecture))) then (if (s49 ^ action-send-appeal-to-prefecture) then (true) else (if (s50 ^ action-send-appeal-to-prefecture) then (true) else (if (s51 ^ action-send-appeal-to-prefecture) then true else false))) else (if (s71 ^ action-send-appeal-to-prefecture) then (true) else (if (s72 ^ action-send-appeal-to-prefecture) then (true) else (if (s73 ^ action-send-appeal-to-prefecture) then true else false)));
+
+        s75' = false;
+
+        s76' = if (s75 ^ action-create-fine) then true else false;
+
+        s77' = if (s76 ^ action-send-fine) then (true) else (if (s94 ^ action-send-fine) then true else false);
+
+        s78' = if ((s77 ^ action-insert-fine-notification) | (s90 ^ action-insert-fine-notification)) then (if (s77 ^ action-insert-fine-notification) then (true) else (if (s90 ^ action-insert-fine-notification) then true else false)) else (if (s91 ^ action-insert-fine-notification) then (true) else (if (s94 ^ action-insert-fine-notification) then true else false));
+
+        s79' = if ((s78 ^ action-add-penalty) | (s90 ^ action-add-penalty)) then (if (s78 ^ action-add-penalty) then (true) else (if (s90 ^ action-add-penalty) then true else false)) else (if (s91 ^ action-add-penalty) then (true) else (if (s92 ^ action-add-penalty) then (true) else (if (s94 ^ action-add-penalty) then true else false)));
+
+        s80' = if (s79 ^ action-send-for-credit-collection) then (true) else (if (s93 ^ action-send-for-credit-collection) then (true) else (if (s94 ^ action-send-for-credit-collection) then true else false));
+
+        s81' = if (s77 ^ action-archive-application) then (true) else (if (s80 ^ action-archive-application) then (true) else (if (s94 ^ action-archive-application) then true else false));
+
+        s82' = false;
+
+        s83' = if (s82 ^ action-create-fine) then true else false;
+
+        s84' = if (s83 ^ action-send-fine) then (true) else (if (s87 ^ action-send-fine) then true else false);
+
+        s85' = if (s84 ^ action-insert-fine-notification) then (true) else (if (s87 ^ action-insert-fine-notification) then true else false);
+
+        s86' = if ((s85 ^ action-add-penalty) | (s87 ^ action-add-penalty)) then (if (s85 ^ action-add-penalty) then (true) else (if (s87 ^ action-add-penalty) then true else false)) else (if (s101 ^ action-add-penalty) then (true) else (if (s102 ^ action-add-penalty) then (true) else (if (s119 ^ action-add-penalty) then true else false)));
+
+        s87' = if (((s83 ^ action-payment) | (s84 ^ action-payment)) | ((s85 ^ action-payment) | (s86 ^ action-payment))) then (if ((s83 ^ action-payment) | (s84 ^ action-payment)) then (if (s83 ^ action-payment) then (true) else (if (s84 ^ action-payment) then true else false)) else (if (s85 ^ action-payment) then (true) else (if (s86 ^ action-payment) then true else false))) else (if ((s87 ^ action-payment) | (s101 ^ action-payment)) then (if (s87 ^ action-payment) then (true) else (if (s101 ^ action-payment) then true else false)) else (if (s119 ^ action-payment) then (true) else (if (s120 ^ action-payment) then true else false)));
+
+        s88' = if ((s84 ^ action-archive-application) | (s87 ^ action-archive-application)) then (if (s84 ^ action-archive-application) then (true) else (if (s87 ^ action-archive-application) then true else false)) else (if (s89 ^ action-archive-application) then (true) else (if (s102 ^ action-archive-application) then true else false));
+
+        s89' = if (s86 ^ action-send-for-credit-collection) then (true) else (if (s87 ^ action-send-for-credit-collection) then (true) else (if (s120 ^ action-send-for-credit-collection) then true else false));
+
+        s90' = if (s77 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s78 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s79 ^ action-insert-date-appeal-to-prefecture) then true else false));
+
+        s91' = if (s79 ^ action-send-appeal-to-prefecture) then (true) else (if (s90 ^ action-send-appeal-to-prefecture) then (true) else (if (s92 ^ action-send-appeal-to-prefecture) then true else false));
+
+        s92' = if (s79 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s90 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s91 ^ action-receive-result-appeal-from-prefecture) then true else false));
+
+        s93' = if (s79 ^ action-notify-result-appeal-to-offender) then (true) else (if (s92 ^ action-notify-result-appeal-to-offender) then true else false);
+
+        s94' = if (((s76 ^ action-payment) | (s77 ^ action-payment)) | ((s78 ^ action-payment) | (s79 ^ action-payment))) then (if ((s76 ^ action-payment) | (s77 ^ action-payment)) then (if (s76 ^ action-payment) then (true) else (if (s77 ^ action-payment) then true else false)) else (if (s78 ^ action-payment) then (true) else (if (s79 ^ action-payment) then true else false))) else (if ((s91 ^ action-payment) | (s92 ^ action-payment)) then (if (s91 ^ action-payment) then (true) else (if (s92 ^ action-payment) then true else false)) else (if (s93 ^ action-payment) then (true) else (if (s94 ^ action-payment) then true else false)));
+
+        s95' = if (s37 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s42 ^ action-receive-result-appeal-from-prefecture) then true else false);
+
+        s96' = if (s36 ^ action-notify-result-appeal-to-offender) then (true) else (if (s95 ^ action-notify-result-appeal-to-offender) then true else false);
+
+        s97' = if (s67 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s68 ^ action-insert-date-appeal-to-prefecture) then true else false);
+
+        s98' = if (s68 ^ action-send-appeal-to-prefecture) then (true) else (if (s69 ^ action-send-appeal-to-prefecture) then (true) else (if (s97 ^ action-send-appeal-to-prefecture) then true else false));
+
+        s99' = if (s68 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s98 ^ action-receive-result-appeal-from-prefecture) then true else false);
+
+        s100' = if (s68 ^ action-notify-result-appeal-to-offender) then (true) else (if (s99 ^ action-notify-result-appeal-to-offender) then true else false);
+
+        s101' = if (s85 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s86 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s87 ^ action-insert-date-appeal-to-prefecture) then true else false));
+
+        s102' = if (s86 ^ action-send-appeal-to-prefecture) then (true) else (if (s89 ^ action-send-appeal-to-prefecture) then (true) else (if (s101 ^ action-send-appeal-to-prefecture) then true else false));
+
+        s103' = if (s62 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s63 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s64 ^ action-insert-date-appeal-to-prefecture) then true else false));
+
+        s104' = if (s63 ^ action-send-appeal-to-prefecture) then (true) else (if (s103 ^ action-send-appeal-to-prefecture) then (true) else (if (s105 ^ action-send-appeal-to-prefecture) then true else false));
+
+        s105' = if (s63 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s103 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s104 ^ action-receive-result-appeal-from-prefecture) then true else false));
+
+        s106' = if (s105 ^ action-notify-result-appeal-to-offender) then true else false;
+
+        s107' = false;
+
+        s108' = if (s107 ^ action-create-fine) then true else false;
+
+        s109' = if (s108 ^ action-send-fine) then (true) else (if (s114 ^ action-send-fine) then true else false);
+
+        s110' = if (s109 ^ action-insert-fine-notification) then (true) else (if (s114 ^ action-insert-fine-notification) then true else false);
+
+        s111' = if ((s11 ^ action-add-penalty ^ ~s12') | ((s110 ^ action-add-penalty ^ ~s63') | (s114 ^ action-add-penalty))) then (if (s11 ^ action-add-penalty ^ ~s12') then (true) else (if (s110 ^ action-add-penalty ^ ~s63') then (true) else (if (s114 ^ action-add-penalty) then true else false))) else (if (s115 ^ action-add-penalty) then (true) else (if (s116 ^ action-add-penalty) then (true) else (if (s117 ^ action-add-penalty) then true else false)));
+
+        s112' = if (s111 ^ action-send-for-credit-collection) then (true) else (if (s114 ^ action-send-for-credit-collection) then (true) else (if (s118 ^ action-send-for-credit-collection) then true else false));
+
+        s113' = if ((s109 ^ action-archive-application) | (s112 ^ action-archive-application)) then (if (s109 ^ action-archive-application) then (true) else (if (s112 ^ action-archive-application) then true else false)) else (if (s114 ^ action-archive-application) then (true) else (if (s116 ^ action-archive-application) then true else false));
+
+        s114' = if (((s108 ^ action-payment) | (s109 ^ action-payment)) | ((s110 ^ action-payment) | (s111 ^ action-payment))) then (if ((s108 ^ action-payment) | (s109 ^ action-payment)) then (if (s108 ^ action-payment) then (true) else (if (s109 ^ action-payment) then true else false)) else (if (s110 ^ action-payment) then (true) else (if (s111 ^ action-payment) then true else false))) else (if ((s114 ^ action-payment) | (s115 ^ action-payment)) then (if (s114 ^ action-payment) then (true) else (if (s115 ^ action-payment) then true else false)) else (if (s117 ^ action-payment) then (true) else (if (s118 ^ action-payment) then true else false)));
+
+        s115' = if (s110 ^ action-insert-date-appeal-to-prefecture) then (true) else (if (s111 ^ action-insert-date-appeal-to-prefecture) then true else false);
+
+        s116' = if ((s111 ^ action-send-appeal-to-prefecture) | (s112 ^ action-send-appeal-to-prefecture)) then (if (s111 ^ action-send-appeal-to-prefecture) then (true) else (if (s112 ^ action-send-appeal-to-prefecture) then true else false)) else (if (s114 ^ action-send-appeal-to-prefecture) then (true) else (if (s115 ^ action-send-appeal-to-prefecture) then true else false));
+
+        s117' = if (s111 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s115 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s116 ^ action-receive-result-appeal-from-prefecture) then true else false));
+
+        s118' = if (s111 ^ action-notify-result-appeal-to-offender) then (true) else (if (s117 ^ action-notify-result-appeal-to-offender) then true else false);
+
+        s119' = if (s86 ^ action-receive-result-appeal-from-prefecture) then (true) else (if (s102 ^ action-receive-result-appeal-from-prefecture) then true else false);
+
+        s120' = if (s86 ^ action-notify-result-appeal-to-offender) then (true) else (if (s119 ^ action-notify-result-appeal-to-offender) then true else false);
+
+
+        // ---- attributi booleani (tri singoli + cat one-hot, niente real) ----
+        // CPF sul NUOVO stato one-hot s{k}': if (OR degli stati in cui vale
+        // true) then true else false - state-fluent bool nativo, evita il
+        // segfault osservato con gli attributi codificati come real.
+        article-v-7' = if (((((s45') | ((s52') | (s59'))) | (((s60') | (s64')) | ((s65') | (s75')))) | ((((s76') | (s77')) | ((s78') | (s79'))) | (((s81') | (s87')) | ((s90') | (s91'))))) | (((((s92') | (s93')) | ((s94') | (s99'))) | (((s100') | (s101')) | ((s102') | (s107')))) | ((((s108') | (s109')) | ((s110') | (s111'))) | (((s113') | (s114')) | ((s119') | (s120')))))) then true else false;
+
+        article-v-142' = if (((((s41') | (s42')) | ((s47') | (s48'))) | (((s49') | (s50')) | ((s51') | ((s53') | (s54'))))) | ((((s71') | (s72')) | ((s73') | ((s74') | (s95')))) | (((s96') | (s103')) | ((s104') | ((s105') | (s106')))))) then true else false;
+
+        article-v-157' = if ((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | ((s7') | (s8'))))) | ((((s9') | (s10')) | ((s11') | (s12'))) | (((s13') | (s14')) | ((s15') | ((s16') | (s17')))))) | (((((s18') | (s19')) | ((s20') | (s21'))) | (((s22') | (s23')) | ((s24') | ((s25') | (s26'))))) | ((((s27') | (s28')) | ((s29') | ((s30') | (s31')))) | (((s32') | (s33')) | ((s34') | ((s35') | (s36'))))))) then true else false;
+
+        article-v-158' = if ((((((s37') | (s38')) | ((s39') | (s40'))) | (((s43') | (s44')) | ((s46') | (s55')))) | ((((s56') | (s57')) | ((s58') | (s61'))) | (((s62') | (s63')) | ((s66') | ((s67') | (s68')))))) | (((((s69') | (s70')) | ((s80') | (s82'))) | (((s83') | (s84')) | ((s85') | (s86')))) | ((((s88') | (s89')) | ((s97') | (s98'))) | (((s112') | (s115')) | ((s116') | ((s117') | (s118'))))))) then true else false;
+
+        vehicle-class-a' = true;
+
+        last-sent-n' = if ((((((s11') | (s12')) | ((s13') | ((s37') | (s39')))) | (((s40') | (s41')) | ((s42') | ((s50') | (s51'))))) | ((((s53') | (s54')) | ((s58') | ((s62') | (s63')))) | (((s65') | (s70')) | ((s71') | ((s72') | (s73')))))) | (((((s74') | (s78')) | ((s79') | ((s80') | (s81')))) | (((s85') | (s86')) | ((s88') | ((s89') | (s90'))))) | ((((s91') | (s92')) | ((s93') | ((s101') | (s102')))) | (((s103') | (s104')) | ((s105') | ((s119') | (s120'))))))) then true else false;
+
+        last-sent-p' = if ((((((s3') | (s4')) | ((s5') | (s6'))) | (((s19') | (s20')) | ((s21') | ((s22') | (s24'))))) | ((((s25') | (s26')) | ((s27') | ((s28') | (s29')))) | (((s30') | (s31')) | ((s32') | ((s33') | (s34')))))) | (((((s35') | (s36')) | ((s67') | (s68'))) | (((s69') | (s95')) | ((s96') | ((s97') | (s98'))))) | ((((s99') | (s100')) | ((s106') | ((s110') | (s111')))) | (((s112') | (s115')) | ((s116') | ((s117') | (s118'))))))) then true else false;
+
+        notification-type-p' = if (((((((s3') | (s4')) | ((s5') | ((s6') | (s11')))) | (((s12') | (s13')) | ((s14') | ((s19') | (s20'))))) | ((((s21') | (s22')) | ((s24') | ((s25') | (s26')))) | (((s27') | (s28')) | ((s29') | ((s30') | (s31')))))) | (((((s32') | (s33')) | ((s34') | ((s35') | (s36')))) | (((s37') | (s38')) | ((s39') | ((s40') | (s41'))))) | ((((s42') | (s46')) | ((s50') | ((s51') | (s53')))) | (((s54') | ((s58') | (s62'))) | ((s63') | ((s65') | (s67'))))))) | ((((((s68') | (s69')) | ((s70') | ((s71') | (s72')))) | (((s73') | (s74')) | ((s78') | ((s79') | (s80'))))) | ((((s81') | (s85')) | ((s86') | ((s88') | (s89')))) | (((s90') | (s91')) | ((s92') | ((s93') | (s95')))))) | (((((s96') | (s97')) | ((s98') | ((s99') | (s100')))) | (((s101') | (s102')) | ((s103') | ((s104') | (s105'))))) | ((((s106') | (s110')) | ((s111') | ((s112') | (s113')))) | (((s115') | ((s116') | (s117'))) | ((s118') | ((s119') | (s120')))))))) then true else false;
+
+        amount-high' = if ((((((s30') | (s31')) | ((s36') | ((s37') | (s38')))) | (((s39') | (s40')) | ((s41') | ((s42') | (s49'))))) | ((((s50') | (s51')) | ((s52') | ((s53') | (s54')))) | (((s63') | (s65')) | ((s68') | ((s69') | (s70')))))) | (((((s71') | (s72')) | ((s73') | ((s74') | (s80')))) | (((s93') | (s95')) | ((s96') | ((s100') | (s103'))))) | ((((s104') | (s105')) | ((s106') | ((s111') | (s112')))) | (((s115') | ((s116') | (s117'))) | ((s118') | ((s119') | (s120'))))))) then true else false;
+
+        amount-low' = if ((((((s0') | (s1')) | ((s2') | ((s3') | (s7')))) | (((s8') | (s9')) | ((s10') | ((s11') | (s14'))))) | ((((s15') | (s16')) | ((s17') | ((s18') | (s19')))) | (((s22') | (s23')) | ((s24') | ((s28') | (s32')))))) | (((((s33') | (s43')) | ((s44') | ((s45') | (s55')))) | (((s56') | (s66')) | ((s67') | ((s75') | (s76'))))) | ((((s77') | (s78')) | ((s82') | ((s83') | (s84')))) | (((s85') | (s87')) | ((s94') | ((s107') | (s108'))))))) then true else false;
+
+        amount-medium' = if ((((((s4') | (s5')) | ((s6') | ((s12') | (s13')))) | (((s20') | (s21')) | ((s25') | ((s26') | (s27'))))) | ((((s29') | (s34')) | ((s35') | ((s46') | (s47')))) | (((s48') | (s57')) | ((s58') | ((s59') | (s60')))))) | (((((s61') | (s62')) | ((s64') | ((s79') | (s81')))) | (((s86') | (s88')) | ((s89') | ((s90') | (s91'))))) | ((((s92') | (s97')) | ((s98') | ((s99') | (s101')))) | (((s102') | (s109')) | ((s110') | ((s113') | (s114'))))))) then true else false;
+
+        points-high' = if ((((((s36') | (s37')) | ((s39') | ((s40') | (s41')))) | (((s42') | (s47')) | ((s48') | ((s49') | (s50'))))) | ((((s51') | (s53')) | ((s54') | ((s59') | (s60')))) | (((s61') | (s62')) | ((s63') | ((s67') | (s69')))))) | (((((s70') | (s71')) | ((s72') | ((s73') | (s74')))) | (((s95') | (s96')) | ((s103') | ((s104') | (s105'))))) | ((((s106') | (s107')) | ((s108') | ((s109') | (s110')))) | (((s111') | ((s112') | (s115'))) | ((s116') | ((s117') | (s118'))))))) then true else false;
+
+        points-low' = if ((((((s7') | (s8')) | ((s9') | ((s10') | (s11')))) | (((s12') | (s13')) | ((s14') | ((s15') | (s16'))))) | ((((s17') | (s18')) | ((s19') | ((s20') | (s21')))) | (((s22') | (s23')) | ((s75') | ((s76') | (s81')))))) | (((((s82') | (s83')) | ((s84') | ((s85') | (s86')))) | (((s87') | (s88')) | ((s89') | ((s90') | (s91'))))) | ((((s92') | (s93')) | ((s94') | ((s97') | (s98')))) | (((s99') | ((s100') | (s101'))) | ((s102') | ((s119') | (s120'))))))) then true else false;
+
+        points-medium' = if ((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | ((s24') | (s25'))))) | ((((s26') | (s27')) | ((s28') | ((s29') | (s30')))) | (((s31') | (s32')) | ((s33') | ((s34') | (s35')))))) | (((((s38') | (s43')) | ((s44') | ((s45') | (s46')))) | (((s52') | (s55')) | ((s56') | ((s57') | (s58'))))) | ((((s64') | (s65')) | ((s66') | ((s68') | (s77')))) | (((s78') | (s79')) | ((s80') | ((s113') | (s114'))))))) then true else false;
+
+        expense-high' = if ((((((s24') | (s25')) | ((s26') | ((s27') | (s28')))) | (((s29') | (s30')) | ((s31') | ((s32') | (s33'))))) | ((((s34') | (s35')) | ((s41') | ((s42') | (s71')))) | (((s72') | (s73')) | ((s74') | ((s90') | (s91')))))) | (((((s92') | (s93')) | ((s95') | ((s96') | (s97')))) | (((s98') | (s99')) | ((s100') | ((s101') | (s102'))))) | ((((s103') | (s104')) | ((s105') | ((s106') | (s115')))) | (((s116') | (s117')) | ((s118') | ((s119') | (s120'))))))) then true else false;
+
+        expense-low' = if ((((((s0') | (s1')) | ((s6') | ((s7') | (s8')))) | (((s9') | (s14')) | ((s15') | ((s16') | (s17'))))) | ((((s22') | (s23')) | ((s38') | ((s39') | (s43')))) | (((s44') | (s45')) | ((s46') | ((s47') | (s48')))))) | (((((s52') | (s54')) | ((s55') | ((s56') | (s59')))) | (((s60') | (s64')) | ((s65') | ((s75') | (s76'))))) | ((((s81') | (s82')) | ((s83') | ((s87') | (s88')))) | (((s94') | (s107')) | ((s108') | ((s113') | (s114'))))))) then true else false;
+
+        expense-medium' = if ((((((s2') | (s3')) | ((s4') | ((s5') | (s10')))) | (((s11') | (s12')) | ((s13') | ((s18') | (s19'))))) | ((((s20') | (s21')) | ((s36') | ((s37') | (s40')))) | (((s49') | (s50')) | ((s51') | ((s53') | (s57')))))) | (((((s58') | (s61')) | ((s62') | ((s63') | (s66')))) | (((s67') | (s68')) | ((s69') | ((s70') | (s77'))))) | ((((s78') | (s79')) | ((s80') | ((s84') | (s85')))) | (((s86') | ((s89') | (s109'))) | ((s110') | ((s111') | (s112'))))))) then true else false;
+
+        execution-time-minutes-high' = if ((((((s2') | (s3')) | ((s4') | ((s5') | (s13')))) | (((s18') | (s19')) | ((s20') | ((s21') | (s32'))))) | ((((s33') | (s34')) | ((s35') | ((s36') | (s40')))) | (((s42') | (s53')) | ((s66') | ((s67') | (s68')))))) | (((((s69') | (s70')) | ((s72') | ((s89') | (s95')))) | (((s96') | (s97')) | ((s98') | ((s99') | (s100'))))) | ((((s105') | (s106')) | ((s109') | ((s110') | (s111')))) | (((s112') | (s115')) | ((s116') | ((s117') | (s118'))))))) then true else false;
+
+        execution-time-minutes-low' = if ((((((s0') | (s1')) | ((s6') | ((s7') | (s8')))) | (((s9') | (s14')) | ((s15') | ((s16') | (s17'))))) | ((((s22') | (s23')) | ((s38') | ((s39') | (s43')))) | (((s44') | (s45')) | ((s46') | ((s47') | (s48')))))) | (((((s52') | (s54')) | ((s55') | ((s56') | (s59')))) | (((s60') | (s64')) | ((s65') | ((s75') | (s76'))))) | ((((s81') | (s82')) | ((s83') | ((s87') | (s88')))) | (((s94') | (s107')) | ((s108') | ((s113') | (s114'))))))) then true else false;
+
+        execution-time-minutes-medium' = if ((((((s10') | (s11')) | ((s12') | ((s24') | (s25')))) | (((s26') | (s27')) | ((s28') | ((s29') | (s30'))))) | ((((s31') | (s37')) | ((s41') | ((s49') | (s50')))) | (((s51') | (s57')) | ((s58') | ((s61') | (s62')))))) | (((((s63') | (s71')) | ((s73') | ((s74') | (s77')))) | (((s78') | (s79')) | ((s80') | ((s84') | (s85'))))) | ((((s86') | (s90')) | ((s91') | ((s92') | (s93')))) | (((s101') | ((s102') | (s103'))) | ((s104') | ((s119') | (s120'))))))) then true else false;
+
+    };
+
+    reward =
+        // stessa forma if/then/else e stesso albero OR bilanciato gia' usati e
+        // validati nel blocco termination, solo spostati nella reward - niente
+        // negazioni ne' moltiplicazioni (a differenza del tentativo precedente
+        // che aveva causato un crash)
+        if ( (((s6') | (s14')) | ((s22') | ((s39') | (s46')))) | (((s54') | (s65')) | ((s81') | ((s88') | (s113')))) )
+        then 10
+        else 1.0;
+
+
+}

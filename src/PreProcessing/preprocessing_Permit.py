@@ -27,11 +27,15 @@ import pm4py
 import pandas as pd
 import numpy as np
 import os
+import time
 
 
 # ============================================================
 # FILE CONFIGURATION
 # ============================================================
+
+
+preprocessing_start = time.perf_counter()
 
 input_file = "./logs/split/permit/train.xes.gz"
 
@@ -307,15 +311,6 @@ data = pd.read_csv(
 )
 
 
-print("\nOriginal columns:")
-print(data.columns.tolist())
-
-print(
-    f"\nOriginal number of columns: "
-    f"{len(data.columns)}"
-)
-
-
 # ============================================================
 # RENAME CORE COLUMNS
 # ============================================================
@@ -406,44 +401,6 @@ data[case_id_col] = (
 )
 
 
-# ============================================================
-# SHOW AVAILABLE PERMIT ATTRIBUTES
-# ============================================================
-
-print("\nChecking configured attributes...")
-
-print("\nCategorical attributes found:")
-
-for col in static_cat_cols:
-
-    if col in data.columns:
-
-        print(
-            f"  [OK] {col}"
-        )
-
-    else:
-
-        print(
-            f"  [--] {col}"
-        )
-
-
-print("\nNumeric attributes found:")
-
-for col in static_num_cols:
-
-    if col in data.columns:
-
-        print(
-            f"  [OK] {col}"
-        )
-
-    else:
-
-        print(
-            f"  [--] {col}"
-        )
 
 
 # ============================================================
@@ -473,14 +430,6 @@ selected_cols = list(
     )
 )
 
-
-print("\nSelected columns:")
-
-for col in selected_cols:
-
-    print(
-        f"  - {col}"
-    )
 
 
 data = data[selected_cols].copy()
@@ -910,6 +859,26 @@ data.to_csv(
     sep=";",
     index=False
 )
+
+
+preprocessing_end = time.perf_counter()
+
+execution_time_seconds = (
+    preprocessing_end - preprocessing_start
+)
+
+execution_time_minutes = (
+    execution_time_seconds / 60
+)
+
+print("\n========================================")
+print("PREPROCESSING EXECUTION TIME")
+print("========================================")
+
+print(f"Execution time: {execution_time_seconds:.2f} seconds")
+print(f"Execution time: {execution_time_minutes:.2f} minutes")
+
+
 
 # ============================================================
 # REMOVE TEMPORARY CSV

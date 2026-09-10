@@ -1,0 +1,689 @@
+domain mdp_process_domain {
+
+    requirements = {
+        reward-deterministic
+    };
+
+    pvariables {
+
+        // -----------------------
+        // dummy non fluent (richiesto solo perche' il blocco non-fluents non puo'
+        // restare vuoto)
+        // -----------------------
+        DUMMY : { non-fluent, bool, default = false };
+
+        // -----------------------
+        // stato MDP (one-hot): un booleano scalare per ciascuno stato scoperto
+        // -----------------------
+        s0 : { state-fluent, bool, default=true };
+        s1 : { state-fluent, bool, default=false };
+        s2 : { state-fluent, bool, default=false };
+        s3 : { state-fluent, bool, default=false };
+        s4 : { state-fluent, bool, default=false };
+        s5 : { state-fluent, bool, default=false };
+        s6 : { state-fluent, bool, default=false };
+        s7 : { state-fluent, bool, default=false };
+        s8 : { state-fluent, bool, default=false };
+        s9 : { state-fluent, bool, default=false };
+        s10 : { state-fluent, bool, default=false };
+        s11 : { state-fluent, bool, default=false };
+        s12 : { state-fluent, bool, default=false };
+        s13 : { state-fluent, bool, default=false };
+        s14 : { state-fluent, bool, default=false };
+        s15 : { state-fluent, bool, default=false };
+        s16 : { state-fluent, bool, default=false };
+        s17 : { state-fluent, bool, default=false };
+        s18 : { state-fluent, bool, default=false };
+        s19 : { state-fluent, bool, default=false };
+        s20 : { state-fluent, bool, default=false };
+        s21 : { state-fluent, bool, default=false };
+        s22 : { state-fluent, bool, default=false };
+        s23 : { state-fluent, bool, default=false };
+        s24 : { state-fluent, bool, default=false };
+        s25 : { state-fluent, bool, default=false };
+        s26 : { state-fluent, bool, default=false };
+        s27 : { state-fluent, bool, default=false };
+        s28 : { state-fluent, bool, default=false };
+        s29 : { state-fluent, bool, default=false };
+        s30 : { state-fluent, bool, default=false };
+        s31 : { state-fluent, bool, default=false };
+        s32 : { state-fluent, bool, default=false };
+        s33 : { state-fluent, bool, default=false };
+        s34 : { state-fluent, bool, default=false };
+        s35 : { state-fluent, bool, default=false };
+        s36 : { state-fluent, bool, default=false };
+        s37 : { state-fluent, bool, default=false };
+        s38 : { state-fluent, bool, default=false };
+        s39 : { state-fluent, bool, default=false };
+        s40 : { state-fluent, bool, default=false };
+        s41 : { state-fluent, bool, default=false };
+        s42 : { state-fluent, bool, default=false };
+        s43 : { state-fluent, bool, default=false };
+        s44 : { state-fluent, bool, default=false };
+        s45 : { state-fluent, bool, default=false };
+        s46 : { state-fluent, bool, default=false };
+        s47 : { state-fluent, bool, default=false };
+        s48 : { state-fluent, bool, default=false };
+        s49 : { state-fluent, bool, default=false };
+        s50 : { state-fluent, bool, default=false };
+        s51 : { state-fluent, bool, default=false };
+        s52 : { state-fluent, bool, default=false };
+        s53 : { state-fluent, bool, default=false };
+        s54 : { state-fluent, bool, default=false };
+        s55 : { state-fluent, bool, default=false };
+        s56 : { state-fluent, bool, default=false };
+        s57 : { state-fluent, bool, default=false };
+        s58 : { state-fluent, bool, default=false };
+        s59 : { state-fluent, bool, default=false };
+        s60 : { state-fluent, bool, default=false };
+        s61 : { state-fluent, bool, default=false };
+        s62 : { state-fluent, bool, default=false };
+        s63 : { state-fluent, bool, default=false };
+        s64 : { state-fluent, bool, default=false };
+        s65 : { state-fluent, bool, default=false };
+        s66 : { state-fluent, bool, default=false };
+        s67 : { state-fluent, bool, default=false };
+        s68 : { state-fluent, bool, default=false };
+        s69 : { state-fluent, bool, default=false };
+        s70 : { state-fluent, bool, default=false };
+        s71 : { state-fluent, bool, default=false };
+        s72 : { state-fluent, bool, default=false };
+        s73 : { state-fluent, bool, default=false };
+        s74 : { state-fluent, bool, default=false };
+        s75 : { state-fluent, bool, default=false };
+        s76 : { state-fluent, bool, default=false };
+        s77 : { state-fluent, bool, default=false };
+        s78 : { state-fluent, bool, default=false };
+        s79 : { state-fluent, bool, default=false };
+        s80 : { state-fluent, bool, default=false };
+        s81 : { state-fluent, bool, default=false };
+        s82 : { state-fluent, bool, default=false };
+        s83 : { state-fluent, bool, default=false };
+        s84 : { state-fluent, bool, default=false };
+        s85 : { state-fluent, bool, default=false };
+        s86 : { state-fluent, bool, default=false };
+        s87 : { state-fluent, bool, default=false };
+        s88 : { state-fluent, bool, default=false };
+        s89 : { state-fluent, bool, default=false };
+        s90 : { state-fluent, bool, default=false };
+        s91 : { state-fluent, bool, default=false };
+        s92 : { state-fluent, bool, default=false };
+        s93 : { state-fluent, bool, default=false };
+        s94 : { state-fluent, bool, default=false };
+        s95 : { state-fluent, bool, default=false };
+        s96 : { state-fluent, bool, default=false };
+        s97 : { state-fluent, bool, default=false };
+        s98 : { state-fluent, bool, default=false };
+        s99 : { state-fluent, bool, default=false };
+        s100 : { state-fluent, bool, default=false };
+        s101 : { state-fluent, bool, default=false };
+        s102 : { state-fluent, bool, default=false };
+        s103 : { state-fluent, bool, default=false };
+        s104 : { state-fluent, bool, default=false };
+        s105 : { state-fluent, bool, default=false };
+        s106 : { state-fluent, bool, default=false };
+        s107 : { state-fluent, bool, default=false };
+        s108 : { state-fluent, bool, default=false };
+        s109 : { state-fluent, bool, default=false };
+        s110 : { state-fluent, bool, default=false };
+        s111 : { state-fluent, bool, default=false };
+        s112 : { state-fluent, bool, default=false };
+        s113 : { state-fluent, bool, default=false };
+        s114 : { state-fluent, bool, default=false };
+        s115 : { state-fluent, bool, default=false };
+        s116 : { state-fluent, bool, default=false };
+        s117 : { state-fluent, bool, default=false };
+        s118 : { state-fluent, bool, default=false };
+        s119 : { state-fluent, bool, default=false };
+        s120 : { state-fluent, bool, default=false };
+        s121 : { state-fluent, bool, default=false };
+        s122 : { state-fluent, bool, default=false };
+        s123 : { state-fluent, bool, default=false };
+        s124 : { state-fluent, bool, default=false };
+        s125 : { state-fluent, bool, default=false };
+        s126 : { state-fluent, bool, default=false };
+        s127 : { state-fluent, bool, default=false };
+        s128 : { state-fluent, bool, default=false };
+        s129 : { state-fluent, bool, default=false };
+        s130 : { state-fluent, bool, default=false };
+        s131 : { state-fluent, bool, default=false };
+        s132 : { state-fluent, bool, default=false };
+        s133 : { state-fluent, bool, default=false };
+        s134 : { state-fluent, bool, default=false };
+        s135 : { state-fluent, bool, default=false };
+        s136 : { state-fluent, bool, default=false };
+        s137 : { state-fluent, bool, default=false };
+        s138 : { state-fluent, bool, default=false };
+        s139 : { state-fluent, bool, default=false };
+        s140 : { state-fluent, bool, default=false };
+        s141 : { state-fluent, bool, default=false };
+        s142 : { state-fluent, bool, default=false };
+        s143 : { state-fluent, bool, default=false };
+        s144 : { state-fluent, bool, default=false };
+        s145 : { state-fluent, bool, default=false };
+        s146 : { state-fluent, bool, default=false };
+        s147 : { state-fluent, bool, default=false };
+        s148 : { state-fluent, bool, default=false };
+        s149 : { state-fluent, bool, default=false };
+        s150 : { state-fluent, bool, default=false };
+        s151 : { state-fluent, bool, default=false };
+        s152 : { state-fluent, bool, default=false };
+        s153 : { state-fluent, bool, default=false };
+        s154 : { state-fluent, bool, default=false };
+        s155 : { state-fluent, bool, default=false };
+        s156 : { state-fluent, bool, default=false };
+        s157 : { state-fluent, bool, default=false };
+        s158 : { state-fluent, bool, default=false };
+        s159 : { state-fluent, bool, default=false };
+        s160 : { state-fluent, bool, default=false };
+        s161 : { state-fluent, bool, default=false };
+        s162 : { state-fluent, bool, default=false };
+        s163 : { state-fluent, bool, default=false };
+        s164 : { state-fluent, bool, default=false };
+        s165 : { state-fluent, bool, default=false };
+        s166 : { state-fluent, bool, default=false };
+        s167 : { state-fluent, bool, default=false };
+
+        // -----------------------
+        // attributi dello stato, TUTTI booleani nativi (fluents di prima classe,
+        // usabili nella reward, nessun 'real'): gli attributi 'tri' (True/False/
+        // missing, missing->false) sono un singolo booleano; TUTTE le colonne
+        // categoriche - incluse quelle numeriche non discretizzate a monte, se
+        // con pochi valori distinti - sono one-hot: un booleano PER CIASCUN
+        // VALORE possibile, esattamente uno vero
+        // -----------------------
+        diagnostic-art-astrup : { state-fluent, bool, default=false };
+        diagnostic-blood : { state-fluent, bool, default=false };
+        diagnostic-ecg : { state-fluent, bool, default=false };
+        diagnostic-ic : { state-fluent, bool, default=false };
+        diagnostic-lactic-acid : { state-fluent, bool, default=false };
+        diagnostic-liquor : { state-fluent, bool, default=false };
+        diagnostic-other : { state-fluent, bool, default=false };
+        diagnostic-sputum : { state-fluent, bool, default=false };
+        diagnostic-urinary-culture : { state-fluent, bool, default=false };
+        diagnostic-urinary-sediment : { state-fluent, bool, default=false };
+        diagnostic-xthorax : { state-fluent, bool, default=false };
+        disfunc-org : { state-fluent, bool, default=false };
+        hypotensie : { state-fluent, bool, default=false };
+        hypoxie : { state-fluent, bool, default=false };
+        infection-suspected : { state-fluent, bool, default=false };
+        infusion : { state-fluent, bool, default=false };
+        oligurie : { state-fluent, bool, default=false };
+        sirscrit-heart-rate : { state-fluent, bool, default=false };
+        sirscrit-leucos : { state-fluent, bool, default=false };
+        sirscrit-tachypnea : { state-fluent, bool, default=false };
+        sirscrit-temperature : { state-fluent, bool, default=false };
+        sirscriteria2-or-more : { state-fluent, bool, default=false };
+        diagnose-high : { state-fluent, bool, default=false };
+        diagnose-low : { state-fluent, bool, default=false };
+        diagnose-medium : { state-fluent, bool, default=false };
+        crp-high : { state-fluent, bool, default=false };
+        crp-low : { state-fluent, bool, default=false };
+        crp-medium : { state-fluent, bool, default=false };
+        lactic-acid-high : { state-fluent, bool, default=false };
+        lactic-acid-low : { state-fluent, bool, default=false };
+        lactic-acid-medium : { state-fluent, bool, default=false };
+        leucocytes-high : { state-fluent, bool, default=false };
+        leucocytes-low : { state-fluent, bool, default=false };
+        leucocytes-medium : { state-fluent, bool, default=false };
+        execution-time-minutes-high : { state-fluent, bool, default=false };
+        execution-time-minutes-low : { state-fluent, bool, default=false };
+        execution-time-minutes-medium : { state-fluent, bool, default=false };
+
+        // -----------------------
+        // azioni: una booleana scalare per ciascuna attivita' osservata nel log
+        // -----------------------
+        action-admission-ic : { action-fluent, bool, default=false };
+        action-admission-nc : { action-fluent, bool, default=false };
+        action-crp : { action-fluent, bool, default=false };
+        action-er-registration : { action-fluent, bool, default=false };
+        action-er-sepsis-triage : { action-fluent, bool, default=false };
+        action-er-triage : { action-fluent, bool, default=false };
+        action-iv-antibiotics : { action-fluent, bool, default=false };
+        action-iv-liquid : { action-fluent, bool, default=false };
+        action-lactic-acid : { action-fluent, bool, default=false };
+        action-leucocytes : { action-fluent, bool, default=false };
+        action-release-a : { action-fluent, bool, default=false };
+        action-release-b : { action-fluent, bool, default=false };
+        action-release-c : { action-fluent, bool, default=false };
+        action-release-d : { action-fluent, bool, default=false };
+        action-release-e : { action-fluent, bool, default=false };
+        action-return-er : { action-fluent, bool, default=false };
+        action-archive-application : { action-fluent, bool, default=false };
+    };
+
+    cpfs {
+
+        // ---- transizioni: catena di Bernoulli condizionati (stick-breaking) ----
+        // quando un (stato,azione) ha piu' esiti osservati, ciascuno tranne
+        // l'ultimo pesca con probabilita' condizionata al non essersi gia' verificato
+        // uno degli esiti precedenti dello stesso gruppo (riferimento a s{T}')
+        // Transizione diretta a singolo tick: niente variabili di staging.
+        s0' = false;
+
+        s1' = if ((s0 ^ action-er-registration) | ((s2 ^ action-er-registration) | (s3 ^ action-er-registration))) then (if (s0 ^ action-er-registration) then (true) else (if (s2 ^ action-er-registration) then (true) else (if (s3 ^ action-er-registration) then true else false))) else (if (s5 ^ action-er-registration) then (true) else (if (s6 ^ action-er-registration) then (true) else (if (s7 ^ action-er-registration) then true else false)));
+
+        s2' = if (((s0 ^ action-leucocytes) | ((s1 ^ action-leucocytes) | (s2 ^ action-leucocytes))) | ((s3 ^ action-leucocytes) | ((s4 ^ action-leucocytes) | (s5 ^ action-leucocytes)))) then (if ((s0 ^ action-leucocytes) | ((s1 ^ action-leucocytes) | (s2 ^ action-leucocytes))) then (if (s0 ^ action-leucocytes) then (true) else (if (s1 ^ action-leucocytes) then (true) else (if (s2 ^ action-leucocytes) then true else false))) else (if (s3 ^ action-leucocytes) then (true) else (if (s4 ^ action-leucocytes) then (true) else (if (s5 ^ action-leucocytes) then true else false)))) else (if ((s6 ^ action-leucocytes) | ((s7 ^ action-leucocytes) | (s8 ^ action-leucocytes))) then (if (s6 ^ action-leucocytes) then (true) else (if (s7 ^ action-leucocytes) then (true) else (if (s8 ^ action-leucocytes) then true else false))) else (if (s9 ^ action-leucocytes) then (true) else (if (s10 ^ action-leucocytes) then (true) else (if (s25 ^ action-leucocytes) then true else false))));
+
+        s3' = if (((s1 ^ action-crp) | (s2 ^ action-crp)) | ((s3 ^ action-crp) | ((s4 ^ action-crp) | (s5 ^ action-crp)))) then (if ((s1 ^ action-crp) | (s2 ^ action-crp)) then (if (s1 ^ action-crp) then (true) else (if (s2 ^ action-crp) then true else false)) else (if (s3 ^ action-crp) then (true) else (if (s4 ^ action-crp) then (true) else (if (s5 ^ action-crp) then true else false)))) else (if ((s6 ^ action-crp) | (s7 ^ action-crp)) then (if (s6 ^ action-crp) then (true) else (if (s7 ^ action-crp) then true else false)) else (if (s8 ^ action-crp) then (true) else (if (s9 ^ action-crp) then (true) else (if (s25 ^ action-crp) then true else false))));
+
+        s4' = if (((s1 ^ action-lactic-acid) | (s2 ^ action-lactic-acid)) | ((s3 ^ action-lactic-acid) | ((s4 ^ action-lactic-acid) | (s5 ^ action-lactic-acid)))) then (if ((s1 ^ action-lactic-acid) | (s2 ^ action-lactic-acid)) then (if (s1 ^ action-lactic-acid) then (true) else (if (s2 ^ action-lactic-acid) then true else false)) else (if (s3 ^ action-lactic-acid) then (true) else (if (s4 ^ action-lactic-acid) then (true) else (if (s5 ^ action-lactic-acid) then true else false)))) else (if ((s6 ^ action-lactic-acid) | (s7 ^ action-lactic-acid)) then (if (s6 ^ action-lactic-acid) then (true) else (if (s7 ^ action-lactic-acid) then true else false)) else (if (s8 ^ action-lactic-acid) then (true) else (if (s9 ^ action-lactic-acid) then (true) else (if (s25 ^ action-lactic-acid) then true else false))));
+
+        s5' = if (((s0 ^ action-er-triage) | (s1 ^ action-er-triage)) | ((s2 ^ action-er-triage) | (s3 ^ action-er-triage))) then (if ((s0 ^ action-er-triage) | (s1 ^ action-er-triage)) then (if (s0 ^ action-er-triage) then (true) else (if (s1 ^ action-er-triage) then true else false)) else (if (s2 ^ action-er-triage) then (true) else (if (s3 ^ action-er-triage) then true else false))) else (if ((s4 ^ action-er-triage) | (s6 ^ action-er-triage)) then (if (s4 ^ action-er-triage) then (true) else (if (s6 ^ action-er-triage) then true else false)) else (if (s7 ^ action-er-triage) then (true) else (if (s8 ^ action-er-triage) then true else false)));
+
+        s6' = if (((s0 ^ action-er-sepsis-triage) | (s1 ^ action-er-sepsis-triage)) | ((s2 ^ action-er-sepsis-triage) | (s3 ^ action-er-sepsis-triage))) then (if ((s0 ^ action-er-sepsis-triage) | (s1 ^ action-er-sepsis-triage)) then (if (s0 ^ action-er-sepsis-triage) then (true) else (if (s1 ^ action-er-sepsis-triage) then true else false)) else (if (s2 ^ action-er-sepsis-triage) then (true) else (if (s3 ^ action-er-sepsis-triage) then true else false))) else (if ((s4 ^ action-er-sepsis-triage) | (s5 ^ action-er-sepsis-triage)) then (if (s4 ^ action-er-sepsis-triage) then (true) else (if (s5 ^ action-er-sepsis-triage) then true else false)) else (if (s7 ^ action-er-sepsis-triage) then (true) else (if (s9 ^ action-er-sepsis-triage) then true else false)));
+
+        s7' = if (((s0 ^ action-iv-liquid) | (s1 ^ action-iv-liquid)) | ((s2 ^ action-iv-liquid) | (s3 ^ action-iv-liquid))) then (if ((s0 ^ action-iv-liquid) | (s1 ^ action-iv-liquid)) then (if (s0 ^ action-iv-liquid) then (true) else (if (s1 ^ action-iv-liquid) then true else false)) else (if (s2 ^ action-iv-liquid) then (true) else (if (s3 ^ action-iv-liquid) then true else false))) else (if ((s4 ^ action-iv-liquid) | (s5 ^ action-iv-liquid)) then (if (s4 ^ action-iv-liquid) then (true) else (if (s5 ^ action-iv-liquid) then true else false)) else (if (s6 ^ action-iv-liquid) then (true) else (if (s8 ^ action-iv-liquid) then (true) else (if (s9 ^ action-iv-liquid) then true else false))));
+
+        s8' = if ((s2 ^ action-iv-antibiotics) | ((s3 ^ action-iv-antibiotics) | (s4 ^ action-iv-antibiotics))) then (if (s2 ^ action-iv-antibiotics) then (true) else (if (s3 ^ action-iv-antibiotics) then (true) else (if (s4 ^ action-iv-antibiotics) then true else false))) else (if ((s5 ^ action-iv-antibiotics) | (s6 ^ action-iv-antibiotics)) then (if (s5 ^ action-iv-antibiotics) then (true) else (if (s6 ^ action-iv-antibiotics) then true else false)) else (if (s7 ^ action-iv-antibiotics) then (true) else (if (s9 ^ action-iv-antibiotics) then true else false)));
+
+        s9' = if (((s2 ^ action-admission-nc) | (s3 ^ action-admission-nc)) | ((s4 ^ action-admission-nc) | (s6 ^ action-admission-nc))) then (if ((s2 ^ action-admission-nc) | (s3 ^ action-admission-nc)) then (if (s2 ^ action-admission-nc) then (true) else (if (s3 ^ action-admission-nc) then true else false)) else (if (s4 ^ action-admission-nc) then (true) else (if (s6 ^ action-admission-nc) then true else false))) else (if ((s7 ^ action-admission-nc) | (s8 ^ action-admission-nc)) then (if (s7 ^ action-admission-nc) then (true) else (if (s8 ^ action-admission-nc) then true else false)) else (if (s9 ^ action-admission-nc) then (true) else (if (s25 ^ action-admission-nc) then true else false)));
+
+        s10' = if ((s2 ^ action-release-a) | (s3 ^ action-release-a)) then (if (s2 ^ action-release-a) then (true) else (if (s3 ^ action-release-a) then true else false)) else (if (s4 ^ action-release-a) then (true) else (if (s9 ^ action-release-a) then true else false));
+
+        s11' = if ((s10 ^ action-archive-application) | ((s24 ^ action-archive-application) | (s116 ^ action-archive-application))) then (if (s10 ^ action-archive-application) then (true) else (if (s24 ^ action-archive-application) then (true) else (if (s116 ^ action-archive-application) then true else false))) else (if (s136 ^ action-archive-application) then (true) else (if (s137 ^ action-archive-application) then (true) else (if (s152 ^ action-archive-application) then true else false)));
+
+        s12' = false;
+
+        s13' = if (s12 ^ action-er-registration) then (true) else (if (s18 ^ action-er-registration) then true else false);
+
+        s14' = if ((s13 ^ action-er-triage) | (s15 ^ action-er-triage)) then (if (s13 ^ action-er-triage) then (true) else (if (s15 ^ action-er-triage) then true else false)) else (if (s16 ^ action-er-triage) then (true) else (if (s17 ^ action-er-triage) then true else false));
+
+        s15' = if (s13 ^ action-er-sepsis-triage) then (true) else (if (s14 ^ action-er-sepsis-triage) then (true) else (if (s19 ^ action-er-sepsis-triage) then true else false));
+
+        s16' = if (((s13 ^ action-iv-liquid) | (s14 ^ action-iv-liquid)) | ((s15 ^ action-iv-liquid) | (s17 ^ action-iv-liquid))) then (if ((s13 ^ action-iv-liquid) | (s14 ^ action-iv-liquid)) then (if (s13 ^ action-iv-liquid) then (true) else (if (s14 ^ action-iv-liquid) then true else false)) else (if (s15 ^ action-iv-liquid) then (true) else (if (s17 ^ action-iv-liquid) then true else false))) else (if ((s18 ^ action-iv-liquid) | (s19 ^ action-iv-liquid)) then (if (s18 ^ action-iv-liquid) then (true) else (if (s19 ^ action-iv-liquid) then true else false)) else (if (s20 ^ action-iv-liquid) then (true) else (if (s21 ^ action-iv-liquid) then true else false)));
+
+        s17' = if (((s14 ^ action-lactic-acid) | (s15 ^ action-lactic-acid)) | ((s16 ^ action-lactic-acid) | (s17 ^ action-lactic-acid))) then (if ((s14 ^ action-lactic-acid) | (s15 ^ action-lactic-acid)) then (if (s14 ^ action-lactic-acid) then (true) else (if (s15 ^ action-lactic-acid) then true else false)) else (if (s16 ^ action-lactic-acid) then (true) else (if (s17 ^ action-lactic-acid) then true else false))) else (if ((s18 ^ action-lactic-acid) | (s19 ^ action-lactic-acid)) then (if (s18 ^ action-lactic-acid) then (true) else (if (s19 ^ action-lactic-acid) then true else false)) else (if (s20 ^ action-lactic-acid) then (true) else (if (s21 ^ action-lactic-acid) then (true) else (if (s148 ^ action-lactic-acid) then true else false))));
+
+        s18' = if (((s12 ^ action-leucocytes) | (s13 ^ action-leucocytes)) | ((s14 ^ action-leucocytes) | ((s15 ^ action-leucocytes) | (s16 ^ action-leucocytes)))) then (if ((s12 ^ action-leucocytes) | (s13 ^ action-leucocytes)) then (if (s12 ^ action-leucocytes) then (true) else (if (s13 ^ action-leucocytes) then true else false)) else (if (s14 ^ action-leucocytes) then (true) else (if (s15 ^ action-leucocytes) then (true) else (if (s16 ^ action-leucocytes) then true else false)))) else (if ((s17 ^ action-leucocytes) | (s18 ^ action-leucocytes)) then (if (s17 ^ action-leucocytes) then (true) else (if (s18 ^ action-leucocytes) then true else false)) else (if (s19 ^ action-leucocytes) then (true) else (if (s20 ^ action-leucocytes) then (true) else (if (s21 ^ action-leucocytes) then true else false))));
+
+        s19' = if ((s15 ^ action-crp) | ((s16 ^ action-crp) | (s17 ^ action-crp))) then (if (s15 ^ action-crp) then (true) else (if (s16 ^ action-crp) then (true) else (if (s17 ^ action-crp) then true else false))) else (if ((s18 ^ action-crp) | (s19 ^ action-crp)) then (if (s18 ^ action-crp) then (true) else (if (s19 ^ action-crp) then true else false)) else (if (s20 ^ action-crp) then (true) else (if (s21 ^ action-crp) then true else false)));
+
+        s20' = if ((s15 ^ action-iv-antibiotics) | (s16 ^ action-iv-antibiotics)) then (if (s15 ^ action-iv-antibiotics) then (true) else (if (s16 ^ action-iv-antibiotics) then true else false)) else (if (s17 ^ action-iv-antibiotics) then (true) else (if (s19 ^ action-iv-antibiotics) then true else false));
+
+        s21' = if ((s16 ^ action-admission-nc) | ((s17 ^ action-admission-nc) | (s18 ^ action-admission-nc))) then (if (s16 ^ action-admission-nc) then (true) else (if (s17 ^ action-admission-nc) then (true) else (if (s18 ^ action-admission-nc) then true else false))) else (if (s19 ^ action-admission-nc) then (true) else (if (s20 ^ action-admission-nc) then (true) else (if (s21 ^ action-admission-nc) then true else false)));
+
+        s22' = if (s18 ^ action-release-a) then (true) else (if (s19 ^ action-release-a) then (true) else (if (s21 ^ action-release-a) then true else false));
+
+        s23' = if (s22 ^ action-archive-application) then (true) else (if (s121 ^ action-archive-application) then (true) else (if (s165 ^ action-archive-application) then true else false));
+
+        s24' = if ((s2 ^ action-return-er) | (s10 ^ action-return-er)) then (if (s2 ^ action-return-er) then (true) else (if (s10 ^ action-return-er) then true else false)) else (if (s137 ^ action-return-er) then (true) else (if (s152 ^ action-return-er) then true else false));
+
+        s25' = if ((s2 ^ action-admission-ic) | ((s3 ^ action-admission-ic) | (s4 ^ action-admission-ic))) then (if (s2 ^ action-admission-ic) then (true) else (if (s3 ^ action-admission-ic) then (true) else (if (s4 ^ action-admission-ic) then true else false))) else (if (s7 ^ action-admission-ic) then (true) else (if (s8 ^ action-admission-ic) then (true) else (if (s9 ^ action-admission-ic) then true else false)));
+
+        s26' = false;
+
+        s27' = if (s26 ^ action-er-registration) then (true) else (if (s28 ^ action-er-registration) then (true) else (if (s31 ^ action-er-registration) then true else false));
+
+        s28' = if (s26 ^ action-er-triage) then (true) else (if (s27 ^ action-er-triage) then (true) else (if (s117 ^ action-er-triage) then true else false));
+
+        s29' = if ((s27 ^ action-er-sepsis-triage) | ((s28 ^ action-er-sepsis-triage) | (s30 ^ action-er-sepsis-triage))) then (if (s27 ^ action-er-sepsis-triage) then (true) else (if (s28 ^ action-er-sepsis-triage) then (true) else (if (s30 ^ action-er-sepsis-triage) then true else false))) else (if (s31 ^ action-er-sepsis-triage) then (true) else (if (s32 ^ action-er-sepsis-triage) then (true) else (if (s117 ^ action-er-sepsis-triage) then true else false)));
+
+        s30' = if ((s29 ^ action-lactic-acid) | ((s30 ^ action-lactic-acid) | (s31 ^ action-lactic-acid))) then (if (s29 ^ action-lactic-acid) then (true) else (if (s30 ^ action-lactic-acid) then (true) else (if (s31 ^ action-lactic-acid) then true else false))) else (if ((s32 ^ action-lactic-acid) | (s33 ^ action-lactic-acid)) then (if (s32 ^ action-lactic-acid) then (true) else (if (s33 ^ action-lactic-acid) then true else false)) else (if (s34 ^ action-lactic-acid) then (true) else (if (s117 ^ action-lactic-acid) then true else false)));
+
+        s31' = if (((s28 ^ action-leucocytes) | (s29 ^ action-leucocytes)) | ((s30 ^ action-leucocytes) | (s31 ^ action-leucocytes))) then (if ((s28 ^ action-leucocytes) | (s29 ^ action-leucocytes)) then (if (s28 ^ action-leucocytes) then (true) else (if (s29 ^ action-leucocytes) then true else false)) else (if (s30 ^ action-leucocytes) then (true) else (if (s31 ^ action-leucocytes) then true else false))) else (if ((s32 ^ action-leucocytes) | (s33 ^ action-leucocytes)) then (if (s32 ^ action-leucocytes) then (true) else (if (s33 ^ action-leucocytes) then true else false)) else (if (s34 ^ action-leucocytes) then (true) else (if (s117 ^ action-leucocytes) then (true) else (if (s160 ^ action-leucocytes) then true else false))));
+
+        s32' = if (((s26 ^ action-crp) | (s28 ^ action-crp)) | ((s29 ^ action-crp) | ((s30 ^ action-crp) | (s31 ^ action-crp)))) then (if ((s26 ^ action-crp) | (s28 ^ action-crp)) then (if (s26 ^ action-crp) then (true) else (if (s28 ^ action-crp) then true else false)) else (if (s29 ^ action-crp) then (true) else (if (s30 ^ action-crp) then (true) else (if (s31 ^ action-crp) then true else false)))) else (if ((s32 ^ action-crp) | (s33 ^ action-crp)) then (if (s32 ^ action-crp) then (true) else (if (s33 ^ action-crp) then true else false)) else (if (s34 ^ action-crp) then (true) else (if (s36 ^ action-crp) then (true) else (if (s117 ^ action-crp) then true else false))));
+
+        s33' = if ((s29 ^ action-iv-antibiotics) | (s30 ^ action-iv-antibiotics)) then (if (s29 ^ action-iv-antibiotics) then (true) else (if (s30 ^ action-iv-antibiotics) then true else false)) else (if (s31 ^ action-iv-antibiotics) then (true) else (if (s32 ^ action-iv-antibiotics) then (true) else (if (s117 ^ action-iv-antibiotics) then true else false)));
+
+        s34' = if ((s29 ^ action-admission-nc) | ((s30 ^ action-admission-nc) | (s31 ^ action-admission-nc))) then (if (s29 ^ action-admission-nc) then (true) else (if (s30 ^ action-admission-nc) then (true) else (if (s31 ^ action-admission-nc) then true else false))) else (if ((s32 ^ action-admission-nc) | (s33 ^ action-admission-nc)) then (if (s32 ^ action-admission-nc) then (true) else (if (s33 ^ action-admission-nc) then true else false)) else (if (s34 ^ action-admission-nc) then (true) else (if (s117 ^ action-admission-nc) then true else false)));
+
+        s35' = if (s31 ^ action-release-a) then (true) else (if (s32 ^ action-release-a) then (true) else (if (s34 ^ action-release-a) then true else false));
+
+        s36' = if (s35 ^ action-return-er) then (true) else (if (s135 ^ action-return-er) then true else false);
+
+        s37' = if ((s30 ^ action-archive-application) | ((s35 ^ action-archive-application) | (s36 ^ action-archive-application))) then (if (s30 ^ action-archive-application) then (true) else (if (s35 ^ action-archive-application) then (true) else (if (s36 ^ action-archive-application) then true else false))) else (if ((s112 ^ action-archive-application) | (s135 ^ action-archive-application)) then (if (s112 ^ action-archive-application) then (true) else (if (s135 ^ action-archive-application) then true else false)) else (if (s156 ^ action-archive-application) then (true) else (if (s164 ^ action-archive-application) then true else false)));
+
+        s38' = false;
+
+        s39' = if (s38 ^ action-er-registration) then (true) else (if (s42 ^ action-er-registration) then (true) else (if (s43 ^ action-er-registration) then true else false));
+
+        s40' = if ((s39 ^ action-er-triage) | (s43 ^ action-er-triage)) then (if (s39 ^ action-er-triage) then (true) else (if (s43 ^ action-er-triage) then true else false)) else (if (s44 ^ action-er-triage) then (true) else (if (s45 ^ action-er-triage) then (true) else (if (s47 ^ action-er-triage) then true else false)));
+
+        s41' = if ((s40 ^ action-er-sepsis-triage) | (s42 ^ action-er-sepsis-triage)) then (if (s40 ^ action-er-sepsis-triage) then (true) else (if (s42 ^ action-er-sepsis-triage) then true else false)) else (if (s43 ^ action-er-sepsis-triage) then (true) else (if (s44 ^ action-er-sepsis-triage) then (true) else (if (s45 ^ action-er-sepsis-triage) then true else false)));
+
+        s42' = if (((s38 ^ action-leucocytes) | (s40 ^ action-leucocytes)) | ((s41 ^ action-leucocytes) | ((s42 ^ action-leucocytes) | (s43 ^ action-leucocytes)))) then (if ((s38 ^ action-leucocytes) | (s40 ^ action-leucocytes)) then (if (s38 ^ action-leucocytes) then (true) else (if (s40 ^ action-leucocytes) then true else false)) else (if (s41 ^ action-leucocytes) then (true) else (if (s42 ^ action-leucocytes) then (true) else (if (s43 ^ action-leucocytes) then true else false)))) else (if ((s44 ^ action-leucocytes) | (s45 ^ action-leucocytes)) then (if (s44 ^ action-leucocytes) then (true) else (if (s45 ^ action-leucocytes) then true else false)) else (if (s46 ^ action-leucocytes) then (true) else (if (s47 ^ action-leucocytes) then (true) else (if (s48 ^ action-leucocytes) then true else false))));
+
+        s43' = if (((s38 ^ action-crp) | (s39 ^ action-crp)) | ((s40 ^ action-crp) | ((s41 ^ action-crp) | (s42 ^ action-crp)))) then (if ((s38 ^ action-crp) | (s39 ^ action-crp)) then (if (s38 ^ action-crp) then (true) else (if (s39 ^ action-crp) then true else false)) else (if (s40 ^ action-crp) then (true) else (if (s41 ^ action-crp) then (true) else (if (s42 ^ action-crp) then true else false)))) else (if ((s43 ^ action-crp) | ((s44 ^ action-crp) | (s45 ^ action-crp))) then (if (s43 ^ action-crp) then (true) else (if (s44 ^ action-crp) then (true) else (if (s45 ^ action-crp) then true else false))) else (if (s46 ^ action-crp) then (true) else (if (s47 ^ action-crp) then (true) else (if (s48 ^ action-crp) then true else false))));
+
+        s44' = if (((s39 ^ action-lactic-acid) | (s40 ^ action-lactic-acid)) | ((s41 ^ action-lactic-acid) | ((s42 ^ action-lactic-acid) | (s43 ^ action-lactic-acid)))) then (if ((s39 ^ action-lactic-acid) | (s40 ^ action-lactic-acid)) then (if (s39 ^ action-lactic-acid) then (true) else (if (s40 ^ action-lactic-acid) then true else false)) else (if (s41 ^ action-lactic-acid) then (true) else (if (s42 ^ action-lactic-acid) then (true) else (if (s43 ^ action-lactic-acid) then true else false)))) else (if ((s44 ^ action-lactic-acid) | (s45 ^ action-lactic-acid)) then (if (s44 ^ action-lactic-acid) then (true) else (if (s45 ^ action-lactic-acid) then true else false)) else (if (s46 ^ action-lactic-acid) then (true) else (if (s47 ^ action-lactic-acid) then (true) else (if (s48 ^ action-lactic-acid) then true else false))));
+
+        s45' = if ((s39 ^ action-iv-liquid) | ((s41 ^ action-iv-liquid) | (s42 ^ action-iv-liquid))) then (if (s39 ^ action-iv-liquid) then (true) else (if (s41 ^ action-iv-liquid) then (true) else (if (s42 ^ action-iv-liquid) then true else false))) else (if (s43 ^ action-iv-liquid) then (true) else (if (s44 ^ action-iv-liquid) then (true) else (if (s46 ^ action-iv-liquid) then true else false)));
+
+        s46' = if ((s41 ^ action-iv-antibiotics) | ((s42 ^ action-iv-antibiotics) | (s43 ^ action-iv-antibiotics))) then (if (s41 ^ action-iv-antibiotics) then (true) else (if (s42 ^ action-iv-antibiotics) then (true) else (if (s43 ^ action-iv-antibiotics) then true else false))) else (if (s44 ^ action-iv-antibiotics) then (true) else (if (s45 ^ action-iv-antibiotics) then (true) else (if (s47 ^ action-iv-antibiotics) then true else false)));
+
+        s47' = if ((s41 ^ action-admission-nc) | ((s42 ^ action-admission-nc) | (s43 ^ action-admission-nc))) then (if (s41 ^ action-admission-nc) then (true) else (if (s42 ^ action-admission-nc) then (true) else (if (s43 ^ action-admission-nc) then true else false))) else (if ((s44 ^ action-admission-nc) | (s45 ^ action-admission-nc)) then (if (s44 ^ action-admission-nc) then (true) else (if (s45 ^ action-admission-nc) then true else false)) else (if (s46 ^ action-admission-nc) then (true) else (if (s47 ^ action-admission-nc) then true else false)));
+
+        s48' = if (s43 ^ action-admission-ic) then (true) else (if (s47 ^ action-admission-ic) then true else false);
+
+        s49' = if ((s42 ^ action-release-a) | (s43 ^ action-release-a)) then (if (s42 ^ action-release-a) then (true) else (if (s43 ^ action-release-a) then true else false)) else (if (s44 ^ action-release-a) then (true) else (if (s47 ^ action-release-a) then true else false));
+
+        s50' = if (s49 ^ action-return-er) then true else false;
+
+        s51' = if ((s49 ^ action-archive-application) | (s50 ^ action-archive-application)) then (if (s49 ^ action-archive-application) then (true) else (if (s50 ^ action-archive-application) then true else false)) else (if (s138 ^ action-archive-application) then (true) else (if (s166 ^ action-archive-application) then true else false));
+
+        s52' = false;
+
+        s53' = if ((s52 ^ action-er-registration) | (s54 ^ action-er-registration)) then (if (s52 ^ action-er-registration) then (true) else (if (s54 ^ action-er-registration) then true else false)) else (if (s55 ^ action-er-registration) then (true) else (if (s57 ^ action-er-registration) then (true) else (if (s59 ^ action-er-registration) then true else false)));
+
+        s54' = if (((s52 ^ action-crp) | (s53 ^ action-crp)) | ((s54 ^ action-crp) | ((s55 ^ action-crp) | (s56 ^ action-crp)))) then (if ((s52 ^ action-crp) | (s53 ^ action-crp)) then (if (s52 ^ action-crp) then (true) else (if (s53 ^ action-crp) then true else false)) else (if (s54 ^ action-crp) then (true) else (if (s55 ^ action-crp) then (true) else (if (s56 ^ action-crp) then true else false)))) else (if ((s57 ^ action-crp) | (s58 ^ action-crp)) then (if (s57 ^ action-crp) then (true) else (if (s58 ^ action-crp) then true else false)) else (if (s59 ^ action-crp) then (true) else (if (s60 ^ action-crp) then (true) else (if (s61 ^ action-crp) then true else false))));
+
+        s55' = if (((s52 ^ action-leucocytes) | (s54 ^ action-leucocytes)) | ((s55 ^ action-leucocytes) | (s56 ^ action-leucocytes))) then (if ((s52 ^ action-leucocytes) | (s54 ^ action-leucocytes)) then (if (s52 ^ action-leucocytes) then (true) else (if (s54 ^ action-leucocytes) then true else false)) else (if (s55 ^ action-leucocytes) then (true) else (if (s56 ^ action-leucocytes) then true else false))) else (if ((s57 ^ action-leucocytes) | (s58 ^ action-leucocytes)) then (if (s57 ^ action-leucocytes) then (true) else (if (s58 ^ action-leucocytes) then true else false)) else (if (s59 ^ action-leucocytes) then (true) else (if (s60 ^ action-leucocytes) then (true) else (if (s61 ^ action-leucocytes) then true else false))));
+
+        s56' = if (s53 ^ action-er-triage) then (true) else (if (s55 ^ action-er-triage) then true else false);
+
+        s57' = if ((s52 ^ action-er-sepsis-triage) | (s54 ^ action-er-sepsis-triage)) then (if (s52 ^ action-er-sepsis-triage) then (true) else (if (s54 ^ action-er-sepsis-triage) then true else false)) else (if (s55 ^ action-er-sepsis-triage) then (true) else (if (s56 ^ action-er-sepsis-triage) then (true) else (if (s141 ^ action-er-sepsis-triage) then true else false)));
+
+        s58' = if ((s53 ^ action-lactic-acid) | ((s54 ^ action-lactic-acid) | (s55 ^ action-lactic-acid))) then (if (s53 ^ action-lactic-acid) then (true) else (if (s54 ^ action-lactic-acid) then (true) else (if (s55 ^ action-lactic-acid) then true else false))) else (if (s56 ^ action-lactic-acid) then (true) else (if (s57 ^ action-lactic-acid) then (true) else (if (s60 ^ action-lactic-acid) then true else false)));
+
+        s59' = if (((s52 ^ action-iv-liquid) | (s54 ^ action-iv-liquid)) | ((s55 ^ action-iv-liquid) | (s56 ^ action-iv-liquid))) then (if ((s52 ^ action-iv-liquid) | (s54 ^ action-iv-liquid)) then (if (s52 ^ action-iv-liquid) then (true) else (if (s54 ^ action-iv-liquid) then true else false)) else (if (s55 ^ action-iv-liquid) then (true) else (if (s56 ^ action-iv-liquid) then true else false))) else (if ((s57 ^ action-iv-liquid) | (s58 ^ action-iv-liquid)) then (if (s57 ^ action-iv-liquid) then (true) else (if (s58 ^ action-iv-liquid) then true else false)) else (if (s60 ^ action-iv-liquid) then (true) else (if (s61 ^ action-iv-liquid) then true else false)));
+
+        s60' = if ((s54 ^ action-iv-antibiotics) | (s55 ^ action-iv-antibiotics)) then (if (s54 ^ action-iv-antibiotics) then (true) else (if (s55 ^ action-iv-antibiotics) then true else false)) else (if (s57 ^ action-iv-antibiotics) then (true) else (if (s58 ^ action-iv-antibiotics) then (true) else (if (s59 ^ action-iv-antibiotics) then true else false)));
+
+        s61' = if ((s54 ^ action-admission-nc) | ((s55 ^ action-admission-nc) | (s57 ^ action-admission-nc))) then (if (s54 ^ action-admission-nc) then (true) else (if (s55 ^ action-admission-nc) then (true) else (if (s57 ^ action-admission-nc) then true else false))) else (if ((s58 ^ action-admission-nc) | (s59 ^ action-admission-nc)) then (if (s58 ^ action-admission-nc) then (true) else (if (s59 ^ action-admission-nc) then true else false)) else (if (s60 ^ action-admission-nc) then (true) else (if (s61 ^ action-admission-nc) then true else false)));
+
+        s62' = if (s54 ^ action-release-a) then (true) else (if (s55 ^ action-release-a) then (true) else (if (s61 ^ action-release-a) then true else false));
+
+        s63' = if (s62 ^ action-return-er) then (true) else (if (s154 ^ action-return-er) then true else false);
+
+        s64' = if ((s62 ^ action-archive-application) | (s63 ^ action-archive-application)) then (if (s62 ^ action-archive-application) then (true) else (if (s63 ^ action-archive-application) then true else false)) else (if (s122 ^ action-archive-application) then (true) else (if (s157 ^ action-archive-application) then true else false));
+
+        s65' = false;
+
+        s66' = if (s65 ^ action-er-registration) then (true) else (if (s72 ^ action-er-registration) then true else false);
+
+        s67' = if ((s66 ^ action-er-triage) | (s69 ^ action-er-triage)) then (if (s66 ^ action-er-triage) then (true) else (if (s69 ^ action-er-triage) then true else false)) else (if (s72 ^ action-er-triage) then (true) else (if (s73 ^ action-er-triage) then true else false));
+
+        s68' = if ((s66 ^ action-er-sepsis-triage) | (s67 ^ action-er-sepsis-triage)) then (if (s66 ^ action-er-sepsis-triage) then (true) else (if (s67 ^ action-er-sepsis-triage) then true else false)) else (if (s69 ^ action-er-sepsis-triage) then (true) else (if (s70 ^ action-er-sepsis-triage) then (true) else (if (s71 ^ action-er-sepsis-triage) then true else false)));
+
+        s69' = if ((s67 ^ action-lactic-acid) | ((s68 ^ action-lactic-acid) | (s70 ^ action-lactic-acid))) then (if (s67 ^ action-lactic-acid) then (true) else (if (s68 ^ action-lactic-acid) then (true) else (if (s70 ^ action-lactic-acid) then true else false))) else (if (s71 ^ action-lactic-acid) then (true) else (if (s74 ^ action-lactic-acid) then (true) else (if (s144 ^ action-lactic-acid) then true else false)));
+
+        s70' = if (((s66 ^ action-leucocytes) | (s67 ^ action-leucocytes)) | ((s68 ^ action-leucocytes) | ((s69 ^ action-leucocytes) | (s70 ^ action-leucocytes)))) then (if ((s66 ^ action-leucocytes) | (s67 ^ action-leucocytes)) then (if (s66 ^ action-leucocytes) then (true) else (if (s67 ^ action-leucocytes) then true else false)) else (if (s68 ^ action-leucocytes) then (true) else (if (s69 ^ action-leucocytes) then (true) else (if (s70 ^ action-leucocytes) then true else false)))) else (if ((s71 ^ action-leucocytes) | (s72 ^ action-leucocytes)) then (if (s71 ^ action-leucocytes) then (true) else (if (s72 ^ action-leucocytes) then true else false)) else (if (s73 ^ action-leucocytes) then (true) else (if (s74 ^ action-leucocytes) then (true) else (if (s144 ^ action-leucocytes) then true else false))));
+
+        s71' = if (((s67 ^ action-crp) | (s68 ^ action-crp)) | ((s69 ^ action-crp) | (s70 ^ action-crp))) then (if ((s67 ^ action-crp) | (s68 ^ action-crp)) then (if (s67 ^ action-crp) then (true) else (if (s68 ^ action-crp) then true else false)) else (if (s69 ^ action-crp) then (true) else (if (s70 ^ action-crp) then true else false))) else (if ((s71 ^ action-crp) | (s72 ^ action-crp)) then (if (s71 ^ action-crp) then (true) else (if (s72 ^ action-crp) then true else false)) else (if (s73 ^ action-crp) then (true) else (if (s74 ^ action-crp) then true else false)));
+
+        s72' = if (((s65 ^ action-iv-liquid) | (s66 ^ action-iv-liquid)) | ((s67 ^ action-iv-liquid) | (s68 ^ action-iv-liquid))) then (if ((s65 ^ action-iv-liquid) | (s66 ^ action-iv-liquid)) then (if (s65 ^ action-iv-liquid) then (true) else (if (s66 ^ action-iv-liquid) then true else false)) else (if (s67 ^ action-iv-liquid) then (true) else (if (s68 ^ action-iv-liquid) then true else false))) else (if ((s69 ^ action-iv-liquid) | (s70 ^ action-iv-liquid)) then (if (s69 ^ action-iv-liquid) then (true) else (if (s70 ^ action-iv-liquid) then true else false)) else (if (s71 ^ action-iv-liquid) then (true) else (if (s73 ^ action-iv-liquid) then (true) else (if (s74 ^ action-iv-liquid) then true else false))));
+
+        s73' = if ((s68 ^ action-iv-antibiotics) | (s69 ^ action-iv-antibiotics)) then (if (s68 ^ action-iv-antibiotics) then (true) else (if (s69 ^ action-iv-antibiotics) then true else false)) else (if (s70 ^ action-iv-antibiotics) then (true) else (if (s71 ^ action-iv-antibiotics) then (true) else (if (s72 ^ action-iv-antibiotics) then true else false)));
+
+        s74' = if ((s69 ^ action-admission-nc) | ((s70 ^ action-admission-nc) | (s71 ^ action-admission-nc))) then (if (s69 ^ action-admission-nc) then (true) else (if (s70 ^ action-admission-nc) then (true) else (if (s71 ^ action-admission-nc) then true else false))) else (if (s72 ^ action-admission-nc) then (true) else (if (s73 ^ action-admission-nc) then (true) else (if (s74 ^ action-admission-nc) then true else false)));
+
+        s75' = if (s70 ^ action-release-a) then (true) else (if (s71 ^ action-release-a) then (true) else (if (s74 ^ action-release-a) then true else false));
+
+        s76' = if ((s75 ^ action-archive-application) | (s88 ^ action-archive-application)) then (if (s75 ^ action-archive-application) then (true) else (if (s88 ^ action-archive-application) then true else false)) else (if (s145 ^ action-archive-application) then (true) else (if (s155 ^ action-archive-application) then true else false));
+
+        s77' = false;
+
+        s78' = if (s77 ^ action-er-registration) then (true) else (if (s98 ^ action-er-registration) then true else false);
+
+        s79' = if (s78 ^ action-er-triage) then (true) else (if (s81 ^ action-er-triage) then true else false);
+
+        s80' = if ((s77 ^ action-er-sepsis-triage) | (s79 ^ action-er-sepsis-triage)) then (if (s77 ^ action-er-sepsis-triage) then (true) else (if (s79 ^ action-er-sepsis-triage) then true else false)) else (if (s81 ^ action-er-sepsis-triage) then (true) else (if (s83 ^ action-er-sepsis-triage) then true else false));
+
+        s81' = if ((s80 ^ action-lactic-acid) | ((s81 ^ action-lactic-acid) | (s82 ^ action-lactic-acid))) then (if (s80 ^ action-lactic-acid) then (true) else (if (s81 ^ action-lactic-acid) then (true) else (if (s82 ^ action-lactic-acid) then true else false))) else (if (s83 ^ action-lactic-acid) then (true) else (if (s85 ^ action-lactic-acid) then (true) else (if (s98 ^ action-lactic-acid) then true else false)));
+
+        s82' = if (((s79 ^ action-leucocytes) | (s80 ^ action-leucocytes)) | ((s81 ^ action-leucocytes) | (s82 ^ action-leucocytes))) then (if ((s79 ^ action-leucocytes) | (s80 ^ action-leucocytes)) then (if (s79 ^ action-leucocytes) then (true) else (if (s80 ^ action-leucocytes) then true else false)) else (if (s81 ^ action-leucocytes) then (true) else (if (s82 ^ action-leucocytes) then true else false))) else (if ((s83 ^ action-leucocytes) | (s84 ^ action-leucocytes)) then (if (s83 ^ action-leucocytes) then (true) else (if (s84 ^ action-leucocytes) then true else false)) else (if (s85 ^ action-leucocytes) then (true) else (if (s98 ^ action-leucocytes) then (true) else (if (s149 ^ action-leucocytes) then true else false))));
+
+        s83' = if (((s78 ^ action-crp) | (s79 ^ action-crp)) | ((s80 ^ action-crp) | ((s81 ^ action-crp) | (s82 ^ action-crp)))) then (if ((s78 ^ action-crp) | (s79 ^ action-crp)) then (if (s78 ^ action-crp) then (true) else (if (s79 ^ action-crp) then true else false)) else (if (s80 ^ action-crp) then (true) else (if (s81 ^ action-crp) then (true) else (if (s82 ^ action-crp) then true else false)))) else (if ((s83 ^ action-crp) | (s84 ^ action-crp)) then (if (s83 ^ action-crp) then (true) else (if (s84 ^ action-crp) then true else false)) else (if (s85 ^ action-crp) then (true) else (if (s98 ^ action-crp) then (true) else (if (s149 ^ action-crp) then true else false))));
+
+        s84' = if ((s80 ^ action-iv-antibiotics) | (s81 ^ action-iv-antibiotics)) then (if (s80 ^ action-iv-antibiotics) then (true) else (if (s81 ^ action-iv-antibiotics) then true else false)) else (if (s82 ^ action-iv-antibiotics) then (true) else (if (s83 ^ action-iv-antibiotics) then (true) else (if (s98 ^ action-iv-antibiotics) then true else false)));
+
+        s85' = if ((s80 ^ action-admission-nc) | ((s81 ^ action-admission-nc) | (s82 ^ action-admission-nc))) then (if (s80 ^ action-admission-nc) then (true) else (if (s81 ^ action-admission-nc) then (true) else (if (s82 ^ action-admission-nc) then true else false))) else (if ((s83 ^ action-admission-nc) | (s84 ^ action-admission-nc)) then (if (s83 ^ action-admission-nc) then (true) else (if (s84 ^ action-admission-nc) then true else false)) else (if (s85 ^ action-admission-nc) then (true) else (if (s98 ^ action-admission-nc) then true else false)));
+
+        s86' = if (s82 ^ action-release-a) then (true) else (if (s83 ^ action-release-a) then (true) else (if (s85 ^ action-release-a) then true else false));
+
+        s87' = if ((s86 ^ action-archive-application) | ((s99 ^ action-archive-application) | (s146 ^ action-archive-application))) then (if (s86 ^ action-archive-application) then (true) else (if (s99 ^ action-archive-application) then (true) else (if (s146 ^ action-archive-application) then true else false))) else (if (s147 ^ action-archive-application) then (true) else (if (s150 ^ action-archive-application) then (true) else (if (s153 ^ action-archive-application) then true else false)));
+
+        s88' = if (s75 ^ action-return-er) then (true) else (if (s163 ^ action-return-er) then true else false);
+
+        s89' = false;
+
+        s90' = if (s89 ^ action-er-registration) then (true) else (if (s94 ^ action-er-registration) then true else false);
+
+        s91' = if (s90 ^ action-er-triage) then (true) else (if (s118 ^ action-er-triage) then (true) else (if (s139 ^ action-er-triage) then true else false));
+
+        s92' = if (s91 ^ action-er-sepsis-triage) then (true) else (if (s93 ^ action-er-sepsis-triage) then (true) else (if (s139 ^ action-er-sepsis-triage) then true else false));
+
+        s93' = if (((s89 ^ action-crp) | ((s90 ^ action-crp) | (s91 ^ action-crp))) | ((s92 ^ action-crp) | ((s93 ^ action-crp) | (s94 ^ action-crp)))) then (if ((s89 ^ action-crp) | ((s90 ^ action-crp) | (s91 ^ action-crp))) then (if (s89 ^ action-crp) then (true) else (if (s90 ^ action-crp) then (true) else (if (s91 ^ action-crp) then true else false))) else (if (s92 ^ action-crp) then (true) else (if (s93 ^ action-crp) then (true) else (if (s94 ^ action-crp) then true else false)))) else (if ((s95 ^ action-crp) | ((s96 ^ action-crp) | (s118 ^ action-crp))) then (if (s95 ^ action-crp) then (true) else (if (s96 ^ action-crp) then (true) else (if (s118 ^ action-crp) then true else false))) else (if (s119 ^ action-crp) then (true) else (if (s139 ^ action-crp) then (true) else (if (s161 ^ action-crp) then true else false))));
+
+        s94' = if ((s91 ^ action-leucocytes) | ((s92 ^ action-leucocytes) | (s93 ^ action-leucocytes))) then (if (s91 ^ action-leucocytes) then (true) else (if (s92 ^ action-leucocytes) then (true) else (if (s93 ^ action-leucocytes) then true else false))) else (if ((s94 ^ action-leucocytes) | (s95 ^ action-leucocytes)) then (if (s94 ^ action-leucocytes) then (true) else (if (s95 ^ action-leucocytes) then true else false)) else (if (s118 ^ action-leucocytes) then (true) else (if (s139 ^ action-leucocytes) then true else false)));
+
+        s95' = if ((s92 ^ action-admission-nc) | ((s93 ^ action-admission-nc) | (s94 ^ action-admission-nc))) then (if (s92 ^ action-admission-nc) then (true) else (if (s93 ^ action-admission-nc) then (true) else (if (s94 ^ action-admission-nc) then true else false))) else (if ((s95 ^ action-admission-nc) | (s119 ^ action-admission-nc)) then (if (s95 ^ action-admission-nc) then (true) else (if (s119 ^ action-admission-nc) then true else false)) else (if (s120 ^ action-admission-nc) then (true) else (if (s139 ^ action-admission-nc) then true else false)));
+
+        s96' = if (s93 ^ action-release-a) then (true) else (if (s94 ^ action-release-a) then (true) else (if (s95 ^ action-release-a) then true else false));
+
+        s97' = if ((s94 ^ action-archive-application) | ((s95 ^ action-archive-application) | (s96 ^ action-archive-application))) then (if (s94 ^ action-archive-application) then (true) else (if (s95 ^ action-archive-application) then (true) else (if (s96 ^ action-archive-application) then true else false))) else (if ((s120 ^ action-archive-application) | (s140 ^ action-archive-application)) then (if (s120 ^ action-archive-application) then (true) else (if (s140 ^ action-archive-application) then true else false)) else (if (s158 ^ action-archive-application) then (true) else (if (s162 ^ action-archive-application) then true else false)));
+
+        s98' = if ((s77 ^ action-iv-liquid) | ((s80 ^ action-iv-liquid) | (s81 ^ action-iv-liquid))) then (if (s77 ^ action-iv-liquid) then (true) else (if (s80 ^ action-iv-liquid) then (true) else (if (s81 ^ action-iv-liquid) then true else false))) else (if (s82 ^ action-iv-liquid) then (true) else (if (s83 ^ action-iv-liquid) then (true) else (if (s84 ^ action-iv-liquid) then true else false)));
+
+        s99' = if (s86 ^ action-return-er) then (true) else (if (s147 ^ action-return-er) then (true) else (if (s150 ^ action-return-er) then true else false));
+
+        s100' = false;
+
+        s101' = if ((s100 ^ action-er-registration) | (s103 ^ action-er-registration)) then (if (s100 ^ action-er-registration) then (true) else (if (s103 ^ action-er-registration) then true else false)) else (if (s104 ^ action-er-registration) then (true) else (if (s107 ^ action-er-registration) then true else false));
+
+        s102' = if (s101 ^ action-er-triage) then (true) else (if (s104 ^ action-er-triage) then (true) else (if (s107 ^ action-er-triage) then true else false));
+
+        s103' = if ((s100 ^ action-er-sepsis-triage) | (s102 ^ action-er-sepsis-triage)) then (if (s100 ^ action-er-sepsis-triage) then (true) else (if (s102 ^ action-er-sepsis-triage) then true else false)) else (if (s104 ^ action-er-sepsis-triage) then (true) else (if (s105 ^ action-er-sepsis-triage) then (true) else (if (s106 ^ action-er-sepsis-triage) then true else false)));
+
+        s104' = if (((s100 ^ action-crp) | (s102 ^ action-crp)) | ((s103 ^ action-crp) | ((s104 ^ action-crp) | (s105 ^ action-crp)))) then (if ((s100 ^ action-crp) | (s102 ^ action-crp)) then (if (s100 ^ action-crp) then (true) else (if (s102 ^ action-crp) then true else false)) else (if (s103 ^ action-crp) then (true) else (if (s104 ^ action-crp) then (true) else (if (s105 ^ action-crp) then true else false)))) else (if ((s106 ^ action-crp) | ((s107 ^ action-crp) | (s108 ^ action-crp))) then (if (s106 ^ action-crp) then (true) else (if (s107 ^ action-crp) then (true) else (if (s108 ^ action-crp) then true else false))) else (if (s109 ^ action-crp) then (true) else (if (s113 ^ action-crp) then (true) else (if (s115 ^ action-crp) then true else false))));
+
+        s105' = if (((s101 ^ action-lactic-acid) | (s103 ^ action-lactic-acid)) | ((s104 ^ action-lactic-acid) | (s105 ^ action-lactic-acid))) then (if ((s101 ^ action-lactic-acid) | (s103 ^ action-lactic-acid)) then (if (s101 ^ action-lactic-acid) then (true) else (if (s103 ^ action-lactic-acid) then true else false)) else (if (s104 ^ action-lactic-acid) then (true) else (if (s105 ^ action-lactic-acid) then true else false))) else (if ((s106 ^ action-lactic-acid) | (s107 ^ action-lactic-acid)) then (if (s106 ^ action-lactic-acid) then (true) else (if (s107 ^ action-lactic-acid) then true else false)) else (if (s108 ^ action-lactic-acid) then (true) else (if (s109 ^ action-lactic-acid) then true else false)));
+
+        s106' = if (((s102 ^ action-leucocytes) | (s103 ^ action-leucocytes)) | ((s104 ^ action-leucocytes) | (s105 ^ action-leucocytes))) then (if ((s102 ^ action-leucocytes) | (s103 ^ action-leucocytes)) then (if (s102 ^ action-leucocytes) then (true) else (if (s103 ^ action-leucocytes) then true else false)) else (if (s104 ^ action-leucocytes) then (true) else (if (s105 ^ action-leucocytes) then true else false))) else (if ((s106 ^ action-leucocytes) | (s107 ^ action-leucocytes)) then (if (s106 ^ action-leucocytes) then (true) else (if (s107 ^ action-leucocytes) then true else false)) else (if (s108 ^ action-leucocytes) then (true) else (if (s109 ^ action-leucocytes) then (true) else (if (s113 ^ action-leucocytes) then true else false))));
+
+        s107' = if (((s100 ^ action-iv-liquid) | (s101 ^ action-iv-liquid)) | ((s102 ^ action-iv-liquid) | (s103 ^ action-iv-liquid))) then (if ((s100 ^ action-iv-liquid) | (s101 ^ action-iv-liquid)) then (if (s100 ^ action-iv-liquid) then (true) else (if (s101 ^ action-iv-liquid) then true else false)) else (if (s102 ^ action-iv-liquid) then (true) else (if (s103 ^ action-iv-liquid) then true else false))) else (if ((s104 ^ action-iv-liquid) | (s105 ^ action-iv-liquid)) then (if (s104 ^ action-iv-liquid) then (true) else (if (s105 ^ action-iv-liquid) then true else false)) else (if (s106 ^ action-iv-liquid) then (true) else (if (s108 ^ action-iv-liquid) then true else false)));
+
+        s108' = if ((s103 ^ action-iv-antibiotics) | (s104 ^ action-iv-antibiotics)) then (if (s103 ^ action-iv-antibiotics) then (true) else (if (s104 ^ action-iv-antibiotics) then true else false)) else (if (s105 ^ action-iv-antibiotics) then (true) else (if (s106 ^ action-iv-antibiotics) then (true) else (if (s107 ^ action-iv-antibiotics) then true else false)));
+
+        s109' = if ((s104 ^ action-admission-ic) | ((s105 ^ action-admission-ic) | (s106 ^ action-admission-ic))) then (if (s104 ^ action-admission-ic) then (true) else (if (s105 ^ action-admission-ic) then (true) else (if (s106 ^ action-admission-ic) then true else false))) else (if (s107 ^ action-admission-ic) then (true) else (if (s108 ^ action-admission-ic) then (true) else (if (s113 ^ action-admission-ic) then true else false)));
+
+        s110' = if ((s104 ^ action-release-b) | (s105 ^ action-release-b)) then (if (s104 ^ action-release-b) then (true) else (if (s105 ^ action-release-b) then true else false)) else (if (s106 ^ action-release-b) then (true) else (if (s113 ^ action-release-b) then true else false));
+
+        s111' = if ((s106 ^ action-archive-application) | (s110 ^ action-archive-application)) then (if (s106 ^ action-archive-application) then (true) else (if (s110 ^ action-archive-application) then true else false)) else (if (s114 ^ action-archive-application) then (true) else (if (s115 ^ action-archive-application) then (true) else (if (s151 ^ action-archive-application) then true else false)));
+
+        s112' = if (s31 ^ action-release-b) then (true) else (if (s32 ^ action-release-b) then (true) else (if (s34 ^ action-release-b) then true else false));
+
+        s113' = if (((s103 ^ action-admission-nc) | (s104 ^ action-admission-nc)) | ((s105 ^ action-admission-nc) | (s106 ^ action-admission-nc))) then (if ((s103 ^ action-admission-nc) | (s104 ^ action-admission-nc)) then (if (s103 ^ action-admission-nc) then (true) else (if (s104 ^ action-admission-nc) then true else false)) else (if (s105 ^ action-admission-nc) then (true) else (if (s106 ^ action-admission-nc) then true else false))) else (if ((s107 ^ action-admission-nc) | (s108 ^ action-admission-nc)) then (if (s107 ^ action-admission-nc) then (true) else (if (s108 ^ action-admission-nc) then true else false)) else (if (s109 ^ action-admission-nc) then (true) else (if (s113 ^ action-admission-nc) then true else false)));
+
+        s114' = if (s104 ^ action-release-a) then (true) else (if (s106 ^ action-release-a) then (true) else (if (s113 ^ action-release-a) then true else false));
+
+        s115' = if (s114 ^ action-return-er) then true else false;
+
+        s116' = if ((s2 ^ action-release-b) | (s3 ^ action-release-b)) then (if (s2 ^ action-release-b) then (true) else (if (s3 ^ action-release-b) then true else false)) else (if (s4 ^ action-release-b) then (true) else (if (s7 ^ action-release-b) then (true) else (if (s9 ^ action-release-b) then true else false)));
+
+        s117' = if ((s27 ^ action-iv-liquid) | ((s29 ^ action-iv-liquid) | (s30 ^ action-iv-liquid))) then (if (s27 ^ action-iv-liquid) then (true) else (if (s29 ^ action-iv-liquid) then (true) else (if (s30 ^ action-iv-liquid) then true else false))) else (if (s31 ^ action-iv-liquid) then (true) else (if (s32 ^ action-iv-liquid) then (true) else (if (s33 ^ action-iv-liquid) then true else false)));
+
+        s118' = if ((s90 ^ action-iv-liquid) | (s92 ^ action-iv-liquid)) then (if (s90 ^ action-iv-liquid) then (true) else (if (s92 ^ action-iv-liquid) then true else false)) else (if (s93 ^ action-iv-liquid) then (true) else (if (s94 ^ action-iv-liquid) then (true) else (if (s139 ^ action-iv-liquid) then true else false)));
+
+        s119' = if ((s92 ^ action-iv-antibiotics) | (s94 ^ action-iv-antibiotics)) then (if (s92 ^ action-iv-antibiotics) then (true) else (if (s94 ^ action-iv-antibiotics) then true else false)) else (if (s118 ^ action-iv-antibiotics) then (true) else (if (s139 ^ action-iv-antibiotics) then true else false));
+
+        s120' = if (s95 ^ action-release-b) then (true) else (if (s119 ^ action-release-b) then (true) else (if (s139 ^ action-release-b) then true else false));
+
+        s121' = if (s22 ^ action-return-er) then (true) else (if (s165 ^ action-return-er) then true else false);
+
+        s122' = if (s54 ^ action-release-c) then true else false;
+
+        s123' = false;
+
+        s124' = if (s123 ^ action-er-registration) then (true) else (if (s127 ^ action-er-registration) then (true) else (if (s131 ^ action-er-registration) then true else false));
+
+        s125' = if (s124 ^ action-er-triage) then (true) else (if (s130 ^ action-er-triage) then true else false);
+
+        s126' = if (s125 ^ action-er-sepsis-triage) then (true) else (if (s129 ^ action-er-sepsis-triage) then (true) else (if (s131 ^ action-er-sepsis-triage) then true else false));
+
+        s127' = if ((s123 ^ action-iv-liquid) | ((s126 ^ action-iv-liquid) | (s128 ^ action-iv-liquid))) then (if (s123 ^ action-iv-liquid) then (true) else (if (s126 ^ action-iv-liquid) then (true) else (if (s128 ^ action-iv-liquid) then true else false))) else (if ((s129 ^ action-iv-liquid) | (s130 ^ action-iv-liquid)) then (if (s129 ^ action-iv-liquid) then (true) else (if (s130 ^ action-iv-liquid) then true else false)) else (if (s131 ^ action-iv-liquid) then (true) else (if (s132 ^ action-iv-liquid) then true else false)));
+
+        s128' = if ((s126 ^ action-iv-antibiotics) | (s127 ^ action-iv-antibiotics)) then (if (s126 ^ action-iv-antibiotics) then (true) else (if (s127 ^ action-iv-antibiotics) then true else false)) else (if (s129 ^ action-iv-antibiotics) then (true) else (if (s130 ^ action-iv-antibiotics) then (true) else (if (s131 ^ action-iv-antibiotics) then true else false)));
+
+        s129' = if (((s123 ^ action-leucocytes) | (s124 ^ action-leucocytes)) | ((s126 ^ action-leucocytes) | (s128 ^ action-leucocytes))) then (if ((s123 ^ action-leucocytes) | (s124 ^ action-leucocytes)) then (if (s123 ^ action-leucocytes) then (true) else (if (s124 ^ action-leucocytes) then true else false)) else (if (s126 ^ action-leucocytes) then (true) else (if (s128 ^ action-leucocytes) then true else false))) else (if ((s129 ^ action-leucocytes) | (s130 ^ action-leucocytes)) then (if (s129 ^ action-leucocytes) then (true) else (if (s130 ^ action-leucocytes) then true else false)) else (if (s131 ^ action-leucocytes) then (true) else (if (s132 ^ action-leucocytes) then true else false)));
+
+        s130' = if ((s125 ^ action-lactic-acid) | ((s126 ^ action-lactic-acid) | (s127 ^ action-lactic-acid))) then (if (s125 ^ action-lactic-acid) then (true) else (if (s126 ^ action-lactic-acid) then (true) else (if (s127 ^ action-lactic-acid) then true else false))) else (if ((s129 ^ action-lactic-acid) | (s131 ^ action-lactic-acid)) then (if (s129 ^ action-lactic-acid) then (true) else (if (s131 ^ action-lactic-acid) then true else false)) else (if (s132 ^ action-lactic-acid) then (true) else (if (s159 ^ action-lactic-acid) then true else false)));
+
+        s131' = if (((s125 ^ action-crp) | (s126 ^ action-crp)) | ((s127 ^ action-crp) | (s129 ^ action-crp))) then (if ((s125 ^ action-crp) | (s126 ^ action-crp)) then (if (s125 ^ action-crp) then (true) else (if (s126 ^ action-crp) then true else false)) else (if (s127 ^ action-crp) then (true) else (if (s129 ^ action-crp) then true else false))) else (if ((s130 ^ action-crp) | (s131 ^ action-crp)) then (if (s130 ^ action-crp) then (true) else (if (s131 ^ action-crp) then true else false)) else (if (s132 ^ action-crp) then (true) else (if (s143 ^ action-crp) then true else false)));
+
+        s132' = if ((s127 ^ action-admission-nc) | ((s128 ^ action-admission-nc) | (s129 ^ action-admission-nc))) then (if (s127 ^ action-admission-nc) then (true) else (if (s128 ^ action-admission-nc) then (true) else (if (s129 ^ action-admission-nc) then true else false))) else (if (s130 ^ action-admission-nc) then (true) else (if (s131 ^ action-admission-nc) then (true) else (if (s132 ^ action-admission-nc) then true else false)));
+
+        s133' = if (s129 ^ action-release-a) then (true) else (if (s131 ^ action-release-a) then (true) else (if (s132 ^ action-release-a) then true else false));
+
+        s134' = if ((s129 ^ action-archive-application) | (s133 ^ action-archive-application)) then (if (s129 ^ action-archive-application) then (true) else (if (s133 ^ action-archive-application) then true else false)) else (if (s143 ^ action-archive-application) then (true) else (if (s167 ^ action-archive-application) then true else false));
+
+        s135' = if (s31 ^ action-release-c) then (true) else (if (s32 ^ action-release-c) then true else false);
+
+        s136' = if (s3 ^ action-release-e) then true else false;
+
+        s137' = if (s3 ^ action-release-c) then (true) else (if (s9 ^ action-release-c) then true else false);
+
+        s138' = if (s42 ^ action-release-b) then (true) else (if (s43 ^ action-release-b) then (true) else (if (s47 ^ action-release-b) then true else false));
+
+        s139' = if ((s91 ^ action-lactic-acid) | ((s92 ^ action-lactic-acid) | (s93 ^ action-lactic-acid))) then (if (s91 ^ action-lactic-acid) then (true) else (if (s92 ^ action-lactic-acid) then (true) else (if (s93 ^ action-lactic-acid) then true else false))) else (if ((s94 ^ action-lactic-acid) | (s118 ^ action-lactic-acid)) then (if (s94 ^ action-lactic-acid) then (true) else (if (s118 ^ action-lactic-acid) then true else false)) else (if (s139 ^ action-lactic-acid) then (true) else (if (s161 ^ action-lactic-acid) then true else false)));
+
+        s140' = if (s93 ^ action-release-d) then true else false;
+
+        s141' = if (s54 ^ action-admission-ic) then true else false;
+
+        s142' = if (s131 ^ action-release-d) then true else false;
+
+        s143' = if (s133 ^ action-return-er) then (true) else (if (s142 ^ action-return-er) then (true) else (if (s167 ^ action-return-er) then true else false));
+
+        s144' = if ((s68 ^ action-admission-ic) | (s69 ^ action-admission-ic)) then (if (s68 ^ action-admission-ic) then (true) else (if (s69 ^ action-admission-ic) then true else false)) else (if (s70 ^ action-admission-ic) then (true) else (if (s73 ^ action-admission-ic) then true else false));
+
+        s145' = if (s70 ^ action-release-b) then (true) else (if (s74 ^ action-release-b) then true else false);
+
+        s146' = if (s82 ^ action-release-b) then true else false;
+
+        s147' = if (s82 ^ action-release-c) then (true) else (if (s83 ^ action-release-c) then (true) else (if (s85 ^ action-release-c) then true else false));
+
+        s148' = if (s20 ^ action-admission-ic) then (true) else (if (s21 ^ action-admission-ic) then true else false);
+
+        s149' = if (s82 ^ action-admission-ic) then (true) else (if (s83 ^ action-admission-ic) then (true) else (if (s85 ^ action-admission-ic) then true else false));
+
+        s150' = if (s82 ^ action-release-d) then (true) else (if (s83 ^ action-release-d) then true else false);
+
+        s151' = if (s113 ^ action-release-c) then true else false;
+
+        s152' = if (s2 ^ action-release-d) then (true) else (if (s3 ^ action-release-d) then (true) else (if (s9 ^ action-release-d) then true else false));
+
+        s153' = if (s82 ^ action-release-e) then true else false;
+
+        s154' = if (s54 ^ action-release-d) then (true) else (if (s55 ^ action-release-d) then true else false);
+
+        s155' = if (s70 ^ action-release-e) then true else false;
+
+        s156' = if (s31 ^ action-release-d) then (true) else (if (s32 ^ action-release-d) then true else false);
+
+        s157' = if (s54 ^ action-release-b) then true else false;
+
+        s158' = if (s96 ^ action-return-er) then true else false;
+
+        s159' = if (s131 ^ action-admission-ic) then (true) else (if (s132 ^ action-admission-ic) then true else false);
+
+        s160' = if (s31 ^ action-admission-ic) then (true) else (if (s34 ^ action-admission-ic) then true else false);
+
+        s161' = if (s139 ^ action-admission-ic) then true else false;
+
+        s162' = if (s94 ^ action-release-c) then true else false;
+
+        s163' = if (s71 ^ action-release-d) then true else false;
+
+        s164' = if (s32 ^ action-release-e) then true else false;
+
+        s165' = if (s18 ^ action-release-d) then (true) else (if (s19 ^ action-release-d) then true else false);
+
+        s166' = if (s42 ^ action-release-d) then true else false;
+
+        s167' = if (s131 ^ action-release-c) then true else false;
+
+
+        // ---- attributi booleani (tri singoli + cat one-hot, niente real) ----
+        // CPF sul NUOVO stato one-hot s{k}': if (OR degli stati in cui vale
+        // true) then true else false - state-fluent bool nativo, evita il
+        // segfault osservato con gli attributi codificati come real.
+        diagnostic-art-astrup' = if (((((s4') | (s25')) | ((s48') | ((s65') | (s66')))) | (((s67') | ((s68') | (s69'))) | ((s71') | ((s72') | (s73'))))) | ((((s74') | (s75')) | ((s76') | ((s136') | (s141')))) | (((s144') | ((s145') | (s150'))) | ((s159') | ((s163') | (s165')))))) then true else false;
+
+        diagnostic-blood' = if ((((((((s0') | (s1')) | ((s2') | ((s3') | (s4')))) | (((s5') | (s6')) | ((s7') | ((s8') | (s9'))))) | ((((s10') | (s11')) | ((s12') | ((s13') | (s14')))) | (((s15') | (s16')) | ((s17') | ((s18') | (s19')))))) | (((((s20') | (s21')) | ((s22') | ((s23') | (s24')))) | (((s25') | (s26')) | ((s27') | ((s28') | (s29'))))) | ((((s30') | (s31')) | ((s32') | ((s33') | (s34')))) | (((s35') | (s37')) | ((s38') | ((s39') | (s40'))))))) | ((((((s41') | (s42')) | ((s43') | ((s44') | (s45')))) | (((s46') | (s47')) | ((s48') | ((s49') | (s50'))))) | ((((s51') | (s52')) | ((s53') | ((s54') | (s55')))) | (((s56') | (s57')) | ((s58') | ((s59') | (s60')))))) | (((((s61') | (s62')) | ((s63') | ((s64') | (s65')))) | (((s66') | (s67')) | ((s68') | ((s69') | (s70'))))) | ((((s71') | (s72')) | ((s73') | ((s74') | (s75')))) | (((s76') | (s77')) | ((s78') | ((s79') | (s80')))))))) | (((((((s81') | (s82')) | ((s83') | ((s84') | (s85')))) | (((s86') | (s87')) | ((s88') | ((s89') | (s90'))))) | ((((s91') | (s92')) | ((s93') | ((s94') | (s95')))) | (((s96') | (s97')) | ((s98') | ((s99') | (s100')))))) | (((((s101') | (s102')) | ((s103') | ((s104') | (s105')))) | (((s106') | (s107')) | ((s108') | ((s109') | (s110'))))) | ((((s111') | (s112')) | ((s113') | ((s114') | (s115')))) | (((s116') | (s117')) | ((s118') | ((s119') | (s120'))))))) | ((((((s121') | (s122')) | ((s123') | ((s124') | (s125')))) | (((s126') | (s127')) | ((s128') | ((s129') | (s130'))))) | ((((s131') | (s132')) | ((s133') | ((s134') | (s135')))) | (((s136') | (s137')) | ((s138') | ((s139') | (s141')))))) | (((((s142') | (s143')) | ((s144') | ((s145') | (s147')))) | (((s148') | (s149')) | ((s150') | ((s151') | (s152'))))) | ((((s154') | (s156')) | ((s158') | ((s159') | (s161')))) | (((s162') | (s163')) | ((s165') | ((s166') | (s167'))))))))) then true else false;
+
+        diagnostic-ecg' = if ((((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | ((s7') | (s8'))))) | ((((s9') | (s10')) | ((s11') | ((s12') | (s13')))) | (((s14') | (s15')) | ((s16') | ((s17') | (s18')))))) | (((((s19') | (s20')) | ((s21') | (s22'))) | (((s23') | (s24')) | ((s25') | ((s26') | (s27'))))) | ((((s28') | (s29')) | ((s30') | ((s31') | (s32')))) | (((s33') | (s34')) | ((s35') | ((s37') | (s38'))))))) | ((((((s39') | (s40')) | ((s41') | (s42'))) | (((s43') | (s44')) | ((s45') | ((s46') | (s47'))))) | ((((s48') | (s49')) | ((s50') | ((s51') | (s52')))) | (((s53') | (s54')) | ((s55') | ((s56') | (s57')))))) | (((((s58') | (s59')) | ((s60') | (s61'))) | (((s62') | (s63')) | ((s64') | ((s65') | (s66'))))) | ((((s67') | (s68')) | ((s69') | ((s70') | (s71')))) | (((s72') | (s73')) | ((s74') | ((s75') | (s76')))))))) | (((((((s77') | (s78')) | ((s79') | (s80'))) | (((s82') | (s83')) | ((s84') | ((s85') | (s86'))))) | ((((s87') | (s88')) | ((s89') | ((s90') | (s91')))) | (((s92') | (s95')) | ((s96') | ((s97') | (s98')))))) | (((((s99') | (s100')) | ((s101') | (s102'))) | (((s103') | (s104')) | ((s105') | ((s106') | (s107'))))) | ((((s108') | (s109')) | ((s110') | ((s111') | (s112')))) | (((s113') | (s114')) | ((s115') | ((s116') | (s117'))))))) | ((((((s118') | (s119')) | ((s120') | (s121'))) | (((s122') | (s123')) | ((s124') | ((s125') | (s126'))))) | ((((s127') | (s128')) | ((s129') | ((s130') | (s131')))) | (((s132') | (s133')) | ((s134') | ((s135') | (s137')))))) | (((((s138') | (s141')) | ((s142') | ((s143') | (s144')))) | (((s145') | (s147')) | ((s148') | ((s149') | (s150'))))) | ((((s151') | (s152')) | ((s153') | ((s154') | (s156')))) | (((s158') | (s163')) | ((s165') | ((s166') | (s167'))))))))) then true else false;
+
+        diagnostic-ic' = if ((((((((s0') | (s1')) | ((s2') | ((s3') | (s4')))) | (((s5') | (s6')) | ((s7') | ((s8') | (s9'))))) | ((((s10') | (s11')) | ((s12') | ((s13') | (s14')))) | (((s15') | (s16')) | ((s17') | ((s18') | (s19')))))) | (((((s20') | (s21')) | ((s22') | ((s23') | (s24')))) | (((s25') | (s26')) | ((s27') | ((s28') | (s29'))))) | ((((s30') | (s31')) | ((s32') | ((s33') | (s34')))) | (((s35') | (s37')) | ((s38') | ((s39') | (s40'))))))) | ((((((s41') | (s42')) | ((s43') | ((s44') | (s45')))) | (((s46') | (s47')) | ((s48') | ((s49') | (s50'))))) | ((((s51') | (s52')) | ((s53') | ((s54') | (s55')))) | (((s56') | (s57')) | ((s58') | ((s59') | (s60')))))) | (((((s61') | (s62')) | ((s63') | ((s64') | (s65')))) | (((s66') | (s67')) | ((s68') | ((s69') | (s70'))))) | ((((s71') | (s72')) | ((s73') | ((s74') | (s75')))) | (((s76') | ((s77') | (s78'))) | ((s79') | ((s80') | (s81')))))))) | (((((((s82') | (s83')) | ((s84') | ((s85') | (s86')))) | (((s87') | (s88')) | ((s89') | ((s90') | (s91'))))) | ((((s92') | (s93')) | ((s94') | ((s95') | (s96')))) | (((s97') | (s98')) | ((s99') | ((s100') | (s101')))))) | (((((s102') | (s103')) | ((s104') | ((s105') | (s106')))) | (((s107') | (s108')) | ((s109') | ((s110') | (s111'))))) | ((((s112') | (s113')) | ((s114') | ((s115') | (s116')))) | (((s117') | (s118')) | ((s119') | ((s120') | (s121'))))))) | ((((((s122') | (s123')) | ((s124') | ((s125') | (s126')))) | (((s127') | (s128')) | ((s129') | ((s130') | (s131'))))) | ((((s132') | (s133')) | ((s134') | ((s135') | (s136')))) | (((s137') | (s138')) | ((s139') | ((s141') | (s142')))))) | (((((s143') | (s144')) | ((s145') | ((s146') | (s147')))) | (((s148') | (s149')) | ((s150') | ((s151') | (s152'))))) | ((((s153') | (s154')) | ((s156') | ((s158') | (s159')))) | (((s161') | ((s162') | (s163'))) | ((s165') | ((s166') | (s167'))))))))) then true else false;
+
+        diagnostic-lactic-acid' = if ((((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | ((s7') | (s8'))))) | ((((s9') | (s10')) | ((s11') | ((s12') | (s13')))) | (((s14') | (s15')) | ((s16') | ((s17') | (s18')))))) | (((((s19') | (s20')) | ((s21') | ((s22') | (s23')))) | (((s24') | (s25')) | ((s26') | ((s27') | (s28'))))) | ((((s29') | (s30')) | ((s31') | ((s32') | (s33')))) | (((s34') | (s35')) | ((s37') | ((s38') | (s39'))))))) | ((((((s40') | (s41')) | ((s42') | (s43'))) | (((s44') | (s45')) | ((s46') | ((s47') | (s48'))))) | ((((s49') | (s50')) | ((s51') | ((s52') | (s53')))) | (((s54') | (s55')) | ((s56') | ((s57') | (s58')))))) | (((((s59') | (s60')) | ((s61') | ((s62') | (s63')))) | (((s64') | (s65')) | ((s66') | ((s67') | (s68'))))) | ((((s69') | (s70')) | ((s71') | ((s72') | (s73')))) | (((s74') | (s75')) | ((s76') | ((s77') | (s78')))))))) | (((((((s79') | (s80')) | ((s81') | (s82'))) | (((s83') | (s84')) | ((s85') | ((s86') | (s87'))))) | ((((s88') | (s89')) | ((s90') | ((s91') | (s92')))) | (((s93') | (s94')) | ((s95') | ((s96') | (s97')))))) | (((((s98') | (s99')) | ((s100') | ((s101') | (s102')))) | (((s103') | (s104')) | ((s105') | ((s106') | (s107'))))) | ((((s108') | (s109')) | ((s110') | ((s111') | (s113')))) | (((s114') | (s115')) | ((s116') | ((s117') | (s118'))))))) | ((((((s119') | (s120')) | ((s121') | ((s122') | (s123')))) | (((s124') | (s125')) | ((s126') | ((s127') | (s128'))))) | ((((s129') | (s130')) | ((s131') | ((s132') | (s133')))) | (((s134') | (s135')) | ((s136') | ((s137') | (s138')))))) | (((((s139') | (s141')) | ((s142') | ((s143') | (s144')))) | (((s145') | (s147')) | ((s148') | ((s149') | (s150'))))) | ((((s151') | (s152')) | ((s158') | ((s159') | (s161')))) | (((s162') | (s163')) | ((s165') | ((s166') | (s167'))))))))) then true else false;
+
+        diagnostic-liquor' = false;
+
+        diagnostic-other' = false;
+
+        diagnostic-sputum' = false;
+
+        diagnostic-urinary-culture' = if (((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | ((s7') | (s8'))))) | ((((s9') | (s10')) | ((s11') | ((s24') | (s25')))) | (((s30') | (s33')) | ((s52') | ((s54') | (s55')))))) | (((((s58') | (s59')) | ((s60') | (s61'))) | (((s63') | (s84')) | ((s85') | ((s93') | (s94'))))) | ((((s98') | (s99')) | ((s100') | ((s101') | (s102')))) | (((s103') | (s104')) | ((s105') | ((s106') | (s107'))))))) | ((((((s108') | (s109')) | ((s111') | (s112'))) | (((s113') | (s114')) | ((s115') | ((s117') | (s118'))))) | ((((s119') | (s122')) | ((s123') | ((s124') | (s125')))) | (((s126') | (s127')) | ((s128') | ((s129') | (s130')))))) | (((((s131') | (s132')) | ((s134') | ((s136') | (s139')))) | (((s141') | (s142')) | ((s143') | ((s144') | (s145'))))) | ((((s147') | (s148')) | ((s149') | ((s152') | (s156')))) | (((s158') | (s161')) | ((s162') | ((s166') | (s167')))))))) then true else false;
+
+        diagnostic-urinary-sediment' = if (((((((s0') | (s1')) | ((s2') | ((s3') | (s4')))) | (((s5') | ((s6') | (s7'))) | ((s8') | ((s9') | (s10'))))) | ((((s11') | (s17')) | ((s24') | ((s25') | (s30')))) | (((s33') | ((s38') | (s39'))) | ((s40') | ((s41') | (s43')))))) | (((((s45') | (s46')) | ((s47') | ((s51') | (s54')))) | (((s55') | ((s58') | (s59'))) | ((s60') | ((s63') | (s70'))))) | ((((s84') | (s85')) | ((s93') | ((s94') | (s98')))) | (((s99') | ((s100') | (s101'))) | ((s102') | ((s103') | (s104'))))))) | ((((((s105') | (s106')) | ((s107') | ((s108') | (s109')))) | (((s111') | ((s112') | (s113'))) | ((s114') | ((s115') | (s116'))))) | ((((s117') | (s118')) | ((s119') | ((s122') | (s123')))) | (((s124') | ((s125') | (s126'))) | ((s127') | ((s128') | (s129')))))) | (((((s130') | (s131')) | ((s132') | ((s133') | (s134')))) | (((s136') | ((s138') | (s139'))) | ((s141') | ((s142') | (s143'))))) | ((((s144') | (s147')) | ((s148') | ((s149') | (s152')))) | (((s156') | ((s158') | (s161'))) | ((s162') | ((s166') | (s167')))))))) then true else false;
+
+        diagnostic-xthorax' = if ((((((((s0') | (s1')) | ((s2') | ((s3') | (s4')))) | (((s5') | (s6')) | ((s7') | ((s8') | (s9'))))) | ((((s10') | (s11')) | ((s12') | ((s13') | (s14')))) | (((s15') | (s16')) | ((s17') | ((s18') | (s19')))))) | (((((s20') | (s21')) | ((s22') | ((s23') | (s24')))) | (((s25') | (s26')) | ((s27') | ((s28') | (s29'))))) | ((((s30') | (s31')) | ((s32') | ((s33') | (s34')))) | (((s35') | (s37')) | ((s38') | ((s39') | (s40'))))))) | ((((((s41') | (s42')) | ((s43') | ((s44') | (s45')))) | (((s46') | (s47')) | ((s48') | ((s49') | (s50'))))) | ((((s51') | (s52')) | ((s53') | ((s54') | (s55')))) | (((s56') | (s57')) | ((s58') | ((s59') | (s60')))))) | (((((s61') | (s62')) | ((s63') | ((s64') | (s65')))) | (((s66') | (s67')) | ((s68') | ((s69') | (s70'))))) | ((((s71') | (s72')) | ((s73') | ((s74') | (s75')))) | (((s76') | (s77')) | ((s78') | ((s79') | (s80')))))))) | (((((((s81') | (s82')) | ((s83') | ((s84') | (s85')))) | (((s86') | (s87')) | ((s88') | ((s89') | (s90'))))) | ((((s91') | (s92')) | ((s93') | ((s94') | (s95')))) | (((s96') | (s97')) | ((s98') | ((s99') | (s100')))))) | (((((s101') | (s102')) | ((s103') | ((s104') | (s105')))) | (((s106') | (s107')) | ((s108') | ((s109') | (s110'))))) | ((((s111') | (s112')) | ((s113') | ((s114') | (s115')))) | (((s116') | (s117')) | ((s118') | ((s119') | (s120'))))))) | ((((((s121') | (s122')) | ((s123') | ((s124') | (s125')))) | (((s126') | (s127')) | ((s128') | ((s129') | (s130'))))) | ((((s131') | (s132')) | ((s133') | ((s134') | (s135')))) | (((s136') | (s137')) | ((s138') | ((s139') | (s141')))))) | (((((s142') | (s143')) | ((s144') | ((s145') | (s147')))) | (((s148') | (s149')) | ((s150') | ((s152') | (s153'))))) | ((((s154') | (s156')) | ((s158') | ((s159') | (s161')))) | (((s162') | (s163')) | ((s165') | ((s166') | (s167'))))))))) then true else false;
+
+        disfunc-org' = if ((s141') | ((s152') | (s166'))) then true else false;
+
+        hypotensie' = if (((s93') | ((s94') | (s139'))) | (((s141') | (s152')) | ((s162') | (s166')))) then true else false;
+
+        hypoxie' = false;
+
+        infection-suspected' = if ((((((((s0') | (s1')) | ((s2') | ((s3') | (s4')))) | (((s5') | (s6')) | ((s7') | ((s8') | (s9'))))) | ((((s10') | (s11')) | ((s12') | ((s13') | (s14')))) | (((s15') | (s16')) | ((s17') | ((s18') | (s19')))))) | (((((s20') | (s21')) | ((s22') | ((s23') | (s24')))) | (((s25') | (s26')) | ((s27') | ((s28') | (s29'))))) | ((((s30') | (s31')) | ((s32') | ((s33') | (s34')))) | (((s35') | (s37')) | ((s38') | ((s39') | (s40'))))))) | ((((((s41') | (s42')) | ((s43') | ((s44') | (s45')))) | (((s46') | (s47')) | ((s48') | ((s49') | (s50'))))) | ((((s51') | (s52')) | ((s53') | ((s54') | (s55')))) | (((s56') | (s57')) | ((s58') | ((s59') | (s60')))))) | (((((s61') | (s62')) | ((s63') | ((s64') | (s65')))) | (((s66') | (s67')) | ((s68') | ((s69') | (s70'))))) | ((((s71') | (s72')) | ((s73') | ((s74') | (s75')))) | (((s76') | (s77')) | ((s78') | ((s79') | (s80')))))))) | (((((((s81') | (s82')) | ((s83') | ((s84') | (s85')))) | (((s86') | (s87')) | ((s88') | ((s89') | (s90'))))) | ((((s91') | (s92')) | ((s93') | ((s94') | (s95')))) | (((s96') | (s97')) | ((s98') | ((s99') | (s100')))))) | (((((s101') | (s102')) | ((s103') | ((s104') | (s105')))) | (((s106') | (s107')) | ((s108') | ((s109') | (s110'))))) | ((((s111') | (s112')) | ((s113') | ((s114') | (s115')))) | (((s116') | (s117')) | ((s118') | ((s119') | (s120'))))))) | ((((((s121') | (s122')) | ((s123') | ((s124') | (s125')))) | (((s126') | (s127')) | ((s128') | ((s129') | (s130'))))) | ((((s131') | (s132')) | ((s133') | ((s134') | (s135')))) | (((s136') | (s137')) | ((s138') | ((s139') | (s141')))))) | (((((s142') | (s143')) | ((s144') | ((s145') | (s146')))) | (((s147') | (s148')) | ((s149') | ((s150') | (s151'))))) | ((((s152') | (s153')) | ((s154') | ((s158') | (s159')))) | (((s161') | ((s162') | (s163'))) | ((s165') | ((s166') | (s167'))))))))) then true else false;
+
+        infusion' = if ((((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | ((s7') | (s8'))))) | ((((s9') | (s10')) | ((s11') | ((s12') | (s13')))) | (((s14') | (s15')) | ((s16') | ((s17') | (s18')))))) | (((((s19') | (s20')) | ((s21') | ((s22') | (s23')))) | (((s24') | (s25')) | ((s26') | ((s27') | (s28'))))) | ((((s29') | (s30')) | ((s31') | ((s32') | (s33')))) | (((s34') | (s35')) | ((s37') | ((s38') | (s39'))))))) | ((((((s40') | (s41')) | ((s42') | ((s43') | (s44')))) | (((s45') | (s46')) | ((s47') | ((s48') | (s49'))))) | ((((s50') | (s51')) | ((s52') | ((s53') | (s54')))) | (((s55') | (s56')) | ((s57') | ((s58') | (s59')))))) | (((((s60') | (s61')) | ((s62') | ((s63') | (s64')))) | (((s65') | (s66')) | ((s67') | ((s68') | (s69'))))) | ((((s70') | (s71')) | ((s72') | ((s73') | (s74')))) | (((s75') | (s76')) | ((s77') | ((s78') | (s79')))))))) | (((((((s80') | (s81')) | ((s82') | (s83'))) | (((s84') | (s85')) | ((s86') | ((s87') | (s88'))))) | ((((s89') | (s90')) | ((s91') | ((s92') | (s93')))) | (((s94') | (s95')) | ((s97') | ((s98') | (s99')))))) | (((((s100') | (s101')) | ((s102') | ((s103') | (s104')))) | (((s105') | (s106')) | ((s107') | ((s108') | (s109'))))) | ((((s110') | (s111')) | ((s113') | ((s114') | (s115')))) | (((s116') | (s117')) | ((s118') | ((s119') | (s120'))))))) | ((((((s121') | (s122')) | ((s123') | ((s124') | (s125')))) | (((s126') | (s127')) | ((s128') | ((s129') | (s130'))))) | ((((s131') | (s132')) | ((s133') | ((s134') | (s135')))) | (((s136') | (s137')) | ((s138') | ((s139') | (s141')))))) | (((((s142') | (s143')) | ((s144') | ((s145') | (s146')))) | (((s147') | (s148')) | ((s149') | ((s150') | (s151'))))) | ((((s152') | (s154')) | ((s158') | ((s159') | (s161')))) | (((s162') | (s163')) | ((s165') | ((s166') | (s167'))))))))) then true else false;
+
+        oligurie' = false;
+
+        sirscrit-heart-rate' = if ((((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | ((s7') | (s8'))))) | ((((s9') | (s10')) | ((s11') | ((s12') | (s13')))) | (((s14') | (s15')) | ((s16') | ((s17') | (s18')))))) | (((((s19') | (s20')) | ((s21') | ((s22') | (s23')))) | (((s24') | (s25')) | ((s26') | ((s27') | (s28'))))) | ((((s29') | (s30')) | ((s31') | ((s32') | (s33')))) | (((s34') | (s35')) | ((s37') | ((s38') | (s39'))))))) | ((((((s40') | (s41')) | ((s42') | ((s43') | (s44')))) | (((s45') | (s46')) | ((s47') | ((s48') | (s49'))))) | ((((s50') | (s51')) | ((s52') | ((s53') | (s54')))) | (((s55') | (s56')) | ((s57') | ((s58') | (s59')))))) | (((((s60') | (s61')) | ((s62') | ((s63') | (s64')))) | (((s65') | (s66')) | ((s67') | ((s68') | (s69'))))) | ((((s70') | (s71')) | ((s72') | ((s73') | (s74')))) | (((s75') | (s76')) | ((s77') | ((s78') | (s79')))))))) | (((((((s80') | (s82')) | ((s83') | (s84'))) | (((s85') | (s86')) | ((s87') | ((s88') | (s89'))))) | ((((s90') | (s91')) | ((s92') | ((s93') | (s94')))) | (((s95') | (s97')) | ((s98') | ((s99') | (s100')))))) | (((((s101') | (s102')) | ((s103') | ((s104') | (s105')))) | (((s106') | (s107')) | ((s108') | ((s109') | (s110'))))) | ((((s111') | (s113')) | ((s114') | ((s115') | (s116')))) | (((s117') | (s118')) | ((s119') | ((s120') | (s121'))))))) | ((((((s122') | (s123')) | ((s124') | ((s125') | (s126')))) | (((s127') | (s128')) | ((s129') | ((s130') | (s131'))))) | ((((s132') | (s133')) | ((s134') | ((s135') | (s136')))) | (((s137') | (s138')) | ((s139') | ((s141') | (s142')))))) | (((((s143') | (s144')) | ((s145') | ((s146') | (s147')))) | (((s148') | (s149')) | ((s150') | ((s151') | (s152'))))) | ((((s153') | (s154')) | ((s158') | ((s159') | (s161')))) | (((s162') | (s163')) | ((s164') | ((s165') | (s166'))))))))) then true else false;
+
+        sirscrit-leucos' = if (s141') then true else false;
+
+        sirscrit-tachypnea' = if ((((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | (s7')))) | ((((s8') | (s9')) | ((s10') | (s11'))) | (((s12') | (s13')) | ((s14') | (s15'))))) | (((((s16') | (s17')) | ((s18') | (s19'))) | (((s20') | (s21')) | ((s22') | (s23')))) | ((((s24') | (s25')) | ((s30') | (s33'))) | (((s38') | (s39')) | ((s40') | ((s41') | (s42'))))))) | ((((((s43') | (s44')) | ((s45') | (s46'))) | (((s47') | (s48')) | ((s49') | (s50')))) | ((((s51') | (s53')) | ((s54') | (s55'))) | (((s56') | (s57')) | ((s58') | (s59'))))) | (((((s60') | (s61')) | ((s62') | (s64'))) | (((s65') | (s66')) | ((s67') | (s68')))) | ((((s69') | (s70')) | ((s71') | (s72'))) | (((s73') | (s74')) | ((s75') | ((s76') | (s77')))))))) | (((((((s78') | (s79')) | ((s80') | (s81'))) | (((s82') | (s83')) | ((s84') | (s85')))) | ((((s86') | (s87')) | ((s88') | (s98'))) | (((s99') | (s100')) | ((s101') | (s102'))))) | (((((s103') | (s104')) | ((s105') | (s106'))) | (((s107') | (s108')) | ((s109') | (s110')))) | ((((s111') | (s112')) | ((s113') | (s114'))) | (((s115') | (s116')) | ((s117') | ((s118') | (s119'))))))) | ((((((s120') | (s121')) | ((s124') | (s125'))) | (((s126') | (s127')) | ((s128') | (s129')))) | ((((s130') | (s131')) | ((s132') | (s134'))) | (((s137') | (s138')) | ((s141') | (s142'))))) | (((((s143') | (s144')) | ((s145') | (s147'))) | (((s148') | (s149')) | ((s150') | (s152')))) | ((((s153') | (s156')) | ((s158') | (s159'))) | (((s163') | (s164')) | ((s165') | ((s166') | (s167'))))))))) then true else false;
+
+        sirscrit-temperature' = if ((((((((s0') | (s1')) | ((s2') | (s3'))) | (((s4') | (s5')) | ((s6') | ((s7') | (s8'))))) | ((((s9') | (s10')) | ((s11') | ((s12') | (s13')))) | (((s14') | (s15')) | ((s16') | ((s17') | (s18')))))) | (((((s19') | (s20')) | ((s21') | (s22'))) | (((s23') | (s24')) | ((s25') | ((s26') | (s27'))))) | ((((s28') | (s29')) | ((s30') | ((s31') | (s32')))) | (((s33') | (s34')) | ((s35') | ((s37') | (s38'))))))) | ((((((s39') | (s40')) | ((s41') | (s42'))) | (((s43') | (s44')) | ((s45') | ((s46') | (s47'))))) | ((((s48') | (s49')) | ((s50') | ((s51') | (s52')))) | (((s53') | (s54')) | ((s55') | ((s56') | (s57')))))) | (((((s58') | (s59')) | ((s60') | ((s61') | (s62')))) | (((s63') | (s64')) | ((s65') | ((s66') | (s67'))))) | ((((s68') | (s69')) | ((s70') | ((s71') | (s72')))) | (((s73') | (s74')) | ((s75') | ((s76') | (s77')))))))) | (((((((s78') | (s79')) | ((s80') | (s81'))) | (((s82') | (s83')) | ((s84') | ((s85') | (s86'))))) | ((((s87') | (s88')) | ((s89') | ((s90') | (s91')))) | (((s92') | (s93')) | ((s94') | ((s95') | (s96')))))) | (((((s97') | (s98')) | ((s99') | (s100'))) | (((s101') | (s102')) | ((s103') | ((s104') | (s105'))))) | ((((s106') | (s107')) | ((s108') | ((s109') | (s111')))) | (((s113') | (s114')) | ((s115') | ((s116') | (s117'))))))) | ((((((s118') | (s119')) | ((s120') | (s121'))) | (((s122') | (s123')) | ((s124') | ((s125') | (s126'))))) | ((((s127') | (s128')) | ((s129') | ((s130') | (s131')))) | (((s132') | (s133')) | ((s134') | ((s135') | (s136')))))) | (((((s137') | (s138')) | ((s139') | ((s141') | (s142')))) | (((s143') | (s144')) | ((s145') | ((s146') | (s148'))))) | ((((s149') | (s151')) | ((s152') | ((s153') | (s154')))) | (((s158') | (s161')) | ((s162') | ((s165') | (s167'))))))))) then true else false;
+
+        sirscriteria2-or-more' = if ((((((((s0') | (s1')) | ((s2') | ((s3') | (s4')))) | (((s5') | (s6')) | ((s7') | ((s8') | (s9'))))) | ((((s10') | (s11')) | ((s12') | ((s13') | (s14')))) | (((s15') | (s16')) | ((s17') | ((s18') | (s19')))))) | (((((s20') | (s21')) | ((s22') | ((s23') | (s24')))) | (((s25') | (s26')) | ((s27') | ((s28') | (s29'))))) | ((((s30') | (s31')) | ((s32') | ((s33') | (s34')))) | (((s35') | (s37')) | ((s38') | ((s39') | (s40'))))))) | ((((((s41') | (s42')) | ((s43') | ((s44') | (s45')))) | (((s46') | (s47')) | ((s48') | ((s49') | (s50'))))) | ((((s51') | (s52')) | ((s53') | ((s54') | (s55')))) | (((s56') | (s57')) | ((s58') | ((s59') | (s60')))))) | (((((s61') | (s62')) | ((s63') | ((s64') | (s65')))) | (((s66') | (s67')) | ((s68') | ((s69') | (s70'))))) | ((((s71') | (s72')) | ((s73') | ((s74') | (s75')))) | (((s76') | ((s77') | (s78'))) | ((s79') | ((s80') | (s81')))))))) | (((((((s82') | (s83')) | ((s84') | ((s85') | (s86')))) | (((s87') | (s88')) | ((s89') | ((s90') | (s91'))))) | ((((s92') | (s93')) | ((s94') | ((s95') | (s96')))) | (((s97') | (s98')) | ((s99') | ((s100') | (s101')))))) | (((((s102') | (s103')) | ((s104') | ((s105') | (s106')))) | (((s107') | (s108')) | ((s109') | ((s110') | (s111'))))) | ((((s112') | (s113')) | ((s114') | ((s115') | (s116')))) | (((s117') | (s118')) | ((s119') | ((s120') | (s121'))))))) | ((((((s122') | (s123')) | ((s124') | ((s125') | (s126')))) | (((s127') | (s128')) | ((s129') | ((s130') | (s131'))))) | ((((s132') | (s133')) | ((s134') | ((s135') | (s136')))) | (((s137') | (s138')) | ((s139') | ((s141') | (s142')))))) | (((((s143') | (s144')) | ((s145') | ((s146') | (s147')))) | (((s148') | (s149')) | ((s150') | ((s151') | (s152'))))) | ((((s153') | (s154')) | ((s158') | ((s159') | (s161')))) | (((s162') | ((s163') | (s164'))) | ((s165') | ((s166') | (s167'))))))))) then true else false;
+
+        diagnose-high' = if ((((((s12') | ((s13') | (s14'))) | ((s15') | ((s16') | (s17')))) | (((s18') | ((s19') | (s20'))) | (((s21') | (s22')) | ((s23') | (s33'))))) | ((((s34') | ((s35') | (s89'))) | (((s90') | (s91')) | ((s92') | (s93')))) | (((s94') | ((s95') | (s96'))) | (((s97') | (s117')) | ((s118') | (s119')))))) | (((((s120') | ((s121') | (s123'))) | ((s124') | ((s125') | (s126')))) | (((s127') | ((s128') | (s129'))) | (((s130') | (s131')) | ((s132') | (s133'))))) | ((((s134') | ((s139') | (s140'))) | (((s142') | (s143')) | ((s148') | (s156')))) | (((s158') | ((s159') | (s161'))) | (((s162') | (s164')) | ((s165') | (s167'))))))) then true else false;
+
+        diagnose-low' = if ((((((s0') | ((s1') | (s2'))) | (((s3') | (s4')) | ((s5') | (s6')))) | (((s7') | ((s8') | (s9'))) | (((s10') | (s11')) | ((s24') | (s25'))))) | ((((s38') | ((s39') | (s40'))) | (((s41') | (s42')) | ((s43') | (s44')))) | ((((s45') | (s46')) | ((s47') | (s48'))) | (((s49') | (s50')) | ((s51') | (s65')))))) | (((((s66') | ((s67') | (s68'))) | (((s72') | (s73')) | ((s75') | (s76')))) | ((((s100') | (s101')) | ((s102') | (s103'))) | (((s104') | (s105')) | ((s106') | (s107'))))) | ((((s108') | ((s109') | (s110'))) | (((s111') | (s113')) | ((s114') | (s115')))) | ((((s116') | (s136')) | ((s137') | (s138'))) | (((s151') | (s152')) | ((s163') | (s166'))))))) then true else false;
+
+        diagnose-medium' = if ((((((s26') | ((s27') | (s28'))) | ((s29') | ((s30') | (s31')))) | (((s32') | ((s36') | (s37'))) | (((s52') | (s53')) | ((s54') | (s55'))))) | ((((s56') | ((s57') | (s58'))) | (((s59') | (s60')) | ((s61') | (s62')))) | (((s63') | ((s64') | (s69'))) | (((s70') | (s71')) | ((s74') | (s77')))))) | (((((s78') | ((s79') | (s80'))) | (((s81') | (s82')) | ((s83') | (s84')))) | (((s85') | ((s86') | (s87'))) | (((s88') | (s98')) | ((s99') | (s112'))))) | ((((s122') | ((s135') | (s141'))) | (((s144') | (s145')) | ((s146') | (s147')))) | (((s149') | ((s150') | (s153'))) | (((s154') | (s155')) | ((s157') | (s160'))))))) then true else false;
+
+        crp-high' = if ((((((s2') | ((s3') | (s4'))) | (((s9') | (s17')) | ((s18') | (s19')))) | (((s20') | ((s21') | (s25'))) | (((s32') | (s42')) | ((s43') | (s45'))))) | ((((s46') | ((s47') | (s48'))) | (((s54') | (s55')) | ((s60') | (s61')))) | (((s81') | ((s83') | (s84'))) | (((s85') | (s93')) | ((s104') | (s105')))))) | (((((s106') | ((s108') | (s109'))) | (((s110') | (s112')) | ((s113') | (s116')))) | (((s127') | ((s128') | (s129'))) | (((s130') | (s131')) | ((s132') | (s138'))))) | ((((s139') | ((s140') | (s141'))) | (((s142') | (s144')) | ((s145') | (s148')))) | (((s149') | ((s151') | (s157'))) | (((s159') | (s161')) | ((s162') | (s166'))))))) then true else false;
+
+        crp-low' = if ((((((s0') | ((s1') | (s5'))) | (((s6') | (s12')) | ((s13') | (s14')))) | (((s15') | ((s26') | (s27'))) | (((s28') | (s29')) | ((s36') | (s38'))))) | ((((s39') | ((s40') | (s41'))) | (((s52') | (s53')) | ((s56') | (s57')))) | (((s65') | ((s66') | (s67'))) | (((s68') | (s77')) | ((s78') | (s79')))))) | (((((s80') | ((s89') | (s90'))) | (((s91') | (s92')) | ((s96') | (s97')))) | (((s100') | ((s101') | (s102'))) | (((s103') | (s122')) | ((s123') | (s124'))))) | ((((s125') | ((s126') | (s135'))) | (((s136') | (s146')) | ((s147') | (s153')))) | (((s154') | ((s155') | (s160'))) | (((s163') | (s164')) | ((s165') | (s167'))))))) then true else false;
+
+        crp-medium' = if ((((((s7') | ((s8') | (s10'))) | (((s11') | (s16')) | ((s22') | (s23')))) | (((s24') | ((s30') | (s31'))) | (((s33') | (s34')) | ((s35') | (s37'))))) | ((((s44') | ((s49') | (s50'))) | (((s51') | (s58')) | ((s59') | (s62')))) | (((s63') | ((s64') | (s69'))) | (((s70') | (s71')) | ((s72') | (s73')))))) | (((((s74') | ((s75') | (s76'))) | (((s82') | (s86')) | ((s87') | (s88')))) | (((s94') | ((s95') | (s98'))) | (((s99') | (s107')) | ((s111') | (s114'))))) | ((((s115') | ((s117') | (s118'))) | (((s119') | (s120')) | ((s121') | (s133')))) | (((s134') | ((s137') | (s143'))) | (((s150') | (s152')) | ((s156') | (s158'))))))) then true else false;
+
+        lactic-acid-high' = if ((((((s4') | ((s8') | (s9'))) | (((s10') | (s11')) | ((s17') | (s21')))) | (((s24') | ((s25') | (s30'))) | (((s44') | (s46')) | ((s47') | (s48'))))) | ((((s49') | ((s50') | (s51'))) | (((s58') | (s69')) | ((s74') | (s75')))) | (((s76') | ((s81') | (s84'))) | (((s85') | (s86')) | ((s87') | (s88')))))) | (((((s99') | ((s105') | (s106'))) | (((s107') | (s108')) | ((s109') | (s110')))) | (((s116') | ((s120') | (s121'))) | (((s122') | (s128')) | ((s130') | (s132'))))) | ((((s138') | ((s139') | (s141'))) | (((s142') | (s144')) | ((s145') | (s147')))) | (((s148') | ((s149') | (s159'))) | (((s161') | (s163')) | ((s165') | (s166'))))))) then true else false;
+
+        lactic-acid-low' = if ((((((s0') | ((s1') | (s5'))) | (((s6') | (s12')) | ((s13') | (s14')))) | (((s15') | ((s26') | (s27'))) | (((s28') | (s29')) | ((s31') | (s32'))))) | ((((s38') | ((s39') | (s40'))) | (((s41') | (s52')) | ((s53') | (s56')))) | (((s57') | ((s63') | (s65'))) | (((s66') | (s67')) | ((s68') | (s77')))))) | (((((s78') | ((s79') | (s80'))) | (((s89') | (s90')) | ((s91') | (s92')))) | (((s93') | ((s94') | (s96'))) | (((s100') | (s101')) | ((s102') | (s103'))))) | ((((s112') | ((s117') | (s118'))) | (((s123') | (s124')) | ((s125') | (s126')))) | (((s136') | ((s140') | (s146'))) | (((s153') | (s156')) | ((s160') | (s164'))))))) then true else false;
+
+        lactic-acid-medium' = if ((((((s2') | ((s3') | (s7'))) | (((s16') | (s18')) | ((s19') | (s20')))) | (((s22') | ((s23') | (s33'))) | (((s34') | (s35')) | ((s36') | (s37'))))) | ((((s42') | ((s43') | (s45'))) | (((s54') | (s55')) | ((s59') | (s60')))) | (((s61') | ((s62') | (s64'))) | (((s70') | (s71')) | ((s72') | (s73')))))) | (((((s82') | ((s83') | (s95'))) | (((s97') | (s98')) | ((s104') | (s111')))) | (((s113') | ((s114') | (s115'))) | (((s119') | (s127')) | ((s129') | (s131'))))) | ((((s133') | ((s134') | (s135'))) | (((s137') | (s143')) | ((s150') | (s151')))) | (((s152') | ((s154') | (s155'))) | (((s157') | (s158')) | ((s162') | (s167'))))))) then true else false;
+
+        leucocytes-high' = if ((((((s2') | ((s3') | (s4'))) | (((s7') | (s8')) | ((s9') | (s10')))) | (((s11') | ((s16') | (s17'))) | (((s18') | (s19')) | ((s20') | (s21'))))) | ((((s24') | ((s25') | (s34'))) | (((s42') | (s46')) | ((s47') | (s48')))) | (((s51') | ((s61') | (s70'))) | (((s73') | (s74')) | ((s75') | (s76')))))) | (((((s85') | ((s88') | (s94'))) | (((s95') | (s104')) | ((s105') | (s106')))) | (((s109') | ((s110') | (s113'))) | (((s116') | (s119')) | ((s120') | (s121'))))) | ((((s137') | ((s138') | (s141'))) | (((s144') | (s145')) | ((s149') | (s151')))) | (((s153') | ((s154') | (s157'))) | (((s159') | (s160')) | ((s161') | (s165'))))))) then true else false;
+
+        leucocytes-low' = if ((((((s0') | ((s1') | (s5'))) | (((s6') | (s12')) | ((s13') | (s14')))) | (((s15') | ((s26') | (s27'))) | (((s28') | (s29')) | ((s38') | (s39'))))) | ((((s40') | ((s41') | (s44'))) | (((s52') | (s53')) | ((s56') | (s57')))) | (((s65') | ((s66') | (s67'))) | (((s68') | (s77')) | ((s78') | (s79')))))) | (((((s80') | ((s89') | (s90'))) | (((s91') | (s92')) | ((s100') | (s101')))) | (((s102') | ((s103') | (s107'))) | (((s114') | (s115')) | ((s117') | (s122'))))) | ((((s123') | ((s124') | (s125'))) | (((s126') | (s127')) | ((s130') | (s135')))) | (((s136') | ((s142') | (s146'))) | (((s147') | (s150')) | ((s164') | (s166'))))))) then true else false;
+
+        leucocytes-medium' = if ((((((s22') | ((s23') | (s30'))) | (((s31') | (s32')) | ((s33') | (s35')))) | (((s36') | ((s37') | (s43'))) | (((s45') | (s49')) | ((s50') | (s54'))))) | ((((s55') | ((s58') | (s59'))) | (((s60') | (s62')) | ((s63') | (s64')))) | (((s69') | ((s71') | (s72'))) | (((s81') | (s82')) | ((s83') | (s84')))))) | (((((s86') | ((s87') | (s93'))) | (((s96') | (s97')) | ((s98') | (s99')))) | (((s108') | ((s111') | (s112'))) | (((s118') | (s128')) | ((s129') | (s131'))))) | ((((s132') | ((s133') | (s134'))) | (((s139') | (s140')) | ((s143') | (s148')))) | (((s152') | ((s155') | (s156'))) | (((s158') | (s162')) | ((s163') | (s167'))))))) then true else false;
+
+        execution-time-minutes-high' = if ((((((s10') | ((s12') | (s13'))) | (((s14') | (s15')) | ((s16') | (s17')))) | (((s18') | ((s19') | (s20'))) | (((s23') | (s24')) | ((s25') | (s36'))))) | ((((s50') | ((s63') | (s65'))) | (((s66') | (s67')) | ((s68') | (s69')))) | (((s70') | ((s71') | (s72'))) | (((s73') | (s74')) | ((s75') | (s76')))))) | (((((s81') | ((s83') | (s88'))) | (((s93') | (s94')) | ((s98') | (s99')))) | (((s105') | ((s115') | (s121'))) | (((s123') | (s124')) | ((s125') | (s126'))))) | ((((s133') | ((s134') | (s139'))) | (((s143') | (s147')) | ((s148') | (s152')))) | (((s154') | ((s158') | (s160'))) | (((s161') | (s162')) | ((s165') | (s167'))))))) then true else false;
+
+        execution-time-minutes-low' = if ((((((s31') | ((s32') | (s33'))) | (((s38') | (s39')) | ((s40') | (s41')))) | (((s42') | ((s43') | (s44'))) | (((s45') | (s46')) | ((s47') | (s49'))))) | ((((s51') | ((s52') | (s53'))) | (((s54') | (s55')) | ((s56') | (s57')))) | (((s58') | ((s61') | (s62'))) | (((s64') | (s89')) | ((s90') | (s91')))))) | (((((s92') | ((s95') | (s96'))) | (((s97') | (s110')) | ((s112') | (s116')))) | (((s117') | ((s118') | (s119'))) | (((s120') | (s122')) | ((s137') | (s138'))))) | ((((s140') | ((s141') | (s142'))) | (((s145') | (s146')) | ((s150') | (s151')))) | (((s155') | ((s156') | (s157'))) | (((s159') | (s163')) | ((s164') | (s166'))))))) then true else false;
+
+        execution-time-minutes-medium' = if ((((((s0') | ((s1') | (s2'))) | (((s3') | (s4')) | ((s5') | (s6')))) | (((s7') | ((s8') | (s9'))) | (((s11') | (s21')) | ((s22') | (s26'))))) | ((((s27') | ((s28') | (s29'))) | (((s30') | (s34')) | ((s35') | (s37')))) | (((s48') | ((s59') | (s60'))) | (((s77') | (s78')) | ((s79') | (s80')))))) | (((((s82') | ((s84') | (s85'))) | (((s86') | (s87')) | ((s100') | (s101')))) | (((s102') | ((s103') | (s104'))) | (((s106') | (s107')) | ((s108') | (s109'))))) | ((((s111') | ((s113') | (s114'))) | (((s127') | (s128')) | ((s129') | (s130')))) | (((s131') | ((s132') | (s135'))) | (((s136') | (s144')) | ((s149') | (s153'))))))) then true else false;
+
+    };
+
+    reward =
+        // stessa forma if/then/else e stesso albero OR bilanciato gia' usati e
+        // validati nel blocco termination, solo spostati nella reward - niente
+        // negazioni ne' moltiplicazioni (a differenza del tentativo precedente
+        // che aveva causato un crash)
+        if ( (((s11') | (s23')) | ((s37') | ((s51') | (s64')))) | (((s76') | (s87')) | ((s97') | ((s111') | (s134')))) )
+        then 10
+        else 1.0;
+
+
+}

@@ -1,0 +1,66 @@
+non-fluents mdp_process_domain_nf {
+    domain = mdp_process_domain;
+
+    non-fluents {
+        DUMMY = true;
+    };
+}
+
+instance mdp_process_inst {
+    domain = mdp_process_domain;
+    non-fluents = mdp_process_domain_nf;
+
+    init-state {
+        s0 = true;
+
+        organizational-entity-organizational-unit-65454 = false;
+        organizational-entity-organizational-unit-65455 = false;
+        organizational-entity-organizational-unit-65456 = false;
+        organizational-entity-organizational-unit-65457 = false;
+        organizational-entity-organizational-unit-65458 = true;
+        organizational-entity-organizational-unit-65459 = false;
+        organizational-entity-organizational-unit-65460 = false;
+        organizational-entity-organizational-unit-65461 = false;
+        organizational-entity-organizational-unit-65464 = false;
+        organizational-entity-organizational-unit-65466 = false;
+        organizational-entity-organizational-unit-65480 = false;
+        task-number-task-427 = true;
+        overspent = false;
+        cost-type-0-v-0 = false;
+        project-0-project-503 = false;
+        project-number-high = false;
+        project-number-low = true;
+        project-number-medium = false;
+        activity-number-high = false;
+        activity-number-low = true;
+        activity-number-medium = false;
+        travel-permit-number-high = false;
+        travel-permit-number-low = true;
+        travel-permit-number-medium = false;
+        budget-number-high = false;
+        budget-number-low = true;
+        budget-number-medium = false;
+        declaration-number-0-high = false;
+        declaration-number-0-low = true;
+        declaration-number-0-medium = false;
+        total-declared-high = false;
+        total-declared-low = true;
+        total-declared-medium = false;
+        requested-amount-0-high = false;
+        requested-amount-0-low = true;
+        requested-amount-0-medium = false;
+        requested-budget-high = false;
+        requested-budget-low = true;
+        requested-budget-medium = false;
+        overspent-amount-high = false;
+        overspent-amount-low = false;
+        overspent-amount-medium = true;
+        execution-time-minutes-high = false;
+        execution-time-minutes-low = true;
+        execution-time-minutes-medium = false;
+    };
+
+    max-nondef-actions = 1;
+    horizon = 40;
+    discount = 1.0;
+}

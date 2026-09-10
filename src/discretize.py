@@ -11,8 +11,10 @@ Uso:
 import pandas as pd
 import argparse
 import os
+import time
 
 
+start_time = time.perf_counter()
 # ============================================================
 # ARGUMENTS
 # ============================================================
@@ -381,6 +383,10 @@ df.to_csv(
     na_rep=""
 )
 
+end_time = time.perf_counter()
+
+execution_time_seconds = end_time - start_time
+execution_time_minutes = execution_time_seconds / 60
 
 # ============================================================
 # FINAL INFORMATION
@@ -396,3 +402,13 @@ print(output_path)
 print("\nFinal columns:")
 for col in df.columns:
     print(f"  - {col}")
+
+print(
+    f"Execution time: "
+    f"{execution_time_seconds:.2f} seconds"
+)
+
+print(
+    f"Execution time: "
+    f"{execution_time_minutes:.2f} minutes"
+)

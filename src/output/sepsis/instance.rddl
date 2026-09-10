@@ -1,0 +1,58 @@
+non-fluents mdp_process_domain_nf {
+    domain = mdp_process_domain;
+
+    non-fluents {
+        DUMMY = true;
+    };
+}
+
+instance mdp_process_inst {
+    domain = mdp_process_domain;
+    non-fluents = mdp_process_domain_nf;
+
+    init-state {
+        s0 = true;
+
+        diagnostic-art-astrup = false;
+        diagnostic-blood = true;
+        diagnostic-ecg = true;
+        diagnostic-ic = true;
+        diagnostic-lactic-acid = true;
+        diagnostic-liquor = false;
+        diagnostic-other = false;
+        diagnostic-sputum = false;
+        diagnostic-urinary-culture = true;
+        diagnostic-urinary-sediment = true;
+        diagnostic-xthorax = true;
+        disfunc-org = false;
+        hypotensie = false;
+        hypoxie = false;
+        infection-suspected = true;
+        infusion = true;
+        oligurie = false;
+        sirscrit-heart-rate = true;
+        sirscrit-leucos = false;
+        sirscrit-tachypnea = true;
+        sirscrit-temperature = true;
+        sirscriteria2-or-more = true;
+        diagnose-high = false;
+        diagnose-low = true;
+        diagnose-medium = false;
+        crp-high = false;
+        crp-low = true;
+        crp-medium = false;
+        lactic-acid-high = false;
+        lactic-acid-low = true;
+        lactic-acid-medium = false;
+        leucocytes-high = false;
+        leucocytes-low = true;
+        leucocytes-medium = false;
+        execution-time-minutes-high = false;
+        execution-time-minutes-low = false;
+        execution-time-minutes-medium = true;
+    };
+
+    max-nondef-actions = 1;
+    horizon = 40;
+    discount = 1.0;
+}

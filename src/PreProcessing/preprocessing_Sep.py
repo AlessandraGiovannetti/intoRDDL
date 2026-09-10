@@ -26,11 +26,15 @@ import pandas as pd
 import numpy as np
 import os
 
+import time
 
 # ============================================================
 # INPUT / OUTPUT
 # ============================================================
 
+
+
+preprocessing_start = time.perf_counter()
 
 input_file = "./logs/split/sepsis/train.xes.gz"
 
@@ -552,6 +556,24 @@ data.to_csv(
     sep=";",
     index=False
 )
+
+
+preprocessing_end = time.perf_counter()
+
+execution_time_seconds = (
+    preprocessing_end - preprocessing_start
+)
+
+execution_time_minutes = (
+    execution_time_seconds / 60
+)
+
+print("\n========================================")
+print("PREPROCESSING EXECUTION TIME")
+print("========================================")
+
+print(f"Execution time: {execution_time_seconds:.2f} seconds")
+print(f"Execution time: {execution_time_minutes:.2f} minutes")
 
 # ============================================================
 # REMOVE TEMPORARY CSV

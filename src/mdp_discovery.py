@@ -10,7 +10,7 @@ solo MDPDiscovery, che orchestra la costruzione dell'MDP (astratto e non).
 
 import os
 import sys
-
+import time
 
 import random
 from collections import defaultdict
@@ -23,6 +23,8 @@ import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "ProcessPilot"))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "ProcessPilot", "src"))
+
+os.environ["LOKY_MAX_CPU_COUNT"] = "10"
 
 
 from ProcessPilot.dataset_manager.DatasetManager import *   
@@ -322,7 +324,19 @@ class MDPDiscovery:
 
 
 if __name__ == "__main__":
-    mdp = MDPDiscovery(dataset="rtf_preprocessed", k=10, state_abstraction="partial_k_means")
+
+    discovery_start = time.perf_counter()
+
+    mdp = MDPDiscovery(dataset="intDecl_preprocessed", k=10, state_abstraction="partial_k_means")
+    discovery_end = time.perf_counter()
+
+    execution_time_seconds = (
+        discovery_end - discovery_start
+    )
+
+    execution_time_minutes = (
+        execution_time_seconds / 60
+    )
     mdp.measure_simplicity()
 
     rows = []
@@ -339,14 +353,8 @@ if __name__ == "__main__":
                 })
 
     transitions = pd.DataFrame(rows)
-    transitions.to_csv("./src/output/rtf/mdp_transitions.csv", index=False)
+    transitions.to_csv("./src/output/intDecl/mdp_transitions.csv", index=False)
     print("Salvato in mdp_transitions.csv")
-
-    """states = mdp.all_states.copy()
-    states["state"] = states.index
-    states["initial"] = states["state"].isin(mdp.initial_states)
-    states.to_csv("./src/output/rtf/mdp_states.csv", index=False)
-    print("Salvato in mdp_states.csv")"""
 
     state_descriptions = mdp.describe_states()
 
@@ -354,8 +362,22 @@ if __name__ == "__main__":
     state_descriptions["initial"] = state_descriptions["state"].isin(mdp.initial_states)
 
     state_descriptions.to_csv(
-        "./src/output/rtf/mdp_states_described.csv",
+        "./src/output/intDecl/mdp_states_described.csv",
         index=False
     )
 
     print("Salvato in mdp_states_described.csv")
+
+    print("\n========================================")
+    print("MDP DISCOVERY EXECUTION TIME")
+    print("========================================")
+
+    print(
+        f"Execution time: "
+        f"{execution_time_seconds:.2f} seconds"
+    )
+
+    print(
+        f"Execution time: "
+        f"{execution_time_minutes:.2f} minutes"
+    )
