@@ -327,7 +327,7 @@ if __name__ == "__main__":
 
     discovery_start = time.perf_counter()
 
-    mdp = MDPDiscovery(dataset="intDecl_preprocessed", k=10, state_abstraction="partial_k_means")
+    mdp = MDPDiscovery(dataset="bpi12_preprocessed", k=10, state_abstraction="partial_k_means")
     discovery_end = time.perf_counter()
 
     execution_time_seconds = (
@@ -353,7 +353,7 @@ if __name__ == "__main__":
                 })
 
     transitions = pd.DataFrame(rows)
-    transitions.to_csv("./src/output/intDecl/mdp_transitions.csv", index=False)
+    transitions.to_csv("./src/output/bpi12/mdp_transitions.csv", index=False)
     print("Salvato in mdp_transitions.csv")
 
     state_descriptions = mdp.describe_states()
@@ -362,7 +362,7 @@ if __name__ == "__main__":
     state_descriptions["initial"] = state_descriptions["state"].isin(mdp.initial_states)
 
     state_descriptions.to_csv(
-        "./src/output/intDecl/mdp_states_described.csv",
+        "./src/output/bpi12/mdp_states_described.csv",
         index=False
     )
 

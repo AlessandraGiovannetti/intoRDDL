@@ -11,14 +11,14 @@ instance mdp_process_inst {
     non-fluents = mdp_process_domain_nf;
 
     init-state {
-        s0 = true;
+        s4 = true;
 
-        amount-req-high = false;
-        amount-req-low = true;
+        amount-req-high = true;
+        amount-req-low = false;
         amount-req-medium = false;
-        execution-time-minutes-high = false;
-        execution-time-minutes-low = true;
-        execution-time-minutes-medium = false;
+        remaining-time-minutes-high = true;
+        remaining-time-minutes-low = false;
+        remaining-time-minutes-medium = false;
     };
 
     max-nondef-actions = 1;

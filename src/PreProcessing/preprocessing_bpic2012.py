@@ -21,6 +21,31 @@ It DOES:
     - extract number of concurrently open cases
     - handle missing categorical/numerical values
     - group infrequent categorical values into "other"
+
+--------------------------------------------------------------------
+FIX (rispetto alla versione precedente):
+--------------------------------------------------------------------
+La versione precedente calcolava "execution_time_minutes" come durata
+TOTALE del caso (max(timestamp) - min(timestamp)) e la propagava
+(merge) su OGNI evento del caso. Questo la rende una feature NON
+causale: a metà processo non puoi sapere quanto durerà il caso in
+totale, quindi non ha senso usarla per definire lo stato di un MDP
+in un punto intermedio della traccia (porta a stati incoerenti con i
+prefissi, es. un prefisso di una traccia "lenta" che finisce in uno
+stato etichettato "elapsed_time=low").
+
+La feature causale corretta da usare per definire lo STATO dell'MDP
+è "timesincecasestart", già calcolata per ogni evento in
+extract_timestamp_features: è il tempo trascorso dall'inizio del
+caso FINO A QUELL'EVENTO, cresce evento dopo evento, ed è nota in
+ogni istante del processo (nessuna informazione dal futuro).
+
+La durata totale del caso viene comunque mantenuta, ma rinominata in
+"case_total_execution_time_minutes" e chiaramente distinta: va usata
+solo per etichettare l'ESITO complessivo di un caso (es. per
+valutare se una policy prescrittiva ha effettivamente ridotto i
+tempi), MAI per definire lo stato di un prefisso.
+--------------------------------------------------------------------
 """
 
 import pandas as pd
@@ -100,12 +125,13 @@ dynamic_cat_cols = [
 dynamic_num_cols = [
     "timesincemidnight",
     "timesincelastevent",
-    "timesincecasestart",
+    "timesincecasestart",  # <-- feature CAUSALE da usare per lo stato dell'MDP
     "event_nr",
     "month",
     "weekday",
     "hour",
-    "open_cases"
+    "open_cases",
+    "remaining_time_minutes"
 ]
 
 static_cols = (
@@ -138,6 +164,7 @@ def extract_timestamp_features(group):
     Features:
         - timesincelastevent
         - timesincecasestart
+        - remaining_time_minutes
         - event_nr
     """
 
@@ -168,6 +195,16 @@ def extract_timestamp_features(group):
 
     group["timesincecasestart"] = (
         group[timestamp_col] - case_start
+    ).dt.total_seconds().div(60).fillna(0)
+
+    # --------------------------------------------------------
+    # Remaining time until case completion
+    # --------------------------------------------------------
+
+    case_end = group[timestamp_col].iloc[-1]
+
+    group["remaining_time_minutes"] = (
+        case_end - group[timestamp_col]
     ).dt.total_seconds().div(60).fillna(0)
 
     # --------------------------------------------------------
@@ -491,10 +528,20 @@ data = data.sort_values(
 ).reset_index(drop=True)
 
 # ============================================================
-# CASE EXECUTION TIME
+# CASE TOTAL EXECUTION TIME (NON-CAUSALE, SOLO PER VALUTAZIONE ESITO)
 # ============================================================
+#
+# ATTENZIONE: questa feature rappresenta la durata TOTALE dell'intero
+# caso ed è identica su tutti gli eventi dello stesso caso. NON va
+# usata per definire lo stato di un prefisso (non è causale: a metà
+# processo non è nota). Usarla solo per etichettare l'esito finale di
+# un caso completo (es. per confrontare "prima vs dopo" una
+# raccomandazione prescrittiva, o per il filtro sulle varianti lente).
+#
+# Per lo stato dell'MDP durante un prefisso, usare invece la colonna
+# causale "timesincecasestart", già presente in selected_cols.
 
-print("Calculating case execution time...")
+print("Calculating case TOTAL execution time (outcome-level only)...")
 
 case_execution_time = (
     data.groupby(case_id_col)[timestamp_col]
@@ -512,6 +559,7 @@ data = data.merge(
     right_index=True,
     how="left"
 )
+
 # ============================================================
 # SAVE
 # ============================================================
@@ -595,4 +643,3 @@ print(data[activity_col].value_counts())
 
 print("\nFirst rows:")
 print(data.head())
-
