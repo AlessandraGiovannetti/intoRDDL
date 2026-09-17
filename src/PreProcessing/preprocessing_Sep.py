@@ -127,7 +127,8 @@ static_cat_cols = [
 dynamic_num_cols = [
     "CRP",
     "LacticAcid",
-    "Leucocytes"
+    "Leucocytes",
+    "remaining_time_minutes"
 ]
 
 static_num_cols = [
@@ -157,52 +158,66 @@ cat_cols = (
 # ============================================================
 
 def extract_timestamp_features(group):
+    """
+    Extract temporal features for a single case.
 
-    group = group.sort_values(
-        timestamp_col,
-        ascending=False,
-        kind="mergesort"
-    ).copy()
+    Features:
+        - timesincelastevent
+        - timesincecasestart
+        - remaining_time_minutes
+        - event_nr
+    """
 
-    # Time since previous event
-    tmp = (
-        group[timestamp_col]
-        - group[timestamp_col].shift(-1)
-    )
-
-    tmp = tmp.fillna(pd.Timedelta(0))
-
-    group["timesincelastevent"] = (
-        tmp / pd.Timedelta(minutes=1)
-    )
-
-    # Time since case start
-    case_start = group[timestamp_col].iloc[-1]
-
-    tmp = (
-        group[timestamp_col]
-        - case_start
-    )
-
-    tmp = tmp.fillna(pd.Timedelta(0))
-
-    group["timesincecasestart"] = (
-        tmp / pd.Timedelta(minutes=1)
-    )
-
-    # Restore chronological order
+    # Sort chronologically
     group = group.sort_values(
         timestamp_col,
         ascending=True,
         kind="mergesort"
+    ).copy()
+
+    # --------------------------------------------------------
+    # Time since previous event
+    # --------------------------------------------------------
+
+    group["timesincelastevent"] = (
+        group[timestamp_col]
+        .diff()
+        .dt.total_seconds()
+        .div(60)
+        .fillna(0)
     )
 
+    # --------------------------------------------------------
+    # Time since case start
+    # --------------------------------------------------------
+
+    case_start = group[timestamp_col].iloc[0]
+
+    group["timesincecasestart"] = (
+        group[timestamp_col] - case_start
+    ).dt.total_seconds().div(60).fillna(0)
+
+    # --------------------------------------------------------
+    # Remaining time until case completion
+    # --------------------------------------------------------
+
+    case_end = group[timestamp_col].iloc[-1]
+
+    group["remaining_time_minutes"] = (
+        case_end - group[timestamp_col]
+    ).dt.total_seconds().div(60).fillna(0)
+
+    # --------------------------------------------------------
     # Event number
-    group["event_nr"] = (
-        np.arange(len(group)) + 1
+    # --------------------------------------------------------
+
+    group["event_nr"] = np.arange(
+        1,
+        len(group) + 1
     )
 
     return group
+
 # ============================================================
 # LOAD DATA
 # ============================================================

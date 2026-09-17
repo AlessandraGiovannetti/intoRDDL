@@ -189,7 +189,9 @@ static_num_cols = [
 # additional event-level numeric attributes.
 # ------------------------------------------------------------
 
-dynamic_num_cols = []
+dynamic_num_cols = [
+    "remaining_time_minutes"
+]
 
 
 # ============================================================
@@ -229,92 +231,63 @@ cat_cols = (
 # ============================================================
 
 def extract_timestamp_features(group):
+    """
+    Extract temporal features for a single case.
 
-    # --------------------------------------------------------
-    # Sort newest -> oldest
-    # --------------------------------------------------------
+    Features:
+        - timesincelastevent
+        - timesincecasestart
+        - remaining_time_minutes
+        - event_nr
+    """
 
+    # Sort chronologically
     group = group.sort_values(
         timestamp_col,
-        ascending=False,
+        ascending=True,
         kind="mergesort"
     ).copy()
-
 
     # --------------------------------------------------------
     # Time since previous event
     # --------------------------------------------------------
 
-    tmp = (
-
-        group[timestamp_col]
-
-        - group[timestamp_col].shift(-1)
-
-    )
-
-    tmp = tmp.fillna(
-        pd.Timedelta(0)
-    )
-
-
     group["timesincelastevent"] = (
-
-        tmp
-        / pd.Timedelta(minutes=1)
-
+        group[timestamp_col]
+        .diff()
+        .dt.total_seconds()
+        .div(60)
+        .fillna(0)
     )
-
 
     # --------------------------------------------------------
     # Time since case start
     # --------------------------------------------------------
 
-    case_start = (
-        group[timestamp_col].iloc[-1]
-    )
-
-
-    tmp = (
-
-        group[timestamp_col]
-
-        - case_start
-
-    )
-
-    tmp = tmp.fillna(
-        pd.Timedelta(0)
-    )
-
+    case_start = group[timestamp_col].iloc[0]
 
     group["timesincecasestart"] = (
-
-        tmp
-        / pd.Timedelta(minutes=1)
-
-    )
-
+        group[timestamp_col] - case_start
+    ).dt.total_seconds().div(60).fillna(0)
 
     # --------------------------------------------------------
-    # Restore chronological order
+    # Remaining time until case completion
     # --------------------------------------------------------
 
-    group = group.sort_values(
-        timestamp_col,
-        ascending=True,
-        kind="mergesort"
-    )
+    case_end = group[timestamp_col].iloc[-1]
 
+    group["remaining_time_minutes"] = (
+        case_end - group[timestamp_col]
+    ).dt.total_seconds().div(60).fillna(0)
 
     # --------------------------------------------------------
     # Event number
     # --------------------------------------------------------
 
-    group["event_nr"] = (
-        np.arange(len(group)) + 1
+    group["event_nr"] = np.arange(
+        1,
+        len(group) + 1
     )
-
 
     return group
 

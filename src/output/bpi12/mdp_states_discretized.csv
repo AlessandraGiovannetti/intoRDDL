@@ -1,222 +1,198 @@
-state,last_action_name,AMOUNT_REQ,execution_time_minutes,initial
-0,start,low,low,True
-1,A_SUBMITTED,low,low,False
-2,A_PARTLYSUBMITTED,low,low,False
-3,A_PREACCEPTED,low,low,False
-4,A_ACCEPTED,medium,low,False
-5,O_SELECTED,medium,low,False
-6,A_FINALIZED,medium,low,False
-7,O_CREATED,medium,low,False
-8,O_SENT,medium,low,False
-9,W_Completeren aanvraag,medium,low,False
-10,W_Nabellen offertes,medium,low,False
-11,O_SENT_BACK,medium,low,False
-12,A_REGISTERED,medium,low,False
-13,A_APPROVED,medium,low,False
-14,O_ACCEPTED,medium,low,False
-15,A_ACTIVATED,medium,low,False
-16,W_Valideren aanvraag,medium,low,False
-17,archive_application,medium,low,False
-18,W_Completeren aanvraag,low,low,False
-19,A_ACCEPTED,low,low,False
-20,A_FINALIZED,low,low,False
-21,O_SELECTED,low,low,False
-22,O_CREATED,low,low,False
-23,O_SENT,low,low,False
-24,W_Nabellen offertes,low,low,False
-25,O_CANCELLED,low,low,False
-26,O_SENT_BACK,low,low,False
-27,W_Valideren aanvraag,low,low,False
-28,O_ACCEPTED,low,low,False
-29,A_APPROVED,low,low,False
-30,A_REGISTERED,low,low,False
-31,A_ACTIVATED,low,low,False
-32,archive_application,low,low,False
-33,start,low,medium,True
-34,A_SUBMITTED,low,medium,False
-35,A_PARTLYSUBMITTED,low,medium,False
-36,A_PREACCEPTED,low,medium,False
-37,W_Completeren aanvraag,low,medium,False
-38,A_ACCEPTED,low,medium,False
-39,A_FINALIZED,low,medium,False
-40,O_SELECTED,low,medium,False
-41,O_CREATED,low,medium,False
-42,O_SENT,low,medium,False
-43,O_CANCELLED,low,medium,False
-44,W_Nabellen offertes,low,medium,False
-45,O_SENT_BACK,low,medium,False
-46,O_ACCEPTED,low,medium,False
-47,A_APPROVED,low,medium,False
-48,A_REGISTERED,low,medium,False
-49,A_ACTIVATED,low,medium,False
-50,W_Valideren aanvraag,low,medium,False
-51,archive_application,low,medium,False
-52,start,high,medium,True
-53,A_SUBMITTED,high,medium,False
-54,A_PARTLYSUBMITTED,high,medium,False
-55,A_PREACCEPTED,high,medium,False
-56,W_Completeren aanvraag,high,medium,False
-57,A_ACCEPTED,high,medium,False
-58,O_SELECTED,high,medium,False
-59,A_FINALIZED,high,medium,False
-60,O_CREATED,high,medium,False
-61,O_SENT,high,medium,False
-62,W_Nabellen offertes,high,medium,False
-63,O_SENT_BACK,high,medium,False
-64,A_DECLINED,high,low,False
-65,O_DECLINED,high,low,False
-66,W_Valideren aanvraag,high,medium,False
-67,archive_application,high,medium,False
-68,W_Nabellen incomplete dossiers,low,medium,False
-69,W_Nabellen incomplete dossiers,low,low,False
-70,O_DECLINED,low,low,False
-71,A_DECLINED,low,low,False
-72,W_Nabellen incomplete dossiers,medium,low,False
-73,O_CANCELLED,medium,low,False
-74,A_PREACCEPTED,low,low,False
-75,W_Afhandelen leads,low,low,False
-76,A_CANCELLED,low,low,False
-77,start,high,low,True
-78,A_SUBMITTED,high,low,False
-79,A_PARTLYSUBMITTED,high,low,False
-80,A_PREACCEPTED,high,low,False
-81,A_ACCEPTED,high,low,False
-82,A_FINALIZED,high,low,False
-83,O_SELECTED,high,low,False
-84,O_CREATED,high,low,False
-85,O_SENT,high,low,False
-86,W_Completeren aanvraag,high,low,False
-87,W_Nabellen offertes,high,low,False
-88,O_SENT_BACK,high,low,False
-89,A_APPROVED,high,low,False
-90,A_ACTIVATED,high,low,False
-91,A_REGISTERED,high,low,False
-92,O_ACCEPTED,high,low,False
-93,W_Valideren aanvraag,high,low,False
-94,archive_application,high,low,False
-95,start,low,high,True
-96,A_SUBMITTED,low,high,False
-97,A_PARTLYSUBMITTED,low,high,False
-98,A_PREACCEPTED,low,high,False
-99,W_Completeren aanvraag,low,high,False
-100,A_ACCEPTED,low,high,False
-101,O_SELECTED,low,high,False
-102,A_FINALIZED,low,high,False
-103,O_CREATED,low,high,False
-104,O_SENT,low,high,False
-105,W_Nabellen offertes,low,high,False
-106,O_SENT_BACK,low,high,False
-107,W_Valideren aanvraag,low,high,False
-108,W_Nabellen incomplete dossiers,low,high,False
-109,A_APPROVED,low,high,False
-110,O_ACCEPTED,low,high,False
-111,A_ACTIVATED,low,high,False
-112,A_REGISTERED,low,high,False
-113,archive_application,low,high,False
-114,A_CANCELLED,medium,low,False
-115,A_CANCELLED,low,medium,False
-116,W_Afhandelen leads,high,medium,False
-117,A_CANCELLED,high,medium,False
-118,O_CANCELLED,high,medium,False
-119,O_DECLINED,medium,low,False
-120,A_DECLINED,medium,low,False
-121,O_DECLINED,low,medium,False
-122,A_DECLINED,low,medium,False
-123,W_Nabellen incomplete dossiers,high,medium,False
-124,O_ACCEPTED,high,medium,False
-125,A_APPROVED,high,medium,False
-126,A_REGISTERED,high,medium,False
-127,A_ACTIVATED,high,medium,False
-128,start,high,high,True
-129,A_SUBMITTED,high,high,False
-130,A_PARTLYSUBMITTED,high,high,False
-131,A_PREACCEPTED,high,high,False
-132,W_Completeren aanvraag,high,high,False
-133,A_ACCEPTED,high,high,False
-134,O_SELECTED,high,high,False
-135,A_FINALIZED,high,high,False
-136,O_CREATED,high,high,False
-137,O_SENT,high,high,False
-138,O_CANCELLED,high,high,False
-139,W_Nabellen offertes,high,high,False
-140,O_SENT_BACK,high,high,False
-141,W_Valideren aanvraag,high,high,False
-142,W_Nabellen incomplete dossiers,high,high,False
-143,O_ACCEPTED,high,high,False
-144,A_REGISTERED,high,high,False
-145,A_APPROVED,high,high,False
-146,A_ACTIVATED,high,high,False
-147,archive_application,high,high,False
-148,W_Afhandelen leads,low,medium,False
-149,start,medium,high,True
-150,A_SUBMITTED,medium,high,False
-151,A_PARTLYSUBMITTED,medium,high,False
-152,A_PREACCEPTED,medium,high,False
-153,W_Completeren aanvraag,medium,high,False
-154,A_ACCEPTED,medium,high,False
-155,O_SELECTED,medium,high,False
-156,A_FINALIZED,medium,high,False
-157,O_CREATED,medium,high,False
-158,O_SENT,medium,high,False
-159,W_Nabellen offertes,medium,high,False
-160,O_SENT_BACK,medium,high,False
-161,W_Valideren aanvraag,medium,high,False
-162,W_Nabellen incomplete dossiers,medium,high,False
-163,O_ACCEPTED,medium,high,False
-164,A_APPROVED,medium,high,False
-165,A_REGISTERED,medium,high,False
-166,A_ACTIVATED,medium,high,False
-167,archive_application,medium,high,False
-168,start,medium,medium,True
-169,A_SUBMITTED,medium,medium,False
-170,A_PARTLYSUBMITTED,medium,medium,False
-171,A_PREACCEPTED,medium,medium,False
-172,W_Afhandelen leads,medium,medium,False
-173,A_ACCEPTED,medium,medium,False
-174,A_FINALIZED,medium,medium,False
-175,O_SELECTED,medium,medium,False
-176,O_CREATED,medium,medium,False
-177,O_SENT,medium,medium,False
-178,W_Completeren aanvraag,medium,medium,False
-179,W_Nabellen offertes,medium,medium,False
-180,O_CANCELLED,medium,medium,False
-181,A_CANCELLED,medium,medium,False
-182,archive_application,medium,medium,False
-183,O_CANCELLED,high,low,False
-184,A_CANCELLED,high,low,False
-185,O_SENT_BACK,medium,medium,False
-186,A_ACTIVATED,medium,medium,False
-187,A_APPROVED,medium,medium,False
-188,A_REGISTERED,medium,medium,False
-189,O_ACCEPTED,medium,medium,False
-190,W_Valideren aanvraag,medium,medium,False
-191,W_Nabellen incomplete dossiers,high,low,False
-192,O_CANCELLED,medium,high,False
-193,W_Afhandelen leads,low,high,False
-194,O_CANCELLED,low,high,False
-195,A_PREACCEPTED,medium,low,False
-196,W_Afhandelen leads,medium,low,False
-197,W_Afhandelen leads,high,low,False
-198,O_DECLINED,high,low,False
-199,A_DECLINED,high,low,False
-200,W_Nabellen incomplete dossiers,medium,high,False
-201,A_CANCELLED,low,high,False
-202,A_CANCELLED,medium,high,False
-203,W_Beoordelen fraude,medium,low,False
-204,O_DECLINED,low,high,False
-205,A_DECLINED,low,high,False
-206,W_Beoordelen fraude,low,low,False
-207,W_Afhandelen leads,medium,high,False
-208,A_DECLINED,medium,high,False
-209,O_DECLINED,medium,high,False
-210,W_Afhandelen leads,high,high,False
-211,O_DECLINED,high,high,False
-212,A_DECLINED,high,high,False
-213,W_Beoordelen fraude,low,medium,False
-214,A_DECLINED,medium,medium,False
-215,O_DECLINED,medium,medium,False
-216,W_Beoordelen fraude,medium,medium,False
-217,A_CANCELLED,high,high,False
-218,W_Beoordelen fraude,high,low,False
-219,W_Beoordelen fraude,low,high,False
-220,W_Beoordelen fraude,high,medium,False
+state,last_action_name,AMOUNT_REQ,remaining_time_minutes,execution_time_minutes,initial
+0,start,medium,medium,low,True
+1,A_SUBMITTED,medium,medium,low,False
+2,A_PARTLYSUBMITTED,medium,medium,low,False
+3,A_PREACCEPTED,medium,medium,low,False
+4,A_ACCEPTED,medium,medium,low,False
+5,O_SELECTED,medium,medium,low,False
+6,A_FINALIZED,medium,medium,low,False
+7,O_CREATED,medium,medium,low,False
+8,O_SENT,medium,medium,low,False
+9,W_Completeren aanvraag,medium,medium,low,False
+10,W_Nabellen offertes,medium,medium,low,False
+11,O_SENT_BACK,medium,low,low,False
+12,A_REGISTERED,high,low,low,False
+13,A_APPROVED,high,low,low,False
+14,O_ACCEPTED,high,low,low,False
+15,A_ACTIVATED,high,low,low,False
+16,W_Valideren aanvraag,high,low,low,False
+17,archive_application,medium,low,low,False
+18,start,low,medium,low,True
+19,A_SUBMITTED,low,medium,low,False
+20,A_PARTLYSUBMITTED,low,medium,low,False
+21,A_PREACCEPTED,low,medium,low,False
+22,W_Completeren aanvraag,low,medium,low,False
+23,A_ACCEPTED,low,medium,low,False
+24,A_FINALIZED,low,medium,low,False
+25,O_SELECTED,low,medium,low,False
+26,O_CREATED,low,medium,low,False
+27,O_SENT,low,medium,low,False
+28,W_Nabellen offertes,low,low,low,False
+29,O_CANCELLED,low,low,low,False
+30,O_SENT_BACK,low,low,low,False
+31,W_Valideren aanvraag,low,low,low,False
+32,O_ACCEPTED,low,low,low,False
+33,A_APPROVED,low,low,low,False
+34,A_REGISTERED,low,low,low,False
+35,A_ACTIVATED,low,low,low,False
+36,archive_application,low,low,low,False
+37,start,low,high,medium,True
+38,A_SUBMITTED,low,high,medium,False
+39,A_PARTLYSUBMITTED,low,high,medium,False
+40,A_PREACCEPTED,low,high,medium,False
+41,W_Completeren aanvraag,low,high,high,False
+42,A_ACCEPTED,low,high,medium,False
+43,A_FINALIZED,low,high,medium,False
+44,O_SELECTED,low,high,high,False
+45,O_CREATED,low,high,high,False
+46,O_SENT,low,high,high,False
+47,O_CANCELLED,medium,high,high,False
+48,W_Nabellen offertes,low,high,high,False
+49,W_Nabellen offertes,low,medium,high,False
+50,O_SENT_BACK,low,medium,high,False
+51,O_ACCEPTED,low,low,high,False
+52,A_APPROVED,low,low,high,False
+53,A_REGISTERED,low,low,high,False
+54,A_ACTIVATED,low,low,high,False
+55,W_Valideren aanvraag,low,low,high,False
+56,archive_application,low,low,high,False
+57,start,high,medium,low,True
+58,A_SUBMITTED,high,medium,low,False
+59,A_PARTLYSUBMITTED,high,medium,low,False
+60,A_PREACCEPTED,high,medium,low,False
+61,W_Completeren aanvraag,high,medium,low,False
+62,A_ACCEPTED,high,medium,low,False
+63,O_SELECTED,high,medium,low,False
+64,A_FINALIZED,high,medium,low,False
+65,O_CREATED,high,medium,low,False
+66,O_SENT,high,medium,low,False
+67,W_Nabellen offertes,high,medium,medium,False
+68,O_SENT_BACK,high,low,medium,False
+69,A_DECLINED,high,low,medium,False
+70,O_DECLINED,high,low,medium,False
+71,W_Valideren aanvraag,high,low,medium,False
+72,archive_application,high,low,medium,False
+73,W_Nabellen offertes,low,medium,medium,False
+74,O_SENT_BACK,low,medium,medium,False
+75,W_Valideren aanvraag,medium,low,medium,False
+76,W_Nabellen incomplete dossiers,low,medium,medium,False
+77,W_Nabellen incomplete dossiers,medium,low,medium,False
+78,O_ACCEPTED,medium,low,medium,False
+79,A_APPROVED,medium,low,medium,False
+80,A_REGISTERED,medium,low,medium,False
+81,A_ACTIVATED,medium,low,medium,False
+82,archive_application,medium,low,medium,False
+83,W_Nabellen incomplete dossiers,low,low,low,False
+84,O_DECLINED,low,low,low,False
+85,A_DECLINED,low,low,low,False
+86,W_Completeren aanvraag,low,medium,medium,False
+87,A_ACCEPTED,low,medium,low,False
+88,O_SELECTED,low,medium,medium,False
+89,A_FINALIZED,low,medium,low,False
+90,O_CREATED,low,medium,medium,False
+91,O_SENT,low,medium,medium,False
+92,O_CANCELLED,medium,medium,medium,False
+93,start,low,low,low,True
+94,A_SUBMITTED,low,low,low,False
+95,A_PARTLYSUBMITTED,low,low,low,False
+96,A_PREACCEPTED,low,medium,low,False
+97,W_Afhandelen leads,low,medium,low,False
+98,A_CANCELLED,low,low,low,False
+99,O_SENT_BACK,low,high,high,False
+100,W_Valideren aanvraag,medium,high,high,False
+101,W_Nabellen incomplete dossiers,medium,high,high,False
+102,W_Nabellen incomplete dossiers,low,medium,high,False
+103,A_CANCELLED,low,low,high,False
+104,O_CANCELLED,low,low,high,False
+105,start,high,high,high,True
+106,A_SUBMITTED,high,high,high,False
+107,A_PARTLYSUBMITTED,high,high,high,False
+108,A_PREACCEPTED,high,high,high,False
+109,W_Afhandelen leads,high,high,high,False
+110,W_Completeren aanvraag,high,high,high,False
+111,A_ACCEPTED,high,high,high,False
+112,O_SELECTED,high,high,high,False
+113,A_FINALIZED,high,high,high,False
+114,O_CREATED,high,high,high,False
+115,O_SENT,high,high,high,False
+116,W_Nabellen offertes,high,high,high,False
+117,A_CANCELLED,high,low,medium,False
+118,O_CANCELLED,high,medium,medium,False
+119,W_Nabellen incomplete dossiers,high,low,medium,False
+120,O_ACCEPTED,high,low,medium,False
+121,A_APPROVED,high,low,medium,False
+122,A_REGISTERED,high,low,medium,False
+123,A_ACTIVATED,high,low,medium,False
+124,W_Afhandelen leads,low,medium,medium,False
+125,start,medium,high,high,True
+126,A_SUBMITTED,medium,high,high,False
+127,A_PARTLYSUBMITTED,medium,high,high,False
+128,A_PREACCEPTED,medium,high,high,False
+129,W_Completeren aanvraag,medium,high,high,False
+130,A_ACCEPTED,medium,high,high,False
+131,O_SELECTED,medium,high,high,False
+132,A_FINALIZED,medium,high,high,False
+133,O_CREATED,medium,high,high,False
+134,O_SENT,medium,high,high,False
+135,O_CANCELLED,medium,high,high,False
+136,W_Nabellen offertes,medium,high,high,False
+137,O_SENT_BACK,high,high,high,False
+138,W_Valideren aanvraag,high,high,high,False
+139,W_Nabellen incomplete dossiers,high,high,high,False
+140,W_Afhandelen leads,medium,high,medium,False
+141,O_SENT_BACK,medium,high,high,False
+142,W_Valideren aanvraag,medium,high,high,False
+143,W_Nabellen incomplete dossiers,medium,high,high,False
+144,start,high,high,medium,True
+145,A_SUBMITTED,high,high,medium,False
+146,A_PARTLYSUBMITTED,high,high,medium,False
+147,A_PREACCEPTED,high,high,medium,False
+148,W_Afhandelen leads,high,high,medium,False
+149,A_ACCEPTED,high,high,medium,False
+150,A_FINALIZED,high,high,medium,False
+151,O_SELECTED,high,high,medium,False
+152,O_CREATED,high,high,medium,False
+153,O_SENT,high,high,medium,False
+154,W_Completeren aanvraag,high,high,medium,False
+155,W_Nabellen offertes,high,high,medium,False
+156,W_Nabellen offertes,medium,medium,medium,False
+157,O_CANCELLED,medium,low,medium,False
+158,A_CANCELLED,medium,low,medium,False
+159,O_CANCELLED,medium,low,low,False
+160,A_CANCELLED,medium,low,low,False
+161,O_SENT_BACK,medium,low,medium,False
+162,W_Nabellen incomplete dossiers,high,low,low,False
+163,W_Afhandelen leads,high,medium,low,False
+164,O_SELECTED,medium,medium,high,False
+165,O_CREATED,medium,medium,high,False
+166,O_SENT,medium,medium,high,False
+167,O_CANCELLED,high,high,high,False
+168,O_DECLINED,medium,low,medium,False
+169,A_DECLINED,medium,low,medium,False
+170,O_CANCELLED,high,high,medium,False
+171,W_Afhandelen leads,medium,medium,low,False
+172,A_DECLINED,low,low,high,False
+173,O_DECLINED,low,low,high,False
+174,O_DECLINED,medium,low,low,False
+175,A_DECLINED,medium,low,low,False
+176,O_SELECTED,medium,medium,medium,False
+177,O_CREATED,medium,medium,medium,False
+178,O_SENT,medium,medium,medium,False
+179,W_Beoordelen fraude,medium,low,low,False
+180,W_Valideren aanvraag,low,medium,medium,False
+181,W_Afhandelen leads,medium,high,high,False
+182,O_SENT_BACK,high,high,high,False
+183,W_Valideren aanvraag,high,high,high,False
+184,W_Nabellen incomplete dossiers,high,high,high,False
+185,W_Beoordelen fraude,low,medium,medium,False
+186,W_Beoordelen fraude,medium,high,medium,False
+187,W_Beoordelen fraude,medium,medium,medium,False
+188,W_Completeren aanvraag,low,medium,high,False
+189,A_ACCEPTED,low,medium,high,False
+190,A_FINALIZED,low,medium,high,False
+191,W_Beoordelen fraude,medium,medium,medium,False
+192,A_CANCELLED,high,low,high,False
+193,archive_application,high,low,high,False
+194,W_Beoordelen fraude,high,low,low,False
+195,W_Beoordelen fraude,medium,high,high,False
+196,W_Beoordelen fraude,high,low,medium,False

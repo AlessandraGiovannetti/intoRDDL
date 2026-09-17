@@ -58,6 +58,9 @@ instance mdp_process_inst {
         execution-time-minutes-high = false;
         execution-time-minutes-low = true;
         execution-time-minutes-medium = false;
+        remaining-time-minutes-high = true;
+        remaining-time-minutes-low = false;
+        remaining-time-minutes-medium = false;
     };
 
     max-nondef-actions = 1;
