@@ -5,7 +5,7 @@ Uso:
         output.csv \
         --quantiles 3 \
         --exclude col1 col2
-        -- dataset (traffic_fines, sepsis)
+        -- dataset (rtf, sepsis, bpi12, permit, intDecl)
 """
 
 import pandas as pd

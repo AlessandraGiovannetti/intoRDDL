@@ -2,10 +2,9 @@
 mdp_discovery.py
 =================
 
-Discovery-only version of the MDP construction pipeline.
-Usa le classi/funzioni del submodule ProcessPilot (DatasetMDP, get_real_data,
-define_real_state_cols, transition_probabilities_faster*, k_means) e definisce
-solo MDPDiscovery, che orchestra la costruzione dell'MDP (astratto e non).
+Usage:
+    python src/mdp_discovery.py --dataset sepsis_preprocessed --k 10 \
+        --state-abstraction partial_k_means --outdir output/sepsis/mdp
 """
 
 import os
@@ -324,19 +323,27 @@ class MDPDiscovery:
 
 
 if __name__ == "__main__":
+    import argparse
+
+    VALID_DATASETS = ["sepsis_preprocessed", "bpi12_preprocessed", "rtf_preprocessed",
+                      "permit_preprocessed", "intDecl_preprocessed"]
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset", required=True, choices=VALID_DATASETS)
+    parser.add_argument("--k", type=int, default=10)
+    parser.add_argument("--state-abstraction", default="partial_k_means")
+    parser.add_argument("--outdir", default=None)
+    args = parser.parse_args()
+
+    short = args.dataset.replace("_preprocessed", "")
+    outdir = Path(args.outdir or f"./output/{short}/mdp")
+    outdir.mkdir(parents=True, exist_ok=True)
 
     discovery_start = time.perf_counter()
+    mdp = MDPDiscovery(dataset=args.dataset, k=args.k, state_abstraction=args.state_abstraction)
+    execution_time_seconds = time.perf_counter() - discovery_start
+    execution_time_minutes = execution_time_seconds / 60
 
-    mdp = MDPDiscovery(dataset="rtf_preprocessed", k=10, state_abstraction="partial_k_means")
-    discovery_end = time.perf_counter()
-
-    execution_time_seconds = (
-        discovery_end - discovery_start
-    )
-
-    execution_time_minutes = (
-        execution_time_seconds / 60
-    )
     mdp.measure_simplicity()
 
     rows = []
@@ -351,33 +358,13 @@ if __name__ == "__main__":
                     "next_state": next_state,
                     "probability": float(p),
                 })
-
-    transitions = pd.DataFrame(rows)
-    transitions.to_csv("./src/output/rtf/mdp_transitions.csv", index=False)
+    pd.DataFrame(rows).to_csv(outdir / "mdp_transitions.csv", index=False)
     print("Salvato in mdp_transitions.csv")
 
     state_descriptions = mdp.describe_states()
-
     state_descriptions["state"] = state_descriptions.index
     state_descriptions["initial"] = state_descriptions["state"].isin(mdp.initial_states)
-
-    state_descriptions.to_csv(
-        "./src/output/rtf/mdp_states_described.csv",
-        index=False
-    )
-
+    state_descriptions.to_csv(outdir / "mdp_states_described.csv", index=False)
     print("Salvato in mdp_states_described.csv")
 
-    print("\n========================================")
-    print("MDP DISCOVERY EXECUTION TIME")
-    print("========================================")
-
-    print(
-        f"Execution time: "
-        f"{execution_time_seconds:.2f} seconds"
-    )
-
-    print(
-        f"Execution time: "
-        f"{execution_time_minutes:.2f} minutes"
-    )
+    print(f"Execution time: {execution_time_seconds:.2f} s ({execution_time_minutes:.2f} min)")

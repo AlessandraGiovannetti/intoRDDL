@@ -2,23 +2,23 @@
 encoding.py
 =======================
 
-Genera domain.rddl + instance.rddl nello stile minimale compatibile con
+Generate domain.rddl + instance.rddl compatible with
 PROST:
-  - nessun "types" block, nessuna pvariable parametrizzata, nessun
-    interm-fluent (PROST li rifiuta con errori di parsing);
-  - uno state-fluent bool scalare per ciascuno stato (s0, s1, ...);
-  - NESSUN blocco action-preconditions;
-  - DI DEFAULT NESSUN ATTRIBUTO: solo control-flow (stati + transizioni).
-    Gli attributi (state-fluent real, if/else bilanciato) sono
-    disponibili con --include-attributes;
-  - reward di default: +terminal_bonus (10.0) se si raggiunge uno stato
-    terminale, altrimenti 1.0. 
-  - le probabilita' di transizione osservate nel log sono scritte come
-    costanti letterali dentro Bernoulli(p);
-  - le azioni sono action-fluent bool scalari separate (una per
-    attivita' osservata).
+  - no block "types", no parameterized pvariables, no
+    interm-fluent (PROST rejects them with parsing errors);
+  - a scalar state-fluent bool for each state (s0, s1, ...);
+  - NO action-preconditions block;
+  - BY DEFAULT NO ATTRIBUTES: control-flow only (states + transitions).
+    The attributes (state-fluent real, balanced if/else) are
+    available with --include-attributes;
+  - default reward: +terminal_bonus (10.0) if a status is reached
+    terminal, otherwise 1.0. 
+  - the transition probabilities observed in the log are written as
+    literal constants inside Bernoulli(p);
+  - actions are separate scalar action-fluent bools (one for
+    observed activity).
 
-Uso:
+Use:
     python encoding.py \
         --states mdp_states_described_test_discretized.csv \
         --transitions mdp_transitions_test.csv \
@@ -26,17 +26,17 @@ Uso:
         --outdir out_prost/ \
         --horizon 20
 
-    python src/encoding_init.py --states sepsis/mdp_states_discretized.csv --transitions sepsis/mdp_transitions.csv  --include-attributes --outdir src/output/sepsis
+    python src/encoding_init.py --states sepsis/mdp_states_discretized.csv --transitions sepsis/mdp_transitions.csv --include-attributes --outdir src/output/sepsis
 
-Per reintrodurre gli attributi:
+To reintroduce attributes:
     python encoding.py ... --include-attributes
 
-Per scegliere lo stato iniziale:
-    Se il CSV degli stati contiene una colonna booleana (default: 'initial')
-    che flagga gli stati candidati come iniziali, e non viene passato
-    esplicitamente --init-state, lo script stampa a console l'elenco degli
-    stati candidati e chiede all'utente quale scegliere (interattivo). Se un
-    solo stato e' flaggato, viene usato automaticamente senza chiedere nulla.
+To choose the initial state:
+    If the state CSV contains a Boolean column (default: 'initial')
+    that flags candidate states as initials, and is not passed
+    explicitly --init-state, the script prints the list of
+    candidate states and asks the user which one to choose (interactive). If a
+    only status is flagged, it is used automatically without asking anything.
 """
 
 import argparse
@@ -453,16 +453,12 @@ def build_domain(domain_name, bool_fluents, n_states, action_names,
     L.append("")
     L.append("    reward =")
     if terminal_bonus is not None and terminal_idx:
-        L.append("        // stessa forma if/then/else e stesso albero OR bilanciato gia' usati e")
-        L.append("        // validati nel blocco termination, solo spostati nella reward - niente")
-        L.append("        // negazioni ne' moltiplicazioni (a differenza del tentativo precedente")
-        L.append("        // che aveva causato un crash)")
         or_terminal = or_tree([f"s{k}'" for k in sorted(terminal_idx)])
         L.append(f"        if ( {or_terminal} )")
         L.append(f"        then {terminal_bonus:.6g}")
-        L.append("        else 1.0;")
+        L.append("        else 0.0;")
     else:
-        L.append("        1.0;")
+        L.append("        0.0;")
         L.append("    // PLACEHOLDER: sostituire con la reward vera basata sugli attributi.")
     L.append("")
     L.append("")
@@ -536,7 +532,7 @@ def main():
     ap.add_argument('--init-state', type=int, default=None,
                      help="forza esplicitamente lo stato iniziale (bypassa sia la colonna "
                           "'initial' che la selezione interattiva).")
-    ap.add_argument('--horizon', type=int, default=40)
+    ap.add_argument('--horizon', type=int, default=20)
     ap.add_argument('--discount', type=float, default=1.0)
     ap.add_argument('--include-attributes', action='store_true',
                      help="includi anche gli attributi (state-fluent bool per ciascuna colonna "
