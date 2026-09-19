@@ -2,21 +2,22 @@
 """
 main.py
 =======
-Complete pipeline for Prescriptive Process Monitoring:
+Pipeline completa, pensata per girare dentro il container Docker:
 
     1. src/mdp_discovery.py -> mdp_transitions.csv + mdp_states_described.csv
     2. src/discretize.py    -> mdp_states_discretized.csv
     3. src/encoding_init.py -> domain + instance RDDL
-    4. PROST  -> policy
+    4. PROST (installato nello stesso container) -> risultati
 
-Usage:
+Uso:
     python main.py --dataset sepsis_preprocessed
     python main.py --dataset rtf_preprocessed --k 20 --quantiles 4
+    python main.py --dataset sepsis_preprocessed --init-state 0
 
-Output (output/<dataset>/):
-    mdp/       MDP transitions and states
-    encoding/  RDDL domain and instance
-    prost/     PROST results
+Struttura degli output (tutto sotto ./output/<dataset>/):
+    mdp/       csv prodotti da discovery e discretizzazione
+    encoding/  file RDDL prodotti da encoding_init.py
+    prost/     risultati di PROST (copia di /OUTPUTS)
 """
 
 import argparse
@@ -53,6 +54,16 @@ def short_name(dataset):
     return dataset.replace("_preprocessed", "")
 
 
+def find_file(name, *dirs):
+    """Restituisce il primo percorso esistente tra le cartelle date, altrimenti esce.
+    Serve con gli skip: i file si cercano prima in output/<dataset>/... (layout del
+    main) e poi in src/output/<dataset>/ (file già prodotti in precedenza)."""
+    for d in dirs:
+        if (d / name).is_file():
+            return d / name
+    sys.exit(f"[ERRORE] {name} non trovato in: " + ", ".join(str(d) for d in dirs))
+
+
 def run(cmd, cwd=ROOT):
     """Lancia un comando mostrando l'output in tempo reale; esce se fallisce."""
     print(f"\n$ {' '.join(str(c) for c in cmd)}", flush=True)
@@ -72,13 +83,14 @@ def step_discovery(args, mdp_dir):
     ])
 
 
-def step_discretize(args, mdp_dir):
+def step_discretize(args, mdp_dir, legacy):
     print("\n=== 2/4  Discretizzazione ===")
+    described = find_file(DESCRIBED_FILE, mdp_dir, legacy)
     # 'state' viene sempre escluso; eventuali altre colonne si aggiungono con --exclude-cols
     exclude = ["state"] + args.exclude_cols
     run([
         sys.executable, "src/discretize.py",
-        mdp_dir / DESCRIBED_FILE,
+        described,
         mdp_dir / DISCRETIZED_FILE,
         "--quantiles", args.quantiles,
         "--exclude", *exclude,
@@ -86,23 +98,28 @@ def step_discretize(args, mdp_dir):
     ])
 
 
-def step_encoding(mdp_dir, enc_dir):
+def step_encoding(args, mdp_dir, legacy, enc_dir):
     print("\n=== 3/4  Encoding RDDL ===")
-    run([
+    cmd = [
         sys.executable, "src/encoding_init.py",
-        "--states", mdp_dir / DISCRETIZED_FILE,
-        "--transitions", mdp_dir / TRANSITIONS_FILE,
+        "--states", find_file(DISCRETIZED_FILE, mdp_dir, legacy),
+        "--transitions", find_file(TRANSITIONS_FILE, mdp_dir, legacy),
         "--include-attributes",
         "--outdir", enc_dir,
-    ])
+    ]
+    # Senza --init-state encoding_init.py chiede lo stato iniziale con input():
+    # in quel caso il container va lanciato con 'docker run -it'
+    if args.init_state is not None:
+        cmd += ["--init-state", args.init_state]
+    run(cmd)
 
 
-def step_prost(args, enc_dir, prost_res_dir):
+def step_prost(args, enc_dir, legacy, prost_res_dir):
     print("\n=== 4/4  PROST ===")
 
-    rddl_files = sorted(enc_dir.glob("*.rddl"))
+    rddl_files = sorted(enc_dir.glob("*.rddl")) or sorted(legacy.glob("*.rddl"))
     if not rddl_files:
-        sys.exit(f"[ERRORE] nessun file .rddl trovato in {enc_dir}")
+        sys.exit(f"[ERRORE] nessun file .rddl trovato in {enc_dir} né in {legacy}")
 
     # Svuota /RDDL e /OUTPUTS (equivalente del 'docker rm -f' + nuovo run)
     for d in (RDDL_DIR, PROST_OUT_DIR):
@@ -137,6 +154,9 @@ def main():
     p.add_argument("--exclude-cols", nargs="*", default=[],
                    help="colonne extra da escludere dalla discretizzazione "
                         "('state' è sempre escluso)")
+    p.add_argument("--init-state", default=None,
+                   help="stato iniziale per l'encoding (se omesso, viene chiesto "
+                        "interattivamente: serve 'docker run -it')")
     p.add_argument("--outdir", default=str(ROOT / "output"),
                    help="cartella base degli output (default: ./output)")
     p.add_argument("--prost-instances", default="1",
@@ -155,6 +175,8 @@ def main():
 
     base = Path(args.outdir) / short_name(args.dataset)
     mdp_dir, enc_dir, prost_res_dir = base / "mdp", base / "encoding", base / "prost"
+    # cartella dei file prodotti in precedenza (usata solo come fallback con gli skip)
+    legacy = ROOT / "src" / "output" / short_name(args.dataset)
     for d in (mdp_dir, enc_dir):
         d.mkdir(parents=True, exist_ok=True)
 
@@ -162,10 +184,10 @@ def main():
     if not args.skip_discovery:
         step_discovery(args, mdp_dir)
     if not args.skip_discretize:
-        step_discretize(args, mdp_dir)
+        step_discretize(args, mdp_dir, legacy)
     if not args.skip_encoding:
-        step_encoding(mdp_dir, enc_dir)
-    step_prost(args, enc_dir, prost_res_dir)
+        step_encoding(args, mdp_dir, legacy, enc_dir)
+    step_prost(args, enc_dir, legacy, prost_res_dir)
 
     print(f"\nFatto in {(time.perf_counter() - t0) / 60:.2f} minuti. Output in {base}")
 
